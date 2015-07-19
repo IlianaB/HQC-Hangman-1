@@ -4,17 +4,6 @@ High-Quality Programming Code – Team Projects
 Overview
 --------
 
-You are given a **C\# software project** designed to implement some of the following **console-based games**:
-
--   Balloon Pops
--   Battle Field
--   Bulls and Cows
--   Game 15
--   Hangman
--   King Survival
--   Labyrinth
--   Minesweeper
-
 The project consists of one or more **source code files**, description and is provided here: <https://github.com/TelerikAcademy/High-Quality-Code/tree/master/Teamwork>.
 
 The name of your team is the same as the project you will start from.
