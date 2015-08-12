@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="GameStrategy.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="Start.cs" />

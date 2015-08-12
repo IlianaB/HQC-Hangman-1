@@ -6,11 +6,13 @@ namespace HangmanGame
     {
         private readonly ScoreBoard scoreBoard;
         private readonly GameStrategy gameStrategy;
+        private readonly ConsoleRenderer renderer;
 
-        public GameEngine(ScoreBoard scoreBoard, GameStrategy gameStrategy)
+        public GameEngine(ScoreBoard scoreBoard, GameStrategy gameStrategy, ConsoleRenderer renderer)
         {
             this.scoreBoard = scoreBoard;
             this.gameStrategy = gameStrategy;
+            this.renderer = renderer;
         }
 
         public void Start()
@@ -19,7 +21,7 @@ namespace HangmanGame
             do
             {
                 Console.WriteLine();
-                this.gameStrategy.PrintCurrentProgress();
+                this.renderer.PrintCurrentProgress(this.gameStrategy.GuessedLetters);
                 if (this.gameStrategy.isOver())
                 {
                     if (this.gameStrategy.HelpUsed)
@@ -39,7 +41,7 @@ namespace HangmanGame
                             Console.Write("Please enter your name for the top scoreboard: ");
                             string name = Console.ReadLine();
                             scoreBoard.AddNewScore(name, this.gameStrategy.Mistackes);
-                            scoreBoard.Print();
+                            this.renderer.PrintScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.ScoreNames, this.scoreBoard.Mistakes);
                         }
                     }
                     this.gameStrategy.ReSet();
@@ -69,13 +71,13 @@ namespace HangmanGame
             } while (command != "exit");
         }
 
-        private static void ExecuteCommand(string command, ScoreBoard scoreBoard, GameStrategy game)
+        private void ExecuteCommand(string command, ScoreBoard scoreBoard, GameStrategy game)
         {
             switch (command)
             {
                 case "top":
                     {
-                        scoreBoard.Print();
+                        this.renderer.PrintScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.ScoreNames, this.scoreBoard.Mistakes);
                     }
                     break;
                 case "help":
