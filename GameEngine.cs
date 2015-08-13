@@ -55,14 +55,14 @@ namespace HangmanGame
                 }
                 else
                 {
-                    ReactToPlayerAction();
+                    command = this.renderer.ReadCommand();
+                    ReactToPlayerAction(command);
                 }
             } while (command != "exit");
         }
 
-        private void ReactToPlayerAction()
+        private void ReactToPlayerAction(string command)
         {
-            string command = this.renderer.ReadCommand();
             string message = string.Empty;
 
             if (command.Length == 1)
