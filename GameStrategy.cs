@@ -7,7 +7,6 @@ namespace HangmanGame
         // besenicata e egati tupata igra! ujasssssssssssss, spasete me ot besiloto!
 
         private string wordToGuess;
-        private int mistackes;
         private bool helpUsed;
         public GameStrategy()
         {
@@ -29,14 +28,10 @@ namespace HangmanGame
             {
                 GuessedLetters[i] = '_';
             }
-            mistackes = 0;
+
             helpUsed = false;
         }
 
-        public int Mistackes
-        {
-            get { return mistackes; }
-        }
         public bool HelpUsed
         {
             get { return helpUsed; }
@@ -69,7 +64,7 @@ namespace HangmanGame
                     count++;
                 }
             }
-            if (count == 0) { mistackes++; }
+
             return count;
         }
 

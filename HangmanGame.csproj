@@ -45,6 +45,7 @@
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="GameStrategy.cs" />
     <Compile Include="GameEngine.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Start.cs" />
     <Compile Include="ScoreBoard.cs" />
   </ItemGroup>
