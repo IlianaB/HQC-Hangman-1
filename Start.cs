@@ -12,7 +12,7 @@ namespace HangmanGame
             Player player = new Player();
             GameEngine gameEngine = new GameEngine(scoreBoard, gameStrategy, renderer, player);
 
-            Console.WriteLine("Welcome to “Hangman” game. Please try to guess my secret word.");
+            renderer.PrintWelcomeMessage();
 
             gameEngine.Start();
         }
