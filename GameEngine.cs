@@ -48,54 +48,70 @@ namespace HangmanGame
             do
             {
                 this.renderer.ShowCurrentProgress(this.gameStrategy.GuessedLetters);
+                
                 if (this.gameStrategy.isOver())
                 {
-                    if (this.gameStrategy.HelpUsed)
-                    {
-                        message = string.Format(this.allMessages["win with help"].ToString(), this.player.Mistakes);
-                        this.renderer.ShowMessage(message);
-                    }
-                    else
-                    {
-                        if (scoreBoard.GetWorstTopScore() <= this.player.Mistakes)
-                        {
-                            message = string.Format(this.allMessages["low score"].ToString(), this.player.Mistakes);
-                            this.renderer.ShowMessage(message);
-                        }
-                        else
-                        {
-                            string name = this.renderer.getPlayerName();
-                            this.scoreBoard.AddNewScore(name, this.player.Mistakes);
-                            this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.ScoreNames, this.scoreBoard.Mistakes);
-                        }
-                    }
-                    this.gameStrategy.ReSet();
+                    FinishTheGame();
                 }
                 else
                 {
-                    command = this.renderer.ReadCommand();
-
-                    if (command.Length == 1)
-                    {
-                        int occuranses = this.gameStrategy.NumberOccuranceOfLetter(command[0]);
-                        if (occuranses == 0)
-                        {
-                            this.player.increaseMistakes();
-                            message = string.Format(this.allMessages["no occurences"].ToString(), command[0]);
-                            this.renderer.ShowMessage(message);
-                        }
-                        else
-                        {
-                            message = string.Format(this.allMessages["occurences info"].ToString(), occuranses);
-                            this.renderer.ShowMessage(message);
-                        }
-                    }
-                    else
-                    {
-                        ExecuteCommand(command);
-                    }
+                    ReactToPlayerAction();
                 }
             } while (command != "exit");
+        }
+
+        private void ReactToPlayerAction()
+        {
+            string command = this.renderer.ReadCommand();
+            string message = string.Empty;
+
+            if (command.Length == 1)
+            {
+                int occuranses = this.gameStrategy.NumberOccuranceOfLetter(command[0]);
+
+                if (occuranses == 0)
+                {
+                    this.player.increaseMistakes();
+                    message = string.Format(this.allMessages["no occurences"].ToString(), command[0]);
+                    this.renderer.ShowMessage(message);
+                }
+                else
+                {
+                    message = string.Format(this.allMessages["occurences info"].ToString(), occuranses);
+                    this.renderer.ShowMessage(message);
+                }
+            }
+            else
+            {
+                ExecuteCommand(command);
+            }
+        }
+
+        private void FinishTheGame()
+        {
+            string message = string.Empty;
+
+            if (this.gameStrategy.HelpUsed)
+            {
+                message = string.Format(this.allMessages["win with help"].ToString(), this.player.Mistakes);
+                this.renderer.ShowMessage(message);
+            }
+            else
+            {
+                if (scoreBoard.GetWorstTopScore() <= this.player.Mistakes)
+                {
+                    message = string.Format(this.allMessages["low score"].ToString(), this.player.Mistakes);
+                    this.renderer.ShowMessage(message);
+                }
+                else
+                {
+                    string name = this.renderer.getPlayerName();
+                    this.scoreBoard.AddNewScore(name, this.player.Mistakes);
+                    this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.ScoreNames, this.scoreBoard.Mistakes);
+                }
+            }
+
+            this.gameStrategy.ReSet();
         }
 
         private void ExecuteCommand(string command)
