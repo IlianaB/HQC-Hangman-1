@@ -12,8 +12,6 @@ namespace HangmanGame
             Player player = new Player();
             GameEngine gameEngine = new GameEngine(scoreBoard, gameStrategy, renderer, player);
 
-            renderer.PrintWelcomeMessage();
-
             gameEngine.Start();
         }
     }

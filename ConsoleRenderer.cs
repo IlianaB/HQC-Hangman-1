@@ -10,7 +10,7 @@ namespace HangmanGame
 
         }
 
-        public void PrintScoreBoardResults(bool isEmptyScoreBoard, string[] scoreNames, int[] mistakes)
+        public void ShowScoreBoardResults(bool isEmptyScoreBoard, string[] scoreNames, int[] mistakes)
         {
             if (isEmptyScoreBoard)
             {
@@ -32,7 +32,7 @@ namespace HangmanGame
             }
         }
 
-        public void PrintCurrentProgress(char[] guessedLetters)
+        public void ShowCurrentProgress(char[] guessedLetters)
         {
             Console.WriteLine();
 
@@ -44,18 +44,12 @@ namespace HangmanGame
             Console.WriteLine();
         }
 
-        public void PrintHelpInformation(int mistakes)
+        public void ShowMessage(string message)
         {
-            Console.WriteLine("You won with {0} mistake(s) but you have cheated." +
-                " You are not allowed to enter into the scoreboard.", mistakes);
+            Console.WriteLine(message);
         }
 
-        public void PrintScoreInformation(int mistakes)
-        {
-            Console.WriteLine("You won with {0} mistake(s) but your score did not enter in the scoreboard", mistakes);
-        }
-
-        public string AskPlayerForName()
+        public string getPlayerName()
         {
             Console.Write("Please enter your name for the top scoreboard: ");
             string name = Console.ReadLine();
@@ -70,36 +64,6 @@ namespace HangmanGame
             command.ToLower();
 
             return command;
-        }
-
-        public void PrintRevealedLetterInformation(char letter)
-        {
-            Console.WriteLine("Sorry! There are no unrevealed letters “{0}”.", letter);
-        }
-
-        public void PrintOccurancesInformation(int occuranses)
-        {
-            Console.WriteLine("Good job! You revealed {0} letter(s).", occuranses);
-        }
-
-        public void PrintWelcomeMessage()
-        {
-            Console.WriteLine("Welcome to “Hangman” game. Please try to guess my secret word.");
-        }
-
-        public void PrintGoodByeMessage()
-        {
-            Console.WriteLine("Good bye!");
-        }
-
-        public void PrintIncorrectCommandInformation()
-        {
-            Console.WriteLine("Incorrect guess or command!");
-        }
-
-        public void PrintALetterRevealedMessage(char letter)
-        {
-            Console.WriteLine("OK, I reveal for you the next letter '{0}'.", letter);
         }
     }
 }
