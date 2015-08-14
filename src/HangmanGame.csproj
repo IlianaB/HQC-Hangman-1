@@ -42,13 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleRenderer.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="GameStrategy.cs" />
-    <Compile Include="GameEngine.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Start.cs" />
-    <Compile Include="ScoreBoard.cs" />
+    <Compile Include="HangmanGame\ConsoleRenderer.cs" />
+    <Compile Include="HangmanGame\Constants.cs" />
+    <Compile Include="HangmanGame\GameStrategy.cs" />
+    <Compile Include="HangmanGame\GameEngine.cs" />
+    <Compile Include="HangmanGame\Player.cs" />
+    <Compile Include="HangmanGame\Start.cs" />
+    <Compile Include="HangmanGame\ScoreBoard.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
