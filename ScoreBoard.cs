@@ -74,7 +74,7 @@ namespace HangmanGame
             for (int i = 0; i < ScoreNames.Length; i++)
             {
                 ScoreNames[i] = null;
-                Mistakes[i] = 0;
+                Mistakes[i] = int.MaxValue;
             }
             IsEmpty = true;
         }
