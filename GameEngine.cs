@@ -10,7 +10,6 @@ namespace HangmanGame
         private readonly GameStrategy gameStrategy;
         private readonly ConsoleRenderer renderer;
         private readonly Player player;
-        private IDictionary allMessages;
 
         public GameEngine(ScoreBoard scoreBoard, GameStrategy gameStrategy, ConsoleRenderer renderer, Player player)
         {
@@ -18,31 +17,12 @@ namespace HangmanGame
             this.gameStrategy = gameStrategy;
             this.renderer = renderer;
             this.player = player;
-            this.allMessages = InitializeAllMessages();
-        }
-
-        private IDictionary InitializeAllMessages()
-        {
-            IDictionary dictionaryWithMessages = new Dictionary<string, string>();
-            dictionaryWithMessages.Add("welcome", "Welcome to “Hangman” game. Please try to guess my secret word.");
-            dictionaryWithMessages.Add("bye", "Good bye!");
-            dictionaryWithMessages.Add("incorrect command", "Incorrect guess or command!");
-            dictionaryWithMessages.Add("no letter", "Sorry! There are no unrevealed letters “{0}”.");
-            dictionaryWithMessages.Add("revealed letter", "Good job! You revealed {0} letter(s).");
-            dictionaryWithMessages.Add("help", "OK, I reveal for you the next letter '{0}'.");
-            dictionaryWithMessages.Add("win with help", "You won with {0} mistake(s) but you have cheated." +
-                " You are not allowed to enter into the scoreboard.");
-            dictionaryWithMessages.Add("low score", "You won with {0} mistake(s) but your score did not enter in the scoreboard");
-            dictionaryWithMessages.Add("no occurences", "Sorry! There are no unrevealed letters “{0}”.");
-            dictionaryWithMessages.Add("occurences info", "Good job! You revealed {0} letter(s).");
-                
-            return dictionaryWithMessages;
         }
 
         public void Start()
         {
             string command = null;
-            string message = this.allMessages["welcome"].ToString();
+            string message = Constants.WELCOME_MESSAGE;
             this.renderer.ShowMessage(message);
 
             do
@@ -72,12 +52,12 @@ namespace HangmanGame
                 if (occuranses == 0)
                 {
                     this.player.increaseMistakes();
-                    message = string.Format(this.allMessages["no occurences"].ToString(), command[0]);
+                    message = string.Format(Constants.NO_OCCURENCES_MESSAGE, command[0]);
                     this.renderer.ShowMessage(message);
                 }
                 else
                 {
-                    message = string.Format(this.allMessages["occurences info"].ToString(), occuranses);
+                    message = string.Format(Constants.OCCURENCES_MESSAGE, occuranses);
                     this.renderer.ShowMessage(message);
                 }
             }
@@ -93,14 +73,14 @@ namespace HangmanGame
 
             if (this.gameStrategy.HelpUsed)
             {
-                message = string.Format(this.allMessages["win with help"].ToString(), this.player.Mistakes);
+                message = string.Format(Constants.WIN_WITH_HELP_MESSAGE, this.player.Mistakes);
                 this.renderer.ShowMessage(message);
             }
             else
             {
                 if (scoreBoard.GetWorstTopScore() <= this.player.Mistakes)
                 {
-                    message = string.Format(this.allMessages["low score"].ToString(), this.player.Mistakes);
+                    message = string.Format(Constants.LOW_SCORE_MESSAGE, this.player.Mistakes);
                     this.renderer.ShowMessage(message);
                 }
                 else
@@ -128,24 +108,24 @@ namespace HangmanGame
                 case "help":
                     {
                         char revealedLetter = this.gameStrategy.RevealALetter();
-                        message = string.Format(this.allMessages["help"].ToString(), revealedLetter);
+                        message = string.Format(Constants.USED_HELP_MESSAGE, revealedLetter);
                     }
                     break;
                 case "restart":
                     {
                         this.scoreBoard.ReSet();
                         this.gameStrategy.ReSet();
-                        message = this.allMessages["welcome"].ToString();
+                        message = Constants.WELCOME_MESSAGE;
                     }
                     break;
                 case "exit":
                     {
-                        message = this.allMessages["bye"].ToString();
+                        message = Constants.GOODBYE_MESSAGE;
                     }
                     break;
                 default:
                     {
-                        message = this.allMessages["incorrect command"].ToString();
+                        message = Constants.INCORRECT_COMMAND_MESSAGE;
                     }
                     break;
             }

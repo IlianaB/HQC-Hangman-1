@@ -14,7 +14,7 @@ namespace HangmanGame
         {
             if (isEmptyScoreBoard)
             {
-                Console.WriteLine("Scoreboard is empty!");
+                Console.WriteLine(Constants.EMPTY_SCOREBOARD_MESSAGE);
             }
             else
             {
@@ -22,7 +22,7 @@ namespace HangmanGame
                 int i = 0;
                 while (scoreNames[i] != null)
                 {
-                    Console.WriteLine("{0}. {1} ---> {2} mistacke(s)!", i + 1, scoreNames[i], mistakes[i]);
+                    Console.WriteLine(Constants.RESULTS_INFORMATION_MESSAGE, i + 1, scoreNames[i], mistakes[i]);
                     i++;
                     if (i >= scoreNames.Length)
                     {
@@ -36,7 +36,7 @@ namespace HangmanGame
         {
             Console.WriteLine();
 
-            Console.Write("The secret word is: ");
+            Console.Write(Constants.ANNOUNCE_SECRET_WORD_MESSAGE);
             for (int i = 0; i < guessedLetters.Length; i++)
             {
                 Console.Write("{0} ", guessedLetters[i]);
@@ -51,7 +51,7 @@ namespace HangmanGame
 
         public string getPlayerName()
         {
-            Console.Write("Please enter your name for the top scoreboard: ");
+            Console.Write(Constants.ENTER_NAME_MESSAGE);
             string name = Console.ReadLine();
 
             return name;
@@ -59,7 +59,7 @@ namespace HangmanGame
 
         public string ReadCommand()
         {
-            Console.Write("Enter your guess: ");
+            Console.Write(Constants.ENTER_GUESS_MESSAGE);
             string command = Console.ReadLine();
             command.ToLower();
 
