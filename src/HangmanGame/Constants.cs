@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HangmanGame
+﻿namespace HangmanGame.HangmanGame
 {
     public class Constants
     {

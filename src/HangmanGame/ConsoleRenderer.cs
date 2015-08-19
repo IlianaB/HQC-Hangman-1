@@ -1,15 +1,9 @@
-﻿using System;
-
-
-namespace HangmanGame
+﻿namespace HangmanGame.HangmanGame
 {
+    using System;
+
     public class ConsoleRenderer
     {
-        public ConsoleRenderer()
-        {
-
-        }
-
         public void ShowScoreBoardResults(bool isEmptyScoreBoard, string[] scoreNames, int[] mistakes)
         {
             if (isEmptyScoreBoard)

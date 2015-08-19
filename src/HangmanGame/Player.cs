@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HangmanGame
+﻿namespace HangmanGame.HangmanGame
 {
     public class Player
     {
@@ -11,7 +9,7 @@ namespace HangmanGame
 
         public int Mistakes { get; private set; }
 
-        public void increaseMistakes()
+        public void IncreaseMistakes()
         {
             this.Mistakes++;
         }

@@ -1,4 +1,4 @@
-﻿namespace HangmanGame
+﻿namespace HangmanGame.HangmanGame
 {
     class Start
     {

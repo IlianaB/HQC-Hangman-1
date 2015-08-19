@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace HangmanGame
+﻿namespace HangmanGame.HangmanGame
 {
+    using System;
+
     public class GameStrategy
     {
         // besenicata e egati tupata igra! ujasssssssssssss, spasete me ot besiloto!
@@ -10,7 +10,7 @@ namespace HangmanGame
         private bool helpUsed;
         public GameStrategy()
         {
-            ReSet();
+            this.ReSet();
         }
 
         public char[] GuessedLetters { get; set; }
@@ -18,34 +18,34 @@ namespace HangmanGame
 
         public void ReSet()
         {
-            this.wordToGuess = IzberiRandomWord();
-            GuessedLetters = new char[wordToGuess.Length];
+            this.wordToGuess = this.IzberiRandomWord();
+            this.GuessedLetters = new char[this.wordToGuess.Length];
 
 
 
 
-            for (int i = 0; i < wordToGuess.Length; i++)
+            for (int i = 0; i < this.wordToGuess.Length; i++)
             {
-                GuessedLetters[i] = '_';
+                this.GuessedLetters[i] = '_';
             }
 
-            helpUsed = false;
+            this.helpUsed = false;
         }
 
         public bool HelpUsed
         {
-            get { return helpUsed; }
+            get { return this.helpUsed; }
         }
         public char RevealALetter()
         {
             char toReturnt = char.MinValue;
-            for (int i = 0; i < GuessedLetters.Length; i++)
+            for (int i = 0; i < this.GuessedLetters.Length; i++)
             {
-                if (GuessedLetters[i] == '_')
+                if (this.GuessedLetters[i] == '_')
                 {
-                    GuessedLetters[i] = wordToGuess[i];
-                    toReturnt = wordToGuess[i];
-                    helpUsed = true;
+                    this.GuessedLetters[i] = this.wordToGuess[i];
+                    toReturnt = this.wordToGuess[i];
+                    this.helpUsed = true;
                     break;
                 }
             }
@@ -56,11 +56,11 @@ namespace HangmanGame
         public int NumberOccuranceOfLetter(char letter)
         {
             int count = 0;
-            for (int i = 0; i < wordToGuess.Length; i++)
+            for (int i = 0; i < this.wordToGuess.Length; i++)
             {
-                if (wordToGuess[i] == letter)
+                if (this.wordToGuess[i] == letter)
                 {
-                    GuessedLetters[i] = letter;
+                    this.GuessedLetters[i] = letter;
                     count++;
                 }
             }
@@ -70,9 +70,9 @@ namespace HangmanGame
 
         public bool isOver()
         {
-            for (int i = 0; i < GuessedLetters.Length; i++)
+            for (int i = 0; i < this.GuessedLetters.Length; i++)
             {
-                if (GuessedLetters[i] == '_')
+                if (this.GuessedLetters[i] == '_')
                 {
 
 
@@ -94,9 +94,9 @@ namespace HangmanGame
 
 
 
-            int choice = randomGenerator.Next(words.Length);
+            int choice = this.randomGenerator.Next(this.words.Length);
 
-            return words[choice];
+            return this.words[choice];
         }
 
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace HangmanGame
+﻿namespace HangmanGame.HangmanGame
 {
     public class GameEngine
     {
@@ -31,12 +27,12 @@ namespace HangmanGame
                 
                 if (this.gameStrategy.isOver())
                 {
-                    FinishTheGame();
+                    this.FinishTheGame();
                 }
                 else
                 {
                     command = this.renderer.ReadCommand();
-                    ReactToPlayerAction(command);
+                    this.ReactToPlayerAction(command);
                 }
             } while (command != "exit");
         }
@@ -51,7 +47,7 @@ namespace HangmanGame
 
                 if (occuranses == 0)
                 {
-                    this.player.increaseMistakes();
+                    this.player.IncreaseMistakes();
                     message = string.Format(Constants.NO_OCCURENCES_MESSAGE, command[0]);
                     this.renderer.ShowMessage(message);
                 }
@@ -63,7 +59,7 @@ namespace HangmanGame
             }
             else
             {
-                ExecuteCommand(command);
+                this.ExecuteCommand(command);
             }
         }
 
@@ -78,7 +74,7 @@ namespace HangmanGame
             }
             else
             {
-                if (scoreBoard.GetWorstTopScore() <= this.player.Mistakes)
+                if (this.scoreBoard.GetWorstTopScore() <= this.player.Mistakes)
                 {
                     message = string.Format(Constants.LOW_SCORE_MESSAGE, this.player.Mistakes);
                     this.renderer.ShowMessage(message);

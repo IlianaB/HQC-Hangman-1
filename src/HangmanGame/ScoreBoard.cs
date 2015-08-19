@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HangmanGame
+﻿namespace HangmanGame.HangmanGame
 {
     public class ScoreBoard
     {
@@ -11,10 +9,10 @@ namespace HangmanGame
             this.ScoreNames = new string[NUMBER_OF_SCORES];
             this.Mistakes = new int[NUMBER_OF_SCORES];
 
-            for (int i = 0; i < ScoreNames.Length; i++)
+            for (int i = 0; i < this.ScoreNames.Length; i++)
             {
-                ScoreNames[i] = null;
-                Mistakes[i] = int.MaxValue;
+                this.ScoreNames[i] = null;
+                this.Mistakes[i] = int.MaxValue;
             }
             this.IsEmpty = true;
 
@@ -27,56 +25,56 @@ namespace HangmanGame
 
         public void AddNewScore(string nickname, int mistakes)
         {
-            int indexToPutNewScore = FindIndexWhereToPutNewScore(mistakes);
-            if (indexToPutNewScore == ScoreNames.Length)
+            int indexToPutNewScore = this.FindIndexWhereToPutNewScore(mistakes);
+            if (indexToPutNewScore == this.ScoreNames.Length)
             {
                 return;
             }
             else
             {
-                MoveScoresDownByOnePosition(indexToPutNewScore);
-                ScoreNames[indexToPutNewScore] = nickname;
-                Mistakes[indexToPutNewScore] = mistakes;
-                IsEmpty = false;
+                this.MoveScoresDownByOnePosition(indexToPutNewScore);
+                this.ScoreNames[indexToPutNewScore] = nickname;
+                this.Mistakes[indexToPutNewScore] = mistakes;
+                this.IsEmpty = false;
             }
         }
 
         private int FindIndexWhereToPutNewScore(int mistakes)
         {
-            for (int i = 0; i < Mistakes.Length; i++)
+            for (int i = 0; i < this.Mistakes.Length; i++)
             {
-                if (mistakes < Mistakes[i])
+                if (mistakes < this.Mistakes[i])
                 {
                     return i;
                 }
             }
-            return ScoreNames.Length;
+            return this.ScoreNames.Length;
         }
 
         private void MoveScoresDownByOnePosition(int startPosition)
         {
-            for (int i = ScoreNames.Length - 1; i > startPosition; i--)
+            for (int i = this.ScoreNames.Length - 1; i > startPosition; i--)
             {
-                ScoreNames[i] = ScoreNames[i - 1];
-                Mistakes[i] = Mistakes[i - 1];
+                this.ScoreNames[i] = this.ScoreNames[i - 1];
+                this.Mistakes[i] = this.Mistakes[i - 1];
             }
         }
 
         public int GetWorstTopScore()
         {
             int worstTopScore = int.MaxValue;
-            if (ScoreNames[ScoreNames.Length - 1] != null) { worstTopScore = Mistakes[ScoreNames.Length - 1]; }
+            if (this.ScoreNames[this.ScoreNames.Length - 1] != null) { worstTopScore = this.Mistakes[this.ScoreNames.Length - 1]; }
             return worstTopScore;
         }
 
         public void ReSet()
         {
-            for (int i = 0; i < ScoreNames.Length; i++)
+            for (int i = 0; i < this.ScoreNames.Length; i++)
             {
-                ScoreNames[i] = null;
-                Mistakes[i] = int.MaxValue;
+                this.ScoreNames[i] = null;
+                this.Mistakes[i] = int.MaxValue;
             }
-            IsEmpty = true;
+            this.IsEmpty = true;
         }
     }
 }
