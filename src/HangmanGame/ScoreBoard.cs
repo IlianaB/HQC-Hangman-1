@@ -2,26 +2,27 @@
 {
     public class ScoreBoard
     {
-        public const int NUMBER_OF_SCORES = 5;
+        public const int NumberOfScores = 5;
 
         public ScoreBoard()
         {
-            this.ScoreNames = new string[NUMBER_OF_SCORES];
-            this.Mistakes = new int[NUMBER_OF_SCORES];
+            this.ScoreNames = new string[NumberOfScores];
+            this.Mistakes = new int[NumberOfScores];
 
             for (int i = 0; i < this.ScoreNames.Length; i++)
             {
                 this.ScoreNames[i] = null;
                 this.Mistakes[i] = int.MaxValue;
             }
-            this.IsEmpty = true;
 
+            this.IsEmpty = true;
         }
 
         public bool IsEmpty { get; set; }
-        public string[] ScoreNames { get; set; }
-        public int[] Mistakes { get; set; }
 
+        public string[] ScoreNames { get; set; }
+
+        public int[] Mistakes { get; set; }
 
         public void AddNewScore(string nickname, int mistakes)
         {
@@ -30,13 +31,11 @@
             {
                 return;
             }
-            else
-            {
-                this.MoveScoresDownByOnePosition(indexToPutNewScore);
-                this.ScoreNames[indexToPutNewScore] = nickname;
-                this.Mistakes[indexToPutNewScore] = mistakes;
-                this.IsEmpty = false;
-            }
+            
+            this.MoveScoresDownByOnePosition(indexToPutNewScore);
+            this.ScoreNames[indexToPutNewScore] = nickname;
+            this.Mistakes[indexToPutNewScore] = mistakes;
+            this.IsEmpty = false;
         }
 
         private int FindIndexWhereToPutNewScore(int mistakes)
@@ -48,6 +47,7 @@
                     return i;
                 }
             }
+
             return this.ScoreNames.Length;
         }
 
@@ -74,8 +74,8 @@
                 this.ScoreNames[i] = null;
                 this.Mistakes[i] = int.MaxValue;
             }
+
             this.IsEmpty = true;
         }
     }
 }
-

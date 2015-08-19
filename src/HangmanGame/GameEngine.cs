@@ -18,7 +18,7 @@
         public void Start()
         {
             string command = null;
-            string message = Constants.WELCOME_MESSAGE;
+            string message = Constants.WelcomeMessage;
             this.renderer.ShowMessage(message);
 
             do
@@ -34,7 +34,8 @@
                     command = this.renderer.ReadCommand();
                     this.ReactToPlayerAction(command);
                 }
-            } while (command != "exit");
+            } 
+            while (command != "exit");
         }
 
         private void ReactToPlayerAction(string command)
@@ -48,12 +49,12 @@
                 if (occuranses == 0)
                 {
                     this.player.IncreaseMistakes();
-                    message = string.Format(Constants.NO_OCCURENCES_MESSAGE, command[0]);
+                    message = string.Format(Constants.NoOccurencesMessage, command[0]);
                     this.renderer.ShowMessage(message);
                 }
                 else
                 {
-                    message = string.Format(Constants.OCCURENCES_MESSAGE, occuranses);
+                    message = string.Format(Constants.OccurencesMessage, occuranses);
                     this.renderer.ShowMessage(message);
                 }
             }
@@ -69,19 +70,19 @@
 
             if (this.gameStrategy.HelpUsed)
             {
-                message = string.Format(Constants.WIN_WITH_HELP_MESSAGE, this.player.Mistakes);
+                message = string.Format(Constants.WinWithHelpMessage, this.player.Mistakes);
                 this.renderer.ShowMessage(message);
             }
             else
             {
                 if (this.scoreBoard.GetWorstTopScore() <= this.player.Mistakes)
                 {
-                    message = string.Format(Constants.LOW_SCORE_MESSAGE, this.player.Mistakes);
+                    message = string.Format(Constants.LowScoreMessage, this.player.Mistakes);
                     this.renderer.ShowMessage(message);
                 }
                 else
                 {
-                    string name = this.renderer.getPlayerName();
+                    string name = this.renderer.GetPlayerName();
                     this.scoreBoard.AddNewScore(name, this.player.Mistakes);
                     this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.ScoreNames, this.scoreBoard.Mistakes);
                 }
@@ -104,24 +105,24 @@
                 case "help":
                     {
                         char revealedLetter = this.gameStrategy.RevealALetter();
-                        message = string.Format(Constants.USED_HELP_MESSAGE, revealedLetter);
+                        message = string.Format(Constants.UsedHelpMessage, revealedLetter);
                     }
                     break;
                 case "restart":
                     {
                         this.scoreBoard.ReSet();
                         this.gameStrategy.ReSet();
-                        message = Constants.WELCOME_MESSAGE;
+                        message = Constants.WelcomeMessage;
                     }
                     break;
                 case "exit":
                     {
-                        message = Constants.GOODBYE_MESSAGE;
+                        message = Constants.GoodbyeMessage;
                     }
                     break;
                 default:
                     {
-                        message = Constants.INCORRECT_COMMAND_MESSAGE;
+                        message = Constants.IncorrectCommandMessage;
                     }
                     break;
             }
@@ -130,4 +131,3 @@
         }
     }
 }
-

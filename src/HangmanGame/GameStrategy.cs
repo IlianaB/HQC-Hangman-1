@@ -15,14 +15,10 @@
 
         public char[] GuessedLetters { get; set; }
 
-
         public void ReSet()
         {
-            this.wordToGuess = this.IzberiRandomWord();
+            this.wordToGuess = this.ChooseRandomWord();
             this.GuessedLetters = new char[this.wordToGuess.Length];
-
-
-
 
             for (int i = 0; i < this.wordToGuess.Length; i++)
             {
@@ -36,6 +32,7 @@
         {
             get { return this.helpUsed; }
         }
+
         public char RevealALetter()
         {
             char toReturnt = char.MinValue;
@@ -51,7 +48,6 @@
             }
             return toReturnt;
         }
-
 
         public int NumberOccuranceOfLetter(char letter)
         {
@@ -86,19 +82,12 @@
         private string[] words = {"computer", "programmer", "software", "debugger","compiler", "developer", "algorithm",
                                       "array", "method", "variable" };
 
-        private Random randomGenerator = new Random();
+        private readonly Random randomGenerator = new Random();
 
-        private string IzberiRandomWord()
+        private string ChooseRandomWord()
         {
-
-
-
-
             int choice = this.randomGenerator.Next(this.words.Length);
-
             return this.words[choice];
         }
-
-
     }
 }

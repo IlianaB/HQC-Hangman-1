@@ -8,7 +8,7 @@
         {
             if (isEmptyScoreBoard)
             {
-                Console.WriteLine(Constants.EMPTY_SCOREBOARD_MESSAGE);
+                Console.WriteLine(Constants.EmptyScoreboardMessage);
             }
             else
             {
@@ -16,7 +16,7 @@
                 int i = 0;
                 while (scoreNames[i] != null)
                 {
-                    Console.WriteLine(Constants.RESULTS_INFORMATION_MESSAGE, i + 1, scoreNames[i], mistakes[i]);
+                    Console.WriteLine(Constants.ResultsInformationMessage, i + 1, scoreNames[i], mistakes[i]);
                     i++;
                     if (i >= scoreNames.Length)
                     {
@@ -30,11 +30,13 @@
         {
             Console.WriteLine();
 
-            Console.Write(Constants.ANNOUNCE_SECRET_WORD_MESSAGE);
+            Console.Write(Constants.AnnounceSecretWordMessage);
+
             for (int i = 0; i < guessedLetters.Length; i++)
             {
                 Console.Write("{0} ", guessedLetters[i]);
             }
+
             Console.WriteLine();
         }
 
@@ -43,9 +45,9 @@
             Console.WriteLine(message);
         }
 
-        public string getPlayerName()
+        public string GetPlayerName()
         {
-            Console.Write(Constants.ENTER_NAME_MESSAGE);
+            Console.Write(Constants.EnterNameMessage);
             string name = Console.ReadLine();
 
             return name;
@@ -53,7 +55,7 @@
 
         public string ReadCommand()
         {
-            Console.Write(Constants.ENTER_GUESS_MESSAGE);
+            Console.Write(Constants.EnterGuessMessage);
             string command = Console.ReadLine();
             command.ToLower();
 

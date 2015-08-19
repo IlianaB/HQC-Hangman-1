@@ -1,8 +1,8 @@
 ﻿namespace HangmanGame.HangmanGame
 {
-    class Start
+    public class Start
     {
-        static void Main()
+        internal static void Main()
         {
             ScoreBoard scoreBoard = new ScoreBoard();
             GameStrategy gameStrategy = new GameStrategy();
