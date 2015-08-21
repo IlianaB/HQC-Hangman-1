@@ -27,6 +27,7 @@
         public void AddNewScore(string nickname, int mistakes)
         {
             int indexToPutNewScore = this.FindIndexWhereToPutNewScore(mistakes);
+            
             if (indexToPutNewScore == this.ScoreNames.Length)
             {
                 return;
@@ -63,7 +64,12 @@
         public int GetWorstTopScore()
         {
             int worstTopScore = int.MaxValue;
-            if (this.ScoreNames[this.ScoreNames.Length - 1] != null) { worstTopScore = this.Mistakes[this.ScoreNames.Length - 1]; }
+
+            if (this.ScoreNames[this.ScoreNames.Length - 1] != null)
+            {
+                worstTopScore = this.Mistakes[this.ScoreNames.Length - 1];
+            }
+            
             return worstTopScore;
         }
 

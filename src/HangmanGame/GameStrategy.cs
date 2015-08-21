@@ -8,6 +8,7 @@
 
         private string wordToGuess;
         private bool helpUsed;
+        
         public GameStrategy()
         {
             this.ReSet();
@@ -30,12 +31,16 @@
 
         public bool HelpUsed
         {
-            get { return this.helpUsed; }
+            get
+            {
+                return this.helpUsed;
+            }
         }
 
         public char RevealALetter()
         {
             char toReturnt = char.MinValue;
+           
             for (int i = 0; i < this.GuessedLetters.Length; i++)
             {
                 if (this.GuessedLetters[i] == '_')
@@ -46,12 +51,14 @@
                     break;
                 }
             }
+
             return toReturnt;
         }
 
         public int NumberOccuranceOfLetter(char letter)
         {
             int count = 0;
+
             for (int i = 0; i < this.wordToGuess.Length; i++)
             {
                 if (this.wordToGuess[i] == letter)
@@ -70,11 +77,10 @@
             {
                 if (this.GuessedLetters[i] == '_')
                 {
-
-
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -87,6 +93,7 @@
         private string ChooseRandomWord()
         {
             int choice = this.randomGenerator.Next(this.words.Length);
+            
             return this.words[choice];
         }
     }
