@@ -1,0 +1,8 @@
+language: csharp
+solution: src/HangmanGame.sln
+before_install:
+  - sudo apt-get install nunit-console
+before_script:
+  - nuget restore src/HangmanGame.sln
+after_script:
+  - nunit-console tests/HagmanGameTests/bin/Release/HagmanGameTests.dll
