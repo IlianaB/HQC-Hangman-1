@@ -1,5 +1,6 @@
 High-Quality Programming Code – Team Projects
 =============================================
+[![Build Status](https://travis-ci.org/IlianaB/HQC-Hangman-1.svg?branch=master)](https://travis-ci.org/IlianaB/HQC-Hangman-1)
 
 Overview
 --------
