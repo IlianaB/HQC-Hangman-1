@@ -39,28 +39,6 @@
             this.IsEmpty = false;
         }
 
-        private int FindIndexWhereToPutNewScore(int mistakes)
-        {
-            for (int i = 0; i < this.Mistakes.Length; i++)
-            {
-                if (mistakes < this.Mistakes[i])
-                {
-                    return i;
-                }
-            }
-
-            return this.ScoreNames.Length;
-        }
-
-        private void MoveScoresDownByOnePosition(int startPosition)
-        {
-            for (int i = this.ScoreNames.Length - 1; i > startPosition; i--)
-            {
-                this.ScoreNames[i] = this.ScoreNames[i - 1];
-                this.Mistakes[i] = this.Mistakes[i - 1];
-            }
-        }
-
         public int GetWorstTopScore()
         {
             int worstTopScore = int.MaxValue;
@@ -82,6 +60,28 @@
             }
 
             this.IsEmpty = true;
+        }
+
+        private int FindIndexWhereToPutNewScore(int mistakes)
+        {
+            for (int i = 0; i < this.Mistakes.Length; i++)
+            {
+                if (mistakes < this.Mistakes[i])
+                {
+                    return i;
+                }
+            }
+
+            return this.ScoreNames.Length;
+        }
+
+        private void MoveScoresDownByOnePosition(int startPosition)
+        {
+            for (int i = this.ScoreNames.Length - 1; i > startPosition; i--)
+            {
+                this.ScoreNames[i] = this.ScoreNames[i - 1];
+                this.Mistakes[i] = this.Mistakes[i - 1];
+            }
         }
     }
 }
