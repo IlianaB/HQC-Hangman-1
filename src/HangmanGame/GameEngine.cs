@@ -25,7 +25,7 @@
             {
                 this.renderer.ShowCurrentProgress(this.gameStrategy.GuessedLetters);
                 
-                if (this.gameStrategy.isOver())
+                if (this.gameStrategy.IsOver())
                 {
                     this.FinishTheGame();
                 }
@@ -40,11 +40,11 @@
 
         private void ReactToPlayerAction(string command)
         {
-            string message = string.Empty;
-
             if (command.Length == 1)
             {
                 int occuranses = this.gameStrategy.NumberOccuranceOfLetter(command[0]);
+
+                string message;
 
                 if (occuranses == 0)
                 {
@@ -66,7 +66,7 @@
 
         private void FinishTheGame()
         {
-            string message = string.Empty;
+            string message;
 
             if (this.gameStrategy.HelpUsed)
             {
@@ -93,7 +93,7 @@
 
         private void ExecuteCommand(string command)
         {
-            var message = string.Empty;
+            string message;
 
             switch (command)
             {

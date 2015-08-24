@@ -1,10 +1,12 @@
 ﻿namespace HangmanGame.HangmanGame
 {
     using System;
+    using System.Linq;
 
     public class GameStrategy
     {
-        // besenicata e egati tupata igra! ujasssssssssssss, spasete me ot besiloto!
+        private readonly Random randomGenerator = new Random();
+        private readonly string[] words = { "computer", "programmer", "software", "debugger", "compiler", "developer", "algorithm", "array", "method", "variable" };
 
         private string wordToGuess;
         private bool helpUsed;
@@ -15,6 +17,14 @@
         }
 
         public char[] GuessedLetters { get; set; }
+
+        public bool HelpUsed
+        {
+            get
+            {
+                return this.helpUsed;
+            }
+        }
 
         public void ReSet()
         {
@@ -29,27 +39,21 @@
             this.helpUsed = false;
         }
 
-        public bool HelpUsed
-        {
-            get
-            {
-                return this.helpUsed;
-            }
-        }
-
         public char RevealALetter()
         {
             char toReturnt = char.MinValue;
            
             for (int i = 0; i < this.GuessedLetters.Length; i++)
             {
-                if (this.GuessedLetters[i] == '_')
+                if (this.GuessedLetters[i] != '_')
                 {
-                    this.GuessedLetters[i] = this.wordToGuess[i];
-                    toReturnt = this.wordToGuess[i];
-                    this.helpUsed = true;
-                    break;
+                    continue;
                 }
+
+                this.GuessedLetters[i] = this.wordToGuess[i];
+                toReturnt = this.wordToGuess[i];
+                this.helpUsed = true;
+                break;
             }
 
             return toReturnt;
@@ -61,39 +65,26 @@
 
             for (int i = 0; i < this.wordToGuess.Length; i++)
             {
-                if (this.wordToGuess[i] == letter)
+                if (this.wordToGuess[i] != letter)
                 {
-                    this.GuessedLetters[i] = letter;
-                    count++;
+                    continue;
                 }
+
+                this.GuessedLetters[i] = letter;
+                count++;
             }
 
             return count;
         }
 
-        public bool isOver()
+        public bool IsOver()
         {
-            for (int i = 0; i < this.GuessedLetters.Length; i++)
-            {
-                if (this.GuessedLetters[i] == '_')
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return this.GuessedLetters.All(t => t != '_');
         }
-
-
-        private string[] words = {"computer", "programmer", "software", "debugger","compiler", "developer", "algorithm",
-                                      "array", "method", "variable" };
-
-        private readonly Random randomGenerator = new Random();
 
         private string ChooseRandomWord()
         {
             int choice = this.randomGenerator.Next(this.words.Length);
-            
             return this.words[choice];
         }
     }
