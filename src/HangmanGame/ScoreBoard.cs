@@ -1,87 +1,56 @@
 ﻿namespace HangmanGame.HangmanGame
 {
+    using System.Collections.Generic;
+
     public class ScoreBoard
     {
+        private IList<Record> records;
+
         public const int NumberOfScores = 5;
 
         public ScoreBoard()
         {
-            this.ScoreNames = new string[NumberOfScores];
-            this.Mistakes = new int[NumberOfScores];
-
-            for (int i = 0; i < this.ScoreNames.Length; i++)
-            {
-                this.ScoreNames[i] = null;
-                this.Mistakes[i] = int.MaxValue;
-            }
-
+            this.records = new List<Record>();
             this.IsEmpty = true;
         }
 
-        public bool IsEmpty { get; set; }
-
-        public string[] ScoreNames { get; set; }
-
-        public int[] Mistakes { get; set; }
-
-        public void AddNewScore(string nickname, int mistakes)
+        public IList<Record> Records
         {
-            int indexToPutNewScore = this.FindIndexWhereToPutNewScore(mistakes);
-            
-            if (indexToPutNewScore == this.ScoreNames.Length)
-            {
-                return;
-            }
-            
-            this.MoveScoresDownByOnePosition(indexToPutNewScore);
-            this.ScoreNames[indexToPutNewScore] = nickname;
-            this.Mistakes[indexToPutNewScore] = mistakes;
+            get { return new List<Record>(this.records); }
+        }
+
+        public bool IsEmpty { get; private set; }
+
+        public void AddNewScore(Record record)
+        {
+            this.records.Add(record);
+
             this.IsEmpty = false;
         }
 
-        public int GetWorstTopScore()
+        public int GetWorstTopScore(int position)
         {
-            int worstTopScore = int.MaxValue;
+            int worstTopScore;
+            Record lastRecord;
 
-            if (this.ScoreNames[this.ScoreNames.Length - 1] != null)
+            if (this.Records.Count <= position)
             {
-                worstTopScore = this.Mistakes[this.ScoreNames.Length - 1];
+                lastRecord = this.Records[this.Records.Count - 1];
             }
-            
+            else
+            {
+                lastRecord = this.Records[position];
+            }
+
+            worstTopScore = lastRecord.Score;
+
             return worstTopScore;
         }
 
         public void ReSet()
         {
-            for (int i = 0; i < this.ScoreNames.Length; i++)
-            {
-                this.ScoreNames[i] = null;
-                this.Mistakes[i] = int.MaxValue;
-            }
-
+            this.records = new List<Record>();
             this.IsEmpty = true;
-        }
-
-        private int FindIndexWhereToPutNewScore(int mistakes)
-        {
-            for (int i = 0; i < this.Mistakes.Length; i++)
-            {
-                if (mistakes < this.Mistakes[i])
-                {
-                    return i;
-                }
-            }
-
-            return this.ScoreNames.Length;
-        }
-
-        private void MoveScoresDownByOnePosition(int startPosition)
-        {
-            for (int i = this.ScoreNames.Length - 1; i > startPosition; i--)
-            {
-                this.ScoreNames[i] = this.ScoreNames[i - 1];
-                this.Mistakes[i] = this.Mistakes[i - 1];
-            }
         }
     }
 }

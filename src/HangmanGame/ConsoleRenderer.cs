@@ -1,10 +1,11 @@
 ﻿namespace HangmanGame.HangmanGame
 {
     using System;
+    using System.Collections.Generic;
 
     public class ConsoleRenderer
     {
-        public void ShowScoreBoardResults(bool isEmptyScoreBoard, string[] scoreNames, int[] mistakes)
+        public void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<Record> records)
         {
             if (isEmptyScoreBoard)
             {
@@ -13,15 +14,11 @@
             else
             {
                 Console.WriteLine("Scoreboard:");
-                int i = 0;
-                while (scoreNames[i] != null)
+
+                foreach (var record in records)
                 {
-                    Console.WriteLine(Constants.ResultsInformationMessage, i + 1, scoreNames[i], mistakes[i]);
-                    i++;
-                    if (i >= scoreNames.Length)
-                    {
-                        break;
-                    }
+                    int position = 1;
+                    Console.WriteLine(Constants.ResultsInformationMessage, position, record.Name, record.Score);
                 }
             }
         }
@@ -57,9 +54,9 @@
         {
             Console.Write(Constants.EnterGuessMessage);
             string command = Console.ReadLine();
-            command.ToLower();
+            string lowerCaseCommand = command.ToLower();
 
-            return command;
+            return lowerCaseCommand;
         }
     }
 }

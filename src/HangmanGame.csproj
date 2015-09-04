@@ -47,6 +47,7 @@
     <Compile Include="HangmanGame\GameStrategy.cs" />
     <Compile Include="HangmanGame\GameEngine.cs" />
     <Compile Include="HangmanGame\Player.cs" />
+    <Compile Include="HangmanGame\Record.cs" />
     <Compile Include="HangmanGame\Start.cs" />
     <Compile Include="HangmanGame\ScoreBoard.cs" />
   </ItemGroup>

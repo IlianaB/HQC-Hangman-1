@@ -24,7 +24,7 @@
             do
             {
                 this.renderer.ShowCurrentProgress(this.gameStrategy.GuessedLetters);
-                
+
                 if (this.gameStrategy.IsOver())
                 {
                     this.FinishTheGame();
@@ -34,7 +34,7 @@
                     command = this.renderer.ReadCommand();
                     this.ReactToPlayerAction(command);
                 }
-            } 
+            }
             while (command != "exit");
         }
 
@@ -42,9 +42,8 @@
         {
             if (command.Length == 1)
             {
-                int occuranses = this.gameStrategy.NumberOccuranceOfLetter(command[0]);
-
                 string message;
+                int occuranses = this.gameStrategy.NumberOccuranceOfLetter(command[0]);
 
                 if (occuranses == 0)
                 {
@@ -75,16 +74,26 @@
             }
             else
             {
-                if (this.scoreBoard.GetWorstTopScore() <= this.player.Mistakes)
+                bool playerCanEnterHighScores = true;
+
+                if (!this.scoreBoard.IsEmpty)
                 {
-                    message = string.Format(Constants.LowScoreMessage, this.player.Mistakes);
-                    this.renderer.ShowMessage(message);
+                    playerCanEnterHighScores = this.scoreBoard.GetWorstTopScore(Constants.TopScores) >=
+                                                 this.player.Mistakes;
+                }
+
+                if (playerCanEnterHighScores)
+                {
+                    string name = this.renderer.GetPlayerName();
+                    int mistakes = this.player.Mistakes;
+                    Record newRecord = new Record(name, mistakes);
+                    this.scoreBoard.AddNewScore(newRecord);
+                    this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.Records);
                 }
                 else
                 {
-                    string name = this.renderer.GetPlayerName();
-                    this.scoreBoard.AddNewScore(name, this.player.Mistakes);
-                    this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.ScoreNames, this.scoreBoard.Mistakes);
+                    message = string.Format(Constants.LowScoreMessage, this.player.Mistakes);
+                    this.renderer.ShowMessage(message);
                 }
             }
 
@@ -99,7 +108,7 @@
             {
                 case "top":
                     {
-                        this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.ScoreNames, this.scoreBoard.Mistakes);
+                        this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.Records);
                         return;
                     }
                 case "help":
