@@ -59,6 +59,12 @@
     <Compile Include="HangmanGame\Record.cs" />
     <Compile Include="HangmanGame\Start.cs" />
     <Compile Include="HangmanGame\ScoreBoard.cs" />
+    <Compile Include="HangmanGame\States\Activation\ActivationState.cs" />
+    <Compile Include="HangmanGame\States\Activation\ActiveState.cs" />
+    <Compile Include="HangmanGame\States\Activation\InactiveState.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HangmanGame\States\Help\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

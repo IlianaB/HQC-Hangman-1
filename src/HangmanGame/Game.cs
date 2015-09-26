@@ -1,4 +1,5 @@
 ﻿using HangmanGame.HangmanGame.Factories;
+using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
 {
@@ -12,8 +13,9 @@ namespace HangmanGame.HangmanGame
             Player player = new Player();
             CommandFactory commandFactory = new CommandFactory();
             GameEngine gameEngine = new GameEngine(scoreBoard, gameStrategy, renderer, player, commandFactory);
+            ActivationState activationState = new ActiveState(gameEngine);
 
-            gameEngine.Start();
+            gameEngine.Start(activationState);
         }
     }
 }

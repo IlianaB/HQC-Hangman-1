@@ -1,5 +1,6 @@
 ﻿using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Factories;
+using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
 {
@@ -19,31 +20,22 @@ namespace HangmanGame.HangmanGame
         public ConsoleRenderer Renderer { get; set; }
         public Player Player { get; set; }
         public CommandFactory CommandFactory { get; set; }
+        public ActivationState ActivationState { get; set; }
 
-        public void Start()
+        public void Start(ActivationState activationState)
         {
-            string command = null;
-            string message = Constants.WelcomeMessage;
-            this.Renderer.ShowMessage(message);
+            this.ActivationState = activationState;
+            this.Renderer.ShowMessage(Constants.WelcomeMessage);
 
             do
             {
                 this.Renderer.ShowCurrentProgress(this.GameStrategy.GuessedLetters);
-
-                if (this.GameStrategy.IsOver())
-                {
-                    this.FinishTheGame();
-                }
-                else
-                {
-                    command = this.Renderer.ReadCommand();
-                    this.ReactToPlayerAction(command);
-                }
+                this.ActivationState.Play();
             }
-            while (command != "exit");
+            while (true);
         }
 
-        private void ReactToPlayerAction(string command)
+        public void ReactToPlayerAction(string command)
         {
             if (command.Length == 1)
             {
@@ -68,7 +60,7 @@ namespace HangmanGame.HangmanGame
             }
         }
 
-        private void FinishTheGame()
+        public void FinishTheGame()
         {
             string message;
 
