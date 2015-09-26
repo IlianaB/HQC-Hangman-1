@@ -1,4 +1,6 @@
-﻿namespace HangmanGame.HangmanGame
+﻿using HangmanGame.HangmanGame.Factories;
+
+namespace HangmanGame.HangmanGame
 {
     public class Game
     {
@@ -8,7 +10,8 @@
             GameStrategy gameStrategy = new GameStrategy();
             ConsoleRenderer renderer = new ConsoleRenderer();
             Player player = new Player();
-            GameEngine gameEngine = new GameEngine(scoreBoard, gameStrategy, renderer, player);
+            CommandFactory commandFactory = new CommandFactory();
+            GameEngine gameEngine = new GameEngine(scoreBoard, gameStrategy, renderer, player, commandFactory);
 
             gameEngine.Start();
         }

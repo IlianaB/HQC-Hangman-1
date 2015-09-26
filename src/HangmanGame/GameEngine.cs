@@ -1,22 +1,26 @@
 ﻿using System.Runtime.InteropServices;
 using HangmanGame.HangmanGame.Commands;
 using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Factories;
+
 namespace HangmanGame.HangmanGame
 {
     public class GameEngine
     {
-        public GameEngine(ScoreBoard scoreBoard, GameStrategy gameStrategy, ConsoleRenderer renderer, Player player)
+        public GameEngine(ScoreBoard scoreBoard, GameStrategy gameStrategy, ConsoleRenderer renderer, Player player, CommandFactory commandFactory)
         {
             this.ScoreBoard = scoreBoard;
             this.GameStrategy = gameStrategy;
             this.Renderer = renderer;
             this.Player = player;
+            this.CommandFactory = commandFactory;
         }
 
         public ScoreBoard ScoreBoard { get; set; }
         public GameStrategy GameStrategy { get; set; }
         public ConsoleRenderer Renderer { get; set; }
         public Player Player { get; set; }
+        public CommandFactory CommandFactory { get; set; }
 
         public void Start()
         {
@@ -105,38 +109,7 @@ namespace HangmanGame.HangmanGame
 
         private void ExecuteCommand(string command)
         {
-            string message;
-            Command currentCommand;
-
-            switch (command)
-            {
-                case "top":
-                    {
-                        currentCommand = new TopCommand(this);
-                    }
-                    break;
-                case "help":
-                    {
-                        currentCommand = new HelpCommand(this);
-                    }
-                    break;
-                case "restart":
-                    {
-                        currentCommand = new RestartCommand(this);
-                    }
-                    break;
-                case "exit":
-                    {
-                        currentCommand = new ExitCommand(this);
-                    }
-                    break;
-                default:
-                    {
-                        currentCommand = new WrongCommand(this);
-                    }
-                    break;
-            }
-
+            Command currentCommand = this.CommandFactory.GetCommand(this, command);
             currentCommand.Execute();
         }
     }

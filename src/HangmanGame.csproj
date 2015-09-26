@@ -51,6 +51,7 @@
     <Compile Include="HangmanGame\Commands\WrongCommand.cs" />
     <Compile Include="HangmanGame\ConsoleRenderer.cs" />
     <Compile Include="HangmanGame\Constants.cs" />
+    <Compile Include="HangmanGame\Factories\CommandFactory.cs" />
     <Compile Include="HangmanGame\Game.cs" />
     <Compile Include="HangmanGame\GameStrategy.cs" />
     <Compile Include="HangmanGame\GameEngine.cs" />
