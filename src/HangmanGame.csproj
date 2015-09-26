@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HangmanGame\Commands\Common\Command.cs" />
+    <Compile Include="HangmanGame\Commands\Common\ICommand.cs" />
+    <Compile Include="HangmanGame\Commands\ExitCommand.cs" />
+    <Compile Include="HangmanGame\Commands\HelpCommand.cs" />
+    <Compile Include="HangmanGame\Commands\RestartCommand.cs" />
+    <Compile Include="HangmanGame\Commands\TopCommand.cs" />
+    <Compile Include="HangmanGame\Commands\WrongCommand.cs" />
     <Compile Include="HangmanGame\ConsoleRenderer.cs" />
     <Compile Include="HangmanGame\Constants.cs" />
     <Compile Include="HangmanGame\Game.cs" />

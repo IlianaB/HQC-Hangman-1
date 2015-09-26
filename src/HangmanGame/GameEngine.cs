@@ -1,37 +1,40 @@
-﻿namespace HangmanGame.HangmanGame
+﻿using System.Runtime.InteropServices;
+using HangmanGame.HangmanGame.Commands;
+using HangmanGame.HangmanGame.Commands.Common;
+namespace HangmanGame.HangmanGame
 {
     public class GameEngine
     {
-        private readonly ScoreBoard scoreBoard;
-        private readonly GameStrategy gameStrategy;
-        private readonly ConsoleRenderer renderer;
-        private readonly Player player;
-
         public GameEngine(ScoreBoard scoreBoard, GameStrategy gameStrategy, ConsoleRenderer renderer, Player player)
         {
-            this.scoreBoard = scoreBoard;
-            this.gameStrategy = gameStrategy;
-            this.renderer = renderer;
-            this.player = player;
+            this.ScoreBoard = scoreBoard;
+            this.GameStrategy = gameStrategy;
+            this.Renderer = renderer;
+            this.Player = player;
         }
+
+        public ScoreBoard ScoreBoard { get; set; }
+        public GameStrategy GameStrategy { get; set; }
+        public ConsoleRenderer Renderer { get; set; }
+        public Player Player { get; set; }
 
         public void Start()
         {
             string command = null;
             string message = Constants.WelcomeMessage;
-            this.renderer.ShowMessage(message);
+            this.Renderer.ShowMessage(message);
 
             do
             {
-                this.renderer.ShowCurrentProgress(this.gameStrategy.GuessedLetters);
+                this.Renderer.ShowCurrentProgress(this.GameStrategy.GuessedLetters);
 
-                if (this.gameStrategy.IsOver())
+                if (this.GameStrategy.IsOver())
                 {
                     this.FinishTheGame();
                 }
                 else
                 {
-                    command = this.renderer.ReadCommand();
+                    command = this.Renderer.ReadCommand();
                     this.ReactToPlayerAction(command);
                 }
             }
@@ -43,18 +46,18 @@
             if (command.Length == 1)
             {
                 string message;
-                int occuranses = this.gameStrategy.NumberOccuranceOfLetter(command[0]);
+                int occuranses = this.GameStrategy.NumberOccuranceOfLetter(command[0]);
 
                 if (occuranses == 0)
                 {
-                    this.player.IncreaseMistakes();
+                    this.Player.IncreaseMistakes();
                     message = string.Format(Constants.NoOccurencesMessage, command[0]);
-                    this.renderer.ShowMessage(message);
+                    this.Renderer.ShowMessage(message);
                 }
                 else
                 {
                     message = string.Format(Constants.OccurencesMessage, occuranses);
-                    this.renderer.ShowMessage(message);
+                    this.Renderer.ShowMessage(message);
                 }
             }
             else
@@ -67,76 +70,74 @@
         {
             string message;
 
-            if (this.gameStrategy.HelpUsed)
+            if (this.GameStrategy.HelpUsed)
             {
-                message = string.Format(Constants.WinWithHelpMessage, this.player.Mistakes);
-                this.renderer.ShowMessage(message);
+                message = string.Format(Constants.WinWithHelpMessage, this.Player.Mistakes);
+                this.Renderer.ShowMessage(message);
             }
             else
             {
                 bool playerCanEnterHighScores = true;
 
-                if (!this.scoreBoard.IsEmpty)
+                if (!this.ScoreBoard.IsEmpty)
                 {
-                    playerCanEnterHighScores = this.scoreBoard.GetWorstTopScore(Constants.TopScores) >=
-                                                 this.player.Mistakes;
+                    playerCanEnterHighScores = this.ScoreBoard.GetWorstTopScore(Constants.TopScores) >=
+                                                 this.Player.Mistakes;
                 }
 
                 if (playerCanEnterHighScores)
                 {
-                    string name = this.renderer.GetPlayerName();
-                    int mistakes = this.player.Mistakes;
+                    string name = this.Renderer.GetPlayerName();
+                    int mistakes = this.Player.Mistakes;
                     Record newRecord = new Record(name, mistakes);
-                    this.scoreBoard.AddNewScore(newRecord);
-                    this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.Records);
+                    this.ScoreBoard.AddNewScore(newRecord);
+                    this.Renderer.ShowScoreBoardResults(this.ScoreBoard.IsEmpty, this.ScoreBoard.Records);
                 }
                 else
                 {
-                    message = string.Format(Constants.LowScoreMessage, this.player.Mistakes);
-                    this.renderer.ShowMessage(message);
+                    message = string.Format(Constants.LowScoreMessage, this.Player.Mistakes);
+                    this.Renderer.ShowMessage(message);
                 }
             }
 
-            this.gameStrategy.ReSet();
+            this.GameStrategy.ReSet();
         }
 
         private void ExecuteCommand(string command)
         {
             string message;
+            Command currentCommand;
 
             switch (command)
             {
                 case "top":
                     {
-                        this.renderer.ShowScoreBoardResults(this.scoreBoard.IsEmpty, this.scoreBoard.Records);
-                        return;
+                        currentCommand = new TopCommand(this);
                     }
+                    break;
                 case "help":
                     {
-                        char revealedLetter = this.gameStrategy.RevealALetter();
-                        message = string.Format(Constants.UsedHelpMessage, revealedLetter);
+                        currentCommand = new HelpCommand(this);
                     }
                     break;
                 case "restart":
                     {
-                        this.scoreBoard.ReSet();
-                        this.gameStrategy.ReSet();
-                        message = Constants.WelcomeMessage;
+                        currentCommand = new RestartCommand(this);
                     }
                     break;
                 case "exit":
                     {
-                        message = Constants.GoodbyeMessage;
+                        currentCommand = new ExitCommand(this);
                     }
                     break;
                 default:
                     {
-                        message = Constants.IncorrectCommandMessage;
+                        currentCommand = new WrongCommand(this);
                     }
                     break;
             }
 
-            this.renderer.ShowMessage(message);
+            currentCommand.Execute();
         }
     }
 }
