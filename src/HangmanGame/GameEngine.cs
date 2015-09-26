@@ -29,7 +29,6 @@ namespace HangmanGame.HangmanGame
 
             do
             {
-                this.Renderer.ShowCurrentProgress(this.GameStrategy.GuessedLetters);
                 this.ActivationState.Play();
             }
             while (true);
@@ -39,25 +38,36 @@ namespace HangmanGame.HangmanGame
         {
             if (command.Length == 1)
             {
-                string message;
-                int occuranses = this.GameStrategy.NumberOccuranceOfLetter(command[0]);
-
-                if (occuranses == 0)
-                {
-                    this.Player.IncreaseMistakes();
-                    message = string.Format(Constants.NoOccurencesMessage, command[0]);
-                    this.Renderer.ShowMessage(message);
-                }
-                else
-                {
-                    message = string.Format(Constants.OccurencesMessage, occuranses);
-                    this.Renderer.ShowMessage(message);
-                }
+                this.ExecuteLetterGuess(command[0]);
             }
             else
             {
                 this.ExecuteCommand(command);
             }
+        }
+
+        private void ExecuteLetterGuess(char letter)
+        {
+            string message;
+            int occuranses = this.GameStrategy.NumberOccuranceOfLetter(letter);
+
+            if (occuranses == 0)
+            {
+                this.Player.IncreaseMistakes();
+                message = string.Format(Constants.NoOccurencesMessage, letter);
+                this.Renderer.ShowMessage(message);
+            }
+            else
+            {
+                message = string.Format(Constants.OccurencesMessage, occuranses);
+                this.Renderer.ShowMessage(message);
+            }
+        }
+
+        private void ExecuteCommand(string command)
+        {
+            Command currentCommand = this.CommandFactory.GetCommand(this, command);
+            currentCommand.Execute();
         }
 
         public void FinishTheGame()
@@ -95,12 +105,6 @@ namespace HangmanGame.HangmanGame
             }
 
             this.GameStrategy.ReSet();
-        }
-
-        private void ExecuteCommand(string command)
-        {
-            Command currentCommand = this.CommandFactory.GetCommand(this, command);
-            currentCommand.Execute();
         }
     }
 }

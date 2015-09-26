@@ -9,6 +9,8 @@
 
         public override void Play()
         {
+            this.Engine.Renderer.ShowCurrentProgress(this.Engine.GameStrategy.GuessedLetters);
+
             if (this.Engine.GameStrategy.IsOver())
             {
                 this.Engine.ActivationState = new InactiveState(this.Engine);
