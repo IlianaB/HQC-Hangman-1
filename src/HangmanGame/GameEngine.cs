@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using HangmanGame.HangmanGame.Commands;
-using HangmanGame.HangmanGame.Commands.Common;
+﻿using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Factories;
 
 namespace HangmanGame.HangmanGame
