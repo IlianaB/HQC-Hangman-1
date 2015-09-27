@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using HangmanGame.HangmanGame.ScoreBoardService.Contracts;
 
 namespace HangmanGame.HangmanGame.ScoreBoardService
@@ -18,6 +19,7 @@ namespace HangmanGame.HangmanGame.ScoreBoardService
         public IList<IPersonalScore> Records
         {
             get { return new List<IPersonalScore>(this.records); }
+            private set { this.records = value; }
         }
 
         public bool IsEmpty { get; private set; }
@@ -27,6 +29,11 @@ namespace HangmanGame.HangmanGame.ScoreBoardService
             this.records.Add(record);
 
             this.IsEmpty = false;
+        }
+
+        public void SortScoreBoard()
+        {
+            this.records = this.records.OrderBy(ps => ps.Score).ToList();
         }
 
         public int GetWorstScoreEntry(int position)

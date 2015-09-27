@@ -97,6 +97,7 @@ namespace HangmanGame.HangmanGame
                     int mistakes = this.Player.Mistakes;
                     IPersonalScore newRecord = new PersonalScore(name, mistakes);
                     this.ScoreBoard.AddNewScore(newRecord);
+                    this.ScoreBoard.SortScoreBoard();
                     this.Renderer.ShowScoreBoardResults(this.ScoreBoard.IsEmpty, this.ScoreBoard.Records);
                 }
                 else
@@ -105,8 +106,9 @@ namespace HangmanGame.HangmanGame
                     this.Renderer.ShowMessage(message);
                 }
             }
-
+            this.Player = new Player(); //temporary fixed an error for not restarting the mistakes count after game reset
             this.GameStrategy.ReSet();
+            
         }
     }
 }

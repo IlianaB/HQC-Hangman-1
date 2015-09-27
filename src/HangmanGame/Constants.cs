@@ -13,7 +13,7 @@
         public const string OccurencesMessage = "Good job! You revealed {0} letter(s).";
         public const string NoOccurencesMessage = "Sorry! There are no unrevealed letters “{0}”";
         public const string EmptyScoreboardMessage = "Scoreboard is empty!";
-        public const string ResultsInformationMessage = "{0}. {1} ---> {2} mistacke(s)!";
+        public const string ResultsInformationMessage = "{0}. {1} ---> {2} mistake(s)!";
         public const string EnterNameMessage = "Please enter your name for the top scoreboard: ";
         public const string EnterGuessMessage = "Enter your guess: ";
         public const string AnnounceSecretWordMessage = "The secret word is: ";
