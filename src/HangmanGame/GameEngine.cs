@@ -1,5 +1,7 @@
 ﻿using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Factories;
+using HangmanGame.HangmanGame.ScoreBoardService;
+using HangmanGame.HangmanGame.ScoreBoardService.Contracts;
 using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
@@ -93,7 +95,7 @@ namespace HangmanGame.HangmanGame
                 {
                     string name = this.Renderer.GetPlayerName();
                     int mistakes = this.Player.Mistakes;
-                    Record newRecord = new Record(name, mistakes);
+                    IPersonalScore newRecord = new PersonalScore(name, mistakes);
                     this.ScoreBoard.AddNewScore(newRecord);
                     this.Renderer.ShowScoreBoardResults(this.ScoreBoard.IsEmpty, this.ScoreBoard.Records);
                 }

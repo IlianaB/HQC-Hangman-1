@@ -6,7 +6,8 @@
     public class GameStrategy
     {
         private readonly Random randomGenerator = new Random();
-        private readonly string[] words = { "computer", "programmer", "software", "debugger", "compiler", "developer", "algorithm", "array", "method", "variable" };
+        //private readonly string[] words = { "computer", "programmer", "software", "debugger", "compiler", "developer", "algorithm", "array", "method", "variable" };
+        private readonly string[] words = { "array"}; //for terting purposes
 
         private string wordToGuess;
         private bool helpUsed;

@@ -1,4 +1,5 @@
 ﻿using HangmanGame.HangmanGame.Factories;
+using HangmanGame.HangmanGame.ScoreBoardService;
 using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
