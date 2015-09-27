@@ -29,23 +29,20 @@ namespace HangmanGame.HangmanGame.ScoreBoardService
             this.IsEmpty = false;
         }
 
-        public int GetWorstTopScore(int position)
+        public int GetWorstScoreEntry(int position)
         {
-            int worstTopScore;
-            IPersonalScore lastRecord;
+            IPersonalScore lastScore;
 
             if (this.Records.Count <= position)
             {
-                lastRecord = this.Records[this.Records.Count - 1];
+                lastScore = this.Records[this.Records.Count - 1];
             }
             else
             {
-                lastRecord = this.Records[position];
+                lastScore = this.Records[position];
             }
 
-            worstTopScore = lastRecord.Score;
-
-            return worstTopScore;
+            return lastScore.Score;
         }
 
         public void ReSet()

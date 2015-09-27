@@ -87,7 +87,7 @@ namespace HangmanGame.HangmanGame
 
                 if (!this.ScoreBoard.IsEmpty)
                 {
-                    playerCanEnterHighScores = this.ScoreBoard.GetWorstTopScore(Constants.TopScores) >=
+                    playerCanEnterHighScores = this.ScoreBoard.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard) >=
                                                  this.Player.Mistakes;
                 }
 

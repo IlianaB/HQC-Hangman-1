@@ -17,6 +17,6 @@
         public const string EnterNameMessage = "Please enter your name for the top scoreboard: ";
         public const string EnterGuessMessage = "Enter your guess: ";
         public const string AnnounceSecretWordMessage = "The secret word is: ";
-        public const int TopScores = 10;
+        public const int NumberOfScoresInScoreBoard = 10;
     }
 }
