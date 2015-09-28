@@ -4,8 +4,10 @@
     {
         internal static void Main()
         {
-            Game game = new Game();
-            game.Initialize();
+            Menu.Logo.LogoDraw();
+            Menu.InitialMenu.DisplayInitialMenu();
+            //Game game = new Game();
+            //game.Initialize();
         }
     }
 }
