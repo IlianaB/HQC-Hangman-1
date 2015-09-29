@@ -11,7 +11,7 @@ namespace HangmanGame.HangmanGame.Commands
 
         public override void Execute()
         {
-            this.Engine.ScoreBoard.ReSet();
+            this.Engine.ScoreBoardService.ReSet();
             this.Engine.GameStrategy.ReSet();
             this.Engine.Renderer.ShowMessage(Constants.WelcomeMessage);
         }

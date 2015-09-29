@@ -1,5 +1,4 @@
-﻿using HangmanGame.HangmanGame.ScoreBoardService;
-using HangmanGame.HangmanGame.ScoreBoardService.Contracts;
+﻿using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame
 {

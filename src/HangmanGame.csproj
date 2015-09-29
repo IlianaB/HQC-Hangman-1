@@ -63,9 +63,11 @@
     <Compile Include="HangmanGame\Menu\InitialMenu.cs" />
     <Compile Include="HangmanGame\Menu\Logo.cs" />
     <Compile Include="HangmanGame\Player.cs" />
-    <Compile Include="HangmanGame\ScoreBoardService\Contracts\IPersonalScore.cs" />
-    <Compile Include="HangmanGame\ScoreBoardService\PersonalScore.cs" />
-    <Compile Include="HangmanGame\ScoreBoardService\ScoreBoard.cs" />
+    <Compile Include="HangmanGame\ScoreBoardServices\Contracts\IPersonalScore.cs" />
+    <Compile Include="HangmanGame\ScoreBoardServices\Contracts\IScoreBoard.cs" />
+    <Compile Include="HangmanGame\ScoreBoardServices\PersonalScore.cs" />
+    <Compile Include="HangmanGame\ScoreBoardServices\ScoreBoard.cs" />
+    <Compile Include="HangmanGame\ScoreBoardServices\ScoreBoardService.cs" />
     <Compile Include="HangmanGame\Start.cs" />
     <Compile Include="HangmanGame\States\Activation\ActivationState.cs" />
     <Compile Include="HangmanGame\States\Activation\ActiveState.cs" />

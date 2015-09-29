@@ -1,23 +1,25 @@
 ﻿using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Factories;
-using HangmanGame.HangmanGame.ScoreBoardService;
-using HangmanGame.HangmanGame.ScoreBoardService.Contracts;
+using HangmanGame.HangmanGame.ScoreBoardServices;
+using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
 {
     public class GameEngine
     {
-        public GameEngine(ScoreBoard scoreBoard, GameStrategy gameStrategy, ConsoleRenderer renderer, Player player, CommandFactory commandFactory)
+        public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, GameStrategy gameStrategy, ConsoleRenderer renderer, Player player, CommandFactory commandFactory)
         {
             this.ScoreBoard = scoreBoard;
             this.GameStrategy = gameStrategy;
+            this.ScoreBoardService = scoreBoardService;
             this.Renderer = renderer;
             this.Player = player;
             this.CommandFactory = commandFactory;
         }
 
         public ScoreBoard ScoreBoard { get; set; }
+        public ScoreBoardService ScoreBoardService { get; set; }
         public GameStrategy GameStrategy { get; set; }
         public ConsoleRenderer Renderer { get; set; }
         public Player Player { get; set; }
@@ -85,9 +87,9 @@ namespace HangmanGame.HangmanGame
             {
                 bool playerCanEnterHighScores = true;
 
-                if (!this.ScoreBoard.IsEmpty && !this.ScoreBoard.IsFull(Constants.NumberOfScoresInScoreBoard))
+                if (!this.ScoreBoardService.IsEmpty() && this.ScoreBoardService.IsFull(Constants.NumberOfScoresInScoreBoard))
                 {
-                    var worstScore = this.ScoreBoard.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
+                    var worstScore = this.ScoreBoardService.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
                     playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
 
                 }
@@ -97,9 +99,9 @@ namespace HangmanGame.HangmanGame
                     string name = this.Renderer.GetPlayerName();
                     int mistakes = this.Player.Mistakes;
                     IPersonalScore newRecord = new PersonalScore(name, mistakes);
-                    this.ScoreBoard.AddNewScore(newRecord);
-                    this.ScoreBoard.SortScoreBoard();
-                    this.Renderer.ShowScoreBoardResults(this.ScoreBoard.IsEmpty, this.ScoreBoard.Records);
+                    this.ScoreBoardService.AddNewScore(newRecord);
+                    this.ScoreBoardService.SortScoreBoard();
+                    this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);
                 }
                 else
                 {

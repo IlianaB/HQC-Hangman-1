@@ -11,7 +11,7 @@ namespace HangmanGame.HangmanGame.Commands
 
         public override void Execute()
         {
-            this.Engine.Renderer.ShowScoreBoardResults(this.Engine.ScoreBoard.IsEmpty, this.Engine.ScoreBoard.Records);
+            this.Engine.Renderer.ShowScoreBoardResults(this.Engine.ScoreBoardService.IsEmpty(), this.Engine.ScoreBoard.Records);
         }
     }
 }

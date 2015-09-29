@@ -1,4 +1,4 @@
-﻿namespace HangmanGame.HangmanGame.ScoreBoardService.Contracts
+﻿namespace HangmanGame.HangmanGame.ScoreBoardServices.Contracts
 {
     public interface IPersonalScore
     {

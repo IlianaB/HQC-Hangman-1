@@ -1,6 +1,6 @@
-using HangmanGame.HangmanGame.ScoreBoardService.Contracts;
+using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
-namespace HangmanGame.HangmanGame.ScoreBoardService
+namespace HangmanGame.HangmanGame.ScoreBoardServices
 {
    
     public class PersonalScore : IPersonalScore
