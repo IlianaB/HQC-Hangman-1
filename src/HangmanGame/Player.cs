@@ -13,5 +13,10 @@
         {
             this.Mistakes++;
         }
+
+        public void ReSet()
+        {
+            this.Mistakes = 0;
+        }
     }
 }

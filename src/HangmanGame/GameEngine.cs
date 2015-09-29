@@ -106,7 +106,7 @@ namespace HangmanGame.HangmanGame
                     this.Renderer.ShowMessage(message);
                 }
             }
-            this.Player = new Player(); //temporary fixed an error for not restarting the mistakes count after game reset
+            this.Player.ReSet();
             this.GameStrategy.ReSet();
             
         }
