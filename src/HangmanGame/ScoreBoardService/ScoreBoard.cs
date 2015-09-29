@@ -8,8 +8,6 @@ namespace HangmanGame.HangmanGame.ScoreBoardService
     {
         private IList<IPersonalScore> records;
 
-        public const int NumberOfScores = 5;
-
         public ScoreBoard()
         {
             this.records = new List<IPersonalScore>();
@@ -18,7 +16,8 @@ namespace HangmanGame.HangmanGame.ScoreBoardService
 
         public IList<IPersonalScore> Records
         {
-            get { return new List<IPersonalScore>(this.records); }
+            //get { return new List<IPersonalScore>(this.records); }
+            get { return this.records; }
             private set { this.records = value; }
         }
 
@@ -56,6 +55,12 @@ namespace HangmanGame.HangmanGame.ScoreBoardService
         {
             this.records = new List<IPersonalScore>();
             this.IsEmpty = true;
+        }
+
+        internal bool IsFull(int numberOfScoresInScoreBoard)
+        {
+            var isFull = this.records.Count() >= numberOfScoresInScoreBoard;
+            return isFull;
         }
     }
 }

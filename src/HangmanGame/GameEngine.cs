@@ -85,10 +85,11 @@ namespace HangmanGame.HangmanGame
             {
                 bool playerCanEnterHighScores = true;
 
-                if (!this.ScoreBoard.IsEmpty)
+                if (!this.ScoreBoard.IsEmpty && !this.ScoreBoard.IsFull(Constants.NumberOfScoresInScoreBoard))
                 {
-                    playerCanEnterHighScores = this.ScoreBoard.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard) >=
-                                                 this.Player.Mistakes;
+                    var worstScore = this.ScoreBoard.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
+                    playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
+
                 }
 
                 if (playerCanEnterHighScores)
@@ -108,7 +109,7 @@ namespace HangmanGame.HangmanGame
             }
             this.Player.ReSet();
             this.GameStrategy.ReSet();
-            
+
         }
     }
 }
