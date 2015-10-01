@@ -1,6 +1,6 @@
 ﻿using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
-namespace HangmanGame.HangmanGame
+namespace HangmanGame.HangmanGame.Console
 {
     using System;
     using System.Collections.Generic;
@@ -42,23 +42,6 @@ namespace HangmanGame.HangmanGame
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);
-        }
-
-        public string GetPlayerName()
-        {
-            Console.Write(Constants.EnterNameMessage);
-            string name = Console.ReadLine();
-
-            return name;
-        }
-
-        public string ReadCommand()
-        {
-            Console.Write(Constants.EnterGuessMessage);
-            string command = Console.ReadLine();
-            string lowerCaseCommand = command.ToLower();
-
-            return lowerCaseCommand;
         }
     }
 }

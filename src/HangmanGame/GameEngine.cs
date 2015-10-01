@@ -2,6 +2,7 @@
 
 using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Common;
+using HangmanGame.HangmanGame.Console;
 using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
@@ -12,12 +13,13 @@ namespace HangmanGame.HangmanGame
 {
     public class GameEngine
     {
-        public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, ConsoleRenderer renderer, 
+        public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, ConsoleRenderer renderer, ConsoleInputProvider inputProvider,
             Player player, WordGenerator wordGenerator, CommandFactory commandFactory, DataManager dataManager)
         {
             this.ScoreBoard = scoreBoard;
             this.ScoreBoardService = scoreBoardService;
             this.Renderer = renderer;
+            this.InputProvider = inputProvider;
             this.Player = player;
             this.WordGenerator = wordGenerator;
             this.CommandFactory = commandFactory;
@@ -27,6 +29,7 @@ namespace HangmanGame.HangmanGame
         public ScoreBoard ScoreBoard { get; set; }
         public ScoreBoardService ScoreBoardService { get; set; }
         public ConsoleRenderer Renderer { get; set; }
+        public ConsoleInputProvider InputProvider { get; set; }
         public Player Player { get; set; }
         public WordGenerator WordGenerator { get; set; }
         public CommandFactory CommandFactory { get; set; }
@@ -116,7 +119,7 @@ namespace HangmanGame.HangmanGame
 
                 if (playerCanEnterHighScores)
                 {
-                    string name = this.Renderer.GetPlayerName();
+                    string name = this.InputProvider.GetPlayerName();
                     int mistakes = this.Player.Mistakes;
                     IPersonalScore newRecord = new PersonalScore(name, mistakes);
                     this.DataManager.SaveResult(newRecord);

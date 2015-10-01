@@ -19,7 +19,7 @@
                 return;
             }
 
-            string command = this.Engine.Renderer.ReadCommand();
+            string command = this.Engine.InputProvider.ReadCommand();
             this.Engine.ReactToPlayerAction(command);
         }
     }
