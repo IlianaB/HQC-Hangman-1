@@ -19,7 +19,7 @@ namespace HangmanGame.HangmanGame
             GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, gameStrategy, renderer, player, randomWordGenerator, commandFactory);
             ActivationState activationState = new ActiveState(gameEngine);
 
-            gameEngine.Start(activationState);
+            gameEngine.StartGame(activationState);
         }
     }
 }

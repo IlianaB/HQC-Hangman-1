@@ -9,9 +9,11 @@
 
         public override void Play()
         {
-            this.Engine.Renderer.ShowCurrentProgress(this.Engine.GameStrategy.GuessedLetters);
+            this.Engine.Renderer.ShowCurrentProgress(this.Engine.WordToGuess.Mask);
 
-            if (this.Engine.GameStrategy.IsOver())
+            bool isGameOver = this.Engine.CheckWinningCondition();
+
+            if (isGameOver)
             {
                 this.Engine.ActivationState = new InactiveState(this.Engine);
                 return;

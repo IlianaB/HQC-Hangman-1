@@ -11,7 +11,7 @@ namespace HangmanGame.HangmanGame.Commands
 
         public override void Execute()
         {
-            char revealedLetter = this.Engine.GameStrategy.RevealALetter();
+            char revealedLetter = this.Engine.WordToGuess.RevealLetter();
             string message = string.Format(Constants.UsedHelpMessage, revealedLetter);
             this.Engine.Renderer.ShowMessage(message);
         }

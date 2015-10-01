@@ -1,4 +1,5 @@
-﻿using HangmanGame.HangmanGame.Commands.Common;
+﻿using System.Linq;
+using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
@@ -29,10 +30,13 @@ namespace HangmanGame.HangmanGame
         public WordGenerator WordGenerator { get; set; }
         public CommandFactory CommandFactory { get; set; }
         public ActivationState ActivationState { get; set; }
+        public GuessWord WordToGuess { get; set; }
 
-        public void Start(ActivationState activationState)
+        public void StartGame(ActivationState activationState)
         {
-            this.WordGenerator.GetRandomWord();
+            string word = this.WordGenerator.GetRandomWord();
+            this.WordToGuess = new GuessWord(word);
+
             this.ActivationState = activationState;
             this.Renderer.ShowMessage(Constants.WelcomeMessage);
 
@@ -58,7 +62,7 @@ namespace HangmanGame.HangmanGame
         private void ExecuteLetterGuess(char letter)
         {
             string message;
-            int occuranses = this.GameStrategy.NumberOccuranceOfLetter(letter);
+            int occuranses = this.WordToGuess.GetNumberOfOccurences(letter);
 
             if (occuranses == 0)
             {
@@ -79,7 +83,14 @@ namespace HangmanGame.HangmanGame
             currentCommand.Execute();
         }
 
-        public void FinishTheGame()
+        public bool CheckWinningCondition()
+        {
+            bool isGameOver = this.WordToGuess.Mask.All(t => t != '_');
+            
+            return isGameOver;
+        }
+
+        public void FinishGame()
         {
             string message;
 
@@ -115,8 +126,9 @@ namespace HangmanGame.HangmanGame
                 }
             }
             this.Player.ReSet();
-            this.GameStrategy.ReSet();
 
+            ActivationState activationState = new ActiveState(this);
+            StartGame(activationState);
         }
     }
 }

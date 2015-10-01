@@ -18,7 +18,7 @@ namespace HangmanGame.HangmanGame.Common
             "variable"
         };
 
-        private Random random;
+        private readonly Random random;
 
         public WordGenerator()
         {

@@ -10,7 +10,7 @@
         public override void Play()
         {
             this.Engine.ActivationState = new ActiveState(this.Engine);
-            this.Engine.FinishTheGame();
+            this.Engine.FinishGame();
         }
     }
 }
