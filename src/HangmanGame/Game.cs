@@ -1,5 +1,6 @@
 ﻿using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.Console;
+using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
@@ -13,8 +14,8 @@ namespace HangmanGame.HangmanGame
         {
             ScoreBoard scoreBoard = new ScoreBoard();
             ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
-            ConsoleRenderer renderer = new ConsoleRenderer();
-            ConsoleInputProvider inputProvider = new ConsoleInputProvider();
+            IRenderer renderer = new ConsoleRenderer();
+            IInputProvider inputProvider = new ConsoleInputProvider();
             Player player = new Player();
             WordGenerator randomWordGenerator = new WordGenerator();
             CommandFactory commandFactory = new CommandFactory();

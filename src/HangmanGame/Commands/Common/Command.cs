@@ -1,13 +1,15 @@
-﻿namespace HangmanGame.HangmanGame.Commands.Common
+﻿using HangmanGame.HangmanGame.Contracts;
+
+namespace HangmanGame.HangmanGame.Commands.Common
 {
     public abstract class Command : ICommand
     {
-        protected Command(GameEngine engine)
+        protected Command(ICommandExecutable engine)
         {
             this.Engine = engine;
         }
 
-        protected GameEngine Engine { get; set; }
+        protected ICommandExecutable Engine { get; set; }
 
         public abstract void Execute();
     }

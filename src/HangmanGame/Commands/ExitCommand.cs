@@ -1,11 +1,12 @@
 ﻿using System;
 using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Contracts;
 
 namespace HangmanGame.HangmanGame.Commands
 {
     public class ExitCommand : Command, ICommand
     {
-        public ExitCommand(GameEngine engine)
+        public ExitCommand(ICommandExecutable engine)
             : base(engine)
         {
         }

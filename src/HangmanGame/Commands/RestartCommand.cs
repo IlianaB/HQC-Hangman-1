@@ -1,10 +1,11 @@
 ﻿using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Contracts;
 
 namespace HangmanGame.HangmanGame.Commands
 {
     public class RestartCommand : Command, ICommand
     {
-        public RestartCommand(GameEngine engine)
+        public RestartCommand(ICommandExecutable engine)
             : base(engine)
         {
         }

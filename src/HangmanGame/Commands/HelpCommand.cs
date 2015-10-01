@@ -1,10 +1,11 @@
 ﻿using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Contracts;
 
 namespace HangmanGame.HangmanGame.Commands
 {
     public class HelpCommand : Command, ICommand
     {
-        public HelpCommand(GameEngine engine)
+        public HelpCommand(ICommandExecutable engine)
             : base(engine)
         {
         }
