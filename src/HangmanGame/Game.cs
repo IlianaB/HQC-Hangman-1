@@ -23,7 +23,9 @@ namespace HangmanGame.HangmanGame
             ActivationState activationState = new ActiveState(gameEngine);
 
             gameEngine.DataManager.RestoreResults(scoreBoardService);
-            gameEngine.StartGame(activationState);
+            Menu.Logo.LogoDraw();
+            Menu.InitialMenu.DisplayInitialMenu(gameEngine, activationState, commandFactory);
+            //gameEngine.StartGame(activationState);
         }
     }
 }

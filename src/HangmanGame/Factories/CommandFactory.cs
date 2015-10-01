@@ -26,6 +26,10 @@ namespace HangmanGame.HangmanGame.Factories
                     {
                         return new ExitCommand(engine);
                     }
+                case null:
+                {
+                    return new NullCommand(engine);
+                }
                 default:
                     {
                         return new WrongCommand(engine);

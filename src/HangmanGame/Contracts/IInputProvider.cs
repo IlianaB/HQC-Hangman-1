@@ -4,6 +4,5 @@
     {
         string GetPlayerName();
         string ReadCommand();
-
     }
 }

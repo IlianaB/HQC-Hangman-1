@@ -75,13 +75,13 @@ namespace HangmanGame.HangmanGame
             {
                 this.Player.IncreaseMistakes();
                 message = string.Format(Constants.NoOccurencesMessage, letter);
-                this.Renderer.ShowMessage(message);
             }
             else
             {
                 message = string.Format(Constants.OccurencesMessage, occuranses);
-                this.Renderer.ShowMessage(message);
             }
+
+            this.Renderer.ShowMessage(message);
         }
 
         private void ExecuteCommand(string command)
@@ -114,7 +114,6 @@ namespace HangmanGame.HangmanGame
                 {
                     var worstScore = this.ScoreBoardService.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
                     playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
-
                 }
 
                 if (playerCanEnterHighScores)

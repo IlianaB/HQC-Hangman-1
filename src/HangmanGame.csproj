@@ -50,6 +50,7 @@
     <Compile Include="HangmanGame\Commands\Common\ICommand.cs" />
     <Compile Include="HangmanGame\Commands\ExitCommand.cs" />
     <Compile Include="HangmanGame\Commands\HelpCommand.cs" />
+    <Compile Include="HangmanGame\Commands\NullCommand.cs" />
     <Compile Include="HangmanGame\Commands\RestartCommand.cs" />
     <Compile Include="HangmanGame\Commands\TopCommand.cs" />
     <Compile Include="HangmanGame\Commands\WrongCommand.cs" />
@@ -73,7 +74,7 @@
     <Compile Include="HangmanGame\ScoreBoardServices\PersonalScore.cs" />
     <Compile Include="HangmanGame\ScoreBoardServices\ScoreBoard.cs" />
     <Compile Include="HangmanGame\ScoreBoardServices\ScoreBoardService.cs" />
-    <Compile Include="HangmanGame\Start.cs" />
+    <Compile Include="HangmanGame\EntryPoint.cs" />
     <Compile Include="HangmanGame\States\Activation\ActivationState.cs" />
     <Compile Include="HangmanGame\States\Activation\ActiveState.cs" />
     <Compile Include="HangmanGame\States\Activation\InactiveState.cs" />

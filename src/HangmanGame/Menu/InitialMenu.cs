@@ -1,10 +1,14 @@
-﻿namespace HangmanGame.HangmanGame.Menu
+﻿using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Factories;
+using HangmanGame.HangmanGame.States.Activation;
+
+namespace HangmanGame.HangmanGame.Menu
 {
     using System;
 
     public class InitialMenu
     {
-        public static void DisplayInitialMenu()
+        public static void DisplayInitialMenu(GameEngine engine, ActivationState activationState, CommandFactory commandFactory)
         {
             var options = new string[]
             {
@@ -21,33 +25,35 @@
                 Menu.CentredText.TextToCenter(options[i]);
             }
 
-            ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-
-            Console.Clear();
-            switch (pressedKey.KeyChar)
+            while (true)
             {
-                case '1':
-                    Game game = new Game();
-                    game.Initialize();
-                    break;
-                case '2':
-                    //TODO: Implement how to play
-                    Console.WriteLine("TODO: Implement how to play");
-                    DisplayInitialMenu();
-                    break;
-                case '3':
-                    //TODO: Implement High Score
-                    Console.WriteLine("TODO: Implement High Score");
-                    DisplayInitialMenu();
-                    break;
-                case '4':
-                    Console.Clear();
-                    Environment.Exit(0);
-                    break;
-                default:
+                ConsoleKeyInfo pressedKey = Console.ReadKey(true);
+                Command command = null;
 
-                    DisplayInitialMenu();
-                    break;
+                switch (pressedKey.KeyChar)
+                {
+                    case '1':
+                        Console.Clear();
+                        engine.StartGame(activationState);
+                        break;
+                    case '2':
+                        //TODO: Implement how to play
+                        Console.WriteLine("TODO: Implement how to play");
+                        break;
+                    case '3':
+                        Console.Clear();
+                        command = commandFactory.GetCommand(engine, "top");
+                        break;
+                    case '4':
+                        Console.Clear();
+                        command = commandFactory.GetCommand(engine, "exit");
+                        break;
+                    default:
+                        command = commandFactory.GetCommand(engine, null);
+                        break;
+                }
+
+                command.Execute();
             }
         }
     }
