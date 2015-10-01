@@ -10,11 +10,10 @@ namespace HangmanGame.HangmanGame
 {
     public class GameEngine
     {
-        public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, GameStrategy gameStrategy, ConsoleRenderer renderer, 
+        public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, ConsoleRenderer renderer, 
             Player player, WordGenerator wordGenerator, CommandFactory commandFactory)
         {
             this.ScoreBoard = scoreBoard;
-            this.GameStrategy = gameStrategy;
             this.ScoreBoardService = scoreBoardService;
             this.Renderer = renderer;
             this.Player = player;
@@ -24,18 +23,19 @@ namespace HangmanGame.HangmanGame
 
         public ScoreBoard ScoreBoard { get; set; }
         public ScoreBoardService ScoreBoardService { get; set; }
-        public GameStrategy GameStrategy { get; set; }
         public ConsoleRenderer Renderer { get; set; }
         public Player Player { get; set; }
         public WordGenerator WordGenerator { get; set; }
         public CommandFactory CommandFactory { get; set; }
         public ActivationState ActivationState { get; set; }
         public GuessWord WordToGuess { get; set; }
+        public bool IsHelpUsed { get; set; }
 
         public void StartGame(ActivationState activationState)
         {
             string word = this.WordGenerator.GetRandomWord();
             this.WordToGuess = new GuessWord(word);
+            this.IsHelpUsed = false;
 
             this.ActivationState = activationState;
             this.Renderer.ShowMessage(Constants.WelcomeMessage);
@@ -94,7 +94,7 @@ namespace HangmanGame.HangmanGame
         {
             string message;
 
-            if (this.GameStrategy.HelpUsed)
+            if (this.IsHelpUsed)
             {
                 message = string.Format(Constants.WinWithHelpMessage, this.Player.Mistakes);
                 this.Renderer.ShowMessage(message);
@@ -125,8 +125,12 @@ namespace HangmanGame.HangmanGame
                     this.Renderer.ShowMessage(message);
                 }
             }
-            this.Player.ReSet();
+            this.ResetGame();
+        }
 
+        public void ResetGame()
+        {
+            this.Player.ReSet();
             ActivationState activationState = new ActiveState(this);
             StartGame(activationState);
         }

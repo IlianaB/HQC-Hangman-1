@@ -11,12 +11,11 @@ namespace HangmanGame.HangmanGame
         {
             ScoreBoard scoreBoard = new ScoreBoard();
             ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
-            GameStrategy gameStrategy = new GameStrategy();
             ConsoleRenderer renderer = new ConsoleRenderer();
             Player player = new Player();
             WordGenerator randomWordGenerator = new WordGenerator();
             CommandFactory commandFactory = new CommandFactory();
-            GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, gameStrategy, renderer, player, randomWordGenerator, commandFactory);
+            GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, renderer, player, randomWordGenerator, commandFactory);
             ActivationState activationState = new ActiveState(gameEngine);
 
             gameEngine.StartGame(activationState);

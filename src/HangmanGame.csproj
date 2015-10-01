@@ -59,7 +59,6 @@
     <Compile Include="HangmanGame\Constants.cs" />
     <Compile Include="HangmanGame\Factories\CommandFactory.cs" />
     <Compile Include="HangmanGame\Game.cs" />
-    <Compile Include="HangmanGame\GameStrategy.cs" />
     <Compile Include="HangmanGame\GameEngine.cs" />
     <Compile Include="HangmanGame\Menu\CentredText.cs" />
     <Compile Include="HangmanGame\Menu\InitialMenu.cs" />
