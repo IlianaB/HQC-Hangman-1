@@ -12,8 +12,11 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
         }
 
         public string Name { get; private set; }
-        
         public int Score { get; private set; }
-       
+
+        public override string ToString()
+        {
+            return this.Name + " - " + this.Score;
+        }
     }
 }

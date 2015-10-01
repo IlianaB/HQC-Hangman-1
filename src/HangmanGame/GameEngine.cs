@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Common;
+using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
@@ -11,7 +12,7 @@ namespace HangmanGame.HangmanGame
     public class GameEngine
     {
         public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, ConsoleRenderer renderer, 
-            Player player, WordGenerator wordGenerator, CommandFactory commandFactory)
+            Player player, WordGenerator wordGenerator, CommandFactory commandFactory, DataManager dataManager)
         {
             this.ScoreBoard = scoreBoard;
             this.ScoreBoardService = scoreBoardService;
@@ -19,6 +20,7 @@ namespace HangmanGame.HangmanGame
             this.Player = player;
             this.WordGenerator = wordGenerator;
             this.CommandFactory = commandFactory;
+            this.DataManager = dataManager;
         }
 
         public ScoreBoard ScoreBoard { get; set; }
@@ -29,6 +31,7 @@ namespace HangmanGame.HangmanGame
         public CommandFactory CommandFactory { get; set; }
         public ActivationState ActivationState { get; set; }
         public GuessWord WordToGuess { get; set; }
+        public DataManager DataManager { get; set; }
         public bool IsHelpUsed { get; set; }
 
         public void StartGame(ActivationState activationState)
@@ -115,6 +118,7 @@ namespace HangmanGame.HangmanGame
                     string name = this.Renderer.GetPlayerName();
                     int mistakes = this.Player.Mistakes;
                     IPersonalScore newRecord = new PersonalScore(name, mistakes);
+                    this.DataManager.SaveResult(newRecord);
                     this.ScoreBoardService.AddNewScore(newRecord);
                     this.ScoreBoardService.SortScoreBoard();
                     this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);
@@ -125,6 +129,7 @@ namespace HangmanGame.HangmanGame
                     this.Renderer.ShowMessage(message);
                 }
             }
+
             this.ResetGame();
         }
 
