@@ -52,6 +52,7 @@
     <Compile Include="HangmanGame\Commands\HelpCommand.cs" />
     <Compile Include="HangmanGame\Commands\NullCommand.cs" />
     <Compile Include="HangmanGame\Commands\RestartCommand.cs" />
+    <Compile Include="HangmanGame\Commands\StartCommand.cs" />
     <Compile Include="HangmanGame\Commands\TopCommand.cs" />
     <Compile Include="HangmanGame\Commands\WrongCommand.cs" />
     <Compile Include="HangmanGame\Common\GuessWord.cs" />

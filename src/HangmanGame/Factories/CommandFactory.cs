@@ -1,15 +1,20 @@
 ﻿using HangmanGame.HangmanGame.Commands;
 using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Contracts;
 
 namespace HangmanGame.HangmanGame.Factories
 {
     public class CommandFactory
     {
-        public Command GetCommand(GameEngine engine, string command)
+        public Command GetCommand(ICommandExecutable engine, string command)
         {
 
             switch (command)
             {
+                case "start":
+                    {
+                        return new StartCommand(engine);
+                    }
                 case "top":
                     {
                         return new TopCommand(engine);
@@ -27,9 +32,9 @@ namespace HangmanGame.HangmanGame.Factories
                         return new ExitCommand(engine);
                     }
                 case null:
-                {
-                    return new NullCommand(engine);
-                }
+                    {
+                        return new NullCommand(engine);
+                    }
                 default:
                     {
                         return new WrongCommand(engine);

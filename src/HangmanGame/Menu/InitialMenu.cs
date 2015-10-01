@@ -1,4 +1,6 @@
-﻿using HangmanGame.HangmanGame.Commands.Common;
+﻿using HangmanGame.HangmanGame.Commands;
+using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.States.Activation;
 
@@ -8,7 +10,7 @@ namespace HangmanGame.HangmanGame.Menu
 
     public class InitialMenu
     {
-        public static void DisplayInitialMenu(GameEngine engine, ActivationState activationState, CommandFactory commandFactory)
+        public static void DisplayInitialMenu(ICommandExecutable engine, CommandFactory commandFactory)
         {
             var options = new string[]
             {
@@ -34,7 +36,7 @@ namespace HangmanGame.HangmanGame.Menu
                 {
                     case '1':
                         Console.Clear();
-                        engine.StartGame(activationState);
+                        command = new StartCommand(engine);
                         break;
                     case '2':
                         //TODO: Implement how to play

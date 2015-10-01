@@ -21,11 +21,10 @@ namespace HangmanGame.HangmanGame
             CommandFactory commandFactory = new CommandFactory();
             DataManager dataManager = new DataManager();
             GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, renderer, inputProvider, player, randomWordGenerator, commandFactory, dataManager);
-            ActivationState activationState = new ActiveState(gameEngine);
 
             gameEngine.DataManager.RestoreResults(scoreBoardService);
             Menu.Logo.LogoDraw();
-            Menu.InitialMenu.DisplayInitialMenu(gameEngine, activationState, commandFactory);
+            Menu.InitialMenu.DisplayInitialMenu(gameEngine, commandFactory);
             //gameEngine.StartGame(activationState);
         }
     }
