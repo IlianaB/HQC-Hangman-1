@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.ScoreBoardServices
