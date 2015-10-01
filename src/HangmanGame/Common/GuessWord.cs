@@ -37,7 +37,6 @@
 
                 this.Mask[i] = this.Content[i];
                 revealedLetter = this.Content[i];
-                //this.helpUsed = true;
                 break;
             }
 

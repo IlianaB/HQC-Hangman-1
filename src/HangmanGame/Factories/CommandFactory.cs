@@ -8,7 +8,6 @@ namespace HangmanGame.HangmanGame.Factories
     {
         public Command GetCommand(ICommandExecutable engine, string command)
         {
-
             switch (command)
             {
                 case "start":

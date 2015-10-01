@@ -2,7 +2,6 @@
 using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Factories;
-using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame.Menu
 {

@@ -25,7 +25,6 @@ namespace HangmanGame.HangmanGame
             gameEngine.DataManager.RestoreResults(scoreBoardService);
             Menu.Logo.LogoDraw();
             Menu.InitialMenu.DisplayInitialMenu(gameEngine, commandFactory);
-            //gameEngine.StartGame(activationState);
         }
     }
 }
