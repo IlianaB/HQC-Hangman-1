@@ -1,4 +1,5 @@
-﻿using HangmanGame.HangmanGame.Factories;
+﻿using HangmanGame.HangmanGame.Common;
+using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.States.Activation;
 
@@ -13,8 +14,9 @@ namespace HangmanGame.HangmanGame
             GameStrategy gameStrategy = new GameStrategy();
             ConsoleRenderer renderer = new ConsoleRenderer();
             Player player = new Player();
+            WordGenerator randomWordGenerator = new WordGenerator();
             CommandFactory commandFactory = new CommandFactory();
-            GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, gameStrategy, renderer, player, commandFactory);
+            GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, gameStrategy, renderer, player, randomWordGenerator, commandFactory);
             ActivationState activationState = new ActiveState(gameEngine);
 
             gameEngine.Start(activationState);

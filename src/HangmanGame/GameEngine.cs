@@ -1,4 +1,5 @@
 ﻿using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
@@ -8,13 +9,15 @@ namespace HangmanGame.HangmanGame
 {
     public class GameEngine
     {
-        public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, GameStrategy gameStrategy, ConsoleRenderer renderer, Player player, CommandFactory commandFactory)
+        public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, GameStrategy gameStrategy, ConsoleRenderer renderer, 
+            Player player, WordGenerator wordGenerator, CommandFactory commandFactory)
         {
             this.ScoreBoard = scoreBoard;
             this.GameStrategy = gameStrategy;
             this.ScoreBoardService = scoreBoardService;
             this.Renderer = renderer;
             this.Player = player;
+            this.WordGenerator = wordGenerator;
             this.CommandFactory = commandFactory;
         }
 
@@ -23,11 +26,13 @@ namespace HangmanGame.HangmanGame
         public GameStrategy GameStrategy { get; set; }
         public ConsoleRenderer Renderer { get; set; }
         public Player Player { get; set; }
+        public WordGenerator WordGenerator { get; set; }
         public CommandFactory CommandFactory { get; set; }
         public ActivationState ActivationState { get; set; }
 
         public void Start(ActivationState activationState)
         {
+            this.WordGenerator.GetRandomWord();
             this.ActivationState = activationState;
             this.Renderer.ShowMessage(Constants.WelcomeMessage);
 
