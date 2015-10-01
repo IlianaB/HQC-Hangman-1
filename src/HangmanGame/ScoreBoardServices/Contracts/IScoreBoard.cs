@@ -2,9 +2,8 @@
 
 namespace HangmanGame.HangmanGame.ScoreBoardServices.Contracts
 {
-    interface IScoreBoard
+    public interface IScoreBoard
     {
         IList<IPersonalScore> Records { get; }
-
     }
 }

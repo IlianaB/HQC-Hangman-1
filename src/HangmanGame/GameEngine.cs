@@ -2,7 +2,7 @@
 
 using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Common;
-using HangmanGame.HangmanGame.Console;
+using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
@@ -13,7 +13,7 @@ namespace HangmanGame.HangmanGame
 {
     public class GameEngine
     {
-        public GameEngine(ScoreBoard scoreBoard, ScoreBoardService scoreBoardService, ConsoleRenderer renderer, ConsoleInputProvider inputProvider,
+        public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer, IInputProvider inputProvider,
             Player player, WordGenerator wordGenerator, CommandFactory commandFactory, DataManager dataManager)
         {
             this.ScoreBoard = scoreBoard;
@@ -26,16 +26,16 @@ namespace HangmanGame.HangmanGame
             this.DataManager = dataManager;
         }
 
-        public ScoreBoard ScoreBoard { get; set; }
-        public ScoreBoardService ScoreBoardService { get; set; }
-        public ConsoleRenderer Renderer { get; set; }
-        public ConsoleInputProvider InputProvider { get; set; }
-        public Player Player { get; set; }
-        public WordGenerator WordGenerator { get; set; }
-        public CommandFactory CommandFactory { get; set; }
+        public IScoreBoard ScoreBoard { get; private set; }
+        public ScoreBoardService ScoreBoardService { get; private set; }
+        public IRenderer Renderer { get; private set; }
+        public IInputProvider InputProvider { get; private set; }
+        public Player Player { get; private set; }
+        public WordGenerator WordGenerator { get; private set; }
+        public CommandFactory CommandFactory { get; private set; }
         public ActivationState ActivationState { get; set; }
-        public GuessWord WordToGuess { get; set; }
-        public DataManager DataManager { get; set; }
+        public GuessWord WordToGuess { get; private set; }
+        public DataManager DataManager { get; private set; }
         public bool IsHelpUsed { get; set; }
 
         public void StartGame(ActivationState activationState)

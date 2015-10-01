@@ -1,11 +1,12 @@
-﻿using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
+﻿using HangmanGame.HangmanGame.Contracts;
+using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.Console
 {
     using System;
     using System.Collections.Generic;
 
-    public class ConsoleRenderer
+    public class ConsoleRenderer : IRenderer
     {
         public void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records)
         {

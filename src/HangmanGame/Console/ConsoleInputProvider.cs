@@ -1,8 +1,10 @@
-﻿namespace HangmanGame.HangmanGame.Console
+﻿using HangmanGame.HangmanGame.Contracts;
+
+namespace HangmanGame.HangmanGame.Console
 {
     using System;
 
-    public class ConsoleInputProvider
+    public class ConsoleInputProvider : IInputProvider
     {
         public string GetPlayerName()
         {
