@@ -4,6 +4,7 @@ using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
+using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
@@ -12,7 +13,7 @@ namespace HangmanGame.HangmanGame
     {
         public void Initialize()
         {
-            ScoreBoard scoreBoard = new ScoreBoard();
+            IScoreBoard scoreBoard = new ScoreBoard();
             ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
             IRenderer renderer = new ConsoleRenderer();
             IInputProvider inputProvider = new ConsoleInputProvider();

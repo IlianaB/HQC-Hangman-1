@@ -16,7 +16,7 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
         public IList<IPersonalScore> Records
         {
             get { return this.records; }
-            internal set { this.records = value; }
+            set { this.records = value; }
         }
     }
 }

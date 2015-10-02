@@ -5,11 +5,11 @@ using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.ScoreBoardServices
 {
-    public class ScoreBoardService
+    public class ScoreBoardService : IScoreBoardService
     {
-        private ScoreBoard currentScoreBoard;
+        private IScoreBoard currentScoreBoard;
 
-        public ScoreBoardService(ScoreBoard scoreBoard)
+        public ScoreBoardService(IScoreBoard scoreBoard)
         {
             currentScoreBoard = scoreBoard;
         }
@@ -56,7 +56,7 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
 
         public void ReSet()
         {
-            currentScoreBoard.Records = new List<IPersonalScore>();
+            currentScoreBoard.Records.Clear();
         }
     }
 }

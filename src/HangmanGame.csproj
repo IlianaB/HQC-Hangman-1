@@ -73,10 +73,11 @@
     <Compile Include="HangmanGame\Player.cs" />
     <Compile Include="HangmanGame\ScoreBoardServices\Contracts\IPersonalScore.cs" />
     <Compile Include="HangmanGame\ScoreBoardServices\Contracts\IScoreBoard.cs" />
+    <Compile Include="HangmanGame\ScoreBoardServices\Contracts\IScoreBoardService.cs" />
     <Compile Include="HangmanGame\ScoreBoardServices\PersonalScore.cs" />
     <Compile Include="HangmanGame\ScoreBoardServices\ScoreBoard.cs" />
-    <Compile Include="HangmanGame\ScoreBoardServices\ScoreBoardService.cs" />
     <Compile Include="HangmanGame\EntryPoint.cs" />
+    <Compile Include="HangmanGame\ScoreBoardServices\ScoreBoardService.cs" />
     <Compile Include="HangmanGame\States\Activation\ActivationState.cs" />
     <Compile Include="HangmanGame\States\Activation\ActiveState.cs" />
     <Compile Include="HangmanGame\States\Activation\InactiveState.cs" />
