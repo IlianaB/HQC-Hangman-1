@@ -17,11 +17,12 @@ namespace HangmanGame.HangmanGame.Console
             else
             {
                 Console.WriteLine("Scoreboard:");
-
+                
+                int position = 1;
                 foreach (var record in records)
                 {
-                    int position = 1;
                     Console.WriteLine(Constants.ResultsInformationMessage, position, record.Name, record.Score);
+                    position++;
                 }
             }
         }
