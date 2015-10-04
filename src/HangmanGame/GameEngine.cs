@@ -27,15 +27,25 @@ namespace HangmanGame.HangmanGame
         }
 
         public IScoreBoard ScoreBoard { get; private set; }
+
         public ScoreBoardService ScoreBoardService { get; private set; }
+
         public IRenderer Renderer { get; private set; }
+
         public IInputProvider InputProvider { get; private set; }
+
         public Player Player { get; private set; }
+
         public WordGenerator WordGenerator { get; private set; }
+
         public CommandFactory CommandFactory { get; private set; }
+
         public ActivationState ActivationState { get; set; }
+
         public GuessWord WordToGuess { get; private set; }
+
         public DataManager DataManager { get; private set; }
+
         public bool IsHelpUsed { get; set; }
 
         public void StartGame(ActivationState activationState)
@@ -140,7 +150,7 @@ namespace HangmanGame.HangmanGame
         {
             this.Player.ReSet();
             ActivationState activationState = new ActiveState(this);
-            StartGame(activationState);
+            this.StartGame(activationState);
         }
     }
 }

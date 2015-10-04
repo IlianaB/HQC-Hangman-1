@@ -2,7 +2,6 @@ using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.ScoreBoardServices
 {
-   
     public class PersonalScore : IPersonalScore
     {
       public PersonalScore(string name, int score)
@@ -12,6 +11,7 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
         }
 
         public string Name { get; private set; }
+
         public int Score { get; private set; }
 
         public override string ToString()

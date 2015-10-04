@@ -24,13 +24,14 @@
 @"                                                                               ",
 @"                                                                               ",
            };
+
             Console.WindowWidth = 80;
             Console.WriteLine("\n\n");
+
             foreach (string line in arr)
             {
                 Console.WriteLine(line);
             }
-
         }
     }
 }

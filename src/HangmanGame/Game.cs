@@ -5,7 +5,6 @@ using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
-using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
 {

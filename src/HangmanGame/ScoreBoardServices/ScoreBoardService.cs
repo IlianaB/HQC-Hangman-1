@@ -11,32 +11,30 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
 
         public ScoreBoardService(IScoreBoard scoreBoard)
         {
-            currentScoreBoard = scoreBoard;
+            this.currentScoreBoard = scoreBoard;
         }
-
-       
+ 
         public void AddNewScore(IPersonalScore record)
         {
-            currentScoreBoard.Records.Add(record);
-           
+            this.currentScoreBoard.Records.Add(record);
         }
 
         public void SortScoreBoard()
         {
-            currentScoreBoard.Records = currentScoreBoard.Records.OrderBy(ps => ps.Score).ToList();
+            this.currentScoreBoard.Records = this.currentScoreBoard.Records.OrderBy(ps => ps.Score).ToList();
         }
 
         public int GetWorstScoreEntry(int position)
         {
             IPersonalScore lastScore;
 
-            if (currentScoreBoard.Records.Count <= position)
+            if (this.currentScoreBoard.Records.Count <= position)
             {
-                lastScore = currentScoreBoard.Records[currentScoreBoard.Records.Count - 1];
+                lastScore = this.currentScoreBoard.Records[this.currentScoreBoard.Records.Count - 1];
             }
             else
             {
-                lastScore = currentScoreBoard.Records[position];
+                lastScore = this.currentScoreBoard.Records[position];
             }
 
             return lastScore.Score;
@@ -44,19 +42,21 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
 
         public bool IsFull(int numberOfScoresInScoreBoard)
         {
-            var isFull = currentScoreBoard.Records.Count() >= numberOfScoresInScoreBoard;
+            var isFull = this.currentScoreBoard.Records.Count() >= numberOfScoresInScoreBoard;
+            
             return isFull;
         }
 
         public bool IsEmpty()
         {
-            var isEmpty = currentScoreBoard.Records.Count() == 0;
+            var isEmpty = this.currentScoreBoard.Records.Count() == 0;
+            
             return isEmpty;
         }
 
         public void ReSet()
         {
-            currentScoreBoard.Records.Clear();
+            this.currentScoreBoard.Records.Clear();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace HangmanGame.HangmanGame.Commands.Common
 {
-    interface ICommand
+    public interface ICommand
     {
         void Execute();
     }

@@ -3,6 +3,7 @@
     public interface IInputProvider
     {
         string GetPlayerName();
+
         string ReadCommand();
     }
 }

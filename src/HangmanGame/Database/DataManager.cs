@@ -13,7 +13,7 @@ namespace HangmanGame.HangmanGame.Database
 
         public void SaveResult(IPersonalScore score)
         {
-            using (StreamWriter writer = new StreamWriter(uri, true))
+            using (StreamWriter writer = new StreamWriter(this.uri, true))
             {
                 writer.WriteLine(score);
             }
@@ -21,7 +21,7 @@ namespace HangmanGame.HangmanGame.Database
 
         public void RestoreResults(ScoreBoardService scoreBoardService)
         {
-            IList<string> allResults = ReadAllResults();
+            IList<string> allResults = this.ReadAllResults();
 
             foreach (var result in allResults)
             {
@@ -36,7 +36,7 @@ namespace HangmanGame.HangmanGame.Database
 
         private List<string> ReadAllResults()
         {
-            using (StreamReader reader = new StreamReader(uri))
+            using (StreamReader reader = new StreamReader(this.uri))
             {
                 string line = reader.ReadLine();
                 List<string> results = new List<string>();

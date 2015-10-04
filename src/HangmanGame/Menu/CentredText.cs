@@ -2,9 +2,9 @@
 {
     using System;
 
-    class CentredText
+    public class CentredText
     {
-        public static void TextToCenter(String text)
+        public static void TextToCenter(string text)
         {
             Console.Write(new string(' ', (Console.WindowWidth - text.Length) / 2));
             Console.WriteLine(text);

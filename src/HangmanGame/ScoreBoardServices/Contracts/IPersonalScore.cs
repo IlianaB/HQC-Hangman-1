@@ -3,6 +3,7 @@
     public interface IPersonalScore
     {
         string Name { get; }
+
         int Score { get; }
     }
 }
