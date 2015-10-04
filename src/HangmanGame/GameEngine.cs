@@ -64,49 +64,6 @@ namespace HangmanGame.HangmanGame
             while (true);
         }
 
-        public void ReactToPlayerAction(string command)
-        {
-            if (command.Length == 1)
-            {
-                this.ExecuteLetterGuess(command[0]);
-            }
-            else
-            {
-                this.ExecuteCommand(command);
-            }
-        }
-
-        private void ExecuteLetterGuess(char letter)
-        {
-            string message;
-            int occuranses = this.WordToGuess.GetNumberOfOccurences(letter);
-
-            if (occuranses == 0)
-            {
-                this.Player.IncreaseMistakes();
-                message = string.Format(Constants.NoOccurencesMessage, letter);
-            }
-            else
-            {
-                message = string.Format(Constants.OccurencesMessage, occuranses);
-            }
-
-            this.Renderer.ShowMessage(message);
-        }
-
-        private void ExecuteCommand(string command)
-        {
-            Command currentCommand = this.CommandFactory.GetCommand(this, command);
-            currentCommand.Execute();
-        }
-
-        public bool CheckWinningCondition()
-        {
-            bool isGameOver = this.WordToGuess.Mask.All(t => t != '_');
-            
-            return isGameOver;
-        }
-
         public void FinishGame()
         {
             string message;
@@ -149,8 +106,50 @@ namespace HangmanGame.HangmanGame
         public void ResetGame()
         {
             this.Player.ReSet();
-            ActivationState activationState = new ActiveState(this);
-            this.StartGame(activationState);
+            this.StartGame(this.ActivationState);
+        }
+
+        public bool CheckWinningCondition()
+        {
+            bool isGameOver = this.WordToGuess.Mask.All(t => t != '_');
+
+            return isGameOver;
+        }
+
+        public void ReactToPlayerAction(string command)
+        {
+            if (command.Length == 1)
+            {
+                this.ExecuteLetterGuess(command[0]);
+            }
+            else
+            {
+                this.ExecuteCommand(command);
+            }
+        }
+
+        private void ExecuteLetterGuess(char letter)
+        {
+            string message;
+            int occuranses = this.WordToGuess.GetNumberOfOccurences(letter);
+
+            if (occuranses == 0)
+            {
+                this.Player.IncreaseMistakes();
+                message = string.Format(Constants.NoOccurencesMessage, letter);
+            }
+            else
+            {
+                message = string.Format(Constants.OccurencesMessage, occuranses);
+            }
+
+            this.Renderer.ShowMessage(message);
+        }
+
+        private void ExecuteCommand(string command)
+        {
+            Command currentCommand = this.CommandFactory.GetCommand(this, command);
+            currentCommand.Execute();
         }
     }
 }

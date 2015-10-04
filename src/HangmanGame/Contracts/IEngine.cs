@@ -11,5 +11,7 @@ namespace HangmanGame.HangmanGame.Contracts
         void FinishGame();
 
         void ReactToPlayerAction(string command);
+
+        bool CheckWinningCondition();
     }
 }
