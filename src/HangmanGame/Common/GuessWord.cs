@@ -9,20 +9,8 @@
         }
 
         public string Content { get; set; }
+
         public char[] Mask { get; set; }
-
-        private char[] GetMask(string word)
-        {
-            int wordLength = word.Length;
-            char[] letters = new char[wordLength];
-
-            for (int i = 0; i < wordLength; i++)
-            {
-                letters[i] = '_';
-            }
-
-            return letters;
-        }
 
         public char RevealLetter()
         {
@@ -30,7 +18,7 @@
 
             for (int i = 0; i < this.Mask.Length; i++)
             {
-                if (this.Mask[i] != '_')
+                if (this.Mask[i] != Constants.WordMaskChar)
                 {
                     continue;
                 }
@@ -59,6 +47,19 @@
             }
 
             return count;
+        }
+
+        private char[] GetMask(string word)
+        {
+            int wordLength = word.Length;
+            char[] letters = new char[wordLength];
+
+            for (int i = 0; i < wordLength; i++)
+            {
+                letters[i] = Constants.WordMaskChar;
+            }
+
+            return letters;
         }
     }
 }

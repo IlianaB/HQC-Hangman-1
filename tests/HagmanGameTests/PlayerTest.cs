@@ -11,21 +11,34 @@ namespace HagmanGameTests
         [SetUp]
         public void Init()
         {
-            player = new Player();
+            this.player = new Player();
         }
 
         [TearDown]
         public void CleanUp()
         {
-            player = null;
+            this.player = null;
         }
 
         [Test]
         public void TestIncreaseMistakes()
         {
-            player.IncreaseMistakes();
+            this.player.IncreaseMistakes();
 
-            Assert.AreEqual(1, player.Mistakes, "Player mistakes should be 1 when increased once after initialization");
+            Assert.AreEqual(1, this.player.Mistakes, "Player mistakes should be 1 when increased once after initialization");
+        }
+
+        [Test]
+        public void TestResetPlayerMistakes()
+        {
+            this.player.IncreaseMistakes();
+            this.player.IncreaseMistakes();
+            this.player.IncreaseMistakes();
+            this.player.IncreaseMistakes();
+
+            this.player.ReSet();
+
+            Assert.AreEqual(0, this.player.Mistakes, "Player mistakes should be 0 when rested");
         }
     }
 }
