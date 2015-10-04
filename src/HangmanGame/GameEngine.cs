@@ -11,7 +11,7 @@ using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
 {
-    public class GameEngine : ICommandExecutable
+    public class GameEngine : ICommandExecutable, IEngine
     {
         public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer, IInputProvider inputProvider,
             Player player, WordGenerator wordGenerator, CommandFactory commandFactory, DataManager dataManager)
