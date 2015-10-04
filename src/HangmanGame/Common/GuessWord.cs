@@ -5,7 +5,7 @@
         public GuessWord(string word)
         {
             this.Content = word;
-            this.Mask = GetMask(word);
+            this.Mask = this.GetMask(word);
         }
 
         public string Content { get; set; }

@@ -38,7 +38,7 @@ namespace HagmanGameTests
 
             this.player.ReSet();
 
-            Assert.AreEqual(0, this.player.Mistakes, "Player mistakes should be 0 when rested");
+            Assert.AreEqual(0, this.player.Mistakes, "Player mistakes should be 0 when reseted");
         }
     }
 }
