@@ -1,5 +1,4 @@
-﻿using System;
-using HangmanGame.HangmanGame.Common;
+﻿using HangmanGame.HangmanGame.Common;
 using NUnit.Framework;
 
 namespace HagmanGameTests

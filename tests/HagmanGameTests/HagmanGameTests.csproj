@@ -53,9 +53,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CommandFactoryTest.cs" />
     <Compile Include="GuessWordTest.cs" />
     <Compile Include="PlayerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestWordGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
