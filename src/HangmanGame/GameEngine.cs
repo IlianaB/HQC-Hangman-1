@@ -14,7 +14,7 @@ namespace HangmanGame.HangmanGame
     public class GameEngine : ICommandExecutable, IEngine
     {
         public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer, IInputProvider inputProvider,
-            Player player, WordGenerator wordGenerator, CommandFactory commandFactory, DataFileManager dataManager)
+            Player player, WordGenerator wordGenerator, CommandFactory commandFactory)
         {
             this.ScoreBoard = scoreBoard;
             this.ScoreBoardService = scoreBoardService;
@@ -23,7 +23,6 @@ namespace HangmanGame.HangmanGame
             this.Player = player;
             this.WordGenerator = wordGenerator;
             this.CommandFactory = commandFactory;
-            this.DataManager = dataManager;
         }
 
         public IScoreBoard ScoreBoard { get; private set; }
@@ -43,8 +42,6 @@ namespace HangmanGame.HangmanGame
         public ActivationState ActivationState { get; set; }
 
         public GuessWord WordToGuess { get; private set; }
-
-        public DataFileManager DataManager { get; private set; }
 
         public bool IsHelpUsed { get; set; }
 
@@ -66,6 +63,7 @@ namespace HangmanGame.HangmanGame
 
         public void FinishGame()
         {
+            DataFileManager.SingletonInstance(this.ScoreBoardService);
             string message;
 
             if (this.IsHelpUsed)
@@ -88,7 +86,7 @@ namespace HangmanGame.HangmanGame
                     string name = this.InputProvider.GetPlayerName();
                     int mistakes = this.Player.Mistakes;
                     IPersonalScore newRecord = new PersonalScore(name, mistakes);
-                    this.DataManager.SaveResult(newRecord);
+                    DataFileManager.SingletonInstance(this.ScoreBoardService).SaveResult(newRecord);
                     this.ScoreBoardService.AddNewScore(newRecord);
                     this.ScoreBoardService.SortScoreBoard();
                     this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);

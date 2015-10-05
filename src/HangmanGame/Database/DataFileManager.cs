@@ -9,7 +9,23 @@ namespace HangmanGame.HangmanGame.Database
 {
     public class DataFileManager : DataManager, IDataManager
     {
+        private static DataFileManager singletonInstance;
         private readonly string uri = @"../../../src/HangmanGame/Database/Results.txt";
+
+        protected DataFileManager()
+        {
+        }
+
+        public static DataFileManager SingletonInstance(ScoreBoardService scoreBoardService)
+        {
+            if (singletonInstance == null)
+            {
+                singletonInstance = new DataFileManager();
+                singletonInstance.RestoreResults(scoreBoardService);
+            }
+
+            return singletonInstance;
+        }
 
         public override void SaveResult(IPersonalScore score)
         {

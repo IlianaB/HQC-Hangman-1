@@ -7,3 +7,8 @@ Nencho - 0
 Ivan - 12
 Goshko - 9
 chicho - 4
+Testcho - 5
+Nencho - 0
+Test - 3
+AgainTest - 0
+Goshkoo - 0
