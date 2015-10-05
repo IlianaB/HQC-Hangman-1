@@ -16,12 +16,11 @@ namespace HangmanGame.HangmanGame.Database
         {
         }
 
-        public static DataFileManager SingletonInstance(ScoreBoardService scoreBoardService)
+        public static DataFileManager SingletonInstance()
         {
             if (singletonInstance == null)
             {
                 singletonInstance = new DataFileManager();
-                singletonInstance.RestoreResults(scoreBoardService);
             }
 
             return singletonInstance;
@@ -39,6 +38,7 @@ namespace HangmanGame.HangmanGame.Database
         {
             
             IList<string> allResults = this.ReadAllResults();
+            IList<IPersonalScore> restoredResults = new List<IPersonalScore>();
 
             foreach (var result in allResults)
             {
@@ -47,8 +47,10 @@ namespace HangmanGame.HangmanGame.Database
                 int score = int.Parse(record[1]);
 
                 IPersonalScore newRecord = new PersonalScore(name, score);
-                scoreBoardService.AddNewScore(newRecord);
+                restoredResults.Add(newRecord);
             }
+
+            scoreBoardService.RestoreRecords(restoredResults);
         }
 
         private List<string> ReadAllResults()

@@ -58,5 +58,10 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
         {
             this.currentScoreBoard.Records.Clear();
         }
+
+        public void RestoreRecords(IList<IPersonalScore> restoredResults)
+        {
+            this.currentScoreBoard.Records = restoredResults;
+        }
     }
 }

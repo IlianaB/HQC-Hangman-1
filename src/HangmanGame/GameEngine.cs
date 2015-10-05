@@ -63,7 +63,6 @@ namespace HangmanGame.HangmanGame
 
         public void FinishGame()
         {
-            DataFileManager.SingletonInstance(this.ScoreBoardService);
             string message;
 
             if (this.IsHelpUsed)
@@ -86,7 +85,7 @@ namespace HangmanGame.HangmanGame
                     string name = this.InputProvider.GetPlayerName();
                     int mistakes = this.Player.Mistakes;
                     IPersonalScore newRecord = new PersonalScore(name, mistakes);
-                    DataFileManager.SingletonInstance(this.ScoreBoardService).SaveResult(newRecord);
+                    DataFileManager.SingletonInstance().SaveResult(newRecord);
                     this.ScoreBoardService.AddNewScore(newRecord);
                     this.ScoreBoardService.SortScoreBoard();
                     this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);

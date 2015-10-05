@@ -13,7 +13,6 @@ namespace HangmanGame.HangmanGame.Commands
 
         public override void Execute()
         {
-            DataFileManager.SingletonInstance(this.Engine.ScoreBoardService);
             this.Engine.ScoreBoardService.SortScoreBoard();
             this.Engine.Renderer.ShowScoreBoardResults(this.Engine.ScoreBoardService.IsEmpty(), this.Engine.ScoreBoard.Records);
         }
