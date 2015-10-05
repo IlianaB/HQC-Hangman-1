@@ -11,7 +11,7 @@ namespace HagmanGameTests
         [SetUp]
         public void Init()
         {
-            this.player = new Player();
+            this.player = new Player(false);
         }
 
         [TearDown]
@@ -36,7 +36,7 @@ namespace HagmanGameTests
             this.player.IncreaseMistakes();
             this.player.IncreaseMistakes();
 
-            this.player.ReSet();
+            this.player.Reset();
 
             Assert.AreEqual(0, this.player.Mistakes, "Player mistakes should be 0 when reseted");
         }

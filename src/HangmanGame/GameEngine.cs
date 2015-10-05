@@ -14,7 +14,7 @@ namespace HangmanGame.HangmanGame
     public class GameEngine : ICommandExecutable, IEngine
     {
         public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer, IInputProvider inputProvider,
-            Player player, WordGenerator wordGenerator, CommandFactory commandFactory)
+            IPlayer player, WordGenerator wordGenerator, CommandFactory commandFactory)
         {
             this.ScoreBoard = scoreBoard;
             this.ScoreBoardService = scoreBoardService;
@@ -33,7 +33,7 @@ namespace HangmanGame.HangmanGame
 
         public IInputProvider InputProvider { get; private set; }
 
-        public Player Player { get; private set; }
+        public IPlayer Player { get; private set; }
 
         public WordGenerator WordGenerator { get; private set; }
 
@@ -43,13 +43,11 @@ namespace HangmanGame.HangmanGame
 
         public GuessWord WordToGuess { get; private set; }
 
-        public bool IsHelpUsed { get; set; }
 
         public void StartGame(ActivationState activationState)
         {
             string word = this.WordGenerator.GetRandomWord();
             this.WordToGuess = new GuessWord(word);
-            this.IsHelpUsed = false;
 
             this.ActivationState = activationState;
             this.Renderer.ShowMessage(Constants.WelcomeMessage);
@@ -63,11 +61,9 @@ namespace HangmanGame.HangmanGame
 
         public void FinishGame()
         {
-            string message;
-
-            if (this.IsHelpUsed)
+            if (this.Player.HasUsedHelp)
             {
-                message = string.Format(Constants.WinWithHelpMessage, this.Player.Mistakes);
+                string message = string.Format(Constants.WinWithHelpMessage, this.Player.Mistakes);
                 this.Renderer.ShowMessage(message);
             }
             else
@@ -80,21 +76,7 @@ namespace HangmanGame.HangmanGame
                     playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
                 }
 
-                if (playerCanEnterHighScores)
-                {
-                    string name = this.InputProvider.GetPlayerName();
-                    int mistakes = this.Player.Mistakes;
-                    IPersonalScore newRecord = new PersonalScore(name, mistakes);
-                    DataFileManager.SingletonInstance().SaveResult(newRecord,Constants.FilePath);
-                    this.ScoreBoardService.AddNewScore(newRecord);
-                    this.ScoreBoardService.SortScoreBoard();
-                    this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);
-                }
-                else
-                {
-                    message = string.Format(Constants.LowScoreMessage, this.Player.Mistakes);
-                    this.Renderer.ShowMessage(message);
-                }
+                this.ProcessCurrentPlayerResult(playerCanEnterHighScores);
             }
 
             this.ResetGame();
@@ -102,7 +84,7 @@ namespace HangmanGame.HangmanGame
 
         public void ResetGame()
         {
-            this.Player.ReSet();
+            this.Player.Reset();
             this.StartGame(this.ActivationState);
         }
 
@@ -147,6 +129,25 @@ namespace HangmanGame.HangmanGame
         private void ExecuteCommand(ICommand command)
         {
             command.Execute();
+        }
+
+        private void ProcessCurrentPlayerResult(bool playerCanEnterHighScores)
+        {
+            if (playerCanEnterHighScores)
+            {
+                string name = this.InputProvider.GetPlayerName();
+                int mistakes = this.Player.Mistakes;
+                IPersonalScore newRecord = new PersonalScore(name, mistakes);
+                DataFileManager.SingletonInstance().SaveResult(newRecord, Constants.FilePath);
+                this.ScoreBoardService.AddNewScore(newRecord);
+                this.ScoreBoardService.SortScoreBoard();
+                this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);
+            }
+            else
+            {
+                string message = string.Format(Constants.LowScoreMessage, this.Player.Mistakes);
+                this.Renderer.ShowMessage(message);
+            }
         }
     }
 }

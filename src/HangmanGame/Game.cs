@@ -16,7 +16,7 @@ namespace HangmanGame.HangmanGame
             ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
             IRenderer renderer = new ConsoleRenderer();
             IInputProvider inputProvider = new ConsoleInputProvider();
-            Player player = new Player();
+            IPlayer player = new Player(false);
             WordProvider wordProvider = new WordProvider();
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             CommandFactory commandFactory = new CommandFactory();

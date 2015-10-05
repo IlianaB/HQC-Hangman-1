@@ -65,6 +65,7 @@
     <Compile Include="HangmanGame\Contracts\ICommandExecutable.cs" />
     <Compile Include="HangmanGame\Contracts\IEngine.cs" />
     <Compile Include="HangmanGame\Contracts\IInputProvider.cs" />
+    <Compile Include="HangmanGame\Contracts\IPlayer.cs" />
     <Compile Include="HangmanGame\Contracts\IRenderer.cs" />
     <Compile Include="HangmanGame\Database\DataManager.cs" />
     <Compile Include="HangmanGame\Database\DataFileManager.cs" />

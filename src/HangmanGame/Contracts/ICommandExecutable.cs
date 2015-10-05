@@ -15,7 +15,7 @@ namespace HangmanGame.HangmanGame.Contracts
 
         ScoreBoardService ScoreBoardService { get; }
 
-        bool IsHelpUsed { get; set; }
+        IPlayer Player { get; }
 
         void StartGame(ActivationState activationState);
 
