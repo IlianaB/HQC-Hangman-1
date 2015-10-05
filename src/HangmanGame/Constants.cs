@@ -11,6 +11,7 @@ namespace HangmanGame.HangmanGame
         public const string NoRevealedLettersMessage = "Sorry! There are no unrevealed letters “{0}”.";
         public const string UsedHelpMessage = "OK, I reveal for you the next letter '{0}'.";
         public const string WinWithHelpMessage = "You won with {0} mistake(s) but you have cheated. You are not allowed to enter into the scoreboard.";
+        public const string GameOverMessage = "Game over! Try again!";
         public const string LowScoreMessage = "You won with {0} mistake(s) but your score did not enter in the scoreboard";
         public const string OccurencesMessage = "Good job! You revealed {0} letter(s).";
         public const string NoOccurencesMessage = "Sorry! There are no unrevealed letters “{0}”";

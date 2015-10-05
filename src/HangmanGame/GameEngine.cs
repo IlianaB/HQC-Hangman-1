@@ -61,22 +61,25 @@ namespace HangmanGame.HangmanGame
 
         public void FinishGame()
         {
-            if (this.Player.HasUsedHelp)
+            if (!this.CheckGameOverCondition())
             {
-                string message = string.Format(Constants.WinWithHelpMessage, this.Player.Mistakes);
-                this.Renderer.ShowMessage(message);
-            }
-            else
-            {
-                bool playerCanEnterHighScores = true;
-
-                if (!this.ScoreBoardService.IsEmpty() && this.ScoreBoardService.IsFull(Constants.NumberOfScoresInScoreBoard))
+                if (this.Player.HasUsedHelp)
                 {
-                    var worstScore = this.ScoreBoardService.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
-                    playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
+                    string message = string.Format(Constants.WinWithHelpMessage, this.Player.Mistakes);
+                    this.Renderer.ShowMessage(message);
                 }
+                else
+                {
+                    bool playerCanEnterHighScores = true;
 
-                this.ProcessCurrentPlayerResult(playerCanEnterHighScores);
+                    if (!this.ScoreBoardService.IsEmpty() && this.ScoreBoardService.IsFull(Constants.NumberOfScoresInScoreBoard))
+                    {
+                        var worstScore = this.ScoreBoardService.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
+                        playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
+                    }
+
+                    this.ProcessCurrentPlayerResult(playerCanEnterHighScores);
+                }
             }
 
             this.ResetGame();
@@ -86,6 +89,16 @@ namespace HangmanGame.HangmanGame
         {
             this.Player.Reset();
             this.StartGame(this.ActivationState);
+        }
+
+        public bool CheckGameOverCondition()
+        {
+            if (this.Player.Mistakes >= 7)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public bool CheckWinningCondition()
@@ -116,6 +129,7 @@ namespace HangmanGame.HangmanGame
             if (occuranses == 0)
             {
                 this.Player.IncreaseMistakes();
+                this.Renderer.DrawHangman(this.Player.Mistakes);
                 message = string.Format(Constants.NoOccurencesMessage, letter);
             }
             else

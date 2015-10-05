@@ -10,5 +10,7 @@ namespace HangmanGame.HangmanGame.Contracts
         void ShowCurrentProgress(char[] guessedLetters);
 
         void ShowMessage(string message);
+
+        void DrawHangman(int mistakes);
     }
 }

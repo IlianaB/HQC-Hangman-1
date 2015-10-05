@@ -22,6 +22,7 @@ namespace HangmanGame.HangmanGame
         public void Reset()
         {
             this.Mistakes = 0;
+            this.HasUsedHelp = false;
         }
     }
 }

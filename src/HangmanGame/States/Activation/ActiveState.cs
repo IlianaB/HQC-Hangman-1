@@ -1,4 +1,6 @@
-﻿namespace HangmanGame.HangmanGame.States.Activation
+﻿using System.Data.Odbc;
+
+namespace HangmanGame.HangmanGame.States.Activation
 {
     public class ActiveState : ActivationState
     {
@@ -11,9 +13,17 @@
         {
             this.Engine.Renderer.ShowCurrentProgress(this.Engine.WordToGuess.Mask);
 
-            bool isGameOver = this.Engine.CheckWinningCondition();
+            bool isGameOver = this.Engine.CheckGameOverCondition();
+            bool isWordGuessed = this.Engine.CheckWinningCondition();
 
             if (isGameOver)
+            {
+                this.Engine.ActivationState = new InactiveState(this.Engine);
+                this.Engine.Renderer.ShowMessage(Constants.GameOverMessage);
+                return;
+            }
+
+            if (isWordGuessed)
             {
                 this.Engine.ActivationState = new InactiveState(this.Engine);
                 return;
