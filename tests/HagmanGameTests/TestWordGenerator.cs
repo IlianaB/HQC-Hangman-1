@@ -1,4 +1,6 @@
-﻿using HangmanGame.HangmanGame.Common;
+﻿using System.Collections.Generic;
+using HangmanGame.HangmanGame.Common;
+using Moq;
 using NUnit.Framework;
 
 namespace HagmanGameTests
@@ -11,7 +13,9 @@ namespace HagmanGameTests
         [SetUp]
         public void Init()
         {
-            this.wordGenerator = new WordGenerator();
+            var mockedWordProvider = new Mock<IWordProvider>();
+            mockedWordProvider.Setup(r => r.ProvideWords()).Returns(new List<string> { "unittesting" });
+            this.wordGenerator = new WordGenerator(mockedWordProvider.Object);
         }
 
         [TearDown]
@@ -21,9 +25,16 @@ namespace HagmanGameTests
         }
 
         [Test]
-        public void TestWordGenerationReturnWord()
+        public void TestWordGenerationReturnString()
         {
             Assert.IsInstanceOf(typeof(string), this.wordGenerator.GetRandomWord(), "WordGenerator returns string");
+        }
+
+        [Test]
+        public void TestWordGenerationReturnWord()
+        {
+            var word = this.wordGenerator.GetRandomWord();
+            Assert.AreEqual("unittesting", word, "Returned word is correct");
         }
     }
 }

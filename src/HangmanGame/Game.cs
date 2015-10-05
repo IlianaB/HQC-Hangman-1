@@ -17,7 +17,8 @@ namespace HangmanGame.HangmanGame
             IRenderer renderer = new ConsoleRenderer();
             IInputProvider inputProvider = new ConsoleInputProvider();
             Player player = new Player();
-            WordGenerator randomWordGenerator = new WordGenerator();
+            WordProvider wordProvider = new WordProvider();
+            WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             CommandFactory commandFactory = new CommandFactory();
             DataManager dataManager = new DataManager();
             GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, renderer, inputProvider, player, randomWordGenerator, commandFactory, dataManager);

@@ -1,33 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HangmanGame.HangmanGame.Common
 {
     public class WordGenerator
     {
-        private readonly string[] words =
-        {
-            "computer", 
-            "programmer", 
-            "software", 
-            "debugger", 
-            "compiler", 
-            "developer", 
-            "algorithm", 
-            "array", 
-            "method", 
-            "variable"
-        };
-
+        private readonly List<string> words;
         private readonly Random random;
 
-        public WordGenerator()
+        public WordGenerator(IWordProvider wordProvider)
         {
             this.random = new Random();
+            this.words = wordProvider.ProvideWords();
         }
 
         public string GetRandomWord()
         {
-            int choice = this.random.Next(this.words.Length);
+            int choice = this.random.Next(this.words.Count);
             string word = this.words[choice];
 
             return word;
