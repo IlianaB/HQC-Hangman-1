@@ -6,3 +6,4 @@ Petkan - 3
 Nencho - 0
 Goshkoop - 5
 Dragancho - 6
+Testets - 2

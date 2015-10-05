@@ -36,7 +36,6 @@ namespace HangmanGame.HangmanGame.Database
 
         public override void RestoreResults(ScoreBoardService scoreBoardService)
         {
-            
             IList<string> allResults = this.ReadAllResults();
             IList<IPersonalScore> restoredResults = new List<IPersonalScore>();
 

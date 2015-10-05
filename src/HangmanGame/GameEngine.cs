@@ -121,7 +121,8 @@ namespace HangmanGame.HangmanGame
             }
             else
             {
-                this.ExecuteCommand(command);
+                ICommand currentCommand = this.CommandFactory.GetCommand(this, command);
+                this.ExecuteCommand(currentCommand);
             }
         }
 
@@ -143,10 +144,9 @@ namespace HangmanGame.HangmanGame
             this.Renderer.ShowMessage(message);
         }
 
-        private void ExecuteCommand(string command)
+        private void ExecuteCommand(ICommand command)
         {
-            Command currentCommand = this.CommandFactory.GetCommand(this, command);
-            currentCommand.Execute();
+            command.Execute();
         }
     }
 }
