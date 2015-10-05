@@ -1,5 +1,7 @@
-﻿using HangmanGame.HangmanGame.Database;
+﻿using System.IO;
+using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.ScoreBoardServices;
+using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 using Moq;
 using NUnit.Framework;
 
@@ -9,18 +11,17 @@ namespace HagmanGameTests.Database
     public class DataFileManagerTest
     {
         private DataFileManager dataFileManager;
-        private PersonalScore personalScore;
+        private IPersonalScore personalScore;
         private ScoreBoardService scoreBoardService;
 
         [SetUp]
         public void Init()
         {
-            var mockedDataFileManager = new Mock<DataFileManager>();
-            var mockedPersonalScore = new Mock<PersonalScore>();
+            var mockedPersonalScore = new Mock<IPersonalScore>();
             var mockedScoreBoardService = new Mock<ScoreBoardService>();
 
-            this.dataFileManager = mockedDataFileManager.Object;
-            //this.personalScore = mockedPersonalScore.Object;
+            this.dataFileManager = DataFileManager.SingletonInstance();
+            this.personalScore = mockedPersonalScore.Object;
             //this.scoreBoardService = mockedScoreBoardService.Object;
         }
 
@@ -36,6 +37,15 @@ namespace HagmanGameTests.Database
         public void TestDataFileManagerCreation()
         {
             Assert.IsInstanceOf(typeof(DataFileManager), this.dataFileManager, "DataFileManager is in correct type");
+        }
+
+        [Test]
+        [ExpectedException(typeof(DirectoryNotFoundException))]
+        public void TestSaveResult_InvalidFile_ThrowsError()
+        {
+            string fakePath = @"C:\tempFake\myReallyFakeFile.txt";
+
+            this.dataFileManager.SaveResult(this.personalScore, fakePath);
         }
     }
 }

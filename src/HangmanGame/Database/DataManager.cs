@@ -5,8 +5,8 @@ namespace HangmanGame.HangmanGame.Database
 {
     public abstract class DataManager : IDataManager
     {
-        public abstract void SaveResult(IPersonalScore score);
+        public abstract void SaveResult(IPersonalScore score, string filePath);
 
-        public abstract void RestoreResults(ScoreBoardService scoreBoardService);
+        public abstract void RestoreResults(ScoreBoardService scoreBoardService, string filePath);
     }
 }

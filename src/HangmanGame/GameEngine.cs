@@ -85,7 +85,7 @@ namespace HangmanGame.HangmanGame
                     string name = this.InputProvider.GetPlayerName();
                     int mistakes = this.Player.Mistakes;
                     IPersonalScore newRecord = new PersonalScore(name, mistakes);
-                    DataFileManager.SingletonInstance().SaveResult(newRecord);
+                    DataFileManager.SingletonInstance().SaveResult(newRecord,Constants.FilePath);
                     this.ScoreBoardService.AddNewScore(newRecord);
                     this.ScoreBoardService.SortScoreBoard();
                     this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);

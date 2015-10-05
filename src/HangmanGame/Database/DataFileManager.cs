@@ -10,7 +10,6 @@ namespace HangmanGame.HangmanGame.Database
     public class DataFileManager : DataManager, IDataManager
     {
         private static DataFileManager singletonInstance;
-        private readonly string uri = @"../../../src/HangmanGame/Database/Results.txt";
 
         protected DataFileManager()
         {
@@ -26,17 +25,17 @@ namespace HangmanGame.HangmanGame.Database
             return singletonInstance;
         }
 
-        public override void SaveResult(IPersonalScore score)
+        public override void SaveResult(IPersonalScore score, string filePath)
         {
-            using (StreamWriter writer = new StreamWriter(this.uri, true))
+            using (StreamWriter writer = new StreamWriter(filePath, true))
             {
                 writer.WriteLine(score);
             }
         }
 
-        public override void RestoreResults(ScoreBoardService scoreBoardService)
+        public override void RestoreResults(ScoreBoardService scoreBoardService, string filePath)
         {
-            IList<string> allResults = this.ReadAllResults();
+            IList<string> allResults = this.ReadAllResults(filePath);
             IList<IPersonalScore> restoredResults = new List<IPersonalScore>();
 
             foreach (var result in allResults)
@@ -52,9 +51,9 @@ namespace HangmanGame.HangmanGame.Database
             scoreBoardService.RestoreRecords(restoredResults);
         }
 
-        private List<string> ReadAllResults()
+        private List<string> ReadAllResults(string filePath)
         {
-            using (StreamReader reader = new StreamReader(this.uri))
+            using (StreamReader reader = new StreamReader(filePath))
             {
                 string line = reader.ReadLine();
                 List<string> results = new List<string>();
