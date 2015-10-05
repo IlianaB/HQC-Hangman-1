@@ -21,6 +21,7 @@ namespace HangmanGame.HangmanGame.Database
 
         public override void RestoreResults(ScoreBoardService scoreBoardService)
         {
+            
             IList<string> allResults = this.ReadAllResults();
 
             foreach (var result in allResults)

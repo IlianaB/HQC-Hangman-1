@@ -57,7 +57,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Commands\CommandsTest.cs" />
     <Compile Include="Common\WordProviderTest.cs" />
+    <Compile Include="Database\DataFileManagerTest.cs" />
     <Compile Include="Factories\CommandFactoryTest.cs" />
     <Compile Include="Console\InputProviderTest.cs" />
     <Compile Include="Common\GuessWordTest.cs" />
