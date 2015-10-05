@@ -1,7 +1,7 @@
 ﻿using HangmanGame.HangmanGame.Common;
 using NUnit.Framework;
 
-namespace HagmanGameTests
+namespace HagmanGameTests.Common
 {
     [TestFixture]
     public class GuessWordTest
@@ -42,5 +42,12 @@ namespace HagmanGameTests
         {
             Assert.AreEqual(found, this.guessWord.GetNumberOfOccurences(letter), "Letter '" + letter + "' should be found only once");
         }
+
+        // TODO: What this method do? RevealLetter???
+        //[TestCase('h')]
+        //public void TestRevealLetter(char letter)
+        //{
+        //    Assert.AreEqual(letter, this.guessWord.RevealLetter(), "Letters '" + letter + "' should be same");
+        //}
     }
 }

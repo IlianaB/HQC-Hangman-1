@@ -1,7 +1,7 @@
 ﻿using HangmanGame.HangmanGame.Factories;
 using NUnit.Framework;
 
-namespace HagmanGameTests
+namespace HagmanGameTests.Factories
 {
     [TestFixture]
     public class CommandFactoryTest

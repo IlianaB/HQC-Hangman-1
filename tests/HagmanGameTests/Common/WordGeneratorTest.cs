@@ -3,10 +3,10 @@ using HangmanGame.HangmanGame.Common;
 using Moq;
 using NUnit.Framework;
 
-namespace HagmanGameTests
+namespace HagmanGameTests.Common
 {
     [TestFixture]
-    public class TestWordGenerator
+    public class WordGeneratorTest
     {
         private WordGenerator wordGenerator;
 

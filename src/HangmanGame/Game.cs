@@ -22,7 +22,6 @@ namespace HangmanGame.HangmanGame
             CommandFactory commandFactory = new CommandFactory();
             DataManager dataManager = new DataManager();
             GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, renderer, inputProvider, player, randomWordGenerator, commandFactory, dataManager);
-
             gameEngine.DataManager.RestoreResults(scoreBoardService);
             Menu.Logo.LogoDraw();
             Menu.InitialMenu.DisplayInitialMenu(gameEngine, commandFactory);
