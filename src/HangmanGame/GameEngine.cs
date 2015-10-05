@@ -14,7 +14,7 @@ namespace HangmanGame.HangmanGame
     public class GameEngine : ICommandExecutable, IEngine
     {
         public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer, IInputProvider inputProvider,
-            Player player, WordGenerator wordGenerator, CommandFactory commandFactory, DataManager dataManager)
+            Player player, WordGenerator wordGenerator, CommandFactory commandFactory, DataFileManager dataManager)
         {
             this.ScoreBoard = scoreBoard;
             this.ScoreBoardService = scoreBoardService;
@@ -44,7 +44,7 @@ namespace HangmanGame.HangmanGame
 
         public GuessWord WordToGuess { get; private set; }
 
-        public DataManager DataManager { get; private set; }
+        public DataFileManager DataManager { get; private set; }
 
         public bool IsHelpUsed { get; set; }
 
