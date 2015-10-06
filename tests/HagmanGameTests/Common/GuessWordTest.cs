@@ -43,11 +43,10 @@ namespace HagmanGameTests.Common
             Assert.AreEqual(found, this.guessWord.GetNumberOfOccurences(letter), "Letter '" + letter + "' should be found only once");
         }
 
-        // TODO: What this method do? RevealLetter???
-        //[TestCase('h')]
-        //public void TestRevealLetter(char letter)
-        //{
-        //    Assert.AreEqual(letter, this.guessWord.RevealLetter(), "Letters '" + letter + "' should be same");
-        //}
+        [Test]
+        public void TestRevealLetter()
+        {
+            Assert.AreEqual('h', this.guessWord.RevealLetter(), "Letters 'h' should be same");
+        }
     }
 }

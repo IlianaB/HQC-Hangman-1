@@ -17,7 +17,7 @@ namespace HagmanGameTests.Commands
         {
             var mockedEngine = new Mock<ICommandExecutable>();
             this.engine = mockedEngine.Object;
-            
+
             var mockedCommand = new Mock<StartCommand>(this.engine);
             mockedCommand.Setup(r => r.Execute()).Verifiable();
             this.command = mockedCommand.Object;
@@ -31,7 +31,7 @@ namespace HagmanGameTests.Commands
         }
 
         [Test]
-        public void TestStartCommand()
+        public void TestStartCommandInstance()
         {
             this.command.Execute();
             Assert.IsInstanceOf(typeof(StartCommand), this.command, "StartCommand created");
