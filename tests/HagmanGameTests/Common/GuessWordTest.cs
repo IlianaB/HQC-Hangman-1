@@ -31,7 +31,7 @@ namespace HagmanGameTests.Common
         [Test]
         public void TestMaskingOfWord()
         {
-            Assert.AreEqual(WordMasked, string.Join("", this.guessWord.Mask), "Masked word should be equal to GuessWord.Mask");
+            Assert.AreEqual(WordMasked, string.Join(string.Empty, this.guessWord.Mask), "Masked word should be equal to GuessWord.Mask");
         }
 
         [TestCase(1, 'y')]

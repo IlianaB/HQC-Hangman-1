@@ -38,7 +38,7 @@ namespace HangmanGame.HangmanGame.Menu
                         command = new StartCommand(engine);
                         break;
                     case '2':
-                        //TODO: Implement how to play
+                        // TODO: Implement how to play
                         Console.WriteLine("TODO: Implement how to play");
                         break;
                     case '3':

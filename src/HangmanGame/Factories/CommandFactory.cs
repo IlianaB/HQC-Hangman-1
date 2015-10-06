@@ -10,34 +10,13 @@ namespace HangmanGame.HangmanGame.Factories
         {
             switch (command)
             {
-                case "start":
-                    {
-                        return new StartCommand(engine);
-                    }
-                case "top":
-                    {
-                        return new TopCommand(engine);
-                    }
-                case "help":
-                    {
-                        return new HelpCommand(engine);
-                    }
-                case "restart":
-                    {
-                        return new RestartCommand(engine);
-                    }
-                case "exit":
-                    {
-                        return new ExitCommand(engine);
-                    }
-                case null:
-                    {
-                        return new NullCommand(engine);
-                    }
-                default:
-                    {
-                        return new WrongCommand(engine);
-                    }
+                case "start": return new StartCommand(engine);
+                case "top": return new TopCommand(engine);
+                case "help": return new HelpCommand(engine);
+                case "restart": return new RestartCommand(engine);
+                case "exit": return new ExitCommand(engine);
+                case null: return new NullCommand(engine);
+                default: return new WrongCommand(engine);
             }
         }
     }

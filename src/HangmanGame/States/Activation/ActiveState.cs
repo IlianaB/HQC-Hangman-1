@@ -1,6 +1,4 @@
-﻿using System.Data.Odbc;
-
-namespace HangmanGame.HangmanGame.States.Activation
+﻿namespace HangmanGame.HangmanGame.States.Activation
 {
     public class ActiveState : ActivationState
     {
