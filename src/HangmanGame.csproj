@@ -61,6 +61,8 @@
     <Compile Include="HangmanGame\Common\WordProvider.cs" />
     <Compile Include="HangmanGame\Console\ConsoleInputProvider.cs" />
     <Compile Include="HangmanGame\Console\ConsoleRenderer.cs" />
+    <Compile Include="HangmanGame\Console\InputProvider.cs" />
+    <Compile Include="HangmanGame\Console\Renderer.cs" />
     <Compile Include="HangmanGame\Constants.cs" />
     <Compile Include="HangmanGame\Contracts\ICommandExecutable.cs" />
     <Compile Include="HangmanGame\Contracts\IEngine.cs" />

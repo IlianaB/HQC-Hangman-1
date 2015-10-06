@@ -4,9 +4,9 @@ namespace HangmanGame.HangmanGame.Console
 {
     using System;
 
-    public class ConsoleInputProvider : IInputProvider
+    public class ConsoleInputProvider : InputProvider, IInputProvider
     {
-        public string GetPlayerName()
+        public override string GetPlayerName()
         {
             Console.Write(Constants.EnterNameMessage);
             string name = Console.ReadLine();
@@ -14,7 +14,7 @@ namespace HangmanGame.HangmanGame.Console
             return name;
         }
 
-        public string ReadCommand()
+        public override string ReadCommand()
         {
             Console.Write(Constants.EnterGuessMessage);
             string command = Console.ReadLine();

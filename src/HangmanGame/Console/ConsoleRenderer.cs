@@ -6,9 +6,9 @@ namespace HangmanGame.HangmanGame.Console
     using System;
     using System.Collections.Generic;
 
-    public class ConsoleRenderer : IRenderer
+    public class ConsoleRenderer : Renderer, IRenderer
     {
-        public void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records)
+        public override void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records)
         {
             if (isEmptyScoreBoard)
             {
@@ -27,7 +27,7 @@ namespace HangmanGame.HangmanGame.Console
             }
         }
 
-        public void ShowCurrentProgress(char[] guessedLetters)
+        public override void ShowCurrentProgress(char[] guessedLetters)
         {
             Console.WriteLine();
 
@@ -41,12 +41,12 @@ namespace HangmanGame.HangmanGame.Console
             Console.WriteLine();
         }
 
-        public void ShowMessage(string message)
+        public override void ShowMessage(string message)
         {
             Console.WriteLine(message);
         }
 
-        public void DrawHangman(int mistakes)
+        public override void DrawHangman(int mistakes)
         {
             switch (mistakes)
             {
