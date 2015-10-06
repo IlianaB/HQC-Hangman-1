@@ -10,7 +10,7 @@ namespace HagmanGameTests.Commands
     public class CommandsTest
     {
         private ICommandExecutable engine;
-        private ICommand command;
+        private StartCommand command;
 
         [SetUp]
         public void Init()
