@@ -1,5 +1,4 @@
 ﻿using HangmanGame.HangmanGame.Console;
-using HangmanGame.HangmanGame.Contracts;
 using Moq;
 using NUnit.Framework;
 

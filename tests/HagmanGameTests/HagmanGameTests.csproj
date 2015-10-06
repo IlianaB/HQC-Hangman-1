@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Commands\CommandsTest.cs" />
     <Compile Include="Common\WordProviderTest.cs" />
+    <Compile Include="Console\ConsoleRendererTest.cs" />
     <Compile Include="Database\DataFileManagerTest.cs" />
     <Compile Include="Factories\CommandFactoryTest.cs" />
     <Compile Include="Console\InputProviderTest.cs" />

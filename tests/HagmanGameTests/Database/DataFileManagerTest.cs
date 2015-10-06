@@ -12,17 +12,13 @@ namespace HagmanGameTests.Database
     {
         private DataFileManager dataFileManager;
         private IPersonalScore personalScore;
-        private ScoreBoardService scoreBoardService;
 
         [SetUp]
         public void Init()
         {
             var mockedPersonalScore = new Mock<IPersonalScore>();
-            var mockedScoreBoardService = new Mock<ScoreBoardService>();
-
             this.dataFileManager = DataFileManager.SingletonInstance();
             this.personalScore = mockedPersonalScore.Object;
-            //this.scoreBoardService = mockedScoreBoardService.Object;
         }
 
         [TearDown]
@@ -30,7 +26,6 @@ namespace HagmanGameTests.Database
         {
             this.dataFileManager = null;
             this.personalScore = null;
-            this.scoreBoardService = null;
         }
 
         [Test]
@@ -44,7 +39,6 @@ namespace HagmanGameTests.Database
         public void TestSaveResult_InvalidFile_ThrowsError()
         {
             string fakePath = @"C:\tempFake\myReallyFakeFile.txt";
-
             this.dataFileManager.SaveResult(this.personalScore, fakePath);
         }
     }
