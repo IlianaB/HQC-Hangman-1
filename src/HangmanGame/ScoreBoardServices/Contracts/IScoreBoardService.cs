@@ -6,6 +6,8 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices.Contracts
     {
         void AddNewScore(IPersonalScore record);
 
+        void RemoveLastRecords(int maxNumberOfScoresinScoreBoard);
+
         void SortScoreBoard();
 
         IList<IPersonalScore> GetAllRecords();
