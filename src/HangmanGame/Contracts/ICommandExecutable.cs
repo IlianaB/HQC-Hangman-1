@@ -1,7 +1,6 @@
 ﻿using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
-using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame.Contracts
 {
@@ -17,7 +16,7 @@ namespace HangmanGame.HangmanGame.Contracts
 
         IPlayer Player { get; }
 
-        void StartGame(ActivationState activationState);
+        void StartGame();
 
         void ResetGame();
     }

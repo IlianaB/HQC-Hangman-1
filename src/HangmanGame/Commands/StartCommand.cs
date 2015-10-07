@@ -1,6 +1,5 @@
 ﻿using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Contracts;
-using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame.Commands
 {
@@ -13,8 +12,7 @@ namespace HangmanGame.HangmanGame.Commands
 
         public override void Execute()
         {
-            ActivationState activationState = new ActiveState(this.Engine as GameEngine);
-            this.Engine.StartGame(activationState);
+            this.Engine.StartGame();
         }
     }
 }

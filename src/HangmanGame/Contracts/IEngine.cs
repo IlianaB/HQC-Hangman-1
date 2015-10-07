@@ -1,10 +1,10 @@
-﻿using HangmanGame.HangmanGame.States.Activation;
+﻿using HangmanGame.HangmanGame.Common;
 
 namespace HangmanGame.HangmanGame.Contracts
 {
     public interface IEngine
     {
-        void StartGame(ActivationState activationState);
+        void StartGame();
 
         void ResetGame();
 
@@ -13,5 +13,14 @@ namespace HangmanGame.HangmanGame.Contracts
         void ReactToPlayerAction(string command);
 
         bool CheckWinningCondition();
+
+        bool CheckGameOverCondition();
+
+        IRenderer Renderer { get; }
+
+        GuessWord WordToGuess { get; }
+
+        IPlayer Player { get; }
+
     }
 }

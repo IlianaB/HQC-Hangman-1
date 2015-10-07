@@ -1,4 +1,5 @@
 ﻿using HangmanGame.HangmanGame.Console;
+using HangmanGame.HangmanGame.Contracts;
 using Moq;
 using NUnit.Framework;
 
@@ -8,13 +9,12 @@ namespace HagmanGameTests.Console
     public class InputProviderTest
     {
         private const string FakePlayerName = "Djordjano";
-        private ConsoleInputProvider inputProvider;
+        private IInputProvider inputProvider;
 
         [SetUp]
         public void Init()
         {
-            var mockedConsoleInputProvider = new Mock<ConsoleInputProvider>();
-            mockedConsoleInputProvider.Setup(r => r.GetPlayerName()).Returns(FakePlayerName);
+            var mockedConsoleInputProvider = new Mock<IInputProvider>();
             mockedConsoleInputProvider.Setup(r => r.ReadCommand()).Returns(FakePlayerName);
             this.inputProvider = mockedConsoleInputProvider.Object;
         }
@@ -23,12 +23,6 @@ namespace HagmanGameTests.Console
         public void CleanUp()
         {
             this.inputProvider = null;
-        }
-
-        [Test]
-        public void TestGetPlayerName()
-        {
-            Assert.AreEqual(FakePlayerName, this.inputProvider.GetPlayerName(), "Player name get correctly");
         }
 
         [Test]

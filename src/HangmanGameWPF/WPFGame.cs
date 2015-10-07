@@ -7,11 +7,9 @@ using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGameWPF
 {
-    public class Game
+    public class WPFGame : Game
     {
-        public IEngine Engine { get; set; }
-
-        public void Initialize()
+        public override void Initialize()
         {
             IScoreBoard scoreBoard = new ScoreBoard();
             ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
@@ -20,15 +18,10 @@ namespace HangmanGameWPF
             WordProvider wordProvider = new WordProvider();
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             CommandFactory commandFactory = new CommandFactory();
-            //IEngine gameEngine = new WPFEngine(scoreBoard, scoreBoardService, renderer, player, randomWordGenerator, commandFactory);
+            IEngine gameEngine = new WPFEngine(scoreBoard, scoreBoardService, renderer, player, randomWordGenerator, commandFactory);
             //DataFileManager.SingletonInstance().RestoreResults(scoreBoardService, Constants.FilePath);
 
-            //this.Engine = gameEngine;
-        }
-
-        public void Start()
-        {
-            //this.Engine.StartGame();
+            this.Engine = gameEngine;
         }
     }
 }

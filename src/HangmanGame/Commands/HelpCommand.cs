@@ -15,6 +15,7 @@ namespace HangmanGame.HangmanGame.Commands
             char revealedLetter = this.Engine.WordToGuess.RevealLetter();
             string message = string.Format(Constants.UsedHelpMessage, revealedLetter);
             this.Engine.Renderer.ShowMessage(message);
+            this.Engine.Renderer.ShowCurrentProgress(this.Engine.WordToGuess.Mask);
             this.Engine.Player.HasUsedHelp = true;
         }
     }

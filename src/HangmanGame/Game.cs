@@ -1,30 +1,18 @@
-﻿using HangmanGame.HangmanGame.Common;
-using HangmanGame.HangmanGame.Console;
-using HangmanGame.HangmanGame.Contracts;
-using HangmanGame.HangmanGame.Database;
-using HangmanGame.HangmanGame.Factories;
-using HangmanGame.HangmanGame.ScoreBoardServices;
-using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
+﻿using HangmanGame.HangmanGame.Contracts;
 
 namespace HangmanGame.HangmanGame
 {
-    public class Game
+    public abstract class Game
     {
-        public void Initialize()
-        {
-            IScoreBoard scoreBoard = new ScoreBoard();
-            ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
-            IRenderer renderer = new ConsoleRenderer();
-            IInputProvider inputProvider = new ConsoleInputProvider();
-            IPlayer player = new Player(false);
-            WordProvider wordProvider = new WordProvider();
-            WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
-            CommandFactory commandFactory = new CommandFactory();
-            GameEngine gameEngine = new GameEngine(scoreBoard, scoreBoardService, renderer, inputProvider, player, randomWordGenerator, commandFactory);
-            DataFileManager.SingletonInstance().RestoreResults(scoreBoardService, Constants.FilePath);
+        public IEngine Engine { get; set; }
 
-            Menu.Logo.LogoDraw();
-            Menu.InitialMenu.DisplayInitialMenu(gameEngine, commandFactory);
+        public virtual void Initialize()
+        {
+        }
+
+        public void Start()
+        {
+            this.Engine.StartGame();
         }
     }
 }

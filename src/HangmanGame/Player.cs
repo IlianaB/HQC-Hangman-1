@@ -6,9 +6,12 @@ namespace HangmanGame.HangmanGame
     {
         public Player(bool hasUsedHelp)
         {
+            this.Name = string.Empty;
             this.Mistakes = 0;
             this.HasUsedHelp = hasUsedHelp;
         }
+
+        public string Name { get; set; }
 
         public int Mistakes { get; private set; }
 

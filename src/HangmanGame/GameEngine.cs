@@ -3,22 +3,20 @@
 using HangmanGame.HangmanGame.Commands.Common;
 using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.Contracts;
-using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
-using HangmanGame.HangmanGame.States.Activation;
 
 namespace HangmanGame.HangmanGame
 {
-    public class GameEngine : ICommandExecutable, IEngine
+    public abstract class GameEngine : ICommandExecutable, IEngine
     {
-        public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer, IInputProvider inputProvider, IPlayer player, WordGenerator wordGenerator, CommandFactory commandFactory)
+        public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer,
+                        IPlayer player, WordGenerator wordGenerator, CommandFactory commandFactory)
         {
             this.ScoreBoard = scoreBoard;
             this.ScoreBoardService = scoreBoardService;
             this.Renderer = renderer;
-            this.InputProvider = inputProvider;
             this.Player = player;
             this.WordGenerator = wordGenerator;
             this.CommandFactory = commandFactory;
@@ -30,31 +28,21 @@ namespace HangmanGame.HangmanGame
 
         public IRenderer Renderer { get; private set; }
 
-        public IInputProvider InputProvider { get; private set; }
-
         public IPlayer Player { get; private set; }
 
         public WordGenerator WordGenerator { get; private set; }
 
         public CommandFactory CommandFactory { get; private set; }
 
-        public ActivationState ActivationState { get; set; }
-
         public GuessWord WordToGuess { get; private set; }
 
-        public void StartGame(ActivationState activationState)
+
+        public void StartGame()
         {
             string word = this.WordGenerator.GetRandomWord();
             this.WordToGuess = new GuessWord(word);
-
-            this.ActivationState = activationState;
             this.Renderer.ShowMessage(Constants.WelcomeMessage);
-
-            do
-            {
-                this.ActivationState.Play();
-            }
-            while (true);
+            this.Play();
         }
 
         public void FinishGame()
@@ -86,7 +74,7 @@ namespace HangmanGame.HangmanGame
         public void ResetGame()
         {
             this.Player.Reset();
-            this.StartGame(this.ActivationState);
+            this.StartGame();
         }
 
         public bool CheckGameOverCondition()
@@ -136,6 +124,7 @@ namespace HangmanGame.HangmanGame
             }
 
             this.Renderer.ShowMessage(message);
+            this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
         }
 
         private void ExecuteCommand(ICommand command)
@@ -147,10 +136,11 @@ namespace HangmanGame.HangmanGame
         {
             if (playerCanEnterHighScores)
             {
-                string name = this.InputProvider.GetPlayerName();
                 int mistakes = this.Player.Mistakes;
-                IPersonalScore newRecord = new PersonalScore(name, mistakes);
-                DataFileManager.SingletonInstance().SaveResult(newRecord, Constants.FilePath);
+                IPersonalScore newRecord = new PersonalScore(this.Player.Name, mistakes);
+
+                this.SaveResult(newRecord);
+
                 this.ScoreBoardService.AddNewScore(newRecord);
                 this.ScoreBoardService.SortScoreBoard();
                 this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);
@@ -160,6 +150,29 @@ namespace HangmanGame.HangmanGame
                 string message = string.Format(Constants.LowScoreMessage, this.Player.Mistakes);
                 this.Renderer.ShowMessage(message);
             }
+        }
+
+        private void Play()
+        {
+            if (this.Player.Name == string.Empty)
+            {
+                this.SetPlayerName();
+            }
+
+            this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
+            this.WaitForPlayerAction();
+        }
+
+        protected virtual void SetPlayerName()
+        {
+        }
+
+        protected virtual void WaitForPlayerAction()
+        {
+        }
+
+        protected virtual void SaveResult(IPersonalScore newRecord)
+        {
         }
     }
 }

@@ -4,19 +4,10 @@ namespace HangmanGame.HangmanGame.Console
 {
     using System;
 
-    public class ConsoleInputProvider : InputProvider, IInputProvider
+    public class ConsoleInputProvider : IInputProvider
     {
-        public override string GetPlayerName()
+        public string ReadCommand()
         {
-            Console.Write(Constants.EnterNameMessage);
-            string name = Console.ReadLine();
-
-            return name;
-        }
-
-        public override string ReadCommand()
-        {
-            Console.Write(Constants.EnterGuessMessage);
             string command = Console.ReadLine();
             string lowerCaseCommand = command.ToLower();
 

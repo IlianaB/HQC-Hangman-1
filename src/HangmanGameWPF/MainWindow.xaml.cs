@@ -20,14 +20,38 @@ namespace HangmanGameWPF
 
         private void StartGame(object sender, RoutedEventArgs e)
         {
+            var playerName = this.PlayerName.Text;
+            Game game = new WPFGame();
+            game.Initialize();
+            this.engine = game.Engine;
+            this.engine.Player.Name = playerName;
+            var renderer = this.engine.Renderer as WPFRenderer;
+            renderer.MainWindow = this;
+            this.InputGrid.Visibility = Visibility.Hidden;
+            this.gridPlayField.Visibility = Visibility.Visible;
+            this.Menu.Visibility = Visibility.Visible;
+            game.Start();
         }
 
         private void ButtonKeyBoard_Click(object sender, RoutedEventArgs e)
         {
-        }
+            var button = sender as Button;
 
-        private void EnterScore(object sender, RoutedEventArgs e)
-        {
+            this.engine.ReactToPlayerAction(button.Content.ToString().ToLower());
+
+            bool isGameOver = this.engine.CheckGameOverCondition();
+            bool isWordGuessed = this.engine.CheckWinningCondition();
+
+            if (isGameOver)
+            {
+                this.engine.Renderer.ShowMessage(Constants.GameOverMessage);
+                this.engine.FinishGame();
+            }
+
+            if (isWordGuessed)
+            {
+                this.engine.FinishGame();
+            }
         }
     }
 }

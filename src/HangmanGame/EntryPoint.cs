@@ -4,8 +4,9 @@
     {
         internal static void Main()
         {
-            Game game = new Game();
+            Game game = new ConsoleGame();
             game.Initialize();
+            game.Start();
         }
     }
 }
