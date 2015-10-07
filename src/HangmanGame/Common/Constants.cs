@@ -19,7 +19,7 @@
         public const string EnterGuessMessage = "Enter your guess: ";
         public const string AnnounceSecretWordMessage = "The secret word is: ";
         public const string FilePathConsoleGame = @"../../../src/HangmanGame/Database/Results.txt";
-        public const string FilePathWPFGame = @"../../../src/HangmanGame/Database/Results.txt";
+        public const string FilePathWPFGame = @"../../../HangmanGame/Database/Results.txt";
         public const int NumberOfScoresInScoreBoard = 10;
         public const char WordMaskChar = '_';
     }
