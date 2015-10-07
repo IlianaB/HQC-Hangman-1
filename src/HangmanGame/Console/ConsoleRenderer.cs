@@ -10,6 +10,11 @@ namespace HangmanGame.HangmanGame.Console
 
     public class ConsoleRenderer : Renderer, IRenderer
     {
+        public ConsoleRenderer()
+            : this(new CapitalizeFormatter())
+        {
+        }
+
         public ConsoleRenderer(IResultFormatter formatter)
             : base(formatter)
         {

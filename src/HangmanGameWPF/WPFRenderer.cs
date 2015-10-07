@@ -12,6 +12,11 @@ namespace HangmanGameWPF
 {
     public class WPFRenderer : Renderer, IRenderer
     {
+        public WPFRenderer()
+            : this(new AllCapsFormatter())
+        {
+        }
+
         public WPFRenderer(IResultFormatter formatter)
             : base(formatter)
         {
