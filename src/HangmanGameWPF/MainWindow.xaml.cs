@@ -12,7 +12,7 @@ namespace HangmanGameWPF
 
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.gridPlayField.Visibility = Visibility.Hidden;
             this.Results.Visibility = Visibility.Hidden;
             this.Menu.Visibility = Visibility.Hidden;

@@ -18,6 +18,7 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
         {
             this.currentScoreBoard.Records.Add(record);
         }
+
         public void RemoveLastRecords(int maxNumberOfScoresinScoreBoard)
         {
             int maxNumberOfScores = maxNumberOfScoresinScoreBoard > 1 ? maxNumberOfScoresinScoreBoard : 1;

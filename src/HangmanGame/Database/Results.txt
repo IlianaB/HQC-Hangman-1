@@ -28,3 +28,6 @@ pos - 0
 asx - 2
 as - 0
 mbyte - 1
+gjs - 2
+gjs - 0
+asff - 0
