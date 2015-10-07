@@ -77,6 +77,7 @@
     <Compile Include="HangmanGame\Factories\CommandFactory.cs" />
     <Compile Include="HangmanGame\Games\Game.cs" />
     <Compile Include="HangmanGame\Engines\GameEngine.cs" />
+    <Compile Include="HangmanGame\Games\IGame.cs" />
     <Compile Include="HangmanGame\Menu\CentredText.cs" />
     <Compile Include="HangmanGame\Menu\InitialMenu.cs" />
     <Compile Include="HangmanGame\Menu\Logo.cs" />

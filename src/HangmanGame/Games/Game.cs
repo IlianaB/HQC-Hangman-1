@@ -1,8 +1,9 @@
 ﻿using HangmanGame.HangmanGame.Contracts;
+using HangmanGame.HangmanGame.Games;
 
 namespace HangmanGame.HangmanGame
 {
-    public abstract class Game
+    public abstract class Game : IGame
     {
         public IEngine Engine { get; set; }
 
