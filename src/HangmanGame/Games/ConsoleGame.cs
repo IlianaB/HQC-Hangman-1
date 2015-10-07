@@ -2,11 +2,12 @@
 using HangmanGame.HangmanGame.Console;
 using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Database;
+using HangmanGame.HangmanGame.Engines;
 using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
-namespace HangmanGame.HangmanGame
+namespace HangmanGame.HangmanGame.Games
 {
     public class ConsoleGame : Game
     {

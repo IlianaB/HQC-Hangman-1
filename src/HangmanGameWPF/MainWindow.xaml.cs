@@ -1,8 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-using HangmanGame.HangmanGame;
-using HangmanGame.HangmanGame.Contracts;
+using HangmanGame.HangmanGame.Common;
+using HangmanGame.HangmanGame.Engines;
+using HangmanGame.HangmanGame.Games;
 
 namespace HangmanGameWPF
 {

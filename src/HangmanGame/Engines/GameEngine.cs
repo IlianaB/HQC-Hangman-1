@@ -7,7 +7,7 @@ using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
-namespace HangmanGame.HangmanGame
+namespace HangmanGame.HangmanGame.Engines
 {
     public abstract class GameEngine : ICommandExecutable, IEngine
     {

@@ -1,7 +1,6 @@
-﻿using HangmanGame.HangmanGame.Contracts;
-using HangmanGame.HangmanGame.Games;
+﻿using HangmanGame.HangmanGame.Engines;
 
-namespace HangmanGame.HangmanGame
+namespace HangmanGame.HangmanGame.Games
 {
     public abstract class Game : IGame
     {

@@ -1,4 +1,4 @@
-﻿using HangmanGame.HangmanGame.Contracts;
+﻿using HangmanGame.HangmanGame.Engines;
 
 namespace HangmanGame.HangmanGame.Games
 {

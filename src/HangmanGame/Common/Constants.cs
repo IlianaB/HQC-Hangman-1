@@ -1,4 +1,4 @@
-﻿namespace HangmanGame.HangmanGame
+﻿namespace HangmanGame.HangmanGame.Common
 {
     public class Constants
     {

@@ -5,7 +5,7 @@ using HangmanGame.HangmanGame.Factories;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
-namespace HangmanGame.HangmanGame
+namespace HangmanGame.HangmanGame.Engines
 {
     public class WPFEngine : GameEngine
     {

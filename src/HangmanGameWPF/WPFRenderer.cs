@@ -2,7 +2,7 @@
 using System.Text;
 using System.Windows;
 
-using HangmanGame.HangmanGame;
+using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 

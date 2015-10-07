@@ -1,6 +1,7 @@
 ﻿using HangmanGame.HangmanGame.Common;
+using HangmanGame.HangmanGame.Contracts;
 
-namespace HangmanGame.HangmanGame.Contracts
+namespace HangmanGame.HangmanGame.Engines
 {
     public interface IEngine
     {

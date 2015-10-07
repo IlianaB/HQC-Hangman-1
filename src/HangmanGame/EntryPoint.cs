@@ -1,4 +1,6 @@
-﻿namespace HangmanGame.HangmanGame
+﻿using HangmanGame.HangmanGame.Games;
+
+namespace HangmanGame.HangmanGame
 {
     public class EntryPoint
     {

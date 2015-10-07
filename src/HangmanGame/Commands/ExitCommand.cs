@@ -1,5 +1,6 @@
 ﻿using System;
 using HangmanGame.HangmanGame.Commands.Common;
+using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.Contracts;
 
 namespace HangmanGame.HangmanGame.Commands
