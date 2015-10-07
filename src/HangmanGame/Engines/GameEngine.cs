@@ -45,29 +45,32 @@ namespace HangmanGame.HangmanGame.Engines
             this.Play();
         }
 
-        public void FinishGame()
+        public void EndWonGame()
         {
-            if (!this.CheckGameOverCondition())
+            if (this.Player.HasUsedHelp)
             {
-                if (this.Player.HasUsedHelp)
-                {
-                    string message = string.Format(Constants.WinWithHelpMessage, this.Player.Mistakes);
-                    this.Renderer.ShowMessage(message);
-                }
-                else
-                {
-                    bool playerCanEnterHighScores = true;
+                string message = string.Format(Constants.WinWithHelpMessage, this.Player.Mistakes);
+                this.Renderer.ShowMessage(message);
+            }
+            else
+            {
+                bool playerCanEnterHighScores = true;
 
-                    if (!this.ScoreBoardService.IsEmpty() && this.ScoreBoardService.IsFull(Constants.NumberOfScoresInScoreBoard))
-                    {
-                        var worstScore = this.ScoreBoardService.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
-                        playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
-                    }
-
-                    this.ProcessCurrentPlayerResult(playerCanEnterHighScores);
+                if (!this.ScoreBoardService.IsEmpty() && this.ScoreBoardService.IsFull(Constants.NumberOfScoresInScoreBoard))
+                {
+                    var worstScore = this.ScoreBoardService.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
+                    playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
                 }
+
+                this.ProcessCurrentPlayerResult(playerCanEnterHighScores);
             }
 
+            this.ResetGame();
+        }
+
+        public void EndLostGame()
+        {
+            this.Renderer.ShowMessage(Constants.GameOverMessage);
             this.ResetGame();
         }
 
@@ -92,6 +95,18 @@ namespace HangmanGame.HangmanGame.Engines
             bool isGameOver = this.WordToGuess.Mask.All(t => t != '_');
 
             return isGameOver;
+        }
+
+        protected virtual void SetPlayerName()
+        {
+        }
+
+        protected virtual void WaitForPlayerAction()
+        {
+        }
+
+        protected virtual void SaveResult(IPersonalScore newRecord)
+        {
         }
 
         public void ReactToPlayerAction(string command)
@@ -160,19 +175,8 @@ namespace HangmanGame.HangmanGame.Engines
             }
 
             this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
+
             this.WaitForPlayerAction();
-        }
-
-        protected virtual void SetPlayerName()
-        {
-        }
-
-        protected virtual void WaitForPlayerAction()
-        {
-        }
-
-        protected virtual void SaveResult(IPersonalScore newRecord)
-        {
         }
     }
 }

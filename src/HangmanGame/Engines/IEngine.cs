@@ -9,7 +9,9 @@ namespace HangmanGame.HangmanGame.Engines
 
         void ResetGame();
 
-        void FinishGame();
+        void EndWonGame();
+
+        void EndLostGame();
 
         void ReactToPlayerAction(string command);
 

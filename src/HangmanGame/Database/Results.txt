@@ -15,3 +15,9 @@ test - 3
 test - 0
 Arr - 3
 Arr - 1
+okrt - 3
+mt - 4
+mt - 0
+srw - 2
+srw - 0
+srw - 0

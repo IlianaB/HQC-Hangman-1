@@ -27,13 +27,12 @@ namespace HangmanGame.HangmanGame.Engines
 
                 if (isGameOver)
                 {
-                    this.Renderer.ShowMessage(Constants.GameOverMessage);
-                    this.FinishGame();
+                    this.EndLostGame();
                 }
 
                 if (isWordGuessed)
                 {
-                    this.FinishGame();
+                    this.EndWonGame();
                 }
 
                 this.Renderer.ShowMessage(Constants.EnterGuessMessage);

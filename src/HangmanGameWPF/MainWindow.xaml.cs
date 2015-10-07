@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.Engines;
 using HangmanGame.HangmanGame.Games;
 
@@ -45,13 +44,12 @@ namespace HangmanGameWPF
 
             if (isGameOver)
             {
-                this.engine.Renderer.ShowMessage(Constants.GameOverMessage);
-                this.engine.FinishGame();
+                this.engine.EndLostGame();
             }
 
             if (isWordGuessed)
             {
-                this.engine.FinishGame();
+                this.engine.EndWonGame();
             }
         }
     }
