@@ -21,6 +21,7 @@
         public const string FilePathConsoleGame = @"../../../src/HangmanGame/Database/Results.txt";
         public const string FilePathWPFGame = @"../../../HangmanGame/Database/Results.txt";
         public const int NumberOfScoresInScoreBoard = 10;
+        public const int MaxNumberOfPlayerMistakes = 7;
         public const char WordMaskChar = '_';
     }
 }

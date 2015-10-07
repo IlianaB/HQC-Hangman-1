@@ -82,7 +82,7 @@ namespace HangmanGame.HangmanGame.Engines
 
         public bool CheckGameOverCondition()
         {
-            if (this.Player.Mistakes >= 7)
+            if (this.Player.Mistakes >= Constants.MaxNumberOfPlayerMistakes)
             {
                 return true;
             }
@@ -92,7 +92,7 @@ namespace HangmanGame.HangmanGame.Engines
 
         public bool CheckWinningCondition()
         {
-            bool isGameOver = this.WordToGuess.Mask.All(t => t != '_');
+            bool isGameOver = this.WordToGuess.Mask.All(t => t != Constants.WordMaskChar);
 
             return isGameOver;
         }
