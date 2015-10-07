@@ -9,8 +9,8 @@
 
         <Grid x:Name="InputGrid">
             <Label x:Name="TextPlayerName" Content="Enter your name:" HorizontalAlignment="Center" Margin="0,50,0,0" Foreground="#087815" Height="35"  Width="250" VerticalAlignment="Top" FontFamily="Broadway" FontSize="20" Background="{x:Null}"/>
-            <TextBox x:Name="PlayerName" HorizontalAlignment="center" Margin="0,-160,0,0" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="250" TextAlignment="Center"/>
-            <Button Background="#087815" Content="Start" HorizontalAlignment="Center" Height="50" Margin="0,130,0,0" VerticalAlignment="Top" Width="250" Click="StartGame"/>
+            <TextBox x:Name="PlayerName" HorizontalAlignment="center" Margin="0,-160,0,0" Height="30" TextWrapping="Wrap" Foreground="#087815" VerticalAlignment="Center" Width="250" FontFamily="Broadway" FontSize="18" TextAlignment="Center"/>
+            <Button Background="#087815" Content="Start" HorizontalAlignment="Center" Height="50" Margin="0,130,0,0" VerticalAlignment="Top" Width="250" FontFamily="Broadway" FontSize="20" Click="StartGame"/>
         </Grid>
 
         <Grid x:Name="Menu">
