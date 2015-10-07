@@ -62,7 +62,32 @@ namespace HangmanGameWPF
 
         public override void DrawHangman(int mistakes)
         {
-            //Not Implemented
+            switch (mistakes)
+            {
+                case 1:
+                    this.MainWindow.VerticalLine.Visibility = Visibility.Visible;
+                    this.MainWindow.HorizontalLine.Visibility = Visibility.Visible;
+                    this.MainWindow.Rope.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    this.MainWindow.Head.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    this.MainWindow.Body.Visibility = Visibility.Visible;
+                    break;
+                case 4:
+                    this.MainWindow.LeftHand.Visibility = Visibility.Visible;
+                    break;
+                case 5:
+                    this.MainWindow.RightHand.Visibility = Visibility.Visible;
+                    break;
+                case 6:
+                    this.MainWindow.LeftLeg.Visibility = Visibility.Visible;
+                    break;
+                case 7:
+                    this.MainWindow.RightLeg.Visibility = Visibility.Visible;
+                    break;
+            }
         }
     }
 }

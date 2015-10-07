@@ -16,6 +16,20 @@ namespace HangmanGameWPF
             this.gridPlayField.Visibility = Visibility.Hidden;
             this.Results.Visibility = Visibility.Hidden;
             this.Menu.Visibility = Visibility.Hidden;
+            this.HideHangman();
+        }
+
+        private void HideHangman()
+        {
+            this.HorizontalLine.Visibility = Visibility.Hidden;
+            this.VerticalLine.Visibility = Visibility.Hidden;
+            this.Rope.Visibility = Visibility.Hidden;
+            this.Head.Visibility = Visibility.Hidden;
+            this.Body.Visibility = Visibility.Hidden;
+            this.LeftHand.Visibility = Visibility.Hidden;
+            this.RightHand.Visibility = Visibility.Hidden;
+            this.LeftLeg.Visibility = Visibility.Hidden;
+            this.RightLeg.Visibility = Visibility.Hidden;
         }
 
         private void StartGame(object sender, RoutedEventArgs e)
@@ -44,11 +58,13 @@ namespace HangmanGameWPF
 
             if (isGameOver)
             {
+                this.HideHangman();
                 this.engine.EndLostGame();
             }
 
             if (isWordGuessed)
             {
+                this.HideHangman();
                 this.engine.EndWonGame();
             }
         }
