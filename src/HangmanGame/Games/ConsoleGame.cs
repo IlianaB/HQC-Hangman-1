@@ -18,9 +18,9 @@ namespace HangmanGame.HangmanGame.Games
             IRenderer renderer = new ConsoleRenderer();
             IInputProvider inputProvider = new ConsoleInputProvider();
             IPlayer player = new Player(false);
-            WordProvider wordProvider = new WordProvider();
+            IWordProvider wordProvider = new WordProvider();
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
-            CommandFactory commandFactory = new CommandFactory();
+            ICommandFactory commandFactory = new CommandFactory();
             IEngine gameEngine = new ConsoleEngine(scoreBoard, scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
             DataFileManager.SingletonInstance().RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
 

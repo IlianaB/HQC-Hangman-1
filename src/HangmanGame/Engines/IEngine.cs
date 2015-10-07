@@ -1,5 +1,4 @@
-﻿using HangmanGame.HangmanGame.Common;
-using HangmanGame.HangmanGame.Contracts;
+﻿using HangmanGame.HangmanGame.Contracts;
 
 namespace HangmanGame.HangmanGame.Engines
 {
@@ -21,9 +20,6 @@ namespace HangmanGame.HangmanGame.Engines
 
         IRenderer Renderer { get; }
 
-        GuessWord WordToGuess { get; }
-
         IPlayer Player { get; }
-
     }
 }

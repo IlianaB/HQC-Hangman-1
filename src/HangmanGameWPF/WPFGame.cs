@@ -18,9 +18,9 @@ namespace HangmanGameWPF
             ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
             IRenderer renderer = new WPFRenderer();
             IPlayer player = new Player(false);
-            WordProvider wordProvider = new WordProvider();
+            IWordProvider wordProvider = new WordProvider();
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
-            CommandFactory commandFactory = new CommandFactory();
+            ICommandFactory commandFactory = new CommandFactory();
             IEngine gameEngine = new WPFEngine(scoreBoard, scoreBoardService, renderer, player, randomWordGenerator, commandFactory);
             DataFileManager.SingletonInstance().RestoreResults(scoreBoardService, Constants.FilePathWPFGame);
 
