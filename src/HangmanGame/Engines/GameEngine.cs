@@ -57,6 +57,10 @@ namespace HangmanGame.HangmanGame.Engines
                 {
                     var worstScore = this.ScoreBoardService.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
                     playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
+                    if (playerCanEnterHighScores)
+                    {
+                        this.ScoreBoardService.RemoveLastRecords(Constants.NumberOfScoresInScoreBoard);
+                    }
                 }
 
                 this.ProcessCurrentPlayerResult(playerCanEnterHighScores);
