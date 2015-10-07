@@ -10,7 +10,7 @@ namespace HangmanGame.HangmanGame.Engines
     public class ConsoleEngine : GameEngine
     {
         public ConsoleEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer,
-                            IPlayer player, WordGenerator wordGenerator, CommandFactory commandFactory, IInputProvider inputProvider)
+                            IPlayer player, WordGenerator wordGenerator, ICommandFactory commandFactory, IInputProvider inputProvider)
             : base(scoreBoard, scoreBoardService, renderer, player, wordGenerator, commandFactory)
         {
             this.InputProvider = inputProvider;

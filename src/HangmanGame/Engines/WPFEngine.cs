@@ -10,7 +10,7 @@ namespace HangmanGame.HangmanGame.Engines
     public class WPFEngine : GameEngine
     {
         public WPFEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer,
-                        IPlayer player, WordGenerator wordGenerator, CommandFactory commandFactory)
+                        IPlayer player, WordGenerator wordGenerator, ICommandFactory commandFactory)
             : base(scoreBoard, scoreBoardService, renderer, player, wordGenerator, commandFactory)
         {
         }

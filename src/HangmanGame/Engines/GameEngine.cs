@@ -12,7 +12,7 @@ namespace HangmanGame.HangmanGame.Engines
     public abstract class GameEngine : ICommandExecutable, IEngine
     {
         public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer,
-                        IPlayer player, WordGenerator wordGenerator, CommandFactory commandFactory)
+                        IPlayer player, WordGenerator wordGenerator, ICommandFactory commandFactory)
         {
             this.ScoreBoard = scoreBoard;
             this.ScoreBoardService = scoreBoardService;
@@ -32,7 +32,7 @@ namespace HangmanGame.HangmanGame.Engines
 
         public WordGenerator WordGenerator { get; private set; }
 
-        public CommandFactory CommandFactory { get; private set; }
+        public ICommandFactory CommandFactory { get; private set; }
 
         public GuessWord WordToGuess { get; private set; }
 
@@ -117,7 +117,7 @@ namespace HangmanGame.HangmanGame.Engines
             }
             else
             {
-                ICommand currentCommand = this.CommandFactory.GetCommand(this, command);
+                ICommand currentCommand = this.CommandFactory.GetGommand(this, command);
                 this.ExecuteCommand(currentCommand);
             }
         }

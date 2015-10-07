@@ -60,6 +60,7 @@
     <Compile Include="HangmanGame\Common\WordGenerator.cs" />
     <Compile Include="HangmanGame\Common\WordProvider.cs" />
     <Compile Include="HangmanGame\Engines\ConsoleEngine.cs" />
+    <Compile Include="HangmanGame\Factories\ICommandFactory.cs" />
     <Compile Include="HangmanGame\Games\ConsoleGame.cs" />
     <Compile Include="HangmanGame\Console\ConsoleInputProvider.cs" />
     <Compile Include="HangmanGame\Console\ConsoleRenderer.cs" />

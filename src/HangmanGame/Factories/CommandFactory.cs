@@ -4,9 +4,9 @@ using HangmanGame.HangmanGame.Contracts;
 
 namespace HangmanGame.HangmanGame.Factories
 {
-    public class CommandFactory
+    public class CommandFactory : ICommandFactory
     {
-        public Command GetCommand(ICommandExecutable engine, string command)
+        public ICommand GetGommand(ICommandExecutable engine, string command)
         {
             switch (command)
             {

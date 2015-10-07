@@ -29,7 +29,7 @@ namespace HangmanGame.HangmanGame.Menu
             while (true)
             {
                 ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-                Command command = null;
+                ICommand command = null;
 
                 switch (pressedKey.KeyChar)
                 {
@@ -43,14 +43,14 @@ namespace HangmanGame.HangmanGame.Menu
                         break;
                     case '3':
                         Console.Clear();
-                        command = commandFactory.GetCommand(engine, "top");
+                        command = commandFactory.GetGommand(engine, "top");
                         break;
                     case '4':
                         Console.Clear();
-                        command = commandFactory.GetCommand(engine, "exit");
+                        command = commandFactory.GetGommand(engine, "exit");
                         break;
                     default:
-                        command = commandFactory.GetCommand(engine, null);
+                        command = commandFactory.GetGommand(engine, null);
                         break;
                 }
 

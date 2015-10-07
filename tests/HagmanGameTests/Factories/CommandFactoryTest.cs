@@ -39,7 +39,7 @@ namespace HagmanGameTests.Factories
         [TestCase("asdf", typeof(WrongCommand), "WrongCommand")]
         public void TestCommands(string command, Type type, string name)
         {
-            var result = this.commandFactory.GetCommand(this.engine, command);
+            var result = this.commandFactory.GetGommand(this.engine, command);
             Assert.IsInstanceOf(type, result, name + " created correctly");
         }
     }
