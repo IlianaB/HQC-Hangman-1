@@ -4,6 +4,10 @@ namespace HangmanGame.HangmanGame.Engines
 {
     public interface IEngine
     {
+        IRenderer Renderer { get; }
+
+        IPlayer Player { get; }
+
         void StartGame();
 
         void ResetGame();
@@ -17,9 +21,5 @@ namespace HangmanGame.HangmanGame.Engines
         bool CheckWinningCondition();
 
         bool CheckGameOverCondition();
-
-        IRenderer Renderer { get; }
-
-        IPlayer Player { get; }
     }
 }

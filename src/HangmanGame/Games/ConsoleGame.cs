@@ -26,7 +26,9 @@ namespace HangmanGame.HangmanGame.Games
             DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
 
             this.Engine = gameEngine;
+
             //Menu.Logo.LogoDraw();
+
             //Menu.InitialMenu.DisplayInitialMenu(gameEngine, commandFactory);
         }
     }

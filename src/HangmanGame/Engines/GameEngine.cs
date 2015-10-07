@@ -11,7 +11,7 @@ namespace HangmanGame.HangmanGame.Engines
 {
     public abstract class GameEngine : ICommandExecutable, IEngine
     {
-        public GameEngine(IScoreBoardService scoreBoardService, IRenderer renderer,
+        protected GameEngine(IScoreBoardService scoreBoardService, IRenderer renderer,
                         IPlayer player, WordGenerator wordGenerator, ICommandFactory commandFactory)
         {
             this.ScoreBoardService = scoreBoardService;
@@ -32,7 +32,6 @@ namespace HangmanGame.HangmanGame.Engines
         public ICommandFactory CommandFactory { get; private set; }
 
         public GuessWord WordToGuess { get; private set; }
-
 
         public void StartGame()
         {
@@ -98,18 +97,6 @@ namespace HangmanGame.HangmanGame.Engines
             return isGameOver;
         }
 
-        protected virtual void SetPlayerName()
-        {
-        }
-
-        protected virtual void WaitForPlayerAction()
-        {
-        }
-
-        protected virtual void SaveResult(IPersonalScore newRecord)
-        {
-        }
-
         public void ReactToPlayerAction(string command)
         {
             if (command.Length == 1)
@@ -121,6 +108,18 @@ namespace HangmanGame.HangmanGame.Engines
                 ICommand currentCommand = this.CommandFactory.GetGommand(this, command);
                 this.ExecuteCommand(currentCommand);
             }
+        }
+
+        protected virtual void SetPlayerName()
+        {
+        }
+
+        protected virtual void WaitForPlayerAction()
+        {
+        }
+
+        protected virtual void SaveResult(IPersonalScore newRecord)
+        {
         }
 
         private void ExecuteLetterGuess(char letter)

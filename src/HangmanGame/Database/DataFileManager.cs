@@ -9,22 +9,21 @@ namespace HangmanGame.HangmanGame.Database
 {
     public sealed class DataFileManager : DataManager, IDataManager
     {
-
-        private static readonly Lazy<DataFileManager> singletonInstance = 
+        private static readonly Lazy<DataFileManager> SingletonDataFileManager = 
             new Lazy<DataFileManager>(() => new DataFileManager());
+
+        private DataFileManager()
+        {
+        }
 
         public static DataFileManager SingletonInstance
         {
             get
             {
-                return singletonInstance.Value;
+                return SingletonDataFileManager.Value;
             }
         }
-
-        private DataFileManager()
-        {
-        }
-        
+       
         public override void SaveResult(IPersonalScore score, string filePath)
         {
             using (StreamWriter writer = new StreamWriter(filePath, true))

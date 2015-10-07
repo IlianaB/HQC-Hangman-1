@@ -6,7 +6,7 @@ namespace HangmanGame.HangmanGame.Formatters
     {
         public string Format(IPersonalScore record)
         {
-            string playerName = CapitalizeAllLetters(record.Name);
+            string playerName = this.CapitalizeAllLetters(record.Name);
             string result = string.Format("{0} ---> {1} MISTAKE(S)!", playerName, record.Score);
 
             return result;
