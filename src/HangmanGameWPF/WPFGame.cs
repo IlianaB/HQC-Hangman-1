@@ -16,13 +16,13 @@ namespace HangmanGameWPF
         public override void Initialize()
         {
             IScoreBoard scoreBoard = new ScoreBoard();
-            ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
+            IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
             IRenderer renderer = new WPFRenderer(new AllCapsFormatter());
             IPlayer player = new Player(false);
             IWordProvider wordProvider = new WordProvider();
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();
-            IEngine gameEngine = new WPFEngine(scoreBoard, scoreBoardService, renderer, player, randomWordGenerator, commandFactory);
+            IEngine gameEngine = new WPFEngine(scoreBoardService, renderer, player, randomWordGenerator, commandFactory);
             DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathWPFGame);
 
             this.Engine = gameEngine;

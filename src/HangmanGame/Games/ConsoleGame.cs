@@ -15,14 +15,14 @@ namespace HangmanGame.HangmanGame.Games
         public override void Initialize()
         {
             IScoreBoard scoreBoard = new ScoreBoard();
-            ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
+            IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
             IRenderer renderer = new ConsoleRenderer(new CapitalizeFormatter());
             IInputProvider inputProvider = new ConsoleInputProvider();
             IPlayer player = new Player(false);
             IWordProvider wordProvider = new WordProvider();
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();
-            IEngine gameEngine = new ConsoleEngine(scoreBoard, scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
+            IEngine gameEngine = new ConsoleEngine(scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
             DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
 
             this.Engine = gameEngine;

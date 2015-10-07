@@ -2,16 +2,15 @@
 using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
-using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.Engines
 {
     public class ConsoleEngine : GameEngine
     {
-        public ConsoleEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer,
+        public ConsoleEngine(IScoreBoardService scoreBoardService, IRenderer renderer,
                             IPlayer player, WordGenerator wordGenerator, ICommandFactory commandFactory, IInputProvider inputProvider)
-            : base(scoreBoard, scoreBoardService, renderer, player, wordGenerator, commandFactory)
+            : base(scoreBoardService, renderer, player, wordGenerator, commandFactory)
         {
             this.InputProvider = inputProvider;
         }

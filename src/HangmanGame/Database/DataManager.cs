@@ -7,6 +7,6 @@ namespace HangmanGame.HangmanGame.Database
     {
         public abstract void SaveResult(IPersonalScore score, string filePath);
 
-        public abstract void RestoreResults(ScoreBoardService scoreBoardService, string filePath);
+        public abstract void RestoreResults(IScoreBoardService scoreBoardService, string filePath);
     }
 }

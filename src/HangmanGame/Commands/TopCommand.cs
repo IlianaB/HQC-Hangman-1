@@ -13,7 +13,7 @@ namespace HangmanGame.HangmanGame.Commands
         public override void Execute()
         {
             this.Engine.ScoreBoardService.SortScoreBoard();
-            this.Engine.Renderer.ShowScoreBoardResults(this.Engine.ScoreBoardService.IsEmpty(), this.Engine.ScoreBoard.Records);
+            this.Engine.Renderer.ShowScoreBoardResults(this.Engine.ScoreBoardService.IsEmpty(), this.Engine.ScoreBoardService.GetAllRecords());
         }
     }
 }

@@ -11,10 +11,9 @@ namespace HangmanGame.HangmanGame.Engines
 {
     public abstract class GameEngine : ICommandExecutable, IEngine
     {
-        public GameEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer,
+        public GameEngine(IScoreBoardService scoreBoardService, IRenderer renderer,
                         IPlayer player, WordGenerator wordGenerator, ICommandFactory commandFactory)
         {
-            this.ScoreBoard = scoreBoard;
             this.ScoreBoardService = scoreBoardService;
             this.Renderer = renderer;
             this.Player = player;
@@ -22,9 +21,7 @@ namespace HangmanGame.HangmanGame.Engines
             this.CommandFactory = commandFactory;
         }
 
-        public IScoreBoard ScoreBoard { get; private set; }
-
-        public ScoreBoardService ScoreBoardService { get; private set; }
+        public IScoreBoardService ScoreBoardService { get; private set; }
 
         public IRenderer Renderer { get; private set; }
 
@@ -158,7 +155,7 @@ namespace HangmanGame.HangmanGame.Engines
 
                 this.ScoreBoardService.AddNewScore(newRecord);
                 this.ScoreBoardService.SortScoreBoard();
-                this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoard.Records);
+                this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetAllRecords());
             }
             else
             {

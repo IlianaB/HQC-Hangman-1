@@ -24,6 +24,11 @@ namespace HangmanGame.HangmanGame.ScoreBoardServices
             this.currentScoreBoard.Records = this.currentScoreBoard.Records.OrderBy(ps => ps.Score).ToList();
         }
 
+        public IList<IPersonalScore> GetAllRecords()
+        {
+            return new List<IPersonalScore>(this.currentScoreBoard.Records);
+        }
+
         public int GetWorstScoreEntry(int position)
         {
             IPersonalScore lastScore;

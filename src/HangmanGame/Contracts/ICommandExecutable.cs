@@ -1,5 +1,4 @@
 ﻿using HangmanGame.HangmanGame.Common;
-using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.Contracts
@@ -10,9 +9,7 @@ namespace HangmanGame.HangmanGame.Contracts
 
         GuessWord WordToGuess { get; }
 
-        IScoreBoard ScoreBoard { get; }
-
-        ScoreBoardService ScoreBoardService { get; }
+        IScoreBoardService ScoreBoardService { get; }
 
         IPlayer Player { get; }
 

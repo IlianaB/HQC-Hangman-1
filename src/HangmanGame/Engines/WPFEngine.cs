@@ -2,16 +2,15 @@
 using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Factories;
-using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.Engines
 {
     public class WPFEngine : GameEngine
     {
-        public WPFEngine(IScoreBoard scoreBoard, ScoreBoardService scoreBoardService, IRenderer renderer,
+        public WPFEngine(IScoreBoardService scoreBoardService, IRenderer renderer,
                         IPlayer player, WordGenerator wordGenerator, ICommandFactory commandFactory)
-            : base(scoreBoard, scoreBoardService, renderer, player, wordGenerator, commandFactory)
+            : base(scoreBoardService, renderer, player, wordGenerator, commandFactory)
         {
         }
 

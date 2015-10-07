@@ -26,3 +26,4 @@ testtest - 1
 testtest - 0
 pos - 0
 asx - 2
+as - 0
