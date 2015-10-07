@@ -1,5 +1,6 @@
 ﻿using HangmanGame.HangmanGame.Common;
 using HangmanGame.HangmanGame.Contracts;
+using HangmanGame.HangmanGame.Formatters;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.Console
@@ -9,6 +10,11 @@ namespace HangmanGame.HangmanGame.Console
 
     public class ConsoleRenderer : Renderer, IRenderer
     {
+        public ConsoleRenderer(IResultFormatter formatter)
+            : base(formatter)
+        {
+        }
+
         public override void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records)
         {
             if (isEmptyScoreBoard)
@@ -22,7 +28,7 @@ namespace HangmanGame.HangmanGame.Console
                 int position = 1;
                 foreach (var record in records)
                 {
-                    Console.WriteLine(Constants.ResultsInformationMessage, position, record.Name, record.Score);
+                    Console.WriteLine(position + ". " + this.Formatter.Format(record));
                     position++;
                 }
             }

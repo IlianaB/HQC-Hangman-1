@@ -4,6 +4,7 @@ using HangmanGame.HangmanGame.Contracts;
 using HangmanGame.HangmanGame.Database;
 using HangmanGame.HangmanGame.Engines;
 using HangmanGame.HangmanGame.Factories;
+using HangmanGame.HangmanGame.Formatters;
 using HangmanGame.HangmanGame.Games;
 using HangmanGame.HangmanGame.ScoreBoardServices;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
@@ -16,7 +17,7 @@ namespace HangmanGameWPF
         {
             IScoreBoard scoreBoard = new ScoreBoard();
             ScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
-            IRenderer renderer = new WPFRenderer();
+            IRenderer renderer = new WPFRenderer(new AllCapsFormatter());
             IPlayer player = new Player(false);
             IWordProvider wordProvider = new WordProvider();
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);

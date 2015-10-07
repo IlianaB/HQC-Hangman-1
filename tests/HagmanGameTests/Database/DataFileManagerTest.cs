@@ -17,7 +17,7 @@ namespace HagmanGameTests.Database
         public void Init()
         {
             var mockedPersonalScore = new Mock<IPersonalScore>();
-            this.dataFileManager = DataFileManager.SingletonInstance();
+            this.dataFileManager = DataFileManager.SingletonInstance;
             this.personalScore = mockedPersonalScore.Object;
         }
 

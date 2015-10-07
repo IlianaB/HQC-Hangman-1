@@ -24,3 +24,5 @@ srw - 0
 Fd - 1
 testtest - 1
 testtest - 0
+pos - 0
+asx - 2

@@ -24,7 +24,7 @@
             <Grid Background="#A1ED66">
                 <Label x:Name="Messages" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="490" Height="30" FontFamily="Verdana" FontSize="16"/>
                 <Label x:Name="SecretWord" Content="" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="490" Height="30" FontFamily="Verdana" FontSize="18"/>
-                <Label x:Name="Results" Content="" HorizontalAlignment="Left" Margin="450,55,0,0" VerticalAlignment="Top" Width="240" Height="300" FontFamily="Verdana" FontSize="15"/>
+                <Label x:Name="Results" Content="" HorizontalAlignment="Left" Margin="440,55,0,0" VerticalAlignment="Top" Width="240" Height="300" FontFamily="Verdana" FontSize="13"/>
                 <Grid HorizontalAlignment="Left" Height="230" Margin="10,116,0,0" VerticalAlignment="Top" Width="730">
                     <Button x:Name="buttonQ" Content="Q" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="35" Height="30" Background="{x:Null}" FontFamily="Broadway" FontSize="18.667" Click="ButtonKeyBoard_Click"/>
                     <Button x:Name="buttonW" Content="W" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="35" Height="30" Background="{x:Null}" FontFamily="Broadway" FontSize="18.667" Click="ButtonKeyBoard_Click"/>

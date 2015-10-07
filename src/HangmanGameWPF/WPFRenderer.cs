@@ -3,17 +3,23 @@ using System.Text;
 using System.Windows;
 
 using HangmanGame.HangmanGame.Common;
+using HangmanGame.HangmanGame.Console;
 using HangmanGame.HangmanGame.Contracts;
+using HangmanGame.HangmanGame.Formatters;
 using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGameWPF
 {
-    public class WPFRenderer : IRenderer
+    public class WPFRenderer : Renderer, IRenderer
     {
+        public WPFRenderer(IResultFormatter formatter)
+            : base(formatter)
+        {
+        }
 
         public MainWindow MainWindow { get; set; }
 
-        public void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records)
+        public override void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records)
         {
             this.MainWindow.Results.Visibility = Visibility.Visible;
 
@@ -30,7 +36,7 @@ namespace HangmanGameWPF
                 int position = 1;
                 foreach (var record in records)
                 {
-                    string recordInfo = string.Format(Constants.ResultsInformationMessage, position, record.Name, record.Score);
+                    string recordInfo = position + ". " + this.Formatter.Format(record);
                     result.AppendLine(recordInfo);
                     position++;
                 }
@@ -39,17 +45,17 @@ namespace HangmanGameWPF
             this.MainWindow.Results.Content = result.ToString();
         }
 
-        public void ShowCurrentProgress(char[] guessedLetters)
+        public override void ShowCurrentProgress(char[] guessedLetters)
         {
             this.MainWindow.SecretWord.Content = string.Join("  ", guessedLetters);
         }
 
-        public void ShowMessage(string message)
+        public override void ShowMessage(string message)
         {
             this.MainWindow.Messages.Content = message;
         }
 
-        public void DrawHangman(int mistakes)
+        public override void DrawHangman(int mistakes)
         {
             //Not Implemented
         }
