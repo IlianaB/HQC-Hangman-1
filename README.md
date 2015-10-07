@@ -1,110 +1,313 @@
-High-Quality Programming Code – Team Projects
-=============================================
-[![Build Status](https://travis-ci.org/IlianaB/HQC-Hangman-1.svg?branch=master)](https://travis-ci.org/IlianaB/HQC-Hangman-1)
+#High-Quality Programming Code – Team Projects
 
-Overview
---------
+## 1. Redesign of the initial project structure
+### 1.1. Rename project *besenica* to *HangmanGame*
+### 1.2. Extract each class in a separate file with a good name: GameEngine.cs, ConsoleRenderer.cs, GameStrategy.cs, ScoreBoard.cs
 
-The project consists of one or more **source code files**, description and is provided here: <https://github.com/TelerikAcademy/High-Quality-Code/tree/master/Teamwork>.
+## 2. Code Formatting
+### 2.1. Formatting Blocks
 
-The name of your team is the same as the project you will start from.
+     if (count == 0) { mistackes++; }
 
-You need to refactor the project in order to **improve its quality** following the best practices learned in the course “[High-Quality Programming Code](http://telerikacademy.com/Courses/Courses/Details/244)” and to **implement unit tests** that ensure that the code has correct behavior.
+changed to:
 
-Detailed Assignment Description
--------------------------------
+            if (count == 0)
+            {
+                mistackes++;
+            }
 
-In order to ensure the high quality of the assigned project you need to fulfill the following tasks:
+### 2.2. Empty line for separation of methods, properties, etc. and methods, if statements, loop identation (single tab in the body of the method, statement, loop and so on)
+    public int Mistackes
+    {
+        get{return mistackes;}
+    }
+    public bool HelpUsed 
+    {
+        get { return helpUsed; }
+    }
+    public char RevealALetter() 
+    {
+        char toReturnt = char.MinValue;
+        for (int i = 0; i < guessedLetters.Length; i++)
+        {
+            if (guessedLetters[i] == '_') 
+            {
+                guessedLetters[i] = wordToGuess[i];
+                toReturnt = wordToGuess[i];
+                helpUsed = true;
+                break;
+            }
+        }
+        return toReturnt;
+    }
 
-1.  **Perform refactoring of the entire project** (its directory structure, project files, source code, classes, interfaces, methods, properties, fields and other class members and program members and its programming logic) in order to **make the code “high quality”** according to the best practices introduced in the course “[High-Quality Programming Code](http://telerikacademy.com/Courses/Courses/Details/244)”. The obtained **refactored code** should conform to the following characteristics:
-    -   **Easy to read, understand and maintain** – the code should be well structured; should be easy to read and understand, easy to modify and maintain; should follow the concept of self-documenting code; should use good names for classes, methods, variables, and other identifiers; should be consistently formatted following the best formatting practices; should have strong cohesion at all levels (modules, classes, methods, etc.); should have loose coupling between modules, classes, methods, etc.; should follow the best practices of organizing programming logic at all levels (classes, methods, loops, conditional statements and other statements); should follow the best practices for working with variables, data, expressions, constants, control structures, exceptions, comments, etc.
-    -   All **default StyleCop rules should pass** without any warning.
-    -   **Correct behavior** – the project should fulfill correctly the requirements and to behave correctly in all possible use cases. This means that all bugs or other problems in the project (e.g. performance or usability issues) should be fixed and any unfinished or missing functionality should be completed. The code should be very well tested with properly designed unit tests.
-2.  **Implement design patterns** – redesign the project to fulfil 9 of the [Software Design patterns](http://en.wikipedia.org/wiki/Software_design_pattern)
-    -   **Structural patterns** – implement **at least 3** of the structural design patterns (adapter, aggregate, bridge, composite, decorator, extensibility, façade, etc…)
-    -   **Behavior patterns** – implement **at least 3** of the behavioral design patterns (chain of responsibility, command, interpreter, iterator, mediator, observer, etc…)
-    -   **Creational patterns** – implement **at least 3** of the creational design patterns (abstract factory, builder, factory method, singleton, prototype, etc…)
-3.  **Follow the SOLID and DRY principles** – Single responsibility, Open/close, Liskov substitution, Interface segregation, Dependency inversion, Don't repeat yourself
-    -   Redesign the project to fulfil the [SOLID](http://en.wikipedia.org/wiki/Solid) and [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself) principles – each principle should be implemented at least once
-4.  **Design and implement unit tests** covering the entire project functionality. To ensure the project works correctly according to the requirements and behaves correctly in all possible use cases, design and implement unit tests that cover all use cases and the entire program logic. If needed, first redesign the program logic to **make the code testable**. Test the normal expected behavior (correct data) and possible expected failures (incorrect data). Put special attention to the border cases.
-	-	The code coverage of the unit tests should be at least 90%.
-	-	Use unit testing framework of your choice (e.g. Visual Studio Team Test, NUnit, MbUnit or other).
-    -   At least 10 of your tests should use **mocking** (Moq, JustMock or other).
-5.  Documentation and comments
-    -   **Document the refactorings** you have performed in order to improve the quality of the project. Use English language and follow the sample (see below). The documentation must be in `.md` (GitHub Markdown) format.
-    -   Document all public members and classes using **XML documentation** within the code and generate **CHM documentation**.
-    -   Add **code comments** where appropriate
-6.	**Add new functionalities** to the game. The more functionalities you add the more points you will get.
-	-	Follow all principles and unit test you new game functionalities.
+changed to:
 
-Deliverables
-------------
+            public int Mistackes
+            {
+                get
+                {
+                    return this.Mistackes;
+                }
+            }
 
-1.  The **original source code** (project files, .cs files) without executables (in folder `/before/`).
-2.  The **refactored source code** (project files, .cs files) without executables (in folder `/src/`).
-3.  The **unit tests** – source code (project files, .cs files) without executables (in folder `/tests/`).
-4.  The **refactoring documentation**. (`README.md` file)
+            public bool HelpUsed
+            {
+                get
+                {
+                    return this.HelpUsed;
+                }
+            }
 
-Team Work Requirements
-----------------------
+            public char RevealALetter(char[] guessedLetters, string wordToGuess)
+            {
+                char toReturnt = char.MinValue;
 
--   Obligatory use **Git** as source code repository and **GitHub** (<http://github.com>) as project hosting and team collaboration environment. SVN or TFS are **not** allowed for this project.
-	-	Take advantage of the GitHub issues for project management
--   **Each team member** should have contributions to the project and **commits in the source control repository in 7 different days**. We acknowledge that this requirement seems a bit unnatural, but we want to track **how the team collaborates over the time** and that the **project is developed incrementally**, not in the “last minute”.
+                for (int i = 0; i < guessedLetters.Length; i++)
+                {
+                    if (guessedLetters[i] == '_')
+                    {
+                        guessedLetters[i] = wordToGuess[i];
+                        toReturnt = wordToGuess[i];
+                        bool helpUsed = true;
+                        break;
+                    }
+                }
 
-Other Requirements
-------------------
+                return toReturnt;
+            }
 
--   Every team member should send the project in the students system http://telerikacademy.com.
-	-	Pack the project deliverables in a **single ZIP archive**.
-	-	Be sure to avoid including large unused files in the archives (e.g. compilation binaries).
-	-	Your archive should be up to 8 MB.
-	-	Each team member should submit the same archive as a homework.
--   Be prepared as a team to **defend your project** in front of the course lecturers. You should be able to explain what refactorings have been performed and why. The documentation will definitely help you. Be prepared to **demonstrate how the unit tests cover the project’s functionality**. Preferably bring your own laptop to reduce the effort to setup your development environment and project workspace.
--	Be prepared to **explain the used patterns and SOLID principles**.
--   Be prepared to **show the commit logs** from the source control system to demonstrate how the project development efforts are shared between the team members and over the time.
+### 2.3. Unnecessary new lines and spaces removed
 
-Discussion Forum
-----------------
+    public bool isOver() 
+    {
+        for (int i = 0; i < guessedLetters.Length; i++)
+        {
+            if (guessedLetters[i] == '_') 
+            {
+     
+				
+				return false;
+            }
+        }
+        return true;
+    }
 
--   You can freely discuss the course projects and ask questions in the official discussion forum of the course: <https://telerikacademy.com/Forum/Category/19/c#-qpc>
+changed to:
 
-Sample Refactoring Documentation for Project “Game 15”                                                                                                                          
-------------------------------------------------------
+        public bool isOver()
+        {
+            for (int i = 0; i < guessedLetters.Length; i++)
+            {
+                if (guessedLetters[i] == '_')
+                {
+                    return false;
+                }
+            }
 
-1.  Redesigned the project structure: Team “…”
-	-   Renamed the project to `Game-15`.
-	-   Renamed the main class `Program` to `GameFifteen`.
-	-   Extracted each class in a separate file with a good name: `GameFifteen.cs`, `Board.cs`, `Point.cs`.
-	-   …
-2.  Reformatted the source code:
-	-   Removed all unneeded empty lines, e.g. in the method `PlayGame()`.
-	-   Inserted empty lines between the methods.
-	-   Split the lines containing several statements into several simple lines, e.g.:
-	
-	Before:
-	
-		if (input\[i\] != ' ') break;
-		
-	After:
+            return true;
+        }
 
-		if (input\[i\] != ' ')
-		{
-			break;
-		}
-	
-	-   Formatted the curly braces **{** and **}** according to the best practices for the C\# language.
-	-   Put **{** and **}** after all conditionals and loops (when missing).
-	-   Character casing: variables and fields made **camelCase**; types and methods made **PascalCase**.
-	-   Formatted all other elements of the source code according to the best practices introduced in the course “[High-Quality Programming Code](http://telerikacademy.com/Courses/Courses/Details/244)”.
-	-   …
-3.  Renamed variables:
-	-   In class `Fifteen`: `number` to `numberOfMoves`.
-	-   In `Main(string\[\] args)`: `g` to `gameFifteen`.
-4.  Introduced constants:
-	-   `GAME\_BOARD\_SIZE = 4`
-	-   `SCORE\_BOARD\_SIZE = 5`. 
-5.  Extracted the method `GenerateRandomGame()` from the method `Main()`.
-6.  Introduced class `ScoreBoard` and moved all related functionality in it.
-7.  Moved method `GenerateRandomNumber(int start, int end)` to separate class `RandomUtils`.
-8.  …
+### 2.4. Split the lines containing several statements into several simple lines:
+
+    if (scoreNames[scoreNames.Length - 1] != null) { worstTopScore = mistackes[scoreNames.Length - 1]; }
+
+changed to:
+
+    if (scoreNames[scoreNames.Length - 1] != null) 
+	{ 
+		worstTopScore = mistackes[scoreNames.Length - 1]; 
+	}
+
+### 2.5. Formatting reflects the logical structure of the methods:
+
+    if (playerCanEnterHighScores)
+    {
+	    int mistakes = this.Player.Mistakes;
+	    IPersonalScore newRecord = new PersonalScore(this.Player.Name, mistakes);
+	    
+	    this.SaveResult(newRecord);
+	    
+	    this.ScoreBoardService.AddNewScore(newRecord);
+	    this.ScoreBoardService.SortScoreBoard();
+	    this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetAllRecords());
+    }
+
+# 3. Naming Identifiers
+### 3.1. Use English language - file besenica.cs renamed to hangman.cs, the method *IzberiRandomWord* renamed to *ChooseRandomWord*, 
+### 3.2. Choose descriptive and meaningful names of methods, following the pattern [Verb], [Verb] + [Noun] or [Verb] + [Adjective] + [Noun] - the name *NumberOccuranceOfLetter* changed to *FindNumberOfLetterOccurences*.
+### 3.3. Choose descriptive and meaningful names of variables - the char to be return by the method RevealLetter *toReturnt* renamed to *revealedLetter*.
+### 3.4. Use PascalCase for methods and fields names and camelCase for properties and variables names - method *ReSet* renamed to *ResetGame*.
+### 3.5. Consistency of methods naming 
+
+**- StartGame(), void ResetGame(), EndWonGame(), EndLostGame() in GameEngine class** 
+
+**- ShowScoreBoardResults(), ShowCurrentProgress(), ShowMessage() in Renderer class**
+
+
+# 4. High-quality methods
+### 4.1. Assign single purpose of all methods
+### 4.2. Use methods to reduce code complexity - large methods are broken into smaller ones, so that each one solves a **specific** task:
+
+For example, the method which controlled the main game-flow:
+
+    static void Main()
+    {
+        ScoreBoard scoreBoard = new ScoreBoard();
+        besenica game = new besenica();
+        Console.WriteLine("Welcome to “Hangman” game. Please try to guess my secret word.");
+        string command = null;
+        do
+        {
+            Console.WriteLine();
+            game.PrintCurrentProgress();
+            if (game.isOver())
+            {
+                if (game.HelpUsed)
+                {
+                    Console.WriteLine("You won with {0} mistake(s) but you have cheated." +
+                        " You are not allowed to enter into the scoreboard.", game.Mistackes);
+                }
+                else
+                {
+                    if (scoreBoard.GetWorstTopScore() <= game.Mistackes)
+                    {
+                        Console.WriteLine("You won with {0} mistake(s) but you score did not enter in the scoreboard",
+                            game.Mistackes);
+                    }
+                    else
+                    {
+                        Console.Write("Please enter your name for the top scoreboard: ");
+                        string name = Console.ReadLine();
+                        scoreBoard.AddNewScore(name, game.Mistackes);
+                        scoreBoard.Print();
+                    }
+                }
+                game.ReSet();
+            }
+            else
+            {
+                Console.Write("Enter your guess: ");
+                command = Console.ReadLine();
+                command.ToLower();
+                if (command.Length == 1)
+                {
+                    int occuranses = game.NumberOccuranceOfLetter(command[0]);
+                    if (occuranses == 0)
+                    {
+                        Console.WriteLine("Sorry! There are no unrevealed letters “{0}”.", command[0]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Good job! You revealed {0} letter(s).", occuranses);
+                    }
+                }
+                else
+                {
+                    ExecuteCommand(command, scoreBoard, game);
+                }
+            }
+        } while (command != "exit");
+    }
+
+was separated mainly into 6 smaller methods:
+
+- StartGame(),
+- Play(),
+- WaitForPlayerAction(),
+- ExecutePlayerAction(string command),
+- ExecuteLetterGuess(char letter),
+- ExecuteCommand(ICommand command);
+
+And two different methods for putting the end of the game, depending on the condition (winning or loosing):
+
+- EndLostGame();
+- EndWonGame();
+
+### 4.3. Choose descriptive name for methods to improve code readability and make the code self-documenting, e.g.
+
+     public void ReactToPlayerAction(string command)
+    {
+	    if (command.Length == 1)
+	    {
+	    	this.ExecuteLetterGuess(command[0]);
+	    }
+	    else
+	    {
+		    ICommand currentCommand = this.CommandFactory.GetGommand(this, command);
+		    this.ExecuteCommand(currentCommand);
+	    }
+    }
+
+### 4.4. Hide implementation details - Complex logic is encapsulated and hidden behind a simple interface, for example:
+
+    Game game = new ConsoleGame();
+			    game.Initialize();
+			    game.Start();
+
+behind the scenes look like this:
+
+    public override void Initialize()
+        {
+            IScoreBoard scoreBoard = new ScoreBoard();
+            IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
+            IRenderer renderer = new ConsoleRenderer(new CapitalizeFormatter());
+            IInputProvider inputProvider = new ConsoleInputProvider();
+            IPlayer player = new Player(false);
+            IWordProvider wordProvider = new WordProvider();
+            WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
+            ICommandFactory commandFactory = new CommandFactory();
+            IEngine gameEngine = new ConsoleEngine(scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
+            DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
+
+            this.Engine = gameEngine;
+        }
+
+    public void Start()
+    {
+    	this.Engine.StartGame();
+    }
+
+### 4.5. Increase the level of abstraction by addressing real-world problems.
+### 4.6. Communicational and sequential cohesion
+### 4.7. Loose coupling - methods depend mainly on their parameters, not hidden dependencies on class members or other.
+
+
+
+# 5. Constants - remove "magic" strings and numbers and introduce constants:
+**For example:**
+
+		public const string IncorrectCommandMessage = "Incorrect guess or command!"; 
+        public const int NumberOfScoresInScoreBoard = 10;
+        public const char WordMaskChar = '_';
+
+# 6. Data clumps - group some pieces of data which is hanging around together. For example:
+Instead of saving users personal scores in the ScoreBoard into two Arrays:
+
+    private string[] scoreNames = new string[NUMBER_OF_SCORES];
+    private int[] mistackes = new int[NUMBER_OF_SCORES];
+
+introduce a **new class PersonalScore**: 
+
+      public PersonalScore(string name, int score)
+        {
+            this.Name = name;
+            this.Score = score;
+        }
+
+        public string Name { get; private set; }
+
+        public int Score { get; private set; }
+
+# 7. Debugging
+
+**The problem:** ScoreBoard was always empty after game reset
+
+**The solution:**
+
+     for (int i = 0; i < ScoreNames.Length; i++)
+     {
+	     ScoreNames[i] = null;
+	    -Mistakes[i] = 0;
+	    +Mistakes[i] = int.MaxValue;
+     }
