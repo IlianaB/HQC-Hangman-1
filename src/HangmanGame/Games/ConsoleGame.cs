@@ -22,7 +22,7 @@ namespace HangmanGame.HangmanGame.Games
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();
             IEngine gameEngine = new ConsoleEngine(scoreBoard, scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
-            DataFileManager.SingletonInstance().RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
+            DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
 
             this.Engine = gameEngine;
             //Menu.Logo.LogoDraw();

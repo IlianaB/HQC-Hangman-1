@@ -7,24 +7,24 @@ using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
 
 namespace HangmanGame.HangmanGame.Database
 {
-    public class DataFileManager : DataManager, IDataManager
+    public sealed class DataFileManager : DataManager, IDataManager
     {
-        private static DataFileManager singletonInstance;
 
-        protected DataFileManager()
-        {
-        }
+        private static readonly Lazy<DataFileManager> singletonInstance = 
+            new Lazy<DataFileManager>(() => new DataFileManager());
 
-        public static DataFileManager SingletonInstance()
+        public static DataFileManager SingletonInstance
         {
-            if (singletonInstance == null)
+            get
             {
-                singletonInstance = new DataFileManager();
+                return singletonInstance.Value;
             }
-
-            return singletonInstance;
         }
 
+        private DataFileManager()
+        {
+        }
+        
         public override void SaveResult(IPersonalScore score, string filePath)
         {
             using (StreamWriter writer = new StreamWriter(filePath, true))

@@ -17,7 +17,7 @@ namespace HangmanGame.HangmanGame.Engines
 
         protected override void SaveResult(IPersonalScore newRecord)
         {
-            DataFileManager.SingletonInstance().SaveResult(newRecord, Constants.FilePathWPFGame);
+            DataFileManager.SingletonInstance.SaveResult(newRecord, Constants.FilePathWPFGame);
         }
     }
 }
