@@ -59,14 +59,11 @@
     <Compile Include="HangmanGame\Common\IWordProvider.cs" />
     <Compile Include="HangmanGame\Common\WordGenerator.cs" />
     <Compile Include="HangmanGame\Common\WordProvider.cs" />
-    <Compile Include="HangmanGame\Engines\ConsoleEngine.cs" />
     <Compile Include="HangmanGame\Factories\ICommandFactory.cs" />
     <Compile Include="HangmanGame\Formatters\AllCapsFormatter.cs" />
     <Compile Include="HangmanGame\Formatters\CapitalizeFormatter.cs" />
     <Compile Include="HangmanGame\Formatters\IResultFormatter.cs" />
     <Compile Include="HangmanGame\Games\ConsoleGame.cs" />
-    <Compile Include="HangmanGame\Console\ConsoleInputProvider.cs" />
-    <Compile Include="HangmanGame\Console\ConsoleRenderer.cs" />
     <Compile Include="HangmanGame\Console\InputProvider.cs" />
     <Compile Include="HangmanGame\Console\Renderer.cs" />
     <Compile Include="HangmanGame\Common\Constants.cs" />
