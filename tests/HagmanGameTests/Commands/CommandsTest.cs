@@ -1,6 +1,6 @@
-﻿using HangmanGame.HangmanGame.Commands;
-using HangmanGame.HangmanGame.Commands.Common;
-using HangmanGame.HangmanGame.Contracts;
+﻿using Hangman.Logic.Commands;
+using Hangman.Logic.Contracts;
+
 using Moq;
 using NUnit.Framework;
 

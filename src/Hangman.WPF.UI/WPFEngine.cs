@@ -7,9 +7,9 @@ using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.WPF.Engine
 {
-    public class WPFEngine : GameEngine
+    public class WpfEngine : GameEngine
     {
-        public WPFEngine(
+        public WpfEngine(
             IScoreBoardService scoreBoardService, 
             IRenderer renderer, 
             IPlayer player, 

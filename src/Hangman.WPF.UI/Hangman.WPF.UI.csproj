@@ -53,9 +53,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="WPFEngine.cs" />
-    <Compile Include="WPFGame.cs" />
-    <Compile Include="WPFRenderer.cs" />
+    <Compile Include="WpfEngine.cs" />
+    <Compile Include="WpfGame.cs" />
+    <Compile Include="WpfRenderer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

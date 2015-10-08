@@ -1,6 +1,6 @@
 ﻿using Hangman.Logic.Contracts;
 
-namespace Hangman.Logic
+namespace Hangman.Logic.Players
 {
     public class Player : IPlayer
     {

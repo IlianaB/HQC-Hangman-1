@@ -10,14 +10,14 @@ using Hangman.Logic.UIInteractors;
 
 namespace Hangman.WPF.UI
 {
-    public class WPFRenderer : Renderer, IRenderer
+    public class WpfRenderer : Renderer, IRenderer
     {
-        public WPFRenderer()
+        public WpfRenderer()
             : this(new AllCapsFormatter())
         {
         }
 
-        public WPFRenderer(IResultFormatter formatter)
+        public WpfRenderer(IResultFormatter formatter)
             : base(formatter)
         {
         }

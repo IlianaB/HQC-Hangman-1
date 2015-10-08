@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using HangmanGame.HangmanGame.Database;
-using HangmanGame.HangmanGame.ScoreBoardServices;
-using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
+using Hangman.Logic.Database;
+using Hangman.Logic.ScoreBoardServices;
+using Hangman.Logic.ScoreBoardServices.Contracts;
 using Moq;
 using NUnit.Framework;
 

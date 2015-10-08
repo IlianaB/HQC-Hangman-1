@@ -35,11 +35,11 @@ namespace Hangman.WPF.UI
         private void StartGame(object sender, RoutedEventArgs e)
         {
             var playerName = this.PlayerName.Text;
-            Game game = new WPFGame();
+            Game game = new WpfGame();
             game.Initialize();
             this.engine = game.Engine;
             this.engine.Player.Name = playerName;
-            var renderer = this.engine.Renderer as WPFRenderer;
+            var renderer = this.engine.Renderer as WpfRenderer;
             renderer.MainWindow = this;
             this.InputGrid.Visibility = Visibility.Hidden;
             this.gridPlayField.Visibility = Visibility.Visible;

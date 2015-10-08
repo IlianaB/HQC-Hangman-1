@@ -1,7 +1,7 @@
 ﻿using System;
-using HangmanGame.HangmanGame.Commands;
-using HangmanGame.HangmanGame.Contracts;
-using HangmanGame.HangmanGame.Factories;
+using Hangman.Logic.Commands;
+using Hangman.Logic.Contracts;
+using Hangman.Logic.Factories;
 using Moq;
 using NUnit.Framework;
 

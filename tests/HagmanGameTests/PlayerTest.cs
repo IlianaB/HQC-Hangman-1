@@ -1,4 +1,4 @@
-﻿using HangmanGame.HangmanGame;
+﻿using Hangman.Logic.Players;
 using NUnit.Framework;
 
 namespace HagmanGameTests

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using HangmanGame.HangmanGame.Console;
-using HangmanGame.HangmanGame.ScoreBoardServices.Contracts;
+
+using Hangman.Console.UI.Console;
+using Hangman.Logic.ScoreBoardServices.Contracts;
 using Moq;
 using NUnit.Framework;
 

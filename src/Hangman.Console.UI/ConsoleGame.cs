@@ -1,6 +1,5 @@
 ﻿using Hangman.Console.UI.Console;
 using Hangman.Console.UI.Engines;
-using Hangman.Logic;
 using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
 using Hangman.Logic.Database;
@@ -8,6 +7,7 @@ using Hangman.Logic.Engines;
 using Hangman.Logic.Factories;
 using Hangman.Logic.Formatters;
 using Hangman.Logic.Games;
+using Hangman.Logic.Players;
 using Hangman.Logic.ScoreBoardServices;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 

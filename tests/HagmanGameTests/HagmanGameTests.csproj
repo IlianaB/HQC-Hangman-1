@@ -72,12 +72,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\HangmanGame.csproj">
-      <Project>{db425e55-a0c2-4be1-9bea-91e247551996}</Project>
-      <Name>HangmanGame</Name>
+    <ProjectReference Include="..\..\src\Hangman.Console.UI\Hangman.Console.UI.csproj">
+      <Project>{62e497e0-cf15-49f2-ac35-a3742a0639e7}</Project>
+      <Name>Hangman.Console.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Hangman.Logic\Hangman.Logic.csproj">
+      <Project>{8ae11f99-b647-4989-90f5-32a04d337cf3}</Project>
+      <Name>Hangman.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Hangman.WPF.UI\Hangman.WPF.UI.csproj">
+      <Project>{49b650e7-cbb4-4073-b402-e6101e1d43e2}</Project>
+      <Name>Hangman.WPF.UI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
