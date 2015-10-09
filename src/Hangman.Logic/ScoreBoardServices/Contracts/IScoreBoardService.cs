@@ -6,11 +6,11 @@ namespace Hangman.Logic.ScoreBoardServices.Contracts
     {
         void AddNewScore(IPersonalScore record);
 
-        void RemoveLastRecords(int maxNumberOfScoresinScoreBoard);
+        void RemoveLastScores(int maxNumberOfScoresinScoreBoard);
 
         void SortScoreBoard();
 
-        IList<IPersonalScore> GetAllRecords();
+        IList<IPersonalScore> GetAllScores();
 
         int GetWorstScoreEntry(int position);
 
@@ -20,6 +20,6 @@ namespace Hangman.Logic.ScoreBoardServices.Contracts
 
         void ReSet();
 
-        void RestoreRecords(IList<IPersonalScore> restoredResults);
+        void RestoreScores(IList<IPersonalScore> restoredResults);
     }
 }

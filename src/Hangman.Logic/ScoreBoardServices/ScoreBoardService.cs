@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.ScoreBoardServices
@@ -13,13 +12,13 @@ namespace Hangman.Logic.ScoreBoardServices
         {
             this.currentScoreBoard = scoreBoard;
         }
- 
+
         public void AddNewScore(IPersonalScore record)
         {
             this.currentScoreBoard.Records.Add(record);
         }
 
-        public void RemoveLastRecords(int maxNumberOfScoresinScoreBoard)
+        public void RemoveLastScores(int maxNumberOfScoresinScoreBoard)
         {
             int maxNumberOfScores = maxNumberOfScoresinScoreBoard > 1 ? maxNumberOfScoresinScoreBoard : 1;
             int currentNumberOfScores = this.currentScoreBoard.Records.Count();
@@ -35,7 +34,7 @@ namespace Hangman.Logic.ScoreBoardServices
             this.currentScoreBoard.Records = this.currentScoreBoard.Records.OrderBy(ps => ps.Score).ToList();
         }
 
-        public IList<IPersonalScore> GetAllRecords()
+        public IList<IPersonalScore> GetAllScores()
         {
             return new List<IPersonalScore>(this.currentScoreBoard.Records);
         }
@@ -59,14 +58,14 @@ namespace Hangman.Logic.ScoreBoardServices
         public bool IsFull(int numberOfScoresInScoreBoard)
         {
             var isFull = this.currentScoreBoard.Records.Count() >= numberOfScoresInScoreBoard;
-            
+
             return isFull;
         }
 
         public bool IsEmpty()
         {
             var isEmpty = this.currentScoreBoard.Records.Count() == 0;
-            
+
             return isEmpty;
         }
 
@@ -75,7 +74,7 @@ namespace Hangman.Logic.ScoreBoardServices
             this.currentScoreBoard.Records.Clear();
         }
 
-        public void RestoreRecords(IList<IPersonalScore> restoredResults)
+        public void RestoreScores(IList<IPersonalScore> restoredResults)
         {
             this.currentScoreBoard.Records = restoredResults;
         }

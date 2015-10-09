@@ -47,7 +47,7 @@ namespace Hangman.Logic.Database
                 restoredResults.Add(newRecord);
             }
 
-            scoreBoardService.RestoreRecords(restoredResults);
+            scoreBoardService.RestoreScores(restoredResults);
         }
 
         private List<string> ReadAllResults(string filePath)

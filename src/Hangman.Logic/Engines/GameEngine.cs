@@ -65,7 +65,7 @@ namespace Hangman.Logic.Engines
                     playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
                     if (playerCanEnterHighScores)
                     {
-                        this.ScoreBoardService.RemoveLastRecords(Constants.NumberOfScoresInScoreBoard);
+                        this.ScoreBoardService.RemoveLastScores(Constants.NumberOfScoresInScoreBoard);
                     }
                 }
 
@@ -165,7 +165,7 @@ namespace Hangman.Logic.Engines
 
                 this.ScoreBoardService.AddNewScore(newRecord);
                 this.ScoreBoardService.SortScoreBoard();
-                this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetAllRecords());
+                this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetAllScores());
             }
             else
             {

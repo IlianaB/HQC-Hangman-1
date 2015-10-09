@@ -14,8 +14,8 @@ namespace Hangman.Logic.Commands
         public override void Execute()
         {
             this.Engine.ScoreBoardService.SortScoreBoard();
-            this.Engine.ScoreBoardService.RemoveLastRecords(Constants.NumberOfScoresInScoreBoard);
-            this.Engine.Renderer.ShowScoreBoardResults(this.Engine.ScoreBoardService.IsEmpty(), this.Engine.ScoreBoardService.GetAllRecords());
+            this.Engine.ScoreBoardService.RemoveLastScores(Constants.NumberOfScoresInScoreBoard);
+            this.Engine.Renderer.ShowScoreBoardResults(this.Engine.ScoreBoardService.IsEmpty(), this.Engine.ScoreBoardService.GetAllScores());
         }
     }
 }
