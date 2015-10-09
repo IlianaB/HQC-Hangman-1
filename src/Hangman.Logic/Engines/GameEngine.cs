@@ -154,8 +154,7 @@ namespace Hangman.Logic.Engines
 
                 this.SaveResult(newRecord);
 
-                this.ScoreBoardService.SortScoreBoard();
-                this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetAllScores());
+                this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetTopScores(Constants.NumberOfScoresInScoreBoard));
             }
             else
             {

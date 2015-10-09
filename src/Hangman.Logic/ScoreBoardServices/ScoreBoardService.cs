@@ -35,11 +35,6 @@ namespace Hangman.Logic.ScoreBoardServices
             this.currentScoreBoard.Records = this.currentScoreBoard.Records.OrderBy(ps => ps.Score).ToList();
         }
 
-        public IList<IPersonalScore> GetAllScores()
-        {
-            return new List<IPersonalScore>(this.currentScoreBoard.Records);
-        }
-
         public int GetWorstScore(int maxNumberOfScoresInScoreBoard)
         {
             IPersonalScore lastScore;
@@ -96,7 +91,9 @@ namespace Hangman.Logic.ScoreBoardServices
 
         public IList<IPersonalScore> GetTopScores(int count)
         {
-            var topScores =  new List<IPersonalScore>(this.currentScoreBoard.Records.Take(count));
+            this.SortScoreBoard();
+
+            var topScores = new List<IPersonalScore>(this.currentScoreBoard.Records.Take(count));
 
             return topScores;
         }

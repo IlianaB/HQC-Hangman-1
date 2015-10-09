@@ -93,19 +93,6 @@ namespace HagmanGameTests.ScoreBoardServices
         }
 
         [Test]
-        public void TestWhetherGetAllScoresMethodProvidesProperlyProvidesAllScores()
-        {
-            IPersonalScore score = new PersonalScore("Ivan", 2);
-            IPersonalScore secondScore = new PersonalScore("Georgi", 5);
-            IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
-            scoreBoardService.AddNewScore(score);
-            scoreBoardService.AddNewScore(secondScore);
-            scoreBoardService.AddNewScore(thirdScore);
-            var allRecords = scoreBoardService.GetAllScores();
-            Assert.AreEqual(allRecords.Count, scoreBoard.Records.Count);
-        }
-
-        [Test]
         public void TestWhetherGetWorstScoreMethodProvidesLastResultWhenBelowMaxNumberOfScores()
         {
             IPersonalScore score = new PersonalScore("Ivan", 2);
@@ -115,7 +102,7 @@ namespace HagmanGameTests.ScoreBoardServices
             scoreBoardService.AddNewScore(secondScore);
             scoreBoardService.AddNewScore(thirdScore);
             scoreBoardService.SortScoreBoard();
-            var worstScore = scoreBoardService.GetWorstScoreEntry(5);
+            var worstScore = scoreBoardService.GetWorstScore(5);
             Assert.AreEqual(5, worstScore);
         }
 
@@ -129,7 +116,7 @@ namespace HagmanGameTests.ScoreBoardServices
             scoreBoardService.AddNewScore(secondScore);
             scoreBoardService.AddNewScore(thirdScore);
             scoreBoardService.SortScoreBoard();
-            var worstScore = scoreBoardService.GetWorstScoreEntry(2);
+            var worstScore = scoreBoardService.GetWorstScore(2);
             Assert.AreEqual(3, worstScore);
         }
     }

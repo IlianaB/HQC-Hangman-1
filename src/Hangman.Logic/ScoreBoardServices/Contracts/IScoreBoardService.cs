@@ -9,8 +9,6 @@ namespace Hangman.Logic.ScoreBoardServices.Contracts
 
         void SortScoreBoard();
 
-        IList<IPersonalScore> GetAllScores();
-
         IList<IPersonalScore> GetTopScores(int count);
 
         bool IsEmpty();
