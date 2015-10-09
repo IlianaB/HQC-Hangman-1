@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Hangman.Logic.Database;
-using Hangman.Logic.ScoreBoardServices;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 using Moq;
 using NUnit.Framework;
@@ -36,7 +35,7 @@ namespace HagmanGameTests.Database
 
         [Test]
         [ExpectedException(typeof(DirectoryNotFoundException))]
-        public void TestSaveResult_InvalidFile_ThrowsError()
+        public void TestSaveResultInvalidFileThrowsError()
         {
             string fakePath = @"C:\tempFake\myReallyFakeFile.txt";
             this.dataFileManager.SaveResult(this.personalScore, fakePath);
