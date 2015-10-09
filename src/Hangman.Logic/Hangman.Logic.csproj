@@ -49,11 +49,12 @@
     <Compile Include="Commands\TopCommand.cs" />
     <Compile Include="Commands\WrongCommand.cs" />
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="Common\GuessWord.cs" />
-    <Compile Include="Common\IWordGenerator.cs" />
-    <Compile Include="Common\IWordProvider.cs" />
-    <Compile Include="Common\WordGenerator.cs" />
-    <Compile Include="Common\WordProvider.cs" />
+    <Compile Include="Words\GuessWord.cs" />
+    <Compile Include="Words\Contracts\IGuessWord.cs" />
+    <Compile Include="Words\Contracts\IWordGenerator.cs" />
+    <Compile Include="Words\Contracts\IWordProvider.cs" />
+    <Compile Include="Words\WordGenerator.cs" />
+    <Compile Include="Words\WordProvider.cs" />
     <Compile Include="Players\Player.cs" />
     <Compile Include="UIInteractors\InputProvider.cs" />
     <Compile Include="UIInteractors\Renderer.cs" />

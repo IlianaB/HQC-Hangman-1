@@ -6,6 +6,8 @@ using Hangman.Logic.Contracts;
 using Hangman.Logic.Factories;
 using Hangman.Logic.ScoreBoardServices;
 using Hangman.Logic.ScoreBoardServices.Contracts;
+using Hangman.Logic.Words;
+using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.Logic.Engines
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Hangman.Logic.Common
+namespace Hangman.Logic.Words.Contracts
 {
     public interface IWordProvider
     {

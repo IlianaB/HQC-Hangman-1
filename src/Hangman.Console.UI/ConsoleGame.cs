@@ -10,6 +10,8 @@ using Hangman.Logic.Games;
 using Hangman.Logic.Players;
 using Hangman.Logic.ScoreBoardServices;
 using Hangman.Logic.ScoreBoardServices.Contracts;
+using Hangman.Logic.Words;
+using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.Console.UI
 {
@@ -23,16 +25,15 @@ namespace Hangman.Console.UI
             IInputProvider inputProvider = new ConsoleInputProvider();
             IPlayer player = new Player(false);
             IWordProvider wordProvider = new WordProvider();
-            WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
+            IWordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();
             IEngine gameEngine = new ConsoleEngine(scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
             DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
 
             this.Engine = gameEngine;
 
-            //Menu.Logo.LogoDraw();
-
-            //Menu.InitialMenu.DisplayInitialMenu(gameEngine, commandFactory);
+            // Menu.Logo.LogoDraw();
+            // Menu.InitialMenu.DisplayInitialMenu(gameEngine, commandFactory);
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿namespace Hangman.Logic.Common
+﻿using Hangman.Logic.Common;
+using Hangman.Logic.Words.Contracts;
+
+namespace Hangman.Logic.Words
 {
-    public class GuessWord
+    public class GuessWord : IGuessWord
     {
         public GuessWord(string word)
         {

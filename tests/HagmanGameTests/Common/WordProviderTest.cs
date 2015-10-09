@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Hangman.Logic.Common;
+using Hangman.Logic.Words;
 using NUnit.Framework;
 
 namespace HagmanGameTests.Common

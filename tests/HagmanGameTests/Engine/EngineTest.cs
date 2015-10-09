@@ -1,5 +1,6 @@
 ﻿using Hangman.Logic.Common;
 using Hangman.Logic.Engines;
+using Hangman.Logic.Words;
 using Moq;
 using NUnit.Framework;
 
@@ -15,6 +16,9 @@ namespace HagmanGameTests.Engine
         public void Init()
         {
             var mockEngine = new Mock<GameEngine>();
+
+            // mockEngine.Setup(r => r.WordToGuess).Returns(new GuessWord(FakeWord));
+            
             this.engine = mockEngine.Object;
         }
 

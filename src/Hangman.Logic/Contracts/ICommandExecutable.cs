@@ -1,5 +1,5 @@
-﻿using Hangman.Logic.Common;
-using Hangman.Logic.ScoreBoardServices.Contracts;
+﻿using Hangman.Logic.ScoreBoardServices.Contracts;
+using Hangman.Logic.Words;
 
 namespace Hangman.Logic.Contracts
 {

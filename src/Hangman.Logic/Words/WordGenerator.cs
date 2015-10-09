@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Hangman.Logic.Words.Contracts;
 
-namespace Hangman.Logic.Common
+namespace Hangman.Logic.Words
 {
     public class WordGenerator : IWordGenerator
     {

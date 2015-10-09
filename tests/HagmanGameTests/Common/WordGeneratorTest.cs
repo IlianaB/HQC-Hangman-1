@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Hangman.Logic.Common;
+using Hangman.Logic.Words;
+using Hangman.Logic.Words.Contracts;
 using Moq;
 using NUnit.Framework;
 

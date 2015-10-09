@@ -1,4 +1,4 @@
-﻿namespace Hangman.Logic.Common
+﻿namespace Hangman.Logic.Words.Contracts
 {
     public interface IWordGenerator
     {

@@ -8,6 +8,8 @@ using Hangman.Logic.Games;
 using Hangman.Logic.Players;
 using Hangman.Logic.ScoreBoardServices;
 using Hangman.Logic.ScoreBoardServices.Contracts;
+using Hangman.Logic.Words;
+using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.WPF.UI
 {
