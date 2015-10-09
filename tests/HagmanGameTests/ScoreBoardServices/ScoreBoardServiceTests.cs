@@ -1,31 +1,30 @@
-﻿using System;
+﻿using System.Linq;
 using Hangman.Logic.ScoreBoardServices;
 using Hangman.Logic.ScoreBoardServices.Contracts;
+
 using NUnit.Framework;
-using Moq;
-using Moq.Language.Flow;
 
 namespace HagmanGameTests.ScoreBoardServices
 {
     [TestFixture]
     public class ScoreBoardServiceTests
     {
-        private IScoreBoard scoreBoard;
-        private ScoreBoardService scoreBoardService;
-
         [SetUp]
         public void Init()
         {
-            this.scoreBoard = new ScoreBoard();
-            this.scoreBoardService = new ScoreBoardService(this.scoreBoard);
+            scoreBoard = new ScoreBoard();
+            scoreBoardService = new ScoreBoardService(scoreBoard);
         }
 
         [TearDown]
         public void CleanUp()
         {
-            this.scoreBoard = null;
-            this.scoreBoardService = null;
+            scoreBoard = null;
+            scoreBoardService = null;
         }
+
+        private IScoreBoard scoreBoard;
+        private ScoreBoardService scoreBoardService;
 
         [TestCase(0)]
         [TestCase(1)]
@@ -34,47 +33,76 @@ namespace HagmanGameTests.ScoreBoardServices
         [TestCase(50)]
         public void TestIfAddNewScoreMethodAddsTheNumberOfScoresProvided(int count)
         {
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 IPersonalScore score = new PersonalScore("ivan" + i, 2 + i);
-                this.scoreBoardService.AddNewScore(score);
+                scoreBoardService.AddNewScore(score);
             }
 
-            Assert.AreEqual(count, this.scoreBoard.Records.Count);
+            Assert.AreEqual(count, scoreBoard.Records.Count);
         }
 
         [TestCase(10, 10)]
         [TestCase(10, 5)]
         [TestCase(50, 1)]
         [TestCase(1, 1)]
-        public void TestWhetherRemoveLastRecordsMethodRemovesAllRecordsAfterTheProvidedLimit(int recordsToAdd, int maxNumberOfRecords)
+        public void TestWhetherRemoveLastRecordsMethodRemovesAllRecordsAfterTheProvidedLimit(int recordsToAdd,
+            int maxNumberOfRecords)
         {
-            for (int i = 0; i < recordsToAdd; i++)
+            for (var i = 0; i < recordsToAdd; i++)
             {
                 IPersonalScore score = new PersonalScore("ivan" + i, 2 + i);
-                this.scoreBoardService.AddNewScore(score);
+                scoreBoardService.AddNewScore(score);
             }
 
-            this.scoreBoardService.RemoveLastRecords(maxNumberOfRecords);
+            scoreBoardService.RemoveLastRecords(maxNumberOfRecords);
 
-            Assert.AreEqual(maxNumberOfRecords-1, this.scoreBoard.Records.Count);
+            Assert.AreEqual(maxNumberOfRecords - 1, scoreBoard.Records.Count);
         }
+
         [TestCase(0)]
         [TestCase(5)]
         [TestCase(100)]
-        public void TestWhetherRemoveLastRecordsMethodDoesNotGoUnderZeroWhenZeroRecordsInScoreBoard(int maxNumberOfRecords)
+        public void TestWhetherRemoveLastRecordsMethodDoesNotGoUnderZeroWhenZeroRecordsInScoreBoard(
+            int maxNumberOfRecords)
         {
-            this.scoreBoardService.RemoveLastRecords(maxNumberOfRecords);
-            Assert.AreEqual(0, this.scoreBoard.Records.Count);
+            scoreBoardService.RemoveLastRecords(maxNumberOfRecords);
+            Assert.AreEqual(0, scoreBoard.Records.Count);
         }
 
         [TestCase(-1)]
         [TestCase(-5)]
         [TestCase(-100)]
-        public void TestWhetherRemoveLastRecordsMethodDoesNotGoUnderZeroWhenNegativeLimitIsProvided(int maxNumberOfRecords)
+        public void TestWhetherRemoveLastRecordsMethodDoesNotGoUnderZeroWhenNegativeLimitIsProvided(
+            int maxNumberOfRecords)
         {
-            this.scoreBoardService.RemoveLastRecords(maxNumberOfRecords);
-            Assert.AreEqual(0, this.scoreBoard.Records.Count);
+            scoreBoardService.RemoveLastRecords(maxNumberOfRecords);
+            Assert.AreEqual(0, scoreBoard.Records.Count);
+        }
+        [Test]
+        public void TestWhetherSortScoreBoardMethodProperlySortsScores()
+        {
+            IPersonalScore score = new PersonalScore("Ivan", 2);
+            IPersonalScore secondScore = new PersonalScore("Georgi", 5);
+            IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
+            scoreBoardService.AddNewScore(score);
+            scoreBoardService.AddNewScore(secondScore);
+            scoreBoardService.AddNewScore(thirdScore);
+            scoreBoardService.SortScoreBoard();
+            Assert.AreEqual(5, scoreBoard.Records.Last().Score);
+        }
+
+        [Test]
+        public void TestWhetherGetAllRecordsMethodProvidesProperlyProvidesAllScores()
+        {
+            IPersonalScore score = new PersonalScore("Ivan", 2);
+            IPersonalScore secondScore = new PersonalScore("Georgi", 5);
+            IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
+            scoreBoardService.AddNewScore(score);
+            scoreBoardService.AddNewScore(secondScore);
+            scoreBoardService.AddNewScore(thirdScore);
+            var allRecords = scoreBoardService.GetAllRecords();
+            Assert.AreEqual(allRecords.Count, scoreBoard.Records.Count);
         }
     }
 }
