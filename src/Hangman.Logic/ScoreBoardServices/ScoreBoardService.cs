@@ -19,9 +19,9 @@ namespace Hangman.Logic.ScoreBoardServices
             this.currentScoreBoard.Records.Add(record);
         }
 
-        public void RemoveLastScores(int maxNumberOfScoresinScoreBoard)
+        public void RemoveLastScores(int maxNumberOfScoresInScoreBoard)
         {
-            int maxNumberOfScores = maxNumberOfScoresinScoreBoard > 1 ? maxNumberOfScoresinScoreBoard : 1;
+            int maxNumberOfScores = maxNumberOfScoresInScoreBoard > 1 ? maxNumberOfScoresInScoreBoard : 1;
             int currentNumberOfScores = this.currentScoreBoard.Records.Count();
 
             for (int i = maxNumberOfScores - 1; i < currentNumberOfScores; i++)
@@ -40,17 +40,17 @@ namespace Hangman.Logic.ScoreBoardServices
             return new List<IPersonalScore>(this.currentScoreBoard.Records);
         }
 
-        public int GetWorstScoreEntry(int position)
+        public int GetWorstScoreEntry(int maxNumberOfScoresInScoreBoard)
         {
             IPersonalScore lastScore;
 
-            if (this.currentScoreBoard.Records.Count <= position)
+            if (this.currentScoreBoard.Records.Count <= maxNumberOfScoresInScoreBoard)
             {
                 lastScore = this.currentScoreBoard.Records[this.currentScoreBoard.Records.Count - 1];
             }
             else
             {
-                lastScore = this.currentScoreBoard.Records[position];
+                lastScore = this.currentScoreBoard.Records[maxNumberOfScoresInScoreBoard];
             }
 
             return lastScore.Score;
