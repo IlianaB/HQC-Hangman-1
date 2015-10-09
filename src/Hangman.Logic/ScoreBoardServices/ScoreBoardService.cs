@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Hangman.Logic.Common;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.ScoreBoardServices
@@ -69,14 +70,35 @@ namespace Hangman.Logic.ScoreBoardServices
             return isEmpty;
         }
 
-        public void ReSet()
-        {
-            this.currentScoreBoard.Records.Clear();
-        }
-
         public void RestoreScores(IList<IPersonalScore> restoredResults)
         {
             this.currentScoreBoard.Records = restoredResults;
+        }
+
+
+        public bool CheckIfPlayerCanEnterHighScores(Players.Contracts.IPlayer player)
+        {
+            bool playerCanEnterHighScores = true;
+
+            if (this.IsFull(Constants.NumberOfScoresInScoreBoard))
+            {
+                var worstScore = this.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
+                playerCanEnterHighScores = worstScore >= player.Mistakes;
+
+                if (playerCanEnterHighScores)
+                {
+                    this.RemoveLastScores(Constants.NumberOfScoresInScoreBoard);
+                }
+            }
+
+            return playerCanEnterHighScores;
+        }
+
+        public IList<IPersonalScore> GetTopScores(int count)
+        {
+            var topScores =  new List<IPersonalScore>(this.currentScoreBoard.Records.Take(count));
+
+            return topScores;
         }
     }
 }

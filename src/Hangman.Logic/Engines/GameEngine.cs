@@ -57,17 +57,7 @@ namespace Hangman.Logic.Engines
             }
             else
             {
-                bool playerCanEnterHighScores = true;
-
-                if (!this.ScoreBoardService.IsEmpty() && this.ScoreBoardService.IsFull(Constants.NumberOfScoresInScoreBoard))
-                {
-                    var worstScore = this.ScoreBoardService.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
-                    playerCanEnterHighScores = worstScore >= this.Player.Mistakes;
-                    if (playerCanEnterHighScores)
-                    {
-                        this.ScoreBoardService.RemoveLastScores(Constants.NumberOfScoresInScoreBoard);
-                    }
-                }
+                bool playerCanEnterHighScores = this.ScoreBoardService.CheckIfPlayerCanEnterHighScores(this.Player);
 
                 this.ProcessCurrentPlayerResult(playerCanEnterHighScores);
             }
@@ -127,6 +117,7 @@ namespace Hangman.Logic.Engines
 
         protected virtual void SaveResult(IPersonalScore newRecord)
         {
+            this.ScoreBoardService.AddNewScore(newRecord);
         }
 
         private void ExecuteLetterGuess(char letter)
@@ -163,7 +154,6 @@ namespace Hangman.Logic.Engines
 
                 this.SaveResult(newRecord);
 
-                this.ScoreBoardService.AddNewScore(newRecord);
                 this.ScoreBoardService.SortScoreBoard();
                 this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetAllScores());
             }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Hangman.Logic.Players.Contracts;
 
 namespace Hangman.Logic.ScoreBoardServices.Contracts
 {
@@ -6,20 +7,16 @@ namespace Hangman.Logic.ScoreBoardServices.Contracts
     {
         void AddNewScore(IPersonalScore record);
 
-        void RemoveLastScores(int maxNumberOfScoresinScoreBoard);
-
         void SortScoreBoard();
 
         IList<IPersonalScore> GetAllScores();
 
-        int GetWorstScoreEntry(int position);
-
-        bool IsFull(int numberOfScoresInScoreBoard);
+        IList<IPersonalScore> GetTopScores(int count);
 
         bool IsEmpty();
 
-        void ReSet();
-
         void RestoreScores(IList<IPersonalScore> restoredResults);
+
+        bool CheckIfPlayerCanEnterHighScores(IPlayer player);
     }
 }

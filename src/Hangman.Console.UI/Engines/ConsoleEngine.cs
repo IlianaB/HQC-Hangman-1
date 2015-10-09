@@ -58,6 +58,7 @@ namespace Hangman.Console.UI.Engines
 
         protected override void SaveResult(IPersonalScore newRecord)
         {
+            base.SaveResult(newRecord);
             DataFileManager.SingletonInstance.SaveResult(newRecord, Constants.FilePathConsoleGame);
         }
     }
