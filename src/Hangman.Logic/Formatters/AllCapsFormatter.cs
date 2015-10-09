@@ -1,4 +1,5 @@
-﻿using Hangman.Logic.ScoreBoardServices.Contracts;
+﻿using System;
+using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.Formatters
 {
@@ -6,6 +7,11 @@ namespace Hangman.Logic.Formatters
     {
         public string Format(IPersonalScore record)
         {
+            if (record == null)
+            {
+                throw new ArgumentNullException("record", "Incorrect IPersonalScore");
+            }
+
             string playerName = this.CapitalizeAllLetters(record.Name);
             string result = string.Format("{0} ---> {1} MISTAKE(S)!", playerName, record.Score);
 
