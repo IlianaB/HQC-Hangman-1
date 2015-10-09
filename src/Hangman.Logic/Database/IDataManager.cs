@@ -1,5 +1,4 @@
-﻿using Hangman.Logic.ScoreBoardServices;
-using Hangman.Logic.ScoreBoardServices.Contracts;
+﻿using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.Database
 {
