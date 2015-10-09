@@ -57,7 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Commands\CommandsTest.cs" />
+    <Compile Include="Commands\StartCommandTest.cs" />
     <Compile Include="Common\WordProviderTest.cs" />
     <Compile Include="Console\ConsoleRendererTest.cs" />
     <Compile Include="Database\DataFileManagerTest.cs" />
