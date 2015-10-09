@@ -1,6 +1,6 @@
-﻿using Hangman.Logic.Contracts;
-using Hangman.Logic.ScoreBoardServices;
-using Hangman.Logic.ScoreBoardServices.Contracts;
+﻿using Hangman.Logic.Common;
+using Hangman.Logic.Engines;
+using Moq;
 using NUnit.Framework;
 
 namespace HagmanGameTests.Engine
@@ -8,8 +8,26 @@ namespace HagmanGameTests.Engine
     [TestFixture]
     public class EngineTest
     {
-        private IScoreBoardService scoreBoardService;
-        private IRenderer iRenderer;
-        private IPlayer iPlayer;
+        private const string FakeWord = "guessme";
+        private GameEngine engine;
+
+        [SetUp]
+        public void Init()
+        {
+            var mockEngine = new Mock<GameEngine>();
+            this.engine = mockEngine.Object;
+        }
+
+        [TearDown]
+        public void CleanUp()
+        {
+            this.engine = null;
+        }
+
+        [Test]
+        public void TestGuessWordReturnsWord()
+        {
+            var wordToGuess = this.engine.WordToGuess;
+        }
     }
 }

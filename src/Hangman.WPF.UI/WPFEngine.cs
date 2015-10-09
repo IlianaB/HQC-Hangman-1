@@ -5,7 +5,7 @@ using Hangman.Logic.Engines;
 using Hangman.Logic.Factories;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 
-namespace Hangman.WPF.Engine
+namespace Hangman.WPF.UI
 {
     public class WpfEngine : GameEngine
     {
@@ -13,7 +13,7 @@ namespace Hangman.WPF.Engine
             IScoreBoardService scoreBoardService, 
             IRenderer renderer, 
             IPlayer player, 
-            WordGenerator wordGenerator, 
+            IWordGenerator wordGenerator, 
             ICommandFactory commandFactory)
             : base(scoreBoardService, renderer, player, wordGenerator, commandFactory)
         {

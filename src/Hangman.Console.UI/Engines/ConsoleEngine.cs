@@ -13,7 +13,7 @@ namespace Hangman.Console.UI.Engines
             IScoreBoardService scoreBoardService, 
             IRenderer renderer, 
             IPlayer player, 
-            WordGenerator wordGenerator, 
+            IWordGenerator wordGenerator, 
             ICommandFactory commandFactory, 
             IInputProvider inputProvider)
             : base(scoreBoardService, renderer, player, wordGenerator, commandFactory)
