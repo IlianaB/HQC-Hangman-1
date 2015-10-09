@@ -60,7 +60,7 @@
     <Compile Include="UIInteractors\Renderer.cs" />
     <Compile Include="Contracts\ICommandExecutable.cs" />
     <Compile Include="Contracts\IInputProvider.cs" />
-    <Compile Include="Contracts\IPlayer.cs" />
+    <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
     <Compile Include="Database\DataFileManager.cs" />
     <Compile Include="Database\DataManager.cs" />

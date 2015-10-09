@@ -1,4 +1,4 @@
-﻿namespace Hangman.Logic.Contracts
+﻿namespace Hangman.Logic.Players.Contracts
 {
     public interface IPlayer
     {

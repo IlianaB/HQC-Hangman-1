@@ -4,6 +4,7 @@ using Hangman.Logic.Commands.Common;
 using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
 using Hangman.Logic.Factories;
+using Hangman.Logic.Players.Contracts;
 using Hangman.Logic.ScoreBoardServices;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 using Hangman.Logic.Words;

@@ -8,6 +8,7 @@ using Hangman.Logic.Factories;
 using Hangman.Logic.Formatters;
 using Hangman.Logic.Games;
 using Hangman.Logic.Players;
+using Hangman.Logic.Players.Contracts;
 using Hangman.Logic.ScoreBoardServices;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 using Hangman.Logic.Words;

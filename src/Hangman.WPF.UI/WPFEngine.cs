@@ -3,6 +3,7 @@ using Hangman.Logic.Contracts;
 using Hangman.Logic.Database;
 using Hangman.Logic.Engines;
 using Hangman.Logic.Factories;
+using Hangman.Logic.Players.Contracts;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 using Hangman.Logic.Words.Contracts;
 

@@ -1,4 +1,5 @@
 ﻿using Hangman.Logic.Contracts;
+using Hangman.Logic.Players.Contracts;
 
 namespace Hangman.Logic.Engines
 {

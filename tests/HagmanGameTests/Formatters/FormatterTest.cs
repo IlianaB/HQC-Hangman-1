@@ -11,7 +11,7 @@ namespace HagmanGameTests.Formatters
         [Test]
         public void TestFormat()
         {
-            var player = new PersonalScore("Player", 1);
+            var player = new PersonalScore("pLaYer", 1);
 
             var formatter = new AllCapsFormatter();
             var result = formatter.Format(player);
@@ -21,7 +21,7 @@ namespace HagmanGameTests.Formatters
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void TestIncorrectPlayerInformationToThrowException()
         {
             var formatter = new AllCapsFormatter();
@@ -30,6 +30,5 @@ namespace HagmanGameTests.Formatters
 
             Assert.IsTrue(expect == result);
         }
-    
     }
 }
