@@ -61,6 +61,7 @@
     <Compile Include="Common\WordProviderTest.cs" />
     <Compile Include="Console\ConsoleRendererTest.cs" />
     <Compile Include="Database\DataFileManagerTest.cs" />
+    <Compile Include="Engine\EngineTest.cs" />
     <Compile Include="Factories\CommandFactoryTest.cs" />
     <Compile Include="Console\InputProviderTest.cs" />
     <Compile Include="Common\GuessWordTest.cs" />

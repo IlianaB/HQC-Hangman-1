@@ -15,7 +15,7 @@ namespace Hangman.Logic.Engines
             IScoreBoardService scoreBoardService, 
             IRenderer renderer,
             IPlayer player, 
-            WordGenerator wordGenerator, 
+            IWordGenerator wordGenerator, 
             ICommandFactory commandFactory)
         {
             this.ScoreBoardService = scoreBoardService;
@@ -31,7 +31,7 @@ namespace Hangman.Logic.Engines
 
         public IPlayer Player { get; private set; }
 
-        public WordGenerator WordGenerator { get; private set; }
+        public IWordGenerator WordGenerator { get; private set; }
 
         public ICommandFactory CommandFactory { get; private set; }
 

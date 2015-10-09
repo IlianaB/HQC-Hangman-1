@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Hangman.Logic.Common
 {
-    public class WordGenerator
+    public class WordGenerator : IWordGenerator
     {
         private readonly List<string> words;
         private readonly Random random;

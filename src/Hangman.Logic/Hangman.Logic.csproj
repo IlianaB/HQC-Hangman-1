@@ -50,6 +50,7 @@
     <Compile Include="Commands\WrongCommand.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\GuessWord.cs" />
+    <Compile Include="Common\IWordGenerator.cs" />
     <Compile Include="Common\IWordProvider.cs" />
     <Compile Include="Common\WordGenerator.cs" />
     <Compile Include="Common\WordProvider.cs" />
