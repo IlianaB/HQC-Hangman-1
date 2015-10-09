@@ -40,7 +40,7 @@ namespace Hangman.Logic.ScoreBoardServices
             return new List<IPersonalScore>(this.currentScoreBoard.Records);
         }
 
-        public int GetWorstScoreEntry(int maxNumberOfScoresInScoreBoard)
+        public int GetWorstScore(int maxNumberOfScoresInScoreBoard)
         {
             IPersonalScore lastScore;
 
@@ -50,7 +50,7 @@ namespace Hangman.Logic.ScoreBoardServices
             }
             else
             {
-                lastScore = this.currentScoreBoard.Records[maxNumberOfScoresInScoreBoard];
+                lastScore = this.currentScoreBoard.Records[maxNumberOfScoresInScoreBoard-1];
             }
 
             return lastScore.Score;
@@ -82,7 +82,7 @@ namespace Hangman.Logic.ScoreBoardServices
 
             if (this.IsFull(Constants.NumberOfScoresInScoreBoard))
             {
-                var worstScore = this.GetWorstScoreEntry(Constants.NumberOfScoresInScoreBoard);
+                var worstScore = this.GetWorstScore(Constants.NumberOfScoresInScoreBoard);
                 playerCanEnterHighScores = worstScore >= player.Mistakes;
 
                 if (playerCanEnterHighScores)
