@@ -120,6 +120,14 @@ namespace Hangman.Logic.Engines
             this.ScoreBoardService.AddNewScore(newRecord);
         }
 
+        protected virtual void Play()
+        {
+            this.Renderer.ShowMessage(Constants.GuessTheWordMessage);
+            this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
+
+            this.WaitForPlayerAction();
+        }
+
         private void ExecuteLetterGuess(char letter)
         {
             string message;
@@ -161,14 +169,6 @@ namespace Hangman.Logic.Engines
                 string message = string.Format(Constants.LowScoreMessage, this.Player.Mistakes);
                 this.Renderer.ShowMessage(message);
             }
-        }
-
-        protected virtual void Play()
-        {
-            this.Renderer.ShowMessage(Constants.GuessTheWordMessage);
-            this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
-            
-            this.WaitForPlayerAction();
         }
     }
 }

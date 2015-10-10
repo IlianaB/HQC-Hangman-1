@@ -53,7 +53,7 @@ namespace Hangman.WPF.UI
             var key = eventArgs.Key.ToString();
             if (this.engine != null)
             {
-                ProcessKey(key);
+                this.ProcessKey(key);
             }
         }
 
@@ -62,7 +62,7 @@ namespace Hangman.WPF.UI
             var eventArgs = sender as Button;
             var button = eventArgs.Content.ToString();
 
-            ProcessKey(button);
+            this.ProcessKey(button);
         }
 
         private void ProcessKey(string key)

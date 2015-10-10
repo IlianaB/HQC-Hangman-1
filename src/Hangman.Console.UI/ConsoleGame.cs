@@ -1,8 +1,6 @@
 ﻿using Hangman.Console.UI.Console;
 using Hangman.Console.UI.Engines;
-using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
-using Hangman.Logic.Database;
 using Hangman.Logic.Engines;
 using Hangman.Logic.Factories;
 using Hangman.Logic.Formatters;
@@ -31,9 +29,6 @@ namespace Hangman.Console.UI
             IEngine gameEngine = new ConsoleEngine(scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
 
             this.Engine = gameEngine;
-
-            // Menu.Logo.LogoDraw();
-            // Menu.InitialMenu.DisplayInitialMenu(gameEngine, commandFactory);
         }
     }
 }

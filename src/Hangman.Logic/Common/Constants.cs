@@ -5,7 +5,7 @@ namespace Hangman.Logic.Common
     public class Constants
     {
         public const string WelcomeMessage = "Welcome to Hangman game!";
-        public const string GuessTheWordMessage = "Please, guess my secret word!";
+        public const string GuessTheWordMessage = "Please guess my secret word!";
         public const string GoodbyeMessage = "Good bye!";
         public const string IncorrectCommandMessage = "Incorrect guess or command!";
         public const string RevealedLettersMessage = "Good job! You revealed {0} letter(s).";
