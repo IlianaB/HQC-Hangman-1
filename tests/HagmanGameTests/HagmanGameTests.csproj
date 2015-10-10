@@ -59,11 +59,11 @@
   <ItemGroup>
     <Compile Include="Commands\StartCommandTest.cs" />
     <Compile Include="Common\WordProviderTest.cs" />
-    <Compile Include="Console\ConsoleRendererTest.cs" />
+    <Compile Include="Console.UI\ConsoleRendererTest.cs" />
     <Compile Include="Database\DataFileManagerTest.cs" />
     <Compile Include="Engine\EngineTest.cs" />
     <Compile Include="Factories\CommandFactoryTest.cs" />
-    <Compile Include="Console\InputProviderTest.cs" />
+    <Compile Include="Console.UI\InputProviderTest.cs" />
     <Compile Include="Common\GuessWordTest.cs" />
     <Compile Include="Formatters\FormatterTest.cs" />
     <Compile Include="PlayerTest.cs" />
@@ -89,6 +89,7 @@
       <Name>Hangman.WPF.UI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

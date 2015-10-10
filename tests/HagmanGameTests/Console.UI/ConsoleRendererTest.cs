@@ -5,7 +5,7 @@ using Hangman.Logic.ScoreBoardServices.Contracts;
 using Moq;
 using NUnit.Framework;
 
-namespace HagmanGameTests.Console
+namespace HagmanGameTests.Console.UI
 {
     [TestFixture]
     public class ConsoleRendererTest
