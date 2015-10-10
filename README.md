@@ -367,19 +367,17 @@ hides the complicate logic of initializing new game:
 
      public IEngine Engine { get; set; }
 
-     public override void Initialize()
-
+        public override void Initialize()
         {
             IScoreBoard scoreBoard = new ScoreBoard();
             IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
-            IRenderer renderer = new ConsoleRenderer(new CapitalizeFormatter());
-            IInputProvider inputProvider = new ConsoleInputProvider();
+            IRenderer renderer = new ConsoleRenderer(new CapitalizeFormatter(), new Writer());
+            IInputProvider inputProvider = new ConsoleInputProvider(new Reader());
             IPlayer player = new Player(false);
             IWordProvider wordProvider = new WordProvider();
             IWordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();
             IEngine gameEngine = new ConsoleEngine(scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
-            DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
 
             this.Engine = gameEngine;
         }
@@ -474,22 +472,13 @@ The client class (our Engines) wants to work with the interface IScoreBoardServi
     {
         void AddNewScore(IPersonalScore record);
 
-        void RemoveLastRecords(int maxNumberOfScoresinScoreBoard);
+        void RestoreScores(IList<IPersonalScore> restoredResults);
 
-        void SortScoreBoard();
-
-        void Reset();
-
-        void RestoreRecords(IList<IPersonalScore> restoredResults);
-
-        IList<IPersonalScore> GetAllRecords();
-
-        int GetWorstScoreEntry(int position);
-
-        bool IsFull(int numberOfScoresInScoreBoard);
+        IList<IPersonalScore> GetTopScores(int count);
 
         bool IsEmpty();
 
+        bool CheckIfPlayerCanEnterHighScores(IPlayer player);
     }
 
 The ScoreBoardService class wraps an instance of IScoreBoard and works with it, implementing all interface methods:
@@ -507,22 +496,13 @@ The ScoreBoardService class wraps an instance of IScoreBoard and works with it, 
 
 - **Template Method**
 
-In abstract GameEngine class we have the method Play() with two hooks - SetPlayerName() and WaitForPlayerAction(). The concrete implementators of GameEngine class override the methods.
+In abstract GameEngine class we have the method Play() with a hook WaitForPlayerAction(). The concrete implementators of GameEngine class override the methods.
 
-    	private void Play()
+    	private virtual void Play()
         {
-            if (this.Player.Name == string.Empty)
-            {
-                this.SetPlayerName();
-            }
-
             this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
 
             this.WaitForPlayerAction();
-        }
-
-        protected virtual void SetPlayerName()
-        {
         }
 
         protected virtual void WaitForPlayerAction()
@@ -555,21 +535,17 @@ In abstract GameEngine class we have the method Play() with two hooks - SetPlaye
             }
             while (true);
         }
-
-        protected override void SetPlayerName()
-        {
-            this.Renderer.ShowMessage(Constants.EnterNameMessage);
-            string name = this.InputProvider.ReadCommand();
-            this.Player.Name = name;
-        }
     }
 
 
 - **Command**
 
 **Receiver** - GameEngine
+
 **Command** - Command classes
+
 **Invoker** - GameEngine
+
 
 The **"Command" abstract class**:
 
@@ -652,3 +628,22 @@ At many places, but for example - in GameEngine constructor everything can vary:
 >             this.WordGenerator = wordGenerator;
 >             this.CommandFactory = commandFactory;
 >         }
+
+
+- **Null Object**
+
+There is a NullCommand (implementing ICommand) which does nothing but informs user that he is not performing a valid command:
+
+
+    public class NullCommand : Command, ICommand
+    {
+        public NullCommand(ICommandExecutable engine)
+            : base(engine)
+        {
+        }
+
+        public override void Execute()
+        {
+            this.Engine.Renderer.ShowMessage(Constants.IncorrectCommandMessage);
+        }
+    }

@@ -7,13 +7,11 @@ namespace Hangman.Logic.ScoreBoardServices.Contracts
     {
         void AddNewScore(IPersonalScore record);
 
-        void SortScoreBoard();
+        void RestoreScores(IList<IPersonalScore> restoredResults);
 
         IList<IPersonalScore> GetTopScores(int count);
 
         bool IsEmpty();
-
-        void RestoreScores(IList<IPersonalScore> restoredResults);
 
         bool CheckIfPlayerCanEnterHighScores(IPlayer player);
     }

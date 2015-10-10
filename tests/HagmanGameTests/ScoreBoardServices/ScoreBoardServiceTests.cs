@@ -126,11 +126,11 @@ namespace HagmanGameTests.ScoreBoardServices
             IPersonalScore score = new PersonalScore("Ivan", 2);
             IPersonalScore secondScore = new PersonalScore("Georgi", 5);
             IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
-            scoreBoardService.AddNewScore(score);
-            scoreBoardService.AddNewScore(secondScore);
-            scoreBoardService.AddNewScore(thirdScore);
-            scoreBoardService.SortScoreBoard();
-            var isFull = scoreBoardService.IsFull(3);
+            this.scoreBoardService.AddNewScore(score);
+            this.scoreBoardService.AddNewScore(secondScore);
+            this.scoreBoardService.AddNewScore(thirdScore);
+            this.scoreBoardService.SortScoreBoard();
+            var isFull = this.scoreBoardService.IsFull(3);
             Assert.IsTrue(isFull);
         }
 
@@ -140,11 +140,11 @@ namespace HagmanGameTests.ScoreBoardServices
             IPersonalScore score = new PersonalScore("Ivan", 2);
             IPersonalScore secondScore = new PersonalScore("Georgi", 5);
             IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
-            scoreBoardService.AddNewScore(score);
-            scoreBoardService.AddNewScore(secondScore);
-            scoreBoardService.AddNewScore(thirdScore);
-            scoreBoardService.SortScoreBoard();
-            var isFull = scoreBoardService.IsFull(2);
+            this.scoreBoardService.AddNewScore(score);
+            this.scoreBoardService.AddNewScore(secondScore);
+            this.scoreBoardService.AddNewScore(thirdScore);
+            this.scoreBoardService.SortScoreBoard();
+            var isFull = this.scoreBoardService.IsFull(2);
             Assert.IsTrue(isFull);
         }
 
@@ -154,18 +154,18 @@ namespace HagmanGameTests.ScoreBoardServices
             IPersonalScore score = new PersonalScore("Ivan", 2);
             IPersonalScore secondScore = new PersonalScore("Georgi", 5);
             IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
-            scoreBoardService.AddNewScore(score);
-            scoreBoardService.AddNewScore(secondScore);
-            scoreBoardService.AddNewScore(thirdScore);
-            scoreBoardService.SortScoreBoard();
-            var isFull = scoreBoardService.IsFull(5);
+            this.scoreBoardService.AddNewScore(score);
+            this.scoreBoardService.AddNewScore(secondScore);
+            this.scoreBoardService.AddNewScore(thirdScore);
+            this.scoreBoardService.SortScoreBoard();
+            var isFull = this.scoreBoardService.IsFull(5);
             Assert.IsFalse(isFull);
         }
 
         [Test]
         public void TestWhetherIsEmptylMethodReturnsTrueWhenThereAreNoScores()
         {
-            var isEmpty = scoreBoardService.IsEmpty();
+            var isEmpty = this.scoreBoardService.IsEmpty();
             Assert.IsTrue(isEmpty);
         }
 
@@ -173,8 +173,8 @@ namespace HagmanGameTests.ScoreBoardServices
         public void TestWhetherIsEmptylMethodReturnsFalseWhenThereAreScores()
         {
             IPersonalScore score = new PersonalScore("Ivan", 2);
-            scoreBoardService.AddNewScore(score);
-            var isEmpty = scoreBoardService.IsEmpty();
+            this.scoreBoardService.AddNewScore(score);
+            var isEmpty = this.scoreBoardService.IsEmpty();
             Assert.IsFalse(isEmpty);
         }
     }

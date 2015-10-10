@@ -35,8 +35,7 @@ namespace HagmanGameTests.Factories
         [TestCase("help", typeof(HelpCommand), "HelpCommand")]
         [TestCase("restart", typeof(RestartCommand), "RestartCommand")]
         [TestCase("exit", typeof(ExitCommand), "ExitCommand")]
-        [TestCase(null, typeof(NullCommand), "NullCommand")]
-        [TestCase("asdf", typeof(WrongCommand), "WrongCommand")]
+        [TestCase("asdf", typeof(NullCommand), "NullCommand")]
         public void TestCommands(string command, Type type, string name)
         {
             var result = this.commandFactory.GetGommand(this.engine, command);

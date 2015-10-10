@@ -47,7 +47,6 @@
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Commands\TopCommand.cs" />
-    <Compile Include="Commands\WrongCommand.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IWriter.cs" />

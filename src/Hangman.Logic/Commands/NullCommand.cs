@@ -1,4 +1,5 @@
 ﻿using Hangman.Logic.Commands.Common;
+using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
 
 namespace Hangman.Logic.Commands
@@ -12,6 +13,7 @@ namespace Hangman.Logic.Commands
 
         public override void Execute()
         {
+            this.Engine.Renderer.ShowMessage(Constants.IncorrectCommandMessage);
         }
     }
 }
