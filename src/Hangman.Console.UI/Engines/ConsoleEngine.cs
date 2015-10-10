@@ -61,5 +61,15 @@ namespace Hangman.Console.UI.Engines
             base.SaveResult(newRecord);
             DataFileManager.SingletonInstance.SaveResult(newRecord, Constants.DatabaseFile);
         }
+
+        protected override void Play()
+        {
+            if (this.Player.Name == string.Empty)
+            {
+                this.SetPlayerName();
+            }
+
+            base.Play();
+        }
     }
 }

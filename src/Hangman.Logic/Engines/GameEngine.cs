@@ -163,15 +163,11 @@ namespace Hangman.Logic.Engines
             }
         }
 
-        private void Play()
+        protected virtual void Play()
         {
-            if (this.Player.Name == string.Empty)
-            {
-                this.SetPlayerName();
-            }
-
+            this.Renderer.ShowMessage(Constants.GuessTheWordMessage);
             this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
-
+            
             this.WaitForPlayerAction();
         }
     }
