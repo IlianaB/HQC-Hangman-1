@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="WordProvider.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using System.Collections.Generic;
 using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.Logic.Words

@@ -1,5 +1,8 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="AssemblyInfo.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 

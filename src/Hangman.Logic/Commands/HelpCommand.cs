@@ -1,4 +1,9 @@
-﻿using Hangman.Logic.Commands.Common;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="HelpCommand.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using Hangman.Logic.Commands.Common;
 using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
 

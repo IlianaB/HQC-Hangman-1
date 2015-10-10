@@ -1,4 +1,7 @@
-﻿using System;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="Constants.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
 
 namespace Hangman.Logic.Common
 {

@@ -1,4 +1,9 @@
-﻿using Hangman.Logic.Contracts;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="Renderer.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using Hangman.Logic.Contracts;
 using Hangman.Logic.Formatters;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 
@@ -21,10 +26,10 @@ namespace Hangman.Logic.UIInteractors
         }
 
         /// <summary>
-        /// Shows on the UI the results of the ScoreBoard
+        /// Shows on the UI the results of the ScoreBoard.
         /// </summary>
         /// <param name="isEmptyScoreBoard">
-        /// Boolean variable indicating if the ScoreBoard is empty or not
+        /// Boolean variable indicating if the ScoreBoard is empty or not.
         /// </param>
         /// <param name="records">
         /// Collection of all records in the ScoreBoard.
@@ -32,10 +37,10 @@ namespace Hangman.Logic.UIInteractors
         public abstract void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records);
 
         /// <summary>
-        /// Shows on the UI the current progress of the game - the letters of the GuessWord
+        /// Shows on the UI the current progress of the game - the letters of the GuessWord.
         /// </summary>
         /// <param name="guessedLetters">
-        /// Letters of the GuessWord (hidden or revealed)
+        /// Letters of the GuessWord (hidden or revealed).
         /// </param>
         public abstract void ShowCurrentProgress(char[] guessedLetters);
 

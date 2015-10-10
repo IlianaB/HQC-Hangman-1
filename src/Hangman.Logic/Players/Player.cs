@@ -1,4 +1,9 @@
-﻿using Hangman.Logic.Players.Contracts;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="Player.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using Hangman.Logic.Players.Contracts;
 
 namespace Hangman.Logic.Players
 {
@@ -8,6 +13,7 @@ namespace Hangman.Logic.Players
     public class Player : IPlayer
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Player"/> class.
         /// Initialize the current player with an empty string name and 0 mistakes as a start value.
         /// </summary>
         public Player()
@@ -32,7 +38,7 @@ namespace Hangman.Logic.Players
         }
 
         /// <summary>
-        /// Reset Player's mistakes to 0 and sets its property HasUsedHelp to false;
+        /// Reset Player's mistakes to 0 and sets its property HasUsedHelp to false.
         /// </summary>
         public void Reset()
         {

@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="TopCommand.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using System.Collections.Generic;
 using Hangman.Logic.Commands.Common;
 using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
@@ -17,7 +22,7 @@ namespace Hangman.Logic.Commands
         }
 
         /// <summary>
-        /// Gets the top scores in the ScoreaBoard and ask the Renderer to print them.
+        /// Gets the top scores in the ScoreBoard and ask the Renderer to print them.
         /// </summary>
         public override void Execute()
         {

@@ -1,4 +1,9 @@
-﻿using Hangman.Logic.Common;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="GuessWord.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using Hangman.Logic.Common;
 using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.Logic.Words
@@ -9,11 +14,13 @@ namespace Hangman.Logic.Words
     public class GuessWord : IGuessWord
     {
         /// <summary>
-        /// Instancietes GuessWord with:
-        /// - Content which is the same as the received string, 
-        /// - Mask - char[] representation of the Content, filled with the Constant char for the mask
+        /// Initializes a new instance of the <see cref="GuessWord"/> class.
+        /// - Content which is the same as the received string. 
+        /// - Mask - char[] representation of the Content, filled with the Constant char for the mask.
         /// </summary>
-        /// <param name="word"></param>
+        /// <param name="word">
+        /// Word as a string.
+        /// </param>
         public GuessWord(string word)
         {
             this.Content = word;
@@ -25,7 +32,7 @@ namespace Hangman.Logic.Words
         public char[] Mask { get; set; }
 
         /// <summary>
-        /// Reveals the first hidden letter of the GuessWord
+        /// Reveals the first hidden letter of the GuessWord.
         /// </summary>
         /// <returns>
         /// Single letter as a char.
@@ -41,7 +48,7 @@ namespace Hangman.Logic.Words
                     continue;
                 }
 
-                ConvertAMaskSymboleIntoLetter(i, this.Content[i]);
+                this.ConvertAMaskSymboleIntoLetter(i, this.Content[i]);
                 revealedLetter = this.Content[i];
                 break;
             }
@@ -50,13 +57,13 @@ namespace Hangman.Logic.Words
         }
 
         /// <summary>
-        /// Counts the number of occurences of the received letter in the GuessWord.
+        /// Counts the number of occurrences of the received letter in the GuessWord.
         /// </summary>
         /// <param name="letter">
         /// The letter to be searched in the word.
         /// </param>
         /// <returns>
-        /// The number of occurences of the received letter in the GuessWord.
+        /// The number of occurrences of the received letter in the GuessWord.
         /// </returns>
         public int GetNumberOfOccurences(char letter)
         {
@@ -69,13 +76,22 @@ namespace Hangman.Logic.Words
                     continue;
                 }
 
-                ConvertAMaskSymboleIntoLetter(i, letter);
+                this.ConvertAMaskSymboleIntoLetter(i, letter);
                 count++;
             }
 
             return count;
         }
 
+        /// <summary>
+        /// Produces a char array containing the mask symbol, replacing all letters of the received word.
+        /// </summary>
+        /// <param name="word">
+        /// Word as a string.
+        /// </param>
+        /// <returns>
+        /// Char array containing the mask symbol, replacing all letters of the received word.
+        /// </returns>
         private char[] GetMask(string word)
         {
             int wordLength = word.Length;
@@ -89,6 +105,15 @@ namespace Hangman.Logic.Words
             return letters;
         }
 
+        /// <summary>
+        /// Converts mask symbole into letter.
+        /// </summary>
+        /// <param name="index">
+        /// Index of the mask symbol to be changed.
+        /// </param>
+        /// <param name="letter">
+        /// Letter to be put on the place of the converted mask symbol.
+        /// </param>
         private void ConvertAMaskSymboleIntoLetter(int index, char letter)
         {
             this.Mask[index] = letter;

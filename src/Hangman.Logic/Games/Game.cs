@@ -1,4 +1,9 @@
-﻿using Hangman.Logic.Engines;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="Game.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using Hangman.Logic.Engines;
 
 namespace Hangman.Logic.Games
 {

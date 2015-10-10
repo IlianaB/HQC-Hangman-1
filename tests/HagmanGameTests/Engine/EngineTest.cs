@@ -31,8 +31,7 @@ namespace HagmanGameTests.Engine
                 new Mock<IRenderer>().Object,
                 this.player.Object,
                 this.wordGenerator.Object,
-                new Mock<ICommandFactory>().Object
-            );
+                new Mock<ICommandFactory>().Object);
         }
 
         [TearDown]

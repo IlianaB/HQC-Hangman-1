@@ -1,4 +1,9 @@
-﻿using System.Linq;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="GameEngine.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using System.Linq;
 
 using Hangman.Logic.Commands.Common;
 using Hangman.Logic.Common;
@@ -14,7 +19,7 @@ namespace Hangman.Logic.Engines
 {
     /// <summary>
     /// GameEngine class controls the main game flow. It has methods for starting, resetting, and ending a game. 
-    /// It is also responsible for checking the winning and looosing conditions of the game.
+    /// It is also responsible for checking the winning and loosing conditions of the game.
     /// The class is abstract. It implements two interfaces - IEngine and ICommandExecutable (letting the Engine acts like something on which we can perform a command).
     /// </summary>
     public abstract class GameEngine : IEngine, ICommandExecutable
@@ -57,10 +62,9 @@ namespace Hangman.Logic.Engines
             this.Play();
         }
 
-
         /// <summary>
         /// Ends a won game. 
-        /// The method checks if the Player has used help and if he does not - it checks if the Player can enter Hihg Scores and processes his score.
+        /// The method checks if the Player has used help and if he does not - it checks if the Player can enter High Scores and processes his score.
         /// </summary>
         public void EndWonGame()
         {
@@ -101,7 +105,7 @@ namespace Hangman.Logic.Engines
         /// Checks if the Player has made more mistakes than the maximum possible mistakes.
         /// </summary>
         /// <returns>
-        /// Boolean variable saying if the game is over or not 
+        /// Boolean variable saying if the game is over or not. 
         /// </returns>
         public bool CheckGameOverCondition()
         {
@@ -128,10 +132,10 @@ namespace Hangman.Logic.Engines
 
         /// <summary>
         /// Reacts to player action, received as a string command.
-        /// If the command has lenght = 1, the method invokes ExecuteLetterGuess method.
-        /// If the command lenght is > 1, the method gets a command from the Command Factory (using the input param) and incokes ExecuteCommand method.
+        /// If the command has length = 1, the method invokes ExecuteLetterGuess method.
+        /// If the command length is > 1, the method gets a command from the Command Factory (using the input parameters) and invokes ExecuteCommand method.
         /// </summary>
-        /// <param name="command">Command as a string, read by the Input provider</param>
+        /// <param name="command">Command as a string, read by the Input provider.</param>
         public void ReactToPlayerAction(string command)
         {
             if (command.Length == 1)
@@ -145,19 +149,34 @@ namespace Hangman.Logic.Engines
             }
         }
 
+        /// <summary>
+        /// Sets the player's name. Can be overridden by inheritors.
+        /// </summary>
         protected virtual void SetPlayerName()
         {
         }
 
+        /// <summary>
+        /// Waits for player action. Can be overridden by inheritors. 
+        /// </summary>
         protected virtual void WaitForPlayerAction()
         {
         }
 
+        /// <summary>
+        /// Saves results. Can be overridden by inheritors.
+        /// </summary>
+        /// <param name="newRecord">
+        /// Player's personal score.
+        /// </param>
         protected virtual void SaveResult(IPersonalScore newRecord)
         {
             this.ScoreBoardService.AddNewScore(newRecord);
         }
 
+        /// <summary>
+        /// Shows the current progress of the guessed word, invokes the method, waiting for a player's action.
+        /// </summary>
         protected virtual void Play()
         {
             this.Renderer.ShowMessage(Constants.GuessTheWordMessage);
@@ -166,6 +185,13 @@ namespace Hangman.Logic.Engines
             this.WaitForPlayerAction();
         }
 
+        /// <summary>
+        /// Process the letter guess of the Player. Checks how many occurrences of the word are there in the word to be guessed.
+        /// If there is not any - increases the Player's mistakes and ask the Renderer to draw the Hangman.
+        /// </summary>
+        /// <param name="letter">
+        /// A letter, write by the Player.
+        /// </param>
         private void ExecuteLetterGuess(char letter)
         {
             string message;
@@ -186,11 +212,24 @@ namespace Hangman.Logic.Engines
             this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
         }
 
+        /// <summary>
+        /// Executes a command, invoking the method Execute of the received command.
+        /// </summary>
+        /// <param name="command">
+        /// Concrete implementation of ICommand interface.
+        /// </param>
         private void ExecuteCommand(ICommand command)
         {
             command.Execute();
         }
 
+        /// <summary>
+        /// Processes the result of the player.
+        /// If player can enter high scores - saves the Player's result.
+        /// </summary>
+        /// <param name="playerCanEnterHighScores">
+        /// Boolean variable indicating if the player can enter high scores.
+        /// </param>
         private void ProcessCurrentPlayerResult(bool playerCanEnterHighScores)
         {
             if (playerCanEnterHighScores)

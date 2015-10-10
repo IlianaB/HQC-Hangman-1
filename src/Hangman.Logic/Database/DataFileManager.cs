@@ -1,4 +1,9 @@
-﻿using System;
+﻿// <summary>Hangman Game - Teamwork for the course High-quality code at Telerik Academy</summary>
+// <copyright file="DataFileManager.cs" company="Hangman-1">
+//     Hangman-Team-1@
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -10,7 +15,7 @@ namespace Hangman.Logic.Database
     /// <summary>
     /// DataFileManger is concrete implementation of DataManager class. 
     /// It is responsible for the communication with the database.
-    /// Singleton with Lazy Initialization. It is instanciated at its first usage.
+    /// Singleton with Lazy Initialization. It is initialized at its first usage.
     /// </summary>
     public sealed class DataFileManager : DataManager, IDataManager
     {
@@ -21,6 +26,9 @@ namespace Hangman.Logic.Database
         {
         }
 
+        /// <summary>
+        /// Property returning the Singleton DataFileManager instance.
+        /// </summary>
         public static DataFileManager SingletonInstance
         {
             get
@@ -30,13 +38,13 @@ namespace Hangman.Logic.Database
         }
        
         /// <summary>
-        /// Saves the received IPersonalScore in the database
+        /// Saves the received IPersonalScore in the database.
         /// </summary>
         /// <param name="score">
-        /// The score of the current player
+        /// The score of the current player.
         /// </param>
         /// <param name="filePath">
-        /// The path to the file, which acts as a database
+        /// The path to the file, which acts as a database.
         /// </param>
         public override void SaveResult(IPersonalScore score, string filePath)
         {
@@ -50,10 +58,10 @@ namespace Hangman.Logic.Database
         /// Reads the result from the database and restores them as a C# objects.
         /// </summary>
         /// <param name="scoreBoardService">
-        /// The current ScoreBoardService
+        /// The current ScoreBoardService.
         /// </param>
         /// <param name="filePath">
-        /// The path to the file, which acts as a database
+        /// The path to the file, which acts as a database.
         /// </param>
         public override void RestoreResults(IScoreBoardService scoreBoardService, string filePath)
         {
@@ -73,6 +81,15 @@ namespace Hangman.Logic.Database
             scoreBoardService.RestoreScores(restoredResults);
         }
 
+        /// <summary>
+        /// Reads all results from the database.
+        /// </summary>
+        /// <param name="filePath">
+        /// The path to the database.
+        /// </param>
+        /// <returns>
+        /// Collection with all results as strings.
+        /// </returns>
         private List<string> ReadAllResults(string filePath)
         {
             using (StreamReader reader = new StreamReader(filePath))
