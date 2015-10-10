@@ -1,6 +1,9 @@
-﻿using Hangman.Logic.Commands.Common;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Hangman.Logic.Commands.Common;
 using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
+using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.Commands
 {
@@ -13,8 +16,10 @@ namespace Hangman.Logic.Commands
 
         public override void Execute()
         {
-            this.Engine.ScoreBoardService.SortScoreBoard();
-            this.Engine.Renderer.ShowScoreBoardResults(this.Engine.ScoreBoardService.IsEmpty(), this.Engine.ScoreBoardService.GetTopScores(Constants.NumberOfScoresInScoreBoard));
+            ICollection<IPersonalScore> topScores = this.Engine.ScoreBoardService.GetTopScores(Constants.NumberOfScoresInScoreBoard);
+            bool isEmptyScoreBoard = this.Engine.ScoreBoardService.IsEmpty();
+
+            this.Engine.Renderer.ShowScoreBoardResults(isEmptyScoreBoard, topScores);
         }
     }
 }

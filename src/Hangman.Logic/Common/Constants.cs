@@ -18,8 +18,7 @@
         public const string EnterNameMessage = "Please enter your name: ";
         public const string EnterGuessMessage = "Enter your guess: ";
         public const string AnnounceSecretWordMessage = "The secret word is: ";
-        public const string FilePathConsoleGame = @"../../../Hangman.Logic/Database/Results.txt";
-        public const string FilePathWPFGame = @"../../../Hangman.Logic/Database/Results.txt";
+        public const string DatabaseFile = @"../../../Hangman.Logic/Database/Results.txt";
         public const int NumberOfScoresInScoreBoard = 10;
         public const int MaxNumberOfPlayerMistakes = 7;
         public const char WordMaskChar = '_';

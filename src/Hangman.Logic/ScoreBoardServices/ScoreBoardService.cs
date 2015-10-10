@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Hangman.Logic.Common;
+using Hangman.Logic.Database;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.ScoreBoardServices
@@ -90,6 +91,8 @@ namespace Hangman.Logic.ScoreBoardServices
 
         public IList<IPersonalScore> GetTopScores(int count)
         {
+            DataFileManager.SingletonInstance.RestoreResults(this, Constants.DatabaseFile);
+            
             this.SortScoreBoard();
 
             var topScores = new List<IPersonalScore>(this.currentScoreBoard.Records.Take(count));

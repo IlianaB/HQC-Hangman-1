@@ -26,7 +26,6 @@ namespace Hangman.WPF.UI
             IWordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();
             IEngine gameEngine = new WpfEngine(scoreBoardService, renderer, player, randomWordGenerator, commandFactory);
-            DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathWPFGame);
 
             this.Engine = gameEngine;
         }
