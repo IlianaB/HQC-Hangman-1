@@ -38,7 +38,7 @@ namespace Hangman.Logic.Engines
 
         public ICommandFactory CommandFactory { get; private set; }
 
-        public GuessWord WordToGuess { get; private set; }
+        public IGuessWord WordToGuess { get; set; }
 
         public void StartGame()
         {

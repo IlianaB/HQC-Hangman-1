@@ -1,4 +1,5 @@
-﻿using Hangman.Console.UI;
+﻿using System.Linq;
+using Hangman.Console.UI;
 using Hangman.Console.UI.Engines;
 using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
@@ -19,11 +20,13 @@ namespace HagmanGameTests.Engine
         private const string FakeWord = "guessme";
         private ConsoleEngine engine;
         private Mock<IPlayer> player;
+        private Mock<IGuessWord> guessWord;
 
         [SetUp]
         public void Init()
         {
             this.player = new Mock<IPlayer>();
+            this.guessWord = new Mock<IGuessWord>();
             this.engine = new ConsoleEngine(
                 new Mock<IScoreBoardService>().Object,
                 new Mock<IRenderer>().Object,
@@ -57,7 +60,7 @@ namespace HagmanGameTests.Engine
 
             Assert.IsTrue(result);
         }
-        
+
         [Test]
         public void CheckGameOverConditionMustReturnFalseIfPlayerMistakesAreLowerThanMaxConstant()
         {
@@ -67,6 +70,29 @@ namespace HagmanGameTests.Engine
             Assert.IsFalse(result);
         }
 
-        
+        [Test]
+        public void CheckWinningConditionMustReturnTrueIfAllLettersAreGuessed()
+        {
+            char[] testMask = { 'a', 'b', 'c' };
+            this.guessWord.Setup(t => t.Mask).Returns(testMask);
+            this.engine.WordToGuess = this.guessWord.Object;
+
+            bool result = this.engine.CheckWinningCondition();
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void CheckWinningConditionMustReturnFalseIfAnyLetterIsNotGuessed()
+        {
+            char[] testMask = { 'a', '_', 'c' };
+            this.guessWord.Setup(t => t.Mask).Returns(testMask);
+            this.engine.WordToGuess = this.guessWord.Object;
+
+            bool result = this.engine.CheckWinningCondition();
+
+            Assert.IsFalse(result);
+        }
+
     }
 }

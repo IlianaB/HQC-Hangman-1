@@ -1,6 +1,6 @@
 ﻿using Hangman.Logic.Players.Contracts;
 using Hangman.Logic.ScoreBoardServices.Contracts;
-using Hangman.Logic.Words;
+using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.Logic.Contracts
 {
@@ -8,7 +8,7 @@ namespace Hangman.Logic.Contracts
     {
         IRenderer Renderer { get; }
 
-        GuessWord WordToGuess { get; }
+        IGuessWord WordToGuess { get; }
 
         IScoreBoardService ScoreBoardService { get; }
 
