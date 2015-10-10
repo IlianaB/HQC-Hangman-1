@@ -41,7 +41,7 @@ namespace Hangman.Logic.Words
                     continue;
                 }
 
-                this.Mask[i] = this.Content[i];
+                ConvertAMaskSymboleIntoLetter(i, this.Content[i]);
                 revealedLetter = this.Content[i];
                 break;
             }
@@ -69,7 +69,7 @@ namespace Hangman.Logic.Words
                     continue;
                 }
 
-                this.Mask[i] = letter;
+                ConvertAMaskSymboleIntoLetter(i, letter);
                 count++;
             }
 
@@ -87,6 +87,11 @@ namespace Hangman.Logic.Words
             }
 
             return letters;
+        }
+
+        private void ConvertAMaskSymboleIntoLetter(int index, char letter)
+        {
+            this.Mask[index] = letter;
         }
     }
 }
