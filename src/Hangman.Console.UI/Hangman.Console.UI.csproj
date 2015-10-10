@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="ConsoleGame.cs" />
     <Compile Include="Console\ConsoleInputProvider.cs" />
+    <Compile Include="Console\Reader.cs" />
     <Compile Include="Console\ConsoleRenderer.cs" />
+    <Compile Include="Console\Writer.cs" />
     <Compile Include="Engines\ConsoleEngine.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

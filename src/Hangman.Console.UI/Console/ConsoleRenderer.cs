@@ -12,12 +12,12 @@ namespace Hangman.Console.UI.Console
     public class ConsoleRenderer : Renderer, IRenderer
     {
         public ConsoleRenderer()
-            : this(new CapitalizeFormatter())
+            : this(new CapitalizeFormatter(), new Writer())
         {
         }
 
-        public ConsoleRenderer(IResultFormatter formatter)
-            : base(formatter)
+        public ConsoleRenderer(IResultFormatter formatter, IWriter writer)
+            : base(formatter, writer)
         {
         }
 
@@ -25,16 +25,16 @@ namespace Hangman.Console.UI.Console
         {
             if (isEmptyScoreBoard)
             {
-                Console.WriteLine(Constants.EmptyScoreboardMessage);
+                this.Writer.WriteLine(Constants.EmptyScoreboardMessage);
             }
             else
             {
-                Console.WriteLine("Scoreboard:");
+                this.Writer.WriteLine("Scoreboard:");
 
                 int position = 1;
                 foreach (var record in records)
                 {
-                    Console.WriteLine(position + ". " + this.Formatter.Format(record));
+                    this.Writer.WriteLine(position + ". " + this.Formatter.Format(record));
                     position++;
                 }
             }
@@ -42,21 +42,21 @@ namespace Hangman.Console.UI.Console
 
         public override void ShowCurrentProgress(char[] guessedLetters)
         {
-            Console.WriteLine();
+            this.Writer.WriteLine(string.Empty);
 
             Console.Write(Constants.AnnounceSecretWordMessage);
 
             for (int i = 0; i < guessedLetters.Length; i++)
             {
-                Console.Write("{0} ", guessedLetters[i]);
+                this.Writer.Write(string.Format("{0} ", guessedLetters[i]));
             }
 
-            Console.WriteLine();
+            this.Writer.WriteLine(string.Empty);
         }
 
         public override void ShowMessage(string message)
         {
-            Console.WriteLine(message);
+            this.Writer.WriteLine(message);
         }
 
         public override void DrawHangman(int mistakes)
@@ -64,76 +64,75 @@ namespace Hangman.Console.UI.Console
             switch (mistakes)
             {
                 case 1:
-                    Console.WriteLine("   _____");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |     O");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("__|__");
+                    this.Writer.WriteLine("   _____");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |     O");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("__|__");
                     break;
 
                 case 2:
-                    Console.WriteLine("   _____");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |     O");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("__|__");
+                    this.Writer.WriteLine("   _____");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |     O");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("__|__");
                     break;
                 case 3:
-                    Console.WriteLine("   _____");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |     O");
-                    Console.WriteLine("  |    \\|");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("__|__");
+                    this.Writer.WriteLine("   _____");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |     O");
+                    this.Writer.WriteLine("  |    \\|");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("__|__");
                     break;
                 case 4:
-
-                    Console.WriteLine("   _____");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |     O");
-                    Console.WriteLine("  |    \\|/");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("__|__");
+                    this.Writer.WriteLine("   _____");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |     O");
+                    this.Writer.WriteLine("  |    \\|/");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("__|__");
                     break;
                 case 5:
-                    Console.WriteLine("   _____");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |     O");
-                    Console.WriteLine("  |    \\|/");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("__|__");
+                    this.Writer.WriteLine("   _____");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |     O");
+                    this.Writer.WriteLine("  |    \\|/");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("__|__");
                     break;
                 case 6:
-                    Console.WriteLine("   _____");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |     O");
-                    Console.WriteLine("  |    \\|/");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |    /");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("__|__");
+                    this.Writer.WriteLine("   _____");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |     O");
+                    this.Writer.WriteLine("  |    \\|/");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |    /");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("__|__");
                     break;
                 case 7:
-                    Console.WriteLine("   _____");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |     O");
-                    Console.WriteLine("  |    \\|/");
-                    Console.WriteLine("  |     |");
-                    Console.WriteLine("  |    / \\");
-                    Console.WriteLine("  |");
-                    Console.WriteLine("__|__");
+                    this.Writer.WriteLine("   _____");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |     O");
+                    this.Writer.WriteLine("  |    \\|/");
+                    this.Writer.WriteLine("  |     |");
+                    this.Writer.WriteLine("  |    / \\");
+                    this.Writer.WriteLine("  |");
+                    this.Writer.WriteLine("__|__");
                     break;
             }
         }

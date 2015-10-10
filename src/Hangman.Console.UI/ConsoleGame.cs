@@ -22,8 +22,8 @@ namespace Hangman.Console.UI
         {
             IScoreBoard scoreBoard = new ScoreBoard();
             IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
-            IRenderer renderer = new ConsoleRenderer(new CapitalizeFormatter());
-            IInputProvider inputProvider = new ConsoleInputProvider();
+            IRenderer renderer = new ConsoleRenderer(new CapitalizeFormatter(), new Writer());
+            IInputProvider inputProvider = new ConsoleInputProvider(new Reader());
             IPlayer player = new Player(false);
             IWordProvider wordProvider = new WordProvider();
             IWordGenerator randomWordGenerator = new WordGenerator(wordProvider);

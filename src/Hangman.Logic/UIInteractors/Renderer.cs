@@ -9,10 +9,12 @@ namespace Hangman.Logic.UIInteractors
     public abstract class Renderer : IRenderer
     {
         protected readonly IResultFormatter Formatter;
+        protected IWriter Writer;
 
-        protected Renderer(IResultFormatter formatter)
+        protected Renderer(IResultFormatter formatter, IWriter writer)
         {
             this.Formatter = formatter;
+            this.Writer = writer;
         }
 
         public abstract void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records);

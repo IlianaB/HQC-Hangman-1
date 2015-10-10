@@ -20,7 +20,7 @@ namespace Hangman.WPF.UI
         {
             IScoreBoard scoreBoard = new ScoreBoard();
             IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
-            IRenderer renderer = new WpfRenderer(new AllCapsFormatter());
+            IRenderer renderer = new WpfRenderer(new AllCapsFormatter(), new WpfWriter());
             IPlayer player = new Player(false);
             IWordProvider wordProvider = new WordProvider();
             IWordGenerator randomWordGenerator = new WordGenerator(wordProvider);

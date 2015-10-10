@@ -13,12 +13,12 @@ namespace Hangman.WPF.UI
     public class WpfRenderer : Renderer, IRenderer
     {
         public WpfRenderer()
-            : this(new AllCapsFormatter())
+            : this(new AllCapsFormatter(), new WpfWriter())
         {
         }
 
-        public WpfRenderer(IResultFormatter formatter)
-            : base(formatter)
+        public WpfRenderer(IResultFormatter formatter, IWriter writer)
+            : base(formatter, writer)
         {
         }
 

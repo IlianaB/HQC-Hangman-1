@@ -2,13 +2,23 @@
 
 namespace Hangman.Console.UI.Console
 {
-    using System;
-
     public class ConsoleInputProvider : IInputProvider
     {
+        private readonly IReader reader;
+
+        public ConsoleInputProvider()
+            : this(new Reader())
+        {
+        }
+
+        public ConsoleInputProvider(IReader reader)
+        {
+            this.reader = reader;
+        }
+
         public string ReadCommand()
         {
-            string command = Console.ReadLine();
+            string command = this.reader.ReadText();
             string lowerCaseCommand = command.ToLower();
 
             return lowerCaseCommand;

@@ -49,6 +49,8 @@
     <Compile Include="Commands\TopCommand.cs" />
     <Compile Include="Commands\WrongCommand.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Contracts\IReader.cs" />
+    <Compile Include="Contracts\IWriter.cs" />
     <Compile Include="Words\GuessWord.cs" />
     <Compile Include="Words\Contracts\IGuessWord.cs" />
     <Compile Include="Words\Contracts\IWordGenerator.cs" />
