@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Input;
 using Hangman.Logic.Engines;
 using Hangman.Logic.Games;
 
@@ -47,11 +47,27 @@ namespace Hangman.WPF.UI
             game.Start();
         }
 
+        private void KeyBoard_KeyDown(object sender, RoutedEventArgs e)
+        {
+            var eventArgs = e as KeyEventArgs;
+            var key = eventArgs.Key.ToString();
+            if (this.engine != null)
+            {
+                ProcessKey(key);
+            }
+        }
+
         private void ButtonKeyBoard_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
+            var eventArgs = sender as Button;
+            var button = eventArgs.Content.ToString();
 
-            this.engine.ReactToPlayerAction(button.Content.ToString().ToLower());
+            ProcessKey(button);
+        }
+
+        private void ProcessKey(string key)
+        {
+            this.engine.ReactToPlayerAction(key.ToLower());
 
             bool isGameOver = this.engine.CheckGameOverCondition();
             bool isWordGuessed = this.engine.CheckWinningCondition();
