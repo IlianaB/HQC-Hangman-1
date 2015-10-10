@@ -1,5 +1,13 @@
-﻿using Hangman.Logic.Engines;
+﻿using Hangman.Console.UI;
+using Hangman.Console.UI.Engines;
+using Hangman.Logic.Common;
+using Hangman.Logic.Contracts;
+using Hangman.Logic.Engines;
+using Hangman.Logic.Factories;
+using Hangman.Logic.Players.Contracts;
+using Hangman.Logic.ScoreBoardServices.Contracts;
 using Hangman.Logic.Words;
+using Hangman.Logic.Words.Contracts;
 using Moq;
 using NUnit.Framework;
 
@@ -9,16 +17,21 @@ namespace HagmanGameTests.Engine
     public class EngineTest
     {
         private const string FakeWord = "guessme";
-        private GameEngine engine;
+        private ConsoleEngine engine;
+        private Mock<IPlayer> player;
 
         [SetUp]
         public void Init()
         {
-            var mockEngine = new Mock<GameEngine>();
-            var word = new GuessWord(FakeWord);
-            mockEngine.Setup(r => r.WordToGuess).Returns(word);
-            
-            this.engine = mockEngine.Object;
+            this.player = new Mock<IPlayer>();
+            this.engine = new ConsoleEngine(
+                new Mock<IScoreBoardService>().Object,
+                new Mock<IRenderer>().Object,
+                this.player.Object,
+                new Mock<IWordGenerator>().Object,
+                new Mock<ICommandFactory>().Object,
+                new Mock<IInputProvider>().Object
+            );
         }
 
         [TearDown]
@@ -26,5 +39,34 @@ namespace HagmanGameTests.Engine
         {
             this.engine = null;
         }
+
+        [Test]
+        public void CheckGameOverConditionMustReturnTrueIfPlayerMistakesAreHigherThanMaxConstant()
+        {
+            this.player.Setup(t => t.Mistakes).Returns(Constants.MaxNumberOfPlayerMistakes + 1);
+            bool result = this.engine.CheckGameOverCondition();
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void CheckGameOverConditionMustReturnFalseIfPlayerMistakesAreEqualToMaxConstant()
+        {
+            this.player.Setup(t => t.Mistakes).Returns(Constants.MaxNumberOfPlayerMistakes);
+            bool result = this.engine.CheckGameOverCondition();
+
+            Assert.IsTrue(result);
+        }
+        
+        [Test]
+        public void CheckGameOverConditionMustReturnFalseIfPlayerMistakesAreLowerThanMaxConstant()
+        {
+            this.player.Setup(t => t.Mistakes).Returns(Constants.MaxNumberOfPlayerMistakes - 1);
+            bool result = this.engine.CheckGameOverCondition();
+
+            Assert.IsFalse(result);
+        }
+
+        
     }
 }
