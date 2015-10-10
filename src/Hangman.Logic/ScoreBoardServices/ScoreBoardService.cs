@@ -15,6 +15,10 @@ namespace Hangman.Logic.ScoreBoardServices
     {
         private readonly IScoreBoard currentScoreBoard;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScoreBoardService"/> class.
+        /// </summary>
+        /// <param name="scoreBoard">Instance of IScoreBoard</param>
         public ScoreBoardService(IScoreBoard scoreBoard)
         {
             this.currentScoreBoard = scoreBoard;

@@ -12,6 +12,12 @@ namespace Hangman.Logic.Words.Contracts
     /// </summary>
     public interface IWordProvider
     {
+        /// <summary>
+        /// Keeps the available words to be guessed.
+        /// </summary>
+        /// <returns>
+        /// A single word to be guessed.
+        /// </returns>
         List<string> ProvideWords();
     }
 }

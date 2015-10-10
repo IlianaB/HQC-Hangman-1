@@ -10,12 +10,33 @@ namespace Hangman.Logic.Words.Contracts
     /// </summary>
     public interface IGuessWord
     {
+        /// <summary>
+        /// Gets or sets the content of the word.
+        /// </summary>
         string Content { get; set; }
 
+        /// <summary>
+        /// Gets or sets the mask of the word.
+        /// </summary>
         char[] Mask { get; set; }
 
+        /// <summary>
+        /// Reveals the first hidden letter of the GuessWord.
+        /// </summary>
+        /// <returns>
+        /// Single letter as a char.
+        /// </returns>
         char RevealLetter();
 
+        /// <summary>
+        /// Counts the number of occurrences of the received letter in the GuessWord.
+        /// </summary>
+        /// <param name="letter">
+        /// The letter to be searched in the word.
+        /// </param>
+        /// <returns>
+        /// The number of occurrences of the received letter in the GuessWord.
+        /// </returns>
         int GetNumberOfOccurences(char letter);
     }
 }

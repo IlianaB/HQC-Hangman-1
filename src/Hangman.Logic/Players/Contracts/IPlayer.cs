@@ -10,10 +10,19 @@ namespace Hangman.Logic.Players.Contracts
     /// </summary>
     public interface IPlayer
     {
+        /// <summary>
+        /// Gets or sets the name of the player
+        /// </summary>
         string Name { get; set; }
 
+        /// <summary>
+        /// Gets the mistakes of the player
+        /// </summary>
         int Mistakes { get; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether player has used help or not
+        /// </summary>
         bool HasUsedHelp { get; set; }
 
         /// <summary>

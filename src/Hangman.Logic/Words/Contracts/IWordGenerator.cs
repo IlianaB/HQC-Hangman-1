@@ -10,6 +10,12 @@ namespace Hangman.Logic.Words.Contracts
     /// </summary>
     public interface IWordGenerator
     {
+        /// <summary>
+        /// Returns a random word from the Word Provider.
+        /// </summary>
+        /// <returns>
+        /// A random word as a string.
+        /// </returns>
         string GetRandomWord();
     }
 }

@@ -10,8 +10,14 @@ namespace Hangman.Logic.ScoreBoardServices.Contracts
     /// </summary>
     public interface IPersonalScore
     {
+        /// <summary>
+        /// Gets the name of the player
+        /// </summary>
         string Name { get; }
 
+        /// <summary>
+        /// Gets the score of the player
+        /// </summary>
         int Score { get; }
     }
 }

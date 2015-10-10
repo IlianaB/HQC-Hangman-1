@@ -14,6 +14,12 @@ namespace Hangman.Logic.Commands
     /// </summary>
     public class NullCommand : Command, ICommand
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NullCommand"/> class.
+        /// </summary>
+        /// <param name="engine">
+        /// The context of the command.
+        /// </param>
         public NullCommand(ICommandExecutable engine)
             : base(engine)
         {

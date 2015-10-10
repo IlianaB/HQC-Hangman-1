@@ -12,6 +12,9 @@ namespace Hangman.Logic.ScoreBoardServices.Contracts
     /// </summary>
     public interface IScoreBoard
     {
+        /// <summary>
+        /// Gets or sets the collection with personal records
+        /// </summary>
         IList<IPersonalScore> Records { get; set; }
     }
 }

@@ -10,8 +10,16 @@ namespace Hangman.Logic.Contracts
     /// </summary>
     public interface IWriter
     {
+        /// <summary>
+        /// Writes on a same line
+        /// </summary>
+        /// <param name="text">Text as a string</param>
         void Write(string text);
 
+        /// <summary>
+        /// Writes on a new line
+        /// </summary>
+        /// <param name="text">Text as a string</param>
         void WriteLine(string text);
     }
 }

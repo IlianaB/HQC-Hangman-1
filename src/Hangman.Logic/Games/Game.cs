@@ -13,6 +13,9 @@ namespace Hangman.Logic.Games
     /// </summary>
     public abstract class Game : IGame
     {
+        /// <summary>
+        /// Gets or sets an implementation of IEngine
+        /// </summary>
         public IEngine Engine { get; set; }
 
         /// <summary>

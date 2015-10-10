@@ -13,8 +13,14 @@ namespace Hangman.Logic.Engines
     /// </summary>
     public interface IEngine
     {
+        /// <summary>
+        /// Gets an implementation of IRenderer
+        /// </summary>
         IRenderer Renderer { get; }
 
+        /// <summary>
+        /// Gets an implementation of IPlayer
+        /// </summary>
         IPlayer Player { get; }
 
         /// <summary>

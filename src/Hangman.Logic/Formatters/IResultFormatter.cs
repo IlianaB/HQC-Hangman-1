@@ -12,6 +12,15 @@ namespace Hangman.Logic.Formatters
     /// </summary>
     public interface IResultFormatter
     {
+        /// <summary>
+        /// Formats personal scores.
+        /// </summary>
+        /// <param name="record">
+        /// A Personal score to be formatted.
+        /// </param>
+        /// <returns>
+        /// The formatted personal score.
+        /// </returns>
         string Format(IPersonalScore record);
     }
 }

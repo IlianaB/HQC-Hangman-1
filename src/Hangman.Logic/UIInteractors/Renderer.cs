@@ -16,9 +16,21 @@ namespace Hangman.Logic.UIInteractors
     /// </summary>
     public abstract class Renderer : IRenderer
     {
+        /// <summary>
+        /// Instance of IResultFormatter
+        /// </summary>
         protected readonly IResultFormatter Formatter;
+
+        /// <summary>
+        /// Instance of IWriter
+        /// </summary>
         protected readonly IWriter Writer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Renderer"/> class.
+        /// </summary>
+        /// <param name="formatter">Instance of IResultFormatter</param>
+        /// <param name="writer">Instance of IWriter</param>
         protected Renderer(IResultFormatter formatter, IWriter writer)
         {
             this.Formatter = formatter;

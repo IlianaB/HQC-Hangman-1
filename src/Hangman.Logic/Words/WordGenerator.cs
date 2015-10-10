@@ -14,7 +14,14 @@ namespace Hangman.Logic.Words
     /// </summary>
     public class WordGenerator : IWordGenerator
     {
+        /// <summary>
+        /// Collection containing all available words to be guessed.
+        /// </summary>
         private readonly List<string> words;
+
+        /// <summary>
+        /// Instance of .net Random class
+        /// </summary>
         private readonly Random random;
 
         /// <summary>

@@ -8,6 +8,9 @@ using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.Logic.Words
 {
+    /// <summary>
+    /// Keeps the available words to be guessed.
+    /// </summary>
     public class WordProvider : IWordProvider
     {
         /// <summary>

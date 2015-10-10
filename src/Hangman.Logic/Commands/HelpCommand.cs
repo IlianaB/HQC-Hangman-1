@@ -14,6 +14,12 @@ namespace Hangman.Logic.Commands
     /// </summary>
     public class HelpCommand : Command, ICommand
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HelpCommand"/> class.
+        /// </summary>
+        /// <param name="engine">
+        /// The context of the command.
+        /// </param>
         public HelpCommand(ICommandExecutable engine)
             : base(engine)
         {

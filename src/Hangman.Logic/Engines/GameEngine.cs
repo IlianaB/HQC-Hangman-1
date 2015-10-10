@@ -24,6 +24,14 @@ namespace Hangman.Logic.Engines
     /// </summary>
     public abstract class GameEngine : IEngine, ICommandExecutable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameEngine"/> class.
+        /// </summary>
+        /// <param name="scoreBoardService">Instance of IScoreBoardService</param>
+        /// <param name="renderer">Instance of IRenderer</param>
+        /// <param name="player">Instance of IPlayer</param>
+        /// <param name="wordGenerator">Instance of IWordGenerator</param>
+        /// <param name="commandFactory">Instance of ICommandFactory</param>
         protected GameEngine(
             IScoreBoardService scoreBoardService, 
             IRenderer renderer,
@@ -38,16 +46,34 @@ namespace Hangman.Logic.Engines
             this.CommandFactory = commandFactory;
         }
 
+        /// <summary>
+        /// Gets an implementation of IScoreBoardService
+        /// </summary>
         public IScoreBoardService ScoreBoardService { get; private set; }
 
+        /// <summary>
+        /// Gets an implementation of IRenderer
+        /// </summary>
         public IRenderer Renderer { get; private set; }
 
+        /// <summary>
+        /// Gets an implementation of IPlayer
+        /// </summary>
         public IPlayer Player { get; private set; }
 
+        /// <summary>
+        /// Gets an implementation of IWordGenerator
+        /// </summary>
         public IWordGenerator WordGenerator { get; private set; }
 
+        /// <summary>
+        /// Gets an implementation of ICommandFactory
+        /// </summary>
         public ICommandFactory CommandFactory { get; private set; }
 
+        /// <summary>
+        /// Gets or sets an implementation of IGuessWord
+        /// </summary>
         public IGuessWord WordToGuess { get; set; }
 
         /// <summary>

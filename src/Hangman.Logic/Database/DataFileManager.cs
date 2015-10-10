@@ -19,15 +19,21 @@ namespace Hangman.Logic.Database
     /// </summary>
     public sealed class DataFileManager : DataManager, IDataManager
     {
+        /// <summary>
+        /// Singleton instance with lazy initialization.
+        /// </summary>
         private static readonly Lazy<DataFileManager> SingletonDataFileManager = 
             new Lazy<DataFileManager>(() => new DataFileManager());
 
+        /// <summary>
+        /// Prevents a default instance of the <see cref="DataFileManager"/> class from being created.
+        /// </summary>
         private DataFileManager()
         {
         }
 
         /// <summary>
-        /// Property returning the Singleton DataFileManager instance.
+        /// Gets the Singleton DataFileManager instance.
         /// </summary>
         public static DataFileManager SingletonInstance
         {

@@ -15,6 +15,12 @@ namespace Hangman.Logic.Commands
     /// </summary>
     public class ExitCommand : Command, ICommand
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExitCommand"/> class.
+        /// </summary>
+        /// <param name="engine">
+        /// The context of the command.
+        /// </param>
         public ExitCommand(ICommandExecutable engine)
             : base(engine)
         {

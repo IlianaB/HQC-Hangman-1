@@ -27,8 +27,14 @@ namespace Hangman.Logic.Words
             this.Mask = this.GetMask(word);
         }
 
+        /// <summary>
+        /// Gets or sets the content of the word.
+        /// </summary>
         public string Content { get; set; }
 
+        /// <summary>
+        /// Gets or sets the mask of the word.
+        /// </summary>
         public char[] Mask { get; set; }
 
         /// <summary>
@@ -106,7 +112,7 @@ namespace Hangman.Logic.Words
         }
 
         /// <summary>
-        /// Converts mask symbole into letter.
+        /// Converts mask symbol into letter.
         /// </summary>
         /// <param name="index">
         /// Index of the mask symbol to be changed.

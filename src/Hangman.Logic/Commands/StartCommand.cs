@@ -13,6 +13,12 @@ namespace Hangman.Logic.Commands
     /// </summary>
     public class StartCommand : Command, ICommand
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StartCommand"/> class.
+        /// </summary>
+        /// <param name="engine">
+        /// The context of the command.
+        /// </param>
         public StartCommand(ICommandExecutable engine)
             : base(engine)
         {

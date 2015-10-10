@@ -23,10 +23,19 @@ namespace Hangman.Logic.Players
             this.HasUsedHelp = false;
         }
 
+        /// <summary>
+        /// Gets or sets players name
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets players mistakes
+        /// </summary>
         public int Mistakes { get; private set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether player has used help or not
+        /// </summary>
         public bool HasUsedHelp { get; set; }
 
         /// <summary>

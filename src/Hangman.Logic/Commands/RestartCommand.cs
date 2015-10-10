@@ -13,6 +13,12 @@ namespace Hangman.Logic.Commands
     /// </summary>
     public class RestartCommand : Command, ICommand
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RestartCommand"/> class.
+        /// </summary>
+        /// <param name="engine">
+        /// The context of the command.
+        /// </param>
         public RestartCommand(ICommandExecutable engine)
             : base(engine)
         {

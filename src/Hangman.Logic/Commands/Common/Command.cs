@@ -12,11 +12,20 @@ namespace Hangman.Logic.Commands.Common
     /// </summary>
     public abstract class Command : ICommand
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Command"/> class.
+        /// </summary>
+        /// <param name="engine">
+        /// The context of the command.
+        /// </param>
         protected Command(ICommandExecutable engine)
         {
             this.Engine = engine;
         }
         
+        /// <summary>
+        /// Gets or sets an implementation of ICommandExecutable
+        /// </summary>
         protected ICommandExecutable Engine { get; set; }
         
         /// <summary>

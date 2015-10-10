@@ -9,15 +9,24 @@ using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.ScoreBoardServices
 {
+    /// <summary>
+    /// Holds a collection with personal scores.
+    /// </summary>
     public class ScoreBoard : IScoreBoard
     {
         private IList<IPersonalScore> records;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScoreBoard"/> class.
+        /// </summary>
         public ScoreBoard()
         {
             this.records = new List<IPersonalScore>();
         }
 
+        /// <summary>
+        /// Gets or sets a collection with personal scores.
+        /// </summary>
         public IList<IPersonalScore> Records
         {
             get { return this.records; }

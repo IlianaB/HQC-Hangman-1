@@ -14,12 +14,24 @@ namespace Hangman.Logic.Contracts
     /// </summary>
     public interface ICommandExecutable
     {
+        /// <summary>
+        /// Gets an implementation of IRenderer
+        /// </summary>
         IRenderer Renderer { get; }
 
+        /// <summary>
+        /// Gets an implementation of IGuessWord
+        /// </summary>
         IGuessWord WordToGuess { get; }
 
+        /// <summary>
+        /// Gets an implementation of IScoreBoardService
+        /// </summary>
         IScoreBoardService ScoreBoardService { get; }
 
+        /// <summary>
+        /// Gets an implementation of IPlayer
+        /// </summary>
         IPlayer Player { get; }
 
         /// <summary>

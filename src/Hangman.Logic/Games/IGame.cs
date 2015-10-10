@@ -12,6 +12,9 @@ namespace Hangman.Logic.Games
     /// </summary>
     public interface IGame
     {
+        /// <summary>
+        /// Gets or sets an implementation of IEngine
+        /// </summary>
         IEngine Engine { get; set; }
 
         /// <summary>
