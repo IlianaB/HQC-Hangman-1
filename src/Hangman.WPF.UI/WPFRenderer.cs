@@ -52,7 +52,14 @@ namespace Hangman.WPF.UI
 
         public override void ShowCurrentProgress(char[] guessedLetters)
         {
-            this.MainWindow.SecretWord.Content = string.Join("  ", guessedLetters);
+            var stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < guessedLetters.Length; i++)
+            {
+                stringBuilder.Append(guessedLetters[i] + " ");
+            }
+
+            this.MainWindow.SecretWord.Content = stringBuilder;
         }
 
         public override void ShowMessage(string message)
