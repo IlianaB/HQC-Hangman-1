@@ -4,6 +4,9 @@ using Hangman.Logic.Contracts;
 
 namespace Hangman.Logic.Commands
 {
+    /// <summary>
+    /// A Null command with default behaviour.
+    /// </summary>
     public class NullCommand : Command, ICommand
     {
         public NullCommand(ICommandExecutable engine)

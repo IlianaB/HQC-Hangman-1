@@ -11,7 +11,7 @@ namespace HagmanGameTests
         [SetUp]
         public void Init()
         {
-            this.player = new Player(false);
+            this.player = new Player();
         }
 
         [TearDown]

@@ -2,6 +2,9 @@
 
 namespace Hangman.Logic.Common
 {
+    /// <summary>
+    /// Class containing all constants.
+    /// </summary>
     public class Constants
     {
         public const string WelcomeMessage = "Welcome to Hangman game!";

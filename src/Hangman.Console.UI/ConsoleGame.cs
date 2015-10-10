@@ -22,7 +22,7 @@ namespace Hangman.Console.UI
             IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
             IRenderer renderer = new ConsoleRenderer(new CapitalizeFormatter(), new Writer());
             IInputProvider inputProvider = new ConsoleInputProvider(new Reader());
-            IPlayer player = new Player(false);
+            IPlayer player = new Player();
             IWordProvider wordProvider = new WordProvider();
             IWordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();

@@ -21,7 +21,7 @@ namespace Hangman.WPF.UI
             IScoreBoard scoreBoard = new ScoreBoard();
             IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
             IRenderer renderer = new WpfRenderer(new AllCapsFormatter(), new WpfWriter());
-            IPlayer player = new Player(false);
+            IPlayer player = new Player();
             IWordProvider wordProvider = new WordProvider();
             IWordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();

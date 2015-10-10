@@ -3,8 +3,17 @@ using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.Logic.Words
 {
+    /// <summary>
+    /// Creates and operates with the word which should be guessed by the Player.
+    /// </summary>
     public class GuessWord : IGuessWord
     {
+        /// <summary>
+        /// Instancietes GuessWord with:
+        /// - Content which is the same as the received string, 
+        /// - Mask - char[] representation of the Content, filled with the Constant char for the mask
+        /// </summary>
+        /// <param name="word"></param>
         public GuessWord(string word)
         {
             this.Content = word;
@@ -15,6 +24,12 @@ namespace Hangman.Logic.Words
 
         public char[] Mask { get; set; }
 
+        /// <summary>
+        /// Reveals the first hidden letter of the GuessWord
+        /// </summary>
+        /// <returns>
+        /// Single letter as a char.
+        /// </returns>
         public char RevealLetter()
         {
             char revealedLetter = char.MinValue;
@@ -34,6 +49,15 @@ namespace Hangman.Logic.Words
             return revealedLetter;
         }
 
+        /// <summary>
+        /// Counts the number of occurences of the received letter in the GuessWord.
+        /// </summary>
+        /// <param name="letter">
+        /// The letter to be searched in the word.
+        /// </param>
+        /// <returns>
+        /// The number of occurences of the received letter in the GuessWord.
+        /// </returns>
         public int GetNumberOfOccurences(char letter)
         {
             int count = 0;

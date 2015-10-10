@@ -12,7 +12,12 @@ using Hangman.Logic.Words.Contracts;
 
 namespace Hangman.Logic.Engines
 {
-    public abstract class GameEngine : ICommandExecutable, IEngine
+    /// <summary>
+    /// GameEngine class controls the main game flow. It has methods for starting, resetting, and ending a game. 
+    /// It is also responsible for checking the winning and looosing conditions of the game.
+    /// The class is abstract. It implements two interfaces - IEngine and ICommandExecutable (letting the Engine acts like something on which we can perform a command).
+    /// </summary>
+    public abstract class GameEngine : IEngine, ICommandExecutable
     {
         protected GameEngine(
             IScoreBoardService scoreBoardService, 
@@ -40,6 +45,10 @@ namespace Hangman.Logic.Engines
 
         public IGuessWord WordToGuess { get; set; }
 
+        /// <summary>
+        /// Creates a setup for the current game:
+        /// Initializes a new WordToGuess, prints welcome message and invokes the Play method.
+        /// </summary>
         public void StartGame()
         {
             string word = this.WordGenerator.GetRandomWord();
@@ -48,6 +57,11 @@ namespace Hangman.Logic.Engines
             this.Play();
         }
 
+
+        /// <summary>
+        /// Ends a won game. 
+        /// The method checks if the Player has used help and if he does not - it checks if the Player can enter Hihg Scores and processes his score.
+        /// </summary>
         public void EndWonGame()
         {
             if (this.Player.HasUsedHelp)
@@ -65,18 +79,30 @@ namespace Hangman.Logic.Engines
             this.ResetGame();
         }
 
+        /// <summary>
+        /// Shows Game Over message and invokes RestartGame method.
+        /// </summary>
         public void EndLostGame()
         {
             this.Renderer.ShowMessage(Constants.GameOverMessage);
             this.ResetGame();
         }
 
+        /// <summary>
+        /// Invokes the Player's Reset method to ensure he starts the new game with 0 mistakes and invokes StartGame method.
+        /// </summary>
         public void ResetGame()
         {
             this.Player.Reset();
             this.StartGame();
         }
 
+        /// <summary>
+        /// Checks if the Player has made more mistakes than the maximum possible mistakes.
+        /// </summary>
+        /// <returns>
+        /// Boolean variable saying if the game is over or not 
+        /// </returns>
         public bool CheckGameOverCondition()
         {
             if (this.Player.Mistakes >= Constants.MaxNumberOfPlayerMistakes)
@@ -87,6 +113,12 @@ namespace Hangman.Logic.Engines
             return false;
         }
 
+        /// <summary>
+        /// Checks if the Player has guessed the secret word.
+        /// </summary>
+        /// <returns>
+        /// Boolean variable saying if the Player has guessed the secret word or not.
+        /// </returns>
         public bool CheckWinningCondition()
         {
             bool isGameOver = this.WordToGuess.Mask.All(t => t != Constants.WordMaskChar);
@@ -94,6 +126,12 @@ namespace Hangman.Logic.Engines
             return isGameOver;
         }
 
+        /// <summary>
+        /// Reacts to player action, received as a string command.
+        /// If the command has lenght = 1, the method invokes ExecuteLetterGuess method.
+        /// If the command lenght is > 1, the method gets a command from the Command Factory (using the input param) and incokes ExecuteCommand method.
+        /// </summary>
+        /// <param name="command">Command as a string, read by the Input provider</param>
         public void ReactToPlayerAction(string command)
         {
             if (command.Length == 1)

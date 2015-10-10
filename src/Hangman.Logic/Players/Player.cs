@@ -2,13 +2,19 @@
 
 namespace Hangman.Logic.Players
 {
+    /// <summary>
+    /// Responsible for all the information about Players.
+    /// </summary>
     public class Player : IPlayer
     {
-        public Player(bool hasUsedHelp)
+        /// <summary>
+        /// Initialize the current player with an empty string name and 0 mistakes as a start value.
+        /// </summary>
+        public Player()
         {
             this.Name = string.Empty;
             this.Mistakes = 0;
-            this.HasUsedHelp = hasUsedHelp;
+            this.HasUsedHelp = false;
         }
 
         public string Name { get; set; }
@@ -17,11 +23,17 @@ namespace Hangman.Logic.Players
 
         public bool HasUsedHelp { get; set; }
 
+        /// <summary>
+        /// Increase Player's mistakes with one.
+        /// </summary>
         public void IncreaseMistakes()
         {
             this.Mistakes++;
         }
 
+        /// <summary>
+        /// Reset Player's mistakes to 0 and sets its property HasUsedHelp to false;
+        /// </summary>
         public void Reset()
         {
             this.Mistakes = 0;

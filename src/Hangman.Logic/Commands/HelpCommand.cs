@@ -4,6 +4,9 @@ using Hangman.Logic.Contracts;
 
 namespace Hangman.Logic.Commands
 {
+    /// <summary>
+    /// A "Concrete Command" - implementation of Command Design Pattern. It performs Help command.
+    /// </summary>
     public class HelpCommand : Command, ICommand
     {
         public HelpCommand(ICommandExecutable engine)
@@ -11,6 +14,9 @@ namespace Hangman.Logic.Commands
         {
         }
 
+        /// <summary>
+        /// Ask for a letter of the WordToGuess to be revealed, informs the Player with a message and sets Player's property UsedHelp to true.
+        /// </summary>
         public override void Execute()
         {
             char revealedLetter = this.Engine.WordToGuess.RevealLetter();

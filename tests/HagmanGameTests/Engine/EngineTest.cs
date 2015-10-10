@@ -1,13 +1,8 @@
-﻿using System.Linq;
-using Hangman.Console.UI;
-using Hangman.Console.UI.Engines;
-using Hangman.Logic.Common;
+﻿using Hangman.Logic.Common;
 using Hangman.Logic.Contracts;
-using Hangman.Logic.Engines;
 using Hangman.Logic.Factories;
 using Hangman.Logic.Players.Contracts;
 using Hangman.Logic.ScoreBoardServices.Contracts;
-using Hangman.Logic.Words;
 using Hangman.Logic.Words.Contracts;
 using Hangman.WPF.UI;
 using Moq;
@@ -18,7 +13,6 @@ namespace HagmanGameTests.Engine
     [TestFixture]
     public class EngineTest
     {
-        private const string FakeWord = "guessme";
         private WpfEngine engine;
         private Mock<IPlayer> player;
         private Mock<IGuessWord> guessWord;

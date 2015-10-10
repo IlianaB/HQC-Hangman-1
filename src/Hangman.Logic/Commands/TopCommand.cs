@@ -6,6 +6,9 @@ using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.Commands
 {
+    /// <summary>
+    /// A "Concrete Command" - implementation of Command Design Pattern. It performs Top command.
+    /// </summary>
     public class TopCommand : Command, ICommand
     {
         public TopCommand(ICommandExecutable engine)
@@ -13,6 +16,9 @@ namespace Hangman.Logic.Commands
         {
         }
 
+        /// <summary>
+        /// Gets the top scores in the ScoreaBoard and ask the Renderer to print them.
+        /// </summary>
         public override void Execute()
         {
             ICollection<IPersonalScore> topScores = this.Engine.ScoreBoardService.GetTopScores(Constants.NumberOfScoresInScoreBoard);

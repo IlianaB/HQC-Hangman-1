@@ -2,8 +2,22 @@
 
 namespace Hangman.Logic.Formatters
 {
+    /// <summary>
+    /// Implementation of IResultFormatter.
+    /// It is responsible for the formatting of Players' results.
+    /// Part of the Bridge Pattern.
+    /// </summary>
     public class CapitalizeFormatter : IResultFormatter
     {
+        /// <summary>
+        /// It formats the players score, capitalizing only the first letter of Player's name.
+        /// </summary>
+        /// <param name="record">
+        /// Player's score
+        /// </param>
+        /// <returns>
+        /// Player's score as a string, with only the first letter of Player's name capitalized.
+        /// </returns>
         public string Format(IPersonalScore record)
         {
             string playerName = this.CapitalizeFirstLetter(record.Name);
