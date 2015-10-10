@@ -9,6 +9,7 @@ using Hangman.Logic.Players.Contracts;
 using Hangman.Logic.ScoreBoardServices.Contracts;
 using Hangman.Logic.Words;
 using Hangman.Logic.Words.Contracts;
+using Hangman.WPF.UI;
 using Moq;
 using NUnit.Framework;
 
@@ -18,22 +19,25 @@ namespace HagmanGameTests.Engine
     public class EngineTest
     {
         private const string FakeWord = "guessme";
-        private ConsoleEngine engine;
+        private WpfEngine engine;
         private Mock<IPlayer> player;
         private Mock<IGuessWord> guessWord;
+        private Mock<IWordGenerator> wordGenerator;
+        private Mock<IInputProvider> inputProvider;
 
         [SetUp]
         public void Init()
         {
             this.player = new Mock<IPlayer>();
             this.guessWord = new Mock<IGuessWord>();
-            this.engine = new ConsoleEngine(
+            this.wordGenerator = new Mock<IWordGenerator>();
+            this.inputProvider = new Mock<IInputProvider>();
+            this.engine = new WpfEngine(
                 new Mock<IScoreBoardService>().Object,
                 new Mock<IRenderer>().Object,
                 this.player.Object,
-                new Mock<IWordGenerator>().Object,
-                new Mock<ICommandFactory>().Object,
-                new Mock<IInputProvider>().Object
+                this.wordGenerator.Object,
+                new Mock<ICommandFactory>().Object
             );
         }
 
@@ -41,6 +45,8 @@ namespace HagmanGameTests.Engine
         public void CleanUp()
         {
             this.engine = null;
+            this.player = null;
+            this.guessWord = null;
         }
 
         [Test]
@@ -94,5 +100,14 @@ namespace HagmanGameTests.Engine
             Assert.IsFalse(result);
         }
 
+        [Test]
+        public void CheckIfResetGameMethodCallsPlayersResetMethod()
+        {
+            this.inputProvider.Setup(t => t.ReadCommand()).Returns("a");
+            this.wordGenerator.Setup(t => t.GetRandomWord()).Returns("Test");
+            this.player.Verify(t => t.Reset(), Times.AtMostOnce());
+            
+            this.engine.ResetGame();
+        }
     }
 }
