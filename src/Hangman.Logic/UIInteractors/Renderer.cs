@@ -9,7 +9,7 @@ namespace Hangman.Logic.UIInteractors
     public abstract class Renderer : IRenderer
     {
         protected readonly IResultFormatter Formatter;
-        protected IWriter Writer;
+        protected readonly IWriter Writer;
 
         protected Renderer(IResultFormatter formatter, IWriter writer)
         {

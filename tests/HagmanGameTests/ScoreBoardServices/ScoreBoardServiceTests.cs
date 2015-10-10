@@ -9,22 +9,22 @@ namespace HagmanGameTests.ScoreBoardServices
     [TestFixture]
     public class ScoreBoardServiceTests
     {
+        private IScoreBoard scoreBoard;
+        private ScoreBoardService scoreBoardService;
+
         [SetUp]
         public void Init()
         {
-            scoreBoard = new ScoreBoard();
-            scoreBoardService = new ScoreBoardService(scoreBoard);
+            this.scoreBoard = new ScoreBoard();
+            this.scoreBoardService = new ScoreBoardService(this.scoreBoard);
         }
 
         [TearDown]
         public void CleanUp()
         {
-            scoreBoard = null;
-            scoreBoardService = null;
+            this.scoreBoard = null;
+            this.scoreBoardService = null;
         }
-
-        private IScoreBoard scoreBoard;
-        private ScoreBoardService scoreBoardService;
 
         [TestCase(0)]
         [TestCase(1)]
@@ -36,28 +36,27 @@ namespace HagmanGameTests.ScoreBoardServices
             for (var i = 0; i < count; i++)
             {
                 IPersonalScore score = new PersonalScore("ivan" + i, 2 + i);
-                scoreBoardService.AddNewScore(score);
+                this.scoreBoardService.AddNewScore(score);
             }
 
-            Assert.AreEqual(count, scoreBoard.Records.Count);
+            Assert.AreEqual(count, this.scoreBoard.Records.Count);
         }
 
         [TestCase(10, 10)]
         [TestCase(10, 5)]
         [TestCase(50, 1)]
         [TestCase(1, 1)]
-        public void TestWhetherRemoveLastScoresMethodRemovesAllRecordsAfterTheProvidedLimit(int recordsToAdd,
-            int maxNumberOfRecords)
+        public void TestWhetherRemoveLastScoresMethodRemovesAllRecordsAfterTheProvidedLimit(int recordsToAdd, int maxNumberOfRecords)
         {
             for (var i = 0; i < recordsToAdd; i++)
             {
                 IPersonalScore score = new PersonalScore("ivan" + i, 2 + i);
-                scoreBoardService.AddNewScore(score);
+                this.scoreBoardService.AddNewScore(score);
             }
 
-            scoreBoardService.RemoveLastScores(maxNumberOfRecords);
+            this.scoreBoardService.RemoveLastScores(maxNumberOfRecords);
 
-            Assert.AreEqual(maxNumberOfRecords - 1, scoreBoard.Records.Count);
+            Assert.AreEqual(maxNumberOfRecords - 1, this.scoreBoard.Records.Count);
         }
 
         [TestCase(0)]
@@ -66,8 +65,8 @@ namespace HagmanGameTests.ScoreBoardServices
         public void TestWhetherRemoveLastScoresMethodDoesNotGoUnderZeroWhenZeroRecordsInScoreBoard(
             int maxNumberOfRecords)
         {
-            scoreBoardService.RemoveLastScores(maxNumberOfRecords);
-            Assert.AreEqual(0, scoreBoard.Records.Count);
+            this.scoreBoardService.RemoveLastScores(maxNumberOfRecords);
+            Assert.AreEqual(0, this.scoreBoard.Records.Count);
         }
 
         [TestCase(-1)]
@@ -76,20 +75,21 @@ namespace HagmanGameTests.ScoreBoardServices
         public void TestWhetherRemoveLastScoresMethodDoesNotGoUnderZeroWhenNegativeLimitIsProvided(
             int maxNumberOfRecords)
         {
-            scoreBoardService.RemoveLastScores(maxNumberOfRecords);
-            Assert.AreEqual(0, scoreBoard.Records.Count);
+            this.scoreBoardService.RemoveLastScores(maxNumberOfRecords);
+            Assert.AreEqual(0, this.scoreBoard.Records.Count);
         }
+
         [Test]
         public void TestWhetherSortScoreBoardMethodProperlySortsScores()
         {
             IPersonalScore score = new PersonalScore("Ivan", 2);
             IPersonalScore secondScore = new PersonalScore("Georgi", 5);
             IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
-            scoreBoardService.AddNewScore(score);
-            scoreBoardService.AddNewScore(secondScore);
-            scoreBoardService.AddNewScore(thirdScore);
-            scoreBoardService.SortScoreBoard();
-            Assert.AreEqual(5, scoreBoard.Records.Last().Score);
+            this.scoreBoardService.AddNewScore(score);
+            this.scoreBoardService.AddNewScore(secondScore);
+            this.scoreBoardService.AddNewScore(thirdScore);
+            this.scoreBoardService.SortScoreBoard();
+            Assert.AreEqual(5, this.scoreBoard.Records.Last().Score);
         }
 
         [Test]
@@ -98,11 +98,11 @@ namespace HagmanGameTests.ScoreBoardServices
             IPersonalScore score = new PersonalScore("Ivan", 2);
             IPersonalScore secondScore = new PersonalScore("Georgi", 5);
             IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
-            scoreBoardService.AddNewScore(score);
-            scoreBoardService.AddNewScore(secondScore);
-            scoreBoardService.AddNewScore(thirdScore);
-            scoreBoardService.SortScoreBoard();
-            var worstScore = scoreBoardService.GetWorstScore(5);
+            this.scoreBoardService.AddNewScore(score);
+            this.scoreBoardService.AddNewScore(secondScore);
+            this.scoreBoardService.AddNewScore(thirdScore);
+            this.scoreBoardService.SortScoreBoard();
+            var worstScore = this.scoreBoardService.GetWorstScore(5);
             Assert.AreEqual(5, worstScore);
         }
 
@@ -112,11 +112,11 @@ namespace HagmanGameTests.ScoreBoardServices
             IPersonalScore score = new PersonalScore("Ivan", 2);
             IPersonalScore secondScore = new PersonalScore("Georgi", 5);
             IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
-            scoreBoardService.AddNewScore(score);
-            scoreBoardService.AddNewScore(secondScore);
-            scoreBoardService.AddNewScore(thirdScore);
-            scoreBoardService.SortScoreBoard();
-            var worstScore = scoreBoardService.GetWorstScore(2);
+            this.scoreBoardService.AddNewScore(score);
+            this.scoreBoardService.AddNewScore(secondScore);
+            this.scoreBoardService.AddNewScore(thirdScore);
+            this.scoreBoardService.SortScoreBoard();
+            var worstScore = this.scoreBoardService.GetWorstScore(2);
             Assert.AreEqual(3, worstScore);
         }
     }

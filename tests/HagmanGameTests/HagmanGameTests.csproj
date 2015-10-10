@@ -69,6 +69,7 @@
     <Compile Include="PlayerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\WordGeneratorTest.cs" />
+    <Compile Include="ScoreBoardServices\PersonalScoreTest.cs" />
     <Compile Include="ScoreBoardServices\ScoreBoardServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>

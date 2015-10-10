@@ -7,7 +7,7 @@ namespace Hangman.Logic.ScoreBoardServices
 {
     public class ScoreBoardService : IScoreBoardService
     {
-        private IScoreBoard currentScoreBoard;
+        private readonly IScoreBoard currentScoreBoard;
 
         public ScoreBoardService(IScoreBoard scoreBoard)
         {
@@ -45,7 +45,7 @@ namespace Hangman.Logic.ScoreBoardServices
             }
             else
             {
-                lastScore = this.currentScoreBoard.Records[maxNumberOfScoresInScoreBoard-1];
+                lastScore = this.currentScoreBoard.Records[maxNumberOfScoresInScoreBoard - 1];
             }
 
             return lastScore.Score;
@@ -69,7 +69,6 @@ namespace Hangman.Logic.ScoreBoardServices
         {
             this.currentScoreBoard.Records = restoredResults;
         }
-
 
         public bool CheckIfPlayerCanEnterHighScores(Players.Contracts.IPlayer player)
         {
