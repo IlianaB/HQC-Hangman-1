@@ -27,6 +27,7 @@ namespace Hangman.Logic.Common
         public const string EnterNameMessage = "Please enter your name: ";
         public const string EnterGuessMessage = "Enter your guess: ";
         public const string AnnounceSecretWordMessage = "The secret word is: ";
+        public const string AlreadyUsedLetterMessage = "You have already used the letter {0}!";
         public const string DatabaseFile = @"../../../Hangman.Logic/Database/Results.txt";
         public const int NumberOfScoresInScoreBoard = 10;
         public const int MaxNumberOfPlayerMistakes = 7;

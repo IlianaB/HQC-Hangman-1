@@ -212,13 +212,36 @@ namespace Hangman.Logic.Engines
         }
 
         /// <summary>
-        /// Process the letter guess of the Player. Checks how many occurrences of the word are there in the word to be guessed.
-        /// If there is not any - increases the Player's mistakes and ask the Renderer to draw the Hangman.
+        /// Process the letter guess of the Player. Checks if he has already used the currently guessed letter or not.
+        /// If he used the letter, the method invokes the ProcessGuessedLetter method.
         /// </summary>
         /// <param name="letter">
         /// A letter, write by the Player.
         /// </param>
         private void ExecuteLetterGuess(char letter)
+        {
+            bool isLetterUsed = this.Player.CheckIfLetterIsUsed(letter);
+
+            if (isLetterUsed)
+            {
+                this.Renderer.ShowMessage(string.Format(Constants.AlreadyUsedLetterMessage, letter));
+            }
+            else
+            {
+                this.ProcessGuessedLetter(letter);
+            }
+
+            this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
+        }
+
+        /// <summary>
+        /// Checks how many occurrences of the word are there in the word to be guessed.
+        /// If there is not any - increases the Player's mistakes and ask the Renderer to draw the Hangman.
+        /// </summary>
+        /// <param name="letter">
+        /// The guessed letter of the player.
+        /// </param>
+        private void ProcessGuessedLetter(char letter)
         {
             string message;
             int occuranses = this.WordToGuess.GetNumberOfOccurences(letter);
@@ -234,8 +257,8 @@ namespace Hangman.Logic.Engines
                 message = string.Format(Constants.OccurencesMessage, occuranses);
             }
 
+            this.Player.AddNewUsedLetter(letter);
             this.Renderer.ShowMessage(message);
-            this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
         }
 
         /// <summary>

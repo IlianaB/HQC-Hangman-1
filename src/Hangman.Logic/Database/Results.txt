@@ -12,3 +12,5 @@ det - 2
 testtesttest - 0
 Tes1 - 2
 opop - 3
+jop - 3
+kopkop - 2

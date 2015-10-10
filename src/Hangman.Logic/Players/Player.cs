@@ -3,6 +3,7 @@
 //     Hangman-Team-1@
 // </copyright>
 
+using System.Collections.Generic;
 using Hangman.Logic.Players.Contracts;
 
 namespace Hangman.Logic.Players
@@ -20,6 +21,7 @@ namespace Hangman.Logic.Players
         {
             this.Name = string.Empty;
             this.Mistakes = 0;
+            this.UsedLetters = new List<char>();
             this.HasUsedHelp = false;
         }
 
@@ -27,6 +29,11 @@ namespace Hangman.Logic.Players
         /// Gets or sets players name
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets the used letters from the player
+        /// </summary>
+        public List<char> UsedLetters { get; private set; }
 
         /// <summary>
         /// Gets players mistakes
@@ -52,7 +59,33 @@ namespace Hangman.Logic.Players
         public void Reset()
         {
             this.Mistakes = 0;
+            this.UsedLetters = new List<char>();
             this.HasUsedHelp = false;
+        }
+
+        /// <summary>
+        /// Checks if the player has used the received letter.
+        /// </summary>
+        /// <param name="letter">
+        /// The guessed letter.
+        /// </param>
+        /// <returns>
+        /// Boolean variable indicating if the player has used this letter before or not.
+        /// </returns>
+        public bool CheckIfLetterIsUsed(char letter)
+        {
+            return this.UsedLetters.Contains(letter);
+        }
+
+        /// <summary>
+        /// Adds a new used letter
+        /// </summary>
+        /// <param name="letter">
+        /// The letter which is used.
+        /// </param>
+        public void AddNewUsedLetter(char letter)
+        {
+            this.UsedLetters.Add(letter);
         }
     }
 }

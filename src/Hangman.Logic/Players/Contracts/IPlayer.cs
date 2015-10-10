@@ -34,5 +34,24 @@ namespace Hangman.Logic.Players.Contracts
         /// Reset Player's mistakes to 0 and sets its property HasUsedHelp to false.
         /// </summary>
         void Reset();
+
+        /// <summary>
+        /// Checks if the player has used the received letter.
+        /// </summary>
+        /// <param name="letter">
+        /// The guessed letter.
+        /// </param>
+        /// <returns>
+        /// Boolean variable indicating if the player has used this letter before or not.
+        /// </returns>
+        bool CheckIfLetterIsUsed(char letter);
+
+        /// <summary>
+        /// Adds a new used letter
+        /// </summary>
+        /// <param name="letter">
+        /// The letter which is used.
+        /// </param>
+        void AddNewUsedLetter(char letter);
     }
 }
