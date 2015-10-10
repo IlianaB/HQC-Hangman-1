@@ -119,5 +119,63 @@ namespace HagmanGameTests.ScoreBoardServices
             var worstScore = this.scoreBoardService.GetWorstScore(2);
             Assert.AreEqual(3, worstScore);
         }
+
+        [Test]
+        public void TestWhetherIsFullMethodReturnsTrueWhenCountIsEqualToMaxNumber()
+        {
+            IPersonalScore score = new PersonalScore("Ivan", 2);
+            IPersonalScore secondScore = new PersonalScore("Georgi", 5);
+            IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
+            scoreBoardService.AddNewScore(score);
+            scoreBoardService.AddNewScore(secondScore);
+            scoreBoardService.AddNewScore(thirdScore);
+            scoreBoardService.SortScoreBoard();
+            var isFull = scoreBoardService.IsFull(3);
+            Assert.IsTrue(isFull);
+        }
+
+        [Test]
+        public void TestWhetherIsFullMethodReturnsTrueWhenCountIsAboveMaxNumber()
+        {
+            IPersonalScore score = new PersonalScore("Ivan", 2);
+            IPersonalScore secondScore = new PersonalScore("Georgi", 5);
+            IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
+            scoreBoardService.AddNewScore(score);
+            scoreBoardService.AddNewScore(secondScore);
+            scoreBoardService.AddNewScore(thirdScore);
+            scoreBoardService.SortScoreBoard();
+            var isFull = scoreBoardService.IsFull(2);
+            Assert.IsTrue(isFull);
+        }
+
+        [Test]
+        public void TestWhetherIsFullMethodReturnsFalseWhenCountIsBelowMaxNumber()
+        {
+            IPersonalScore score = new PersonalScore("Ivan", 2);
+            IPersonalScore secondScore = new PersonalScore("Georgi", 5);
+            IPersonalScore thirdScore = new PersonalScore("Pesho", 3);
+            scoreBoardService.AddNewScore(score);
+            scoreBoardService.AddNewScore(secondScore);
+            scoreBoardService.AddNewScore(thirdScore);
+            scoreBoardService.SortScoreBoard();
+            var isFull = scoreBoardService.IsFull(5);
+            Assert.IsFalse(isFull);
+        }
+
+        [Test]
+        public void TestWhetherIsEmptylMethodReturnsTrueWhenThereAreNoScores()
+        {
+            var isEmpty = scoreBoardService.IsEmpty();
+            Assert.IsTrue(isEmpty);
+        }
+
+        [Test]
+        public void TestWhetherIsEmptylMethodReturnsFalseWhenThereAreScores()
+        {
+            IPersonalScore score = new PersonalScore("Ivan", 2);
+            scoreBoardService.AddNewScore(score);
+            var isEmpty = scoreBoardService.IsEmpty();
+            Assert.IsFalse(isEmpty);
+        }
     }
 }
