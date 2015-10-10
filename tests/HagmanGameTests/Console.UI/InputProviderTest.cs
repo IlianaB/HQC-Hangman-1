@@ -1,4 +1,5 @@
-﻿using Hangman.Logic.Contracts;
+﻿using Hangman.Console.UI.Console;
+using Hangman.Logic.Contracts;
 
 using Moq;
 using NUnit.Framework;
@@ -9,26 +10,36 @@ namespace HagmanGameTests.Console.UI
     public class InputProviderTest
     {
         private const string FakePlayerName = "Djordjano";
+        private IReader reader;
         private IInputProvider inputProvider;
 
         [SetUp]
         public void Init()
         {
-            var mockedConsoleInputProvider = new Mock<IInputProvider>();
-            mockedConsoleInputProvider.Setup(r => r.ReadCommand()).Returns(FakePlayerName);
-            this.inputProvider = mockedConsoleInputProvider.Object;
+            var mockReader = new Mock<IReader>();
+            mockReader.Setup(r => r.ReadText()).Returns(FakePlayerName);
+            this.reader = mockReader.Object;
+
+            this.inputProvider = new ConsoleInputProvider(this.reader);
         }
 
         [TearDown]
         public void CleanUp()
         {
-            this.inputProvider = null;
+            this.reader = null;
         }
 
         [Test]
-        public void TestReadCommand()
+        public void ReadCommandTest()
         {
-            Assert.AreEqual(FakePlayerName, this.inputProvider.ReadCommand(), "Player name read correctly");
+            Assert.AreEqual(this.inputProvider.ReadCommand(), FakePlayerName.ToLower());
+        }
+
+        [Test]
+        public void ConsoleInputProviderTest()
+        {
+            var consoleInputProvider = new ConsoleInputProvider();
+            Assert.IsInstanceOf(typeof(ConsoleInputProvider), consoleInputProvider);
         }
     }
 }
