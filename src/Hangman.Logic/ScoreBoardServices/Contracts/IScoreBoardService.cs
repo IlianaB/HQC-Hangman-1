@@ -21,6 +21,6 @@ namespace Hangman.Logic.ScoreBoardServices.Contracts
 
         bool IsEmpty();
 
-        bool CheckIfPlayerCanEnterHighScores(IPlayer player);
+        bool CheckIfPlayerCanEnterHighScores(IPlayer player, int maxNumberOfScores);
     }
 }

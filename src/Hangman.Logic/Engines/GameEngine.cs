@@ -101,7 +101,7 @@ namespace Hangman.Logic.Engines
             }
             else
             {
-                bool playerCanEnterHighScores = this.ScoreBoardService.CheckIfPlayerCanEnterHighScores(this.Player);
+                bool playerCanEnterHighScores = this.ScoreBoardService.CheckIfPlayerCanEnterHighScores(this.Player, Constants.NumberOfScoresInScoreBoard);
 
                 this.ProcessCurrentPlayerResult(playerCanEnterHighScores);
             }
