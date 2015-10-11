@@ -1,0 +1,1430 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hangman.Logic</name>
+    </assembly>
+    <members>
+        <member name="T:Hangman.Logic.Commands.Common.Command">
+            <summary>
+            Abstract Command class
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Commands.Common.ICommand">
+            <summary>
+            Declares the method that all different implementations (commands) must have - Execute.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Commands.Common.ICommand.Execute">
+            <summary>
+            Executes the command - the implementation vary.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Commands.Common.Command.#ctor(Hangman.Logic.Contracts.ICommandExecutable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Commands.Common.Command"/> class.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Commands.Common.Command.Execute">
+            <summary>
+            Executes the command - the implementation vary.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Commands.Common.Command.Engine">
+            <summary>
+            Gets or sets an implementation of ICommandExecutable
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Commands.ExitCommand">
+            <summary>
+            A "Concrete Command" - implementation of Command Design Pattern. It performs Exit command.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Commands.ExitCommand.#ctor(Hangman.Logic.Contracts.ICommandExecutable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Commands.ExitCommand"/> class.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Commands.ExitCommand.Execute">
+            <summary>
+            Shows GoodBye message and close the game window.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Commands.HelpCommand">
+            <summary>
+            A "Concrete Command" - implementation of Command Design Pattern. It performs Help command.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Commands.HelpCommand.#ctor(Hangman.Logic.Contracts.ICommandExecutable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Commands.HelpCommand"/> class.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Commands.HelpCommand.Execute">
+            <summary>
+            Ask for a letter of the WordToGuess to be revealed, informs the Player with a message and sets Player's property UsedHelp to true.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Commands.NullCommand">
+            <summary>
+            A Null command with default behavior.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Commands.NullCommand.#ctor(Hangman.Logic.Contracts.ICommandExecutable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Commands.NullCommand"/> class.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Commands.NullCommand.Execute">
+            <summary>
+            Default command - shows message for incorrect command.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Commands.RestartCommand">
+            <summary>
+            A "Concrete Command" - implementation of Command Design Pattern. It performs Reset Game command.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Commands.RestartCommand.#ctor(Hangman.Logic.Contracts.ICommandExecutable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Commands.RestartCommand"/> class.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Commands.RestartCommand.Execute">
+            <summary>
+            It invokes the ResetGame method.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Commands.StartCommand">
+            <summary>
+            A "Concrete Command" - implementation of Command Design Pattern. It performs Start command.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Commands.StartCommand.#ctor(Hangman.Logic.Contracts.ICommandExecutable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Commands.StartCommand"/> class.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Commands.StartCommand.Execute">
+            <summary>
+            Starts a new game.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Commands.TopCommand">
+            <summary>
+            A "Concrete Command" - implementation of Command Design Pattern. It performs Top command.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Commands.TopCommand.#ctor(Hangman.Logic.Contracts.ICommandExecutable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Commands.TopCommand"/> class.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Commands.TopCommand.Execute">
+            <summary>
+            Gets the top scores in the ScoreBoard and ask the Renderer to print them.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Common.Constants">
+            <summary>
+            Class containing all constants.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.WelcomeMessage">
+            <summary>
+            Welcome message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.GuessTheWordMessage">
+            <summary>
+            Guess the word message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.GoodbyeMessage">
+            <summary>
+            Goodbye message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.IncorrectCommandMessage">
+            <summary>
+            Incorrect command message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.RevealedLettersMessage">
+            <summary>
+            Revealed letter message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.NoRevealedLettersMessage">
+            <summary>
+            No revealed letter message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.UsedHelpMessage">
+            <summary>
+            Used help message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.WinWithHelpMessage">
+            <summary>
+            Win with help message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.GameOverMessage">
+            <summary>
+            Game over message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.LowScoreMessage">
+            <summary>
+            Low score message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.OccurencesMessage">
+            <summary>
+            Occurrences message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.NoOccurencesMessage">
+            <summary>
+            No occurrences message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.EmptyScoreboardMessage">
+            <summary>
+            Empty scoreboard message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.ResultsInformationMessage">
+            <summary>
+            Results information constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.EnterNameMessage">
+            <summary>
+            Enter name message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.EnterGuessMessage">
+            <summary>
+            Enter guess message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.AnnounceSecretWordMessage">
+            <summary>
+            Announce secret word message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.AlreadyUsedLetterMessage">
+            <summary>
+            Already used letter message constant.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.DatabaseFile">
+            <summary>
+            Path to the database.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.NumberOfScoresInScoreBoard">
+            <summary>
+            Max number of scores in scoreboard.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.MaxNumberOfPlayerMistakes">
+            <summary>
+            Max number of possible player mistakes before game over.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Common.Constants.WordMaskChar">
+            <summary>
+            Symbol for the word to be guessed mask.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Contracts.IReader">
+            <summary>
+            Declares all methods its implementation must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.IReader.ReadText">
+            <summary>
+            Reads users input.
+            </summary>
+            <returns>
+            Input as a string.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.Contracts.IWriter">
+            <summary>
+            Declares the properties and methods all its implementations must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.IWriter.Write(System.String)">
+            <summary>
+            Writes on a same line
+            </summary>
+            <param name="text">Text as a string</param>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.IWriter.WriteLine(System.String)">
+            <summary>
+            Writes on a new line
+            </summary>
+            <param name="text">Text as a string</param>
+        </member>
+        <member name="T:Hangman.Logic.Words.GuessWord">
+            <summary>
+            Creates and operates with the word which should be guessed by the Player.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Words.Contracts.IGuessWord">
+            <summary>
+            Declares the properties and methods all its implementation must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Words.Contracts.IGuessWord.RevealLetter">
+            <summary>
+            Reveals the first hidden letter of the GuessWord.
+            </summary>
+            <returns>
+            Single letter as a char.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Words.Contracts.IGuessWord.GetNumberOfOccurences(System.Char)">
+            <summary>
+            Counts the number of occurrences of the received letter in the GuessWord.
+            </summary>
+            <param name="letter">
+            The letter to be searched in the word.
+            </param>
+            <returns>
+            The number of occurrences of the received letter in the GuessWord.
+            </returns>
+        </member>
+        <member name="P:Hangman.Logic.Words.Contracts.IGuessWord.Content">
+            <summary>
+            Gets or sets the content of the word.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Words.Contracts.IGuessWord.Mask">
+            <summary>
+            Gets or sets the mask of the word.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Words.GuessWord.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Words.GuessWord"/> class.
+            - Content which is the same as the received string. 
+            - Mask - char[] representation of the Content, filled with the Constant char for the mask.
+            </summary>
+            <param name="word">
+            Word as a string.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Words.GuessWord.RevealLetter">
+            <summary>
+            Reveals the first hidden letter of the GuessWord.
+            </summary>
+            <returns>
+            Single letter as a char.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Words.GuessWord.GetNumberOfOccurences(System.Char)">
+            <summary>
+            Counts the number of occurrences of the received letter in the GuessWord.
+            </summary>
+            <param name="letter">
+            The letter to be searched in the word.
+            </param>
+            <returns>
+            The number of occurrences of the received letter in the GuessWord.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Words.GuessWord.GetMask(System.String)">
+            <summary>
+            Produces a char array containing the mask symbol, replacing all letters of the received word.
+            </summary>
+            <param name="word">
+            Word as a string.
+            </param>
+            <returns>
+            Char array containing the mask symbol, replacing all letters of the received word.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Words.GuessWord.ConvertAMaskSymboleIntoLetter(System.Int32,System.Char)">
+            <summary>
+            Converts mask symbol into letter.
+            </summary>
+            <param name="index">
+            Index of the mask symbol to be changed.
+            </param>
+            <param name="letter">
+            Letter to be put on the place of the converted mask symbol.
+            </param>
+        </member>
+        <member name="P:Hangman.Logic.Words.GuessWord.Content">
+            <summary>
+            Gets or sets the content of the word.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Words.GuessWord.Mask">
+            <summary>
+            Gets or sets the mask of the word.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Words.Contracts.IWordGenerator">
+            <summary>
+            Declares the properties and methods all its implementations must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Words.Contracts.IWordGenerator.GetRandomWord">
+            <summary>
+            Returns a random word from the Word Provider.
+            </summary>
+            <returns>
+            A random word as a string.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.Words.Contracts.IWordProvider">
+            <summary>
+            Declares the properties and methods all its implementations must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Words.Contracts.IWordProvider.ProvideWords">
+            <summary>
+            Keeps the available words to be guessed.
+            </summary>
+            <returns>
+            A single word to be guessed.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.Words.WordGenerator">
+            <summary>
+            Responsible for the generating of words to be guessed.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Words.WordGenerator.words">
+            <summary>
+            Collection containing all available words to be guessed.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Words.WordGenerator.random">
+            <summary>
+            Instance of .net Random class
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Words.WordGenerator.#ctor(Hangman.Logic.Words.Contracts.IWordProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Words.WordGenerator"/> class.
+            Creates a Random instance and sets it on its random field. 
+            Receives a IWordProvider and sets it on its words field.
+            </summary>
+            <param name="wordProvider">
+            The one who keeps the available words.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Words.WordGenerator.GetRandomWord">
+            <summary>
+            Returns a random word from the Word Provider.
+            </summary>
+            <returns>
+            A random word as a string.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.Words.WordProvider">
+            <summary>
+            Keeps the available words to be guessed.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Words.WordProvider.ProvideWords">
+            <summary>
+            Keeps the available words to be guessed.
+            </summary>
+            <returns>
+            A single word to be guessed.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.Players.Player">
+            <summary>
+            Responsible for all the information about Players.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Players.Contracts.IPlayer">
+            <summary>
+            Declares the properties and methods all its implementations must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Players.Contracts.IPlayer.IncreaseMistakes">
+            <summary>
+            Increase Player's mistakes with one.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Players.Contracts.IPlayer.Reset">
+            <summary>
+            Reset Player's mistakes to 0 and sets its property HasUsedHelp to false.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Players.Contracts.IPlayer.CheckIfLetterIsUsed(System.Char)">
+            <summary>
+            Checks if the player has used the received letter.
+            </summary>
+            <param name="letter">
+            The guessed letter.
+            </param>
+            <returns>
+            Boolean variable indicating if the player has used this letter before or not.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Players.Contracts.IPlayer.AddNewUsedLetter(System.Char)">
+            <summary>
+            Adds a new used letter
+            </summary>
+            <param name="letter">
+            The letter which is used.
+            </param>
+        </member>
+        <member name="P:Hangman.Logic.Players.Contracts.IPlayer.Name">
+            <summary>
+            Gets or sets the name of the player
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Players.Contracts.IPlayer.Mistakes">
+            <summary>
+            Gets the mistakes of the player
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Players.Contracts.IPlayer.HasUsedHelp">
+            <summary>
+            Gets or sets a value indicating whether player has used help or not
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.Players.Player.usedLetters">
+            <summary>
+            Collection with the used letters from the player
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Players.Player.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Players.Player"/> class.
+            Initialize the current player with an empty string name and 0 mistakes as a start value.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Players.Player.IncreaseMistakes">
+            <summary>
+            Increase Player's mistakes with one.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Players.Player.Reset">
+            <summary>
+            Reset Player's mistakes to 0 and sets its property HasUsedHelp to false.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Players.Player.CheckIfLetterIsUsed(System.Char)">
+            <summary>
+            Checks if the player has used the received letter.
+            </summary>
+            <param name="letter">
+            The guessed letter.
+            </param>
+            <returns>
+            Boolean variable indicating if the player has used this letter before or not.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Players.Player.AddNewUsedLetter(System.Char)">
+            <summary>
+            Adds a new used letter
+            </summary>
+            <param name="letter">
+            The letter which is used.
+            </param>
+        </member>
+        <member name="P:Hangman.Logic.Players.Player.Name">
+            <summary>
+            Gets or sets players name
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Players.Player.UsedLetters">
+            <summary>
+            Gets the used letters from the player
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Players.Player.Mistakes">
+            <summary>
+            Gets players mistakes
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Players.Player.HasUsedHelp">
+            <summary>
+            Gets or sets a value indicating whether player has used help or not
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.UIInteractors.InputProvider">
+            <summary>
+            Responsible for taking the input of the user.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Contracts.IInputProvider">
+            <summary>
+            Declares all methods its implementation must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.IInputProvider.ReadCommand">
+            <summary>
+            Reads a command.
+            </summary>
+            <returns>
+            A command as a string.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.UIInteractors.InputProvider.ReadCommand">
+            <summary>
+            Reads command from the UI.
+            </summary>
+            <returns>
+            The read command as a string.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.UIInteractors.Renderer">
+            <summary>
+            Responsible for rendering everything on the UI.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Contracts.IRenderer">
+            <summary>
+            Declares all methods its implementation must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.IRenderer.ShowScoreBoardResults(System.Boolean,System.Collections.Generic.ICollection{Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore})">
+            <summary>
+            Shows on the UI the results of the ScoreBoard.
+            </summary>
+            <param name="isEmptyScoreBoard">
+            Boolean variable indicating if the ScoreBoard is empty or not.
+            </param>
+            <param name="records">
+            Collection of all records in the ScoreBoard.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.IRenderer.ShowCurrentProgress(System.Char[])">
+            <summary>
+            Shows on the UI the current progress of the game - the letters of the GuessWord.
+            </summary>
+            <param name="guessedLetters">
+            Letters of the GuessWord (hidden or revealed).
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.IRenderer.ShowMessage(System.String)">
+            <summary>
+            Shows on the UI the received message.
+            </summary>
+            <param name="message">
+            Message as a string.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.IRenderer.DrawHangman(System.Int32)">
+            <summary>
+            Draws the Hangman on the UI.
+            </summary>
+            <param name="mistakes">
+            The number of Player's mistakes.
+            </param>
+        </member>
+        <member name="F:Hangman.Logic.UIInteractors.Renderer.Formatter">
+            <summary>
+            Instance of IResultFormatter
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.UIInteractors.Renderer.Writer">
+            <summary>
+            Instance of IWriter
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.UIInteractors.Renderer.#ctor(Hangman.Logic.Formatters.IResultFormatter,Hangman.Logic.Contracts.IWriter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.UIInteractors.Renderer"/> class.
+            </summary>
+            <param name="formatter">Instance of IResultFormatter</param>
+            <param name="writer">Instance of IWriter</param>
+        </member>
+        <member name="M:Hangman.Logic.UIInteractors.Renderer.ShowScoreBoardResults(System.Boolean,System.Collections.Generic.ICollection{Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore})">
+            <summary>
+            Shows on the UI the results of the ScoreBoard.
+            </summary>
+            <param name="isEmptyScoreBoard">
+            Boolean variable indicating if the ScoreBoard is empty or not.
+            </param>
+            <param name="records">
+            Collection of all records in the ScoreBoard.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.UIInteractors.Renderer.ShowCurrentProgress(System.Char[])">
+            <summary>
+            Shows on the UI the current progress of the game - the letters of the GuessWord.
+            </summary>
+            <param name="guessedLetters">
+            Letters of the GuessWord (hidden or revealed).
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.UIInteractors.Renderer.ShowMessage(System.String)">
+            <summary>
+            Shows on the UI the received message.
+            </summary>
+            <param name="message">
+            Message as a string.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.UIInteractors.Renderer.DrawHangman(System.Int32)">
+            <summary>
+            Draws the Hangman on the UI.
+            </summary>
+            <param name="mistakes">
+            The number of Player's mistakes.
+            </param>
+        </member>
+        <member name="T:Hangman.Logic.Contracts.ICommandExecutable">
+            <summary>
+            Declares the properties and methods all its implementation must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.ICommandExecutable.StartGame">
+            <summary>
+            Starts a game.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Contracts.ICommandExecutable.ResetGame">
+            <summary>
+            Resets a game.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Contracts.ICommandExecutable.Renderer">
+            <summary>
+            Gets an implementation of IRenderer
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Contracts.ICommandExecutable.WordToGuess">
+            <summary>
+            Gets an implementation of IGuessWord
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Contracts.ICommandExecutable.ScoreBoardService">
+            <summary>
+            Gets an implementation of IScoreBoardService
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Contracts.ICommandExecutable.Player">
+            <summary>
+            Gets an implementation of IPlayer
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Database.DataFileManager">
+            <summary>
+            DataFileManger is concrete implementation of DataManager class. 
+            It is responsible for the communication with the database.
+            Singleton with Lazy Initialization. It is initialized at its first usage.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Database.DataManager">
+            <summary>
+            Responsible for the communication with the database.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Database.IDataManager">
+            <summary>
+            Declares all methods its implementation must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Database.IDataManager.SaveResult(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore,System.String)">
+            <summary>
+            Saves the received IPersonalScore in the database.
+            </summary>
+            <param name="score">
+            The score of the current player.
+            </param>
+            <param name="filePath">
+            The path to the file, which acts as a database.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Database.IDataManager.RestoreResults(Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService,System.String)">
+            <summary>
+            Reads the result from the database and restores them as a C# objects.
+            </summary>
+            <param name="scoreBoardService">
+            The current ScoreBoardService.
+            </param>
+            <param name="filePath">
+            The path to the file, which acts as a database.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Database.DataManager.SaveResult(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore,System.String)">
+            <summary>
+            Saves the received IPersonalScore in the database.
+            </summary>
+            <param name="score">
+            The score of the current player.
+            </param>
+            <param name="filePath">
+            The path to the file, which acts as a database.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Database.DataManager.RestoreResults(Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService,System.String)">
+            <summary>
+            Reads the result from the database and restores them as a C# objects.
+            </summary>
+            <param name="scoreBoardService">
+            The current ScoreBoardService.
+            </param>
+            <param name="filePath">
+            The path to the file, which acts as a database.
+            </param>
+        </member>
+        <member name="F:Hangman.Logic.Database.DataFileManager.SingletonDataFileManager">
+            <summary>
+            Singleton instance with lazy initialization.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Database.DataFileManager.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Hangman.Logic.Database.DataFileManager"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Database.DataFileManager.SaveResult(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore,System.String)">
+            <summary>
+            Saves the received IPersonalScore in the database.
+            </summary>
+            <param name="score">
+            The score of the current player.
+            </param>
+            <param name="filePath">
+            The path to the file, which acts as a database.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Database.DataFileManager.RestoreResults(Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService,System.String)">
+            <summary>
+            Reads the result from the database and restores them as a C# objects.
+            </summary>
+            <param name="scoreBoardService">
+            The current ScoreBoardService.
+            </param>
+            <param name="filePath">
+            The path to the file, which acts as a database.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Database.DataFileManager.ReadAllResults(System.String)">
+            <summary>
+            Reads all results from the database.
+            </summary>
+            <param name="filePath">
+            The path to the database.
+            </param>
+            <returns>
+            Collection with all results as strings.
+            </returns>
+        </member>
+        <member name="P:Hangman.Logic.Database.DataFileManager.SingletonInstance">
+            <summary>
+            Gets the Singleton DataFileManager instance.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Engines.GameEngine">
+            <summary>
+            GameEngine class controls the main game flow. It has methods for starting, resetting, and ending a game. 
+            It is also responsible for checking the winning and loosing conditions of the game.
+            The class is abstract. It implements two interfaces - IEngine and ICommandExecutable (letting the Engine acts like something on which we can perform a command).
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Engines.IEngine">
+            <summary>
+            Declares all methods and properties its implementation must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.IEngine.StartGame">
+            <summary>
+            Creates a setup for the current game:
+            Initializes a new WordToGuess, prints welcome message and invokes the Play method.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.IEngine.ResetGame">
+            <summary>
+            Invokes the Player's Reset method to ensure he starts the new game with 0 mistakes and invokes StartGame method.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.IEngine.EndWonGame">
+            <summary>
+            Ends a won game. 
+            The method checks if the Player has used help and if he does not - it checks if the Player can enter High Scores and processes his score.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.IEngine.EndLostGame">
+            <summary>
+            Shows Game Over message and invokes RestartGame method.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.IEngine.ReactToPlayerAction(System.String)">
+            <summary>
+            Reacts to player action, received as a string command.
+            If the command has length = 1, the method invokes ExecuteLetterGuess method.
+            If the command length is > 1, the method gets a command from the Command Factory (using the input parameters) and invokes ExecuteCommand method.
+            </summary>
+            <param name="command">Command as a string, read by the Input provider.</param>
+        </member>
+        <member name="M:Hangman.Logic.Engines.IEngine.CheckWinningCondition">
+            <summary>
+            Checks if the Player has guessed the secret word.
+            </summary>
+            <returns>
+            Boolean variable saying if the Player has guessed the secret word or not.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Engines.IEngine.CheckGameOverCondition">
+            <summary>
+            Checks if the Player has made more mistakes than the maximum possible mistakes.
+            </summary>
+            <returns>
+            Boolean variable saying if the game is over or not. 
+            </returns>
+        </member>
+        <member name="P:Hangman.Logic.Engines.IEngine.Renderer">
+            <summary>
+            Gets an implementation of IRenderer
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Engines.IEngine.Player">
+            <summary>
+            Gets an implementation of IPlayer
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.#ctor(Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService,Hangman.Logic.Contracts.IRenderer,Hangman.Logic.Players.Contracts.IPlayer,Hangman.Logic.Words.Contracts.IWordGenerator,Hangman.Logic.Factories.ICommandFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.Engines.GameEngine"/> class.
+            </summary>
+            <param name="scoreBoardService">Instance of IScoreBoardService</param>
+            <param name="renderer">Instance of IRenderer</param>
+            <param name="player">Instance of IPlayer</param>
+            <param name="wordGenerator">Instance of IWordGenerator</param>
+            <param name="commandFactory">Instance of ICommandFactory</param>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.StartGame">
+            <summary>
+            Creates a setup for the current game:
+            Initializes a new WordToGuess, prints welcome message and invokes the Play method.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.EndWonGame">
+            <summary>
+            Ends a won game. 
+            The method checks if the Player has used help and if he does not - it checks if the Player can enter High Scores and processes his score.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.EndLostGame">
+            <summary>
+            Shows Game Over message and invokes RestartGame method.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.ResetGame">
+            <summary>
+            Invokes the Player's Reset method to ensure he starts the new game with 0 mistakes and invokes StartGame method.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.CheckGameOverCondition">
+            <summary>
+            Checks if the Player has made more mistakes than the maximum possible mistakes.
+            </summary>
+            <returns>
+            Boolean variable saying if the game is over or not. 
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.CheckWinningCondition">
+            <summary>
+            Checks if the Player has guessed the secret word.
+            </summary>
+            <returns>
+            Boolean variable saying if the Player has guessed the secret word or not.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.ReactToPlayerAction(System.String)">
+            <summary>
+            Reacts to player action, received as a string command.
+            If the command has length = 1, the method invokes ExecuteLetterGuess method.
+            If the command length is > 1, the method gets a command from the Command Factory (using the input parameters) and invokes ExecuteCommand method.
+            </summary>
+            <param name="command">Command as a string, read by the Input provider.</param>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.SaveResult(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore)">
+            <summary>
+            Saves results. Can be overridden by inheritors.
+            </summary>
+            <param name="newRecord">
+            Player's personal score.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.Play">
+            <summary>
+            Shows the current progress of the guessed word, invokes the method, waiting for a player's action.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.ExecuteLetterGuess(System.Char)">
+            <summary>
+            Process the letter guess of the Player. Checks if he has already used the currently guessed letter or not.
+            If he used the letter, the method invokes the ProcessGuessedLetter method.
+            </summary>
+            <param name="letter">
+            A letter, write by the Player.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.ProcessGuessedLetter(System.Char)">
+            <summary>
+            Checks how many occurrences of the word are there in the word to be guessed.
+            If there is not any - increases the Player's mistakes and ask the Renderer to draw the Hangman.
+            </summary>
+            <param name="letter">
+            The guessed letter of the player.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.ExecuteCommand(Hangman.Logic.Commands.Common.ICommand)">
+            <summary>
+            Executes a command, invoking the method Execute of the received command.
+            </summary>
+            <param name="command">
+            Concrete implementation of ICommand interface.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.ProcessCurrentPlayerResult(System.Boolean)">
+            <summary>
+            Processes the result of the player.
+            If player can enter high scores - saves the Player's result.
+            </summary>
+            <param name="playerCanEnterHighScores">
+            Boolean variable indicating if the player can enter high scores.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.SetPlayerName">
+            <summary>
+            Sets the player's name. Can be overridden by inheritors.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Engines.GameEngine.WaitForPlayerAction">
+            <summary>
+            Waits for player action. Can be overridden by inheritors. 
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Engines.GameEngine.ScoreBoardService">
+            <summary>
+            Gets an implementation of IScoreBoardService
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Engines.GameEngine.Renderer">
+            <summary>
+            Gets an implementation of IRenderer
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Engines.GameEngine.Player">
+            <summary>
+            Gets an implementation of IPlayer
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Engines.GameEngine.WordGenerator">
+            <summary>
+            Gets an implementation of IWordGenerator
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Engines.GameEngine.CommandFactory">
+            <summary>
+            Gets an implementation of ICommandFactory
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Engines.GameEngine.WordToGuess">
+            <summary>
+            Gets or sets an implementation of IGuessWord
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Factories.CommandFactory">
+            <summary>
+            Simple Factory.
+            Creates a concrete implementation of ICommand depending on the received string.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Factories.ICommandFactory">
+            <summary>
+            Declares the properties and methods all its implementations must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Factories.ICommandFactory.GetGommand(Hangman.Logic.Contracts.ICommandExecutable,System.String)">
+            <summary>
+            Creates a concrete implementation of ICommand depending on the received string.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+            <param name="command">
+            The command as a string.
+            </param>
+            <returns>
+            The concrete command.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Factories.CommandFactory.GetGommand(Hangman.Logic.Contracts.ICommandExecutable,System.String)">
+            <summary>
+            Creates a concrete implementation of ICommand depending on the received string.
+            </summary>
+            <param name="engine">
+            The context of the command.
+            </param>
+            <param name="command">
+            The command as a string.
+            </param>
+            <returns>
+            The concrete command.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.Formatters.AllCapsFormatter">
+            <summary>
+            Implementation of IResultFormatter.
+            It is responsible for the formatting of Players' results.
+            Part of the Bridge Pattern.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Formatters.IResultFormatter">
+            <summary>
+            Declares all methods that its implementation must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Formatters.IResultFormatter.Format(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore)">
+            <summary>
+            Formats personal scores.
+            </summary>
+            <param name="record">
+            A Personal score to be formatted.
+            </param>
+            <returns>
+            The formatted personal score.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Formatters.AllCapsFormatter.Format(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore)">
+            <summary>
+            It formats the players score with all letters in Uppercase.
+            </summary>
+            <param name="record">
+            Player's score.
+            </param>
+            <returns>
+            Player's score as string, formatted with all letters in Uppercase.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Formatters.AllCapsFormatter.CapitalizeAllLetters(System.String)">
+            <summary>
+            Returns the received word with all letters in Uppercase.
+            </summary>
+            <param name="word">
+            Word as a string.
+            </param>
+            <returns>
+            Word with letters in Uppercase.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.Formatters.CapitalizeFormatter">
+            <summary>
+            Implementation of IResultFormatter.
+            It is responsible for the formatting of Players' results.
+            Part of the Bridge Pattern.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Formatters.CapitalizeFormatter.Format(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore)">
+            <summary>
+            It formats the players score, capitalizing only the first letter of Player's name.
+            </summary>
+            <param name="record">
+            Player's score.
+            </param>
+            <returns>
+            Player's score as a string, with only the first letter of Player's name capitalized.
+            </returns>
+        </member>
+        <member name="M:Hangman.Logic.Formatters.CapitalizeFormatter.CapitalizeFirstLetter(System.String)">
+            <summary>
+            Returns the received word with a Capitalized first letter.
+            </summary>
+            <param name="word">
+            Word as a string.
+            </param>
+            <returns>
+            Word with a Capitalized first letter.
+            </returns>
+        </member>
+        <member name="T:Hangman.Logic.Games.Game">
+            <summary>
+            Facade Design Pattern.
+            It is responsible for initializing all GameEngine dependencies and starts the game.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.Games.IGame">
+            <summary>
+            Declares all methods and properties its implementations must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Games.IGame.Initialize">
+            <summary>
+            Initializes all GameEngine dependencies at sets its own property GameEngine.
+            Hides the complicate logic of all dependencies initialization.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Games.IGame.Start">
+            <summary>
+            Starts a game.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Games.IGame.Engine">
+            <summary>
+            Gets or sets an implementation of IEngine
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Games.Game.Initialize">
+            <summary>
+            Initializes all GameEngine dependencies at sets its own property GameEngine.
+            Hides the complicate logic of all dependencies initialization.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.Games.Game.Start">
+            <summary>
+            Starts a game.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.Games.Game.Engine">
+            <summary>
+            Gets or sets an implementation of IEngine
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore">
+            <summary>
+            Declares the properties and methods all its implementations must have.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore.Name">
+            <summary>
+            Gets the name of the player
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore.Score">
+            <summary>
+            Gets the score of the player
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoard">
+            <summary>
+            Declares the properties and methods all its implementations must have.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoard.Records">
+            <summary>
+            Gets or sets the collection with personal records
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService">
+            <summary>
+            Declares the properties and methods all its implementations must have.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService.AddNewScore(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore)">
+            <summary>
+            Adds new IPersonalScore to the collection contained in the 
+            IScoreBoard that it currently works with.
+            </summary>
+            <param name="record">Instance of IPersonalScore</param>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService.RestoreScores(System.Collections.Generic.IList{Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore})">
+            <summary>
+            Sets the collection of IPersonalScore of the current instance of IScoreBoard
+            to a provided IList.
+            </summary>
+            <param name="restoredResults">An IList of IPersonalScore</param>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService.GetTopScores(System.Int32)">
+            <summary>
+            Gets the IPersonalScore records from the database, sorts them and compares their number with 
+            the provided maximum number of items.
+            </summary>
+            <param name="maxNumberOfScoresInScoreBoard">>Maximum number of items allowed in the IScoreBoard</param>
+            <returns>IList of IPersonalScore records</returns>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService.IsEmpty">
+            <summary>
+            Checks whether the number of Records in the current instance of IScoreBoard
+             is equal to zero.
+            </summary>
+            <returns>True if there are no records.</returns>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService.IsFull(System.Int32)">
+            <summary>
+            Checks whether the number of Records in the current instance of IScoreBoard
+             is equal or above the provided limit.
+            </summary>
+            <param name="numberOfScoresInScoreBoard">Maximum number of items allowed in the IScoreBoard</param>
+            <returns>True if the conditions are met.</returns>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoardService.CheckIfPlayerCanEnterHighScores(Hangman.Logic.Players.Contracts.IPlayer,System.Int32)">
+            <summary>
+            Checks if the current player score can be submitted to the IScoreBoard on basis of the current number of items
+            and the maximum number of items allowed and the number of the mistakes of the last IPersonalScore
+            </summary>
+            <param name="player">Current player</param>
+            <param name="maxNumberOfScoresInScoreBoard">Maximum number of items allowed in the IScoreBoard</param>
+            <returns>True if the player score can be submitted to the IScoreBoard</returns>
+        </member>
+        <member name="T:Hangman.Logic.ScoreBoardServices.PersonalScore">
+            <summary>
+            Groups Player's name and mistakes into Personal score object.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.PersonalScore.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.ScoreBoardServices.PersonalScore"/> class.
+            </summary>
+            <param name="name">
+            The name of the player.
+            </param>
+            <param name="score">
+            The score of the player.
+            </param>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.PersonalScore.ToString">
+            <summary>
+            Overrides object's ToString method
+            </summary>
+            <returns>
+            String representation of Personal Score.
+            </returns>
+        </member>
+        <member name="P:Hangman.Logic.ScoreBoardServices.PersonalScore.Name">
+            <summary>
+            Gets the name of the player
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.ScoreBoardServices.PersonalScore.Score">
+            <summary>
+            Gets the score
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.ScoreBoardServices.ScoreBoard">
+            <summary>
+            Implementation of IScoreBoard interface.
+            Holds a collection with personal scores.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.ScoreBoardServices.ScoreBoard.records">
+            <summary>
+            An IList collection of IPersonalScore
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoard.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.ScoreBoardServices.ScoreBoard"/> class.
+            </summary>
+        </member>
+        <member name="P:Hangman.Logic.ScoreBoardServices.ScoreBoard.Records">
+            <summary>
+            Gets or sets a collection with personal scores.
+            </summary>
+        </member>
+        <member name="T:Hangman.Logic.ScoreBoardServices.ScoreBoardService">
+            <summary>
+            Implementation of IScoreBoardService.
+            Defines all methods to work with the provided IScoreBoard.
+            </summary>
+        </member>
+        <member name="F:Hangman.Logic.ScoreBoardServices.ScoreBoardService.currentScoreBoard">
+            <summary>
+            Keeps the current instance of IScoreBoard
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.#ctor(Hangman.Logic.ScoreBoardServices.Contracts.IScoreBoard)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hangman.Logic.ScoreBoardServices.ScoreBoardService"/> class.
+            </summary>
+            <param name="scoreBoard">Instance of IScoreBoard</param>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.AddNewScore(Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore)">
+            <summary>
+            Adds new IPersonalScore to the collection contained in the 
+            IScoreBoard that it currently works with.
+            </summary>
+            <param name="record">Instance of IPersonalScore</param>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.RemoveLastScores(System.Int32)">
+            <summary>
+            Compares the number of IPersonalScore items contained in the IScoreBoard with 
+            a provided maximum number of items and removes all items that are not required 
+            plus one more. In order to make place for a new item.
+            </summary>
+            <param name="maxNumberOfScoresInScoreBoard">Maximum number of items allowed in the IScoreBoard</param>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.SortScoreBoard">
+            <summary>
+            Sorts the IPersonalScore items in the current instance of IScoreBoard based on the Score property.
+            </summary>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.GetWorstScore(System.Int32)">
+            <summary>
+            Returns the number of Score either of the last item in the current instance of IScoreBoard 
+            or of the instance situated on the last index according the provided parameter.
+            </summary>
+            <param name="maxNumberOfScoresInScoreBoard">Maximum number of items allowed in the IScoreBoard</param>
+            <returns>Number of Score of the last item allowed to be in the IScoreBoard</returns>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.IsFull(System.Int32)">
+            <summary>
+            Checks whether the number of Records in the current instance of IScoreBoard
+             is equal or above the provided limit.
+            </summary>
+            <param name="numberOfScoresInScoreBoard">Maximum number of items allowed in the IScoreBoard</param>
+            <returns>True if the conditions are met.</returns>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.IsEmpty">
+            <summary>
+            Checks whether the number of Records in the current instance of IScoreBoard
+             is equal to zero.
+            </summary>
+            <returns>True if there are no records.</returns>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.RestoreScores(System.Collections.Generic.IList{Hangman.Logic.ScoreBoardServices.Contracts.IPersonalScore})">
+            <summary>
+            Sets the collection of IPersonalScore of the current instance of IScoreBoard
+            to a provided IList.
+            </summary>
+            <param name="restoredResults">An IList of IPersonalScore</param>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.CheckIfPlayerCanEnterHighScores(Hangman.Logic.Players.Contracts.IPlayer,System.Int32)">
+            <summary>
+            Checks if the current player score can be submitted to the IScoreBoard on basis of the current number of items
+            and the maximum number of items allowed and the number of the mistakes of the last IPersonalScore
+            </summary>
+            <param name="player">Current player</param>
+            <param name="maxNumberOfScoresInScoreBoard">Maximum number of items allowed in the IScoreBoard</param>
+            <returns>True if the player score can be submitted to the IScoreBoard</returns>
+        </member>
+        <member name="M:Hangman.Logic.ScoreBoardServices.ScoreBoardService.GetTopScores(System.Int32)">
+            <summary>
+            Gets the IPersonalScore records from the database, sorts them and compares their number with 
+            the provided maximum number of items.
+            </summary>
+            <param name="maxNumberOfScoresInScoreBoard">Maximum number of items allowed in the IScoreBoard</param>
+            <returns>IList of IPersonalScore records</returns>
+        </member>
+    </members>
+</doc>

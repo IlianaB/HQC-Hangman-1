@@ -13,6 +13,9 @@ namespace Hangman.Logic.Players
     /// </summary>
     public class Player : IPlayer
     {
+        /// <summary>
+        /// Collection with the used letters from the player
+        /// </summary>
         private IList<char> usedLetters;
 
         /// <summary>
@@ -41,6 +44,7 @@ namespace Hangman.Logic.Players
             {
                 return new List<char>(this.usedLetters);
             }
+
             private set
             {
                 this.usedLetters = value;
