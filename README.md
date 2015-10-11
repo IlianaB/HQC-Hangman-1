@@ -491,6 +491,34 @@ The ScoreBoardService class wraps an instance of IScoreBoard and works with it, 
 	    }
     }
 
+- **Proxy**
+
+Applaing Proxy pattern in Writer.cs and Renderer.cs classes by using interface IWriter and IReader. This classes implement different types for reading user input and writing game information. With help of this pattern we are able to test .NET methods - Console.ReadLine, Console.Write, Console.WriteLine.
+
+    public interface IReader
+    {
+        /// <summary>
+        /// Reads users input.
+        /// </summary>
+        /// <returns>
+        /// Input as a string.
+        /// </returns>
+        string ReadText();
+    }
+
+    public interface IWriter
+    {
+        /// <summary>
+        /// Writes on a same line
+        /// </summary>
+        /// <param name="text">Text as a string</param>
+        void Write(string text);
+        /// <summary>
+        /// Writes on a new line
+        /// </summary>
+        /// <param name="text">Text as a string</param>
+        void WriteLine(string text);
+    }    
 
 #### 8.3. Behavioral Patterns
 
