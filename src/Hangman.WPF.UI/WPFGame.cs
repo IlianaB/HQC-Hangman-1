@@ -18,6 +18,8 @@ namespace Hangman.WPF.UI
     {
         public override void Initialize()
         {
+            base.Initialize();
+
             IScoreBoard scoreBoard = new ScoreBoard();
             IScoreBoardService scoreBoardService = new ScoreBoardService(scoreBoard);
             IRenderer renderer = new WpfRenderer(new AllCapsFormatter(), new WpfWriter());
