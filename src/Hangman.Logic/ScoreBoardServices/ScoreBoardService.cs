@@ -11,8 +11,15 @@ using Hangman.Logic.ScoreBoardServices.Contracts;
 
 namespace Hangman.Logic.ScoreBoardServices
 {
+    /// <summary>
+    /// Implementation of IScoreBoardService.
+    /// Defines all methods to work with the provided IScoreBoard.
+    /// </summary>
     public class ScoreBoardService : IScoreBoardService
     {
+        /// <summary>
+        /// Keeps the current instance of IScoreBoard
+        /// </summary>
         private readonly IScoreBoard currentScoreBoard;
 
         /// <summary>
@@ -33,6 +40,7 @@ namespace Hangman.Logic.ScoreBoardServices
         {
             this.currentScoreBoard.Records.Add(record);
         }
+
         /// <summary>
         /// Compares the number of IPersonalScore items contained in the IScoreBoard with 
         /// a provided maximum number of items and removes all items that are not required 
@@ -49,6 +57,7 @@ namespace Hangman.Logic.ScoreBoardServices
                 this.currentScoreBoard.Records.RemoveAt(maxNumberOfScores - 1);
             }
         }
+
         /// <summary>
         /// Sorts the IPersonalScore items in the current instance of IScoreBoard based on the Score property.
         /// </summary>
@@ -56,6 +65,7 @@ namespace Hangman.Logic.ScoreBoardServices
         {
             this.currentScoreBoard.Records = this.currentScoreBoard.Records.OrderBy(ps => ps.Score).ToList();
         }
+
         /// <summary>
         /// Returns the number of Score either of the last item in the current instance of IScoreBoard 
         /// or of the instance situated on the last index according the provided parameter.
@@ -77,6 +87,7 @@ namespace Hangman.Logic.ScoreBoardServices
 
             return lastScore.Score;
         }
+
         /// <summary>
         /// Checks whether the number of Records in the current instance of IScoreBoard
         ///  is equal or above the provided limit.
@@ -89,6 +100,7 @@ namespace Hangman.Logic.ScoreBoardServices
 
             return isFull;
         }
+
         /// <summary>
         /// Checks whether the number of Records in the current instance of IScoreBoard
         ///  is equal to zero.
@@ -100,6 +112,7 @@ namespace Hangman.Logic.ScoreBoardServices
 
             return isEmpty;
         }
+
         /// <summary>
         /// Sets the collection of IPersonalScore of the current instance of IScoreBoard
         /// to a provided IList.
@@ -109,11 +122,12 @@ namespace Hangman.Logic.ScoreBoardServices
         {
             this.currentScoreBoard.Records = restoredResults;
         }
+
         /// <summary>
         /// Checks if the current player score can be submitted to the IScoreBoard on basis of the current number of items
         /// and the maximum number of items allowed and the number of the mistakes of the last IPersonalScore
         /// </summary>
-        /// <param name="player">Curent player</param>
+        /// <param name="player">Current player</param>
         /// <param name="maxNumberOfScoresInScoreBoard">Maximum number of items allowed in the IScoreBoard</param>
         /// <returns>True if the player score can be submitted to the IScoreBoard</returns>
         public bool CheckIfPlayerCanEnterHighScores(Players.Contracts.IPlayer player, int maxNumberOfScoresInScoreBoard)
@@ -133,6 +147,7 @@ namespace Hangman.Logic.ScoreBoardServices
 
             return playerCanEnterHighScores;
         }
+
         /// <summary>
         /// Gets the IPersonalScore records from the database, sorts them and compares their number with 
         /// the provided maximum number of items.

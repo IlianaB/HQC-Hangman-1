@@ -10,10 +10,14 @@ using Hangman.Logic.ScoreBoardServices.Contracts;
 namespace Hangman.Logic.ScoreBoardServices
 {
     /// <summary>
+    /// Implementation of IScoreBoard interface.
     /// Holds a collection with personal scores.
     /// </summary>
     public class ScoreBoard : IScoreBoard
     {
+        /// <summary>
+        /// An IList collection of IPersonalScore
+        /// </summary>
         private IList<IPersonalScore> records;
 
         /// <summary>
