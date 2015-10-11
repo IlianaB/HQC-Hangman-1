@@ -441,7 +441,7 @@ namespace HagmanGameTests.Engine
                 return false;
             });
 
-            Isolate.WhenCalled(() => this.engine.ScoreBoardService.CheckIfPlayerCanEnterHighScores(null)).DoInstead(context =>
+            Isolate.WhenCalled(() => this.engine.ScoreBoardService.CheckIfPlayerCanEnterHighScores(null, 10)).DoInstead(context =>
             {
                 return true;
             });

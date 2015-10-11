@@ -25,6 +25,22 @@ namespace Hangman.Console.UI.Engines
 
         public IInputProvider InputProvider { get; private set; }
 
+        public override void SaveResult(IPersonalScore newRecord)
+        {
+            base.SaveResult(newRecord);
+            DataFileManager.SingletonInstance.SaveResult(newRecord, Constants.DatabaseFile);
+        }
+
+        public override void Play()
+        {
+            if (this.Player.Name == string.Empty)
+            {
+                this.SetPlayerName();
+            }
+
+            base.Play();
+        }
+
         protected override void WaitForPlayerAction()
         {
             do
@@ -54,22 +70,6 @@ namespace Hangman.Console.UI.Engines
             this.Renderer.ShowMessage(Constants.EnterNameMessage);
             string name = this.InputProvider.ReadCommand();
             this.Player.Name = name;
-        }
-
-        public override void SaveResult(IPersonalScore newRecord)
-        {
-            base.SaveResult(newRecord);
-            DataFileManager.SingletonInstance.SaveResult(newRecord, Constants.DatabaseFile);
-        }
-
-        public override void Play()
-        {
-            if (this.Player.Name == string.Empty)
-            {
-                this.SetPlayerName();
-            }
-
-            base.Play();
         }
     }
 }

@@ -176,20 +176,6 @@ namespace Hangman.Logic.Engines
         }
 
         /// <summary>
-        /// Sets the player's name. Can be overridden by inheritors.
-        /// </summary>
-        protected virtual void SetPlayerName()
-        {
-        }
-
-        /// <summary>
-        /// Waits for player action. Can be overridden by inheritors. 
-        /// </summary>
-        protected virtual void WaitForPlayerAction()
-        {
-        }
-
-        /// <summary>
         /// Saves results. Can be overridden by inheritors.
         /// </summary>
         /// <param name="newRecord">
@@ -297,6 +283,20 @@ namespace Hangman.Logic.Engines
                 string message = string.Format(Constants.LowScoreMessage, this.Player.Mistakes);
                 this.Renderer.ShowMessage(message);
             }
+        }
+
+        /// <summary>
+        /// Sets the player's name. Can be overridden by inheritors.
+        /// </summary>
+        protected virtual void SetPlayerName()
+        {
+        }
+
+        /// <summary>
+        /// Waits for player action. Can be overridden by inheritors. 
+        /// </summary>
+        protected virtual void WaitForPlayerAction()
+        {
         }
     }
 }

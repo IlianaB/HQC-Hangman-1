@@ -44,8 +44,7 @@ namespace Hangman.Logic.Players
             private set
             {
                 this.usedLetters = value;
-            }
-            
+            }           
         }
 
         /// <summary>

@@ -30,5 +30,17 @@ namespace HagmanGameTests.Formatters
 
             Assert.IsTrue(expect == result);
         }
+
+        [Test]
+        public void TestCapitalizeFormatter()
+        {
+            var player = new PersonalScore("pLaYer", 1);
+
+            var formatter = new CapitalizeFormatter();
+            var result = formatter.Format(player);
+            var expect = "Player ---> 1 mistake(s)!";
+
+            Assert.IsTrue(expect == result);
+        }
     }
 }
