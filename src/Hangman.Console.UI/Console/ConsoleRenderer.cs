@@ -44,7 +44,7 @@ namespace Hangman.Console.UI.Console
         {
             this.Writer.WriteLine(string.Empty);
 
-            Console.Write(Constants.AnnounceSecretWordMessage);
+            this.Writer.Write(Constants.AnnounceSecretWordMessage);
 
             for (int i = 0; i < guessedLetters.Length; i++)
             {

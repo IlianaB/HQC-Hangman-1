@@ -2,8 +2,8 @@
 
 using Hangman.Console.UI.Console;
 using Hangman.Logic.ScoreBoardServices.Contracts;
-using Moq;
 using NUnit.Framework;
+using TypeMock.ArrangeActAssert;
 
 namespace HagmanGameTests.Console.UI
 {
@@ -15,12 +15,7 @@ namespace HagmanGameTests.Console.UI
         [SetUp]
         public void Init()
         {
-            var mockedConsoleRenderer = new Mock<ConsoleRenderer>();
-            mockedConsoleRenderer.Setup(r => r.ShowMessage(It.IsAny<string>())).Verifiable();
-            mockedConsoleRenderer.Setup(r => r.ShowCurrentProgress(It.IsAny<char[]>())).Verifiable();
-            mockedConsoleRenderer.Setup(r => r.DrawHangman(It.IsAny<int>())).Verifiable();
-            mockedConsoleRenderer.Setup(r => r.ShowScoreBoardResults(false, new List<IPersonalScore>())).Verifiable();
-            this.consoleRenderer = mockedConsoleRenderer.Object;
+            this.consoleRenderer = new ConsoleRenderer();
         }
 
         [TearDown]
@@ -32,7 +27,10 @@ namespace HagmanGameTests.Console.UI
         [Test]
         public void TestShowMessage()
         {
+            var called = false;
+            Isolate.WhenCalled(() => this.consoleRenderer.ShowMessage("message")).DoInstead(r => called = true);
             this.consoleRenderer.ShowMessage("Something");
+            Assert.IsTrue(called);
         }
 
         [Test]

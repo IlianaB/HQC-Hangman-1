@@ -1,8 +1,7 @@
-﻿using System.IO;
-using Hangman.Logic.Database;
-using Hangman.Logic.ScoreBoardServices.Contracts;
-using Moq;
+﻿using Hangman.Logic.Database;
+using Hangman.Logic.ScoreBoardServices;
 using NUnit.Framework;
+using TypeMock.ArrangeActAssert;
 
 namespace HagmanGameTests.Database
 {
@@ -10,14 +9,13 @@ namespace HagmanGameTests.Database
     public class DataFileManagerTest
     {
         private DataFileManager dataFileManager;
-        private IPersonalScore personalScore;
+        private PersonalScore personalScore;
 
         [SetUp]
         public void Init()
         {
-            var mockedPersonalScore = new Mock<IPersonalScore>();
             this.dataFileManager = DataFileManager.SingletonInstance;
-            this.personalScore = mockedPersonalScore.Object;
+            this.personalScore = new PersonalScore("Tester", 1);
         }
 
         [TearDown]
@@ -31,6 +29,17 @@ namespace HagmanGameTests.Database
         public void TestDataFileManagerCreation()
         {
             Assert.IsInstanceOf(typeof(DataFileManager), this.dataFileManager, "DataFileManager is in correct type");
+        }
+
+        [Test, Isolated]
+        public void TestSaveResult()
+        {
+            var called = true;
+            Isolate.WhenCalled(() => this.dataFileManager.SaveResult(null, null)).DoInstead(x => called = false);
+
+            this.dataFileManager.SaveResult(this.personalScore, "Some");
+
+            Assert.IsTrue(called);
         }
     }
 }
