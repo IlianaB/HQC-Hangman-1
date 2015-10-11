@@ -121,21 +121,21 @@ changed to:
 
 #### 2.5. Formatting reflects the logical structure of the methods:
 
-    if (playerCanEnterHighScores)
-    {
-	    int mistakes = this.Player.Mistakes;
-	    IPersonalScore newRecord = new PersonalScore(this.Player.Name, mistakes);
-	    
-	    this.SaveResult(newRecord);
-	    
-	    this.ScoreBoardService.AddNewScore(newRecord);
-	    this.ScoreBoardService.SortScoreBoard();
-	    this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetAllRecords());
-    }
+            if (playerCanEnterHighScores)
+            {
+                string name = this.Player.Name;
+                int mistakes = this.Player.Mistakes;
+                IPersonalScore newRecord = new PersonalScore(name, mistakes);
+                this.SaveResult(newRecord);
+
+                bool isEmptyScoreBoard = this.ScoreBoardService.IsEmpty();
+                IList<IPersonalScore> topRecords = this.ScoreBoardService.GetTopScores(Constants.NumberOfScoresInScoreBoard);
+                this.Renderer.ShowScoreBoardResults(isEmptyScoreBoard, topRecords);
+            }
 
 ### 3. Naming Identifiers
-#### 3.1. Use English language - file besenica.cs renamed to hangman.cs, the method *IzberiRandomWord* renamed to *ChooseRandomWord*, 
-#### 3.2. Choose descriptive and meaningful names of methods, following the pattern [Verb], [Verb] + [Noun] or [Verb] + [Adjective] + [Noun] - the name *NumberOccuranceOfLetter* changed to *FindNumberOfLetterOccurences*.
+#### 3.1. Use English language - file besenica.cs renamed to hangman.cs, the method *IzberiRandomWord* renamed to *ChooseRandomWord*. 
+#### 3.2. Choose descriptive and meaningful names of methods, following the pattern [Verb], [Verb] + [Noun] or [Verb] + [Adjective] + [Noun] - the name *NumberOccuranceOfLetter* changed to *FindNumberOfLetterOccurrences*.
 #### 3.3. Choose descriptive and meaningful names of variables - the char to be return by the method RevealLetter *toReturnt* renamed to *revealedLetter*.
 #### 3.4. Use PascalCase for methods and fields names and camelCase for properties and variables names - method *ReSet* renamed to *ResetGame*.
 #### 3.5. Consistency of methods naming 
@@ -143,6 +143,18 @@ changed to:
 **- StartGame(), void ResetGame(), EndWonGame(), EndLostGame() in GameEngine class** 
 
 **- ShowScoreBoardResults(), ShowCurrentProgress(), ShowMessage() in Renderer class**
+
+#### 3.6. Namespaces:
+
+- Hangman.Logic.Engines
+
+- Hangman.Logic.Factories
+
+- Hangman.Logic.Commands
+
+- Hangman.Logic.Common
+
+- etc.
 
 
 ### 4. High-quality methods
@@ -242,8 +254,8 @@ And two different methods for putting the end of the game, depending on the cond
 #### 4.4. Hide implementation details - Complex logic is encapsulated and hidden behind a simple interface, for example:
 
     Game game = new ConsoleGame();
-			    game.Initialize();
-			    game.Start();
+	game.Initialize();
+	game.Start();
 
 behind the scenes look like this:
 
@@ -257,8 +269,7 @@ behind the scenes look like this:
             IWordProvider wordProvider = new WordProvider();
             WordGenerator randomWordGenerator = new WordGenerator(wordProvider);
             ICommandFactory commandFactory = new CommandFactory();
-            IEngine gameEngine = new ConsoleEngine(scoreBoardService, renderer, player, randomWordGenerator, commandFactory, inputProvider);
-            DataFileManager.SingletonInstance.RestoreResults(scoreBoardService, Constants.FilePathConsoleGame);
+            IEngine gameEngine = new ConsoleEngine(scoreBoardService, renderer, player, 
 
             this.Engine = gameEngine;
         }
@@ -268,9 +279,21 @@ behind the scenes look like this:
     	this.Engine.StartGame();
     }
 
-#### 4.5. Increase the level of abstraction by addressing real-world problems.
-#### 4.6. Communicational and sequential cohesion
-#### 4.7. Loose coupling - methods depend mainly on their parameters, not hidden dependencies on class members or other.
+#### 4.5. Communicational and sequential cohesion
+#### 4.6. Loose coupling - methods depend mainly on their parameters, not hidden dependencies on class members or other. For example:
+
+        public void ReactToPlayerAction(string command)
+        {
+            if (command.Length == 1)
+            {
+                this.ExecuteLetterGuess(command[0]);
+            }
+            else
+            {
+                ICommand currentCommand = this.CommandFactory.GetGommand(this, command);
+                this.ExecuteCommand(currentCommand);
+            }
+        }
 
 
 
@@ -312,8 +335,28 @@ introduce a **new class PersonalScore**:
 	    +Mistakes[i] = int.MaxValue;
      }
 
-### 8. Design Patterns
-#### 8.1. Creational Patterns
+### 8. Comments and Documentation
+#### 8.1. Delete all unnecessary comments
+
+    // besenicata e egati tupata igra! ujasssssssssssss, spasete me ot besiloto!
+
+#### 8.2. Document all public members of classes
+
+        /// <summary>
+        /// Reset Player's mistakes to 0 and sets its property HasUsedHelp to false.
+        /// </summary>
+        public void Reset()
+        {
+            this.Mistakes = 0;
+            this.UsedLetters = new List<char>();
+            this.HasUsedHelp = false;
+        }
+
+#### 8.3. Extract CHM Documentation.
+
+
+### 9. Design Patterns
+#### 9.1. Creational Patterns
 
 - **Simple Factory**
 
@@ -323,14 +366,18 @@ in the class CommandFactory:
         {
             switch (command)
             {
-                case "start": return new StartCommand(engine);
-                case "top": return new TopCommand(engine);
-                case "help": return new HelpCommand(engine);
-                case "restart": return new RestartCommand(engine);
-                case "exit": return new ExitCommand(engine);
-                case null: return new NullCommand(engine);
-                default: return new WrongCommand(engine);
-            }
+                case "start": 
+                    return new StartCommand(engine);
+                case "top": 
+                    return new TopCommand(engine);
+                case "help": 
+                    return new HelpCommand(engine);
+                case "restart": 
+                    return new RestartCommand(engine);
+                case "exit": 
+                    return new ExitCommand(engine);
+                default: 
+                    return new NullCommand(engine);
         }
 
 - **Singleton** (thread-safe version) and
@@ -354,7 +401,7 @@ in DataFileManager class:
         }
 
 
-#### 8.2. Structural Patterns:
+#### 9.2. Structural Patterns:
 - **Facade**
 
 in Games classes:
@@ -497,30 +544,17 @@ Applaing Proxy pattern in Writer.cs and Renderer.cs classes by using interface I
 
     public interface IReader
     {
-        /// <summary>
-        /// Reads users input.
-        /// </summary>
-        /// <returns>
-        /// Input as a string.
-        /// </returns>
         string ReadText();
     }
 
     public interface IWriter
     {
-        /// <summary>
-        /// Writes on a same line
-        /// </summary>
-        /// <param name="text">Text as a string</param>
         void Write(string text);
-        /// <summary>
-        /// Writes on a new line
-        /// </summary>
-        /// <param name="text">Text as a string</param>
+
         void WriteLine(string text);
     }    
 
-#### 8.3. Behavioral Patterns
+#### 9.3. Behavioral Patterns
 
 - **Template Method**
 
@@ -675,3 +709,91 @@ There is a NullCommand (implementing ICommand) which does nothing but informs us
             this.Engine.Renderer.ShowMessage(Constants.IncorrectCommandMessage);
         }
     }
+
+
+### 10. SOLID
+#### 10.1. **Single responsibility** - at many places but for example:
+
+The class **InputProvider** which is responsible only for reading users' input and its method:
+
+    public abstract class InputProvider : IInputProvider
+    {
+        public abstract string ReadCommand();
+    }
+
+And the class **Renderer** which is responsible only for writting on the UI and its methods:
+
+    public abstract class Renderer : IRenderer
+    {
+        protected readonly IResultFormatter Formatter;
+
+        protected readonly IWriter Writer;
+
+        protected Renderer(IResultFormatter formatter, IWriter writer)
+        {
+            this.Formatter = formatter;
+            this.Writer = writer;
+        }
+
+        public abstract void ShowScoreBoardResults(bool isEmptyScoreBoard, ICollection<IPersonalScore> records);
+
+        public abstract void ShowCurrentProgress(char[] guessedLetters);
+
+        public abstract void ShowMessage(string message);
+
+        public abstract void DrawHangman(int mistakes);
+    }
+
+
+#### 10.2. **Open/Closed** - the usage of Template method and Strategy pattern in GameEngine class. It receives in its constructor abstractions as parameters, not concrete implementations and it lets its inheritors to override virtual methods, to implement their own logic.
+
+#### 10.3. **Liskov Substitution** - All derived classes just extends the behaviour of their parent, they do not change it. For example, WpfEngine overrides only one virtual method of abstract GameEngine, calling it:
+
+        public override void SaveResult(IPersonalScore newRecord)
+        {
+            base.SaveResult(newRecord);
+            DataFileManager.SingletonInstance.SaveResult(newRecord, Constants.DatabaseFile);
+        }
+
+#### 10.4. Interface Segregation - small interfaces, not more than a total of 6-7 properties and methods in them. 
+
+    public interface IGame
+    {
+        IEngine Engine { get; set; }
+
+        void Initialize();
+
+        void Start();
+    }
+
+Another example, the abstract class GameEngine implements two interfaces instead of one thick interface:
+
+    GameEngine : IEngine, ICommandExecutable
+
+#### 10.5. Dependency Inversion - all methods and constructors work with abstract parameters, not concrete implementations. For example:
+
+        protected GameEngine(
+            IScoreBoardService scoreBoardService, 
+            IRenderer renderer,
+            IPlayer player, 
+            IWordGenerator wordGenerator, 
+            ICommandFactory commandFactory)
+        {
+            this.ScoreBoardService = scoreBoardService;
+            this.Renderer = renderer;
+            this.Player = player;
+            this.WordGenerator = wordGenerator;
+            this.CommandFactory = commandFactory;
+        }
+
+
+        private void ExecuteCommand(ICommand command)
+        {
+            command.Execute();
+        }
+
+
+        protected virtual void SaveResult(IPersonalScore newRecord)
+        {
+            this.ScoreBoardService.AddNewScore(newRecord);
+        }

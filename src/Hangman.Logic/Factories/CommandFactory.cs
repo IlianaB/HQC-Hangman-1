@@ -31,12 +31,18 @@ namespace Hangman.Logic.Factories
         {
             switch (command)
             {
-                case "start": return new StartCommand(engine);
-                case "top": return new TopCommand(engine);
-                case "help": return new HelpCommand(engine);
-                case "restart": return new RestartCommand(engine);
-                case "exit": return new ExitCommand(engine);
-                default: return new NullCommand(engine);
+                case "start": 
+                    return new StartCommand(engine);
+                case "top": 
+                    return new TopCommand(engine);
+                case "help": 
+                    return new HelpCommand(engine);
+                case "restart": 
+                    return new RestartCommand(engine);
+                case "exit": 
+                    return new ExitCommand(engine);
+                default: 
+                    return new NullCommand(engine);
             }
         }
     }

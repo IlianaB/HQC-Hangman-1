@@ -3,6 +3,7 @@
 //     Hangman-Team-1@
 // </copyright>
 
+using System.Collections.Generic;
 using System.Linq;
 
 using Hangman.Logic.Commands.Common;
@@ -271,12 +272,12 @@ namespace Hangman.Logic.Engines
             {
                 string name = this.Player.Name;
                 int mistakes = this.Player.Mistakes;
-
                 IPersonalScore newRecord = new PersonalScore(name, mistakes);
-
                 this.SaveResult(newRecord);
 
-                this.Renderer.ShowScoreBoardResults(this.ScoreBoardService.IsEmpty(), this.ScoreBoardService.GetTopScores(Constants.NumberOfScoresInScoreBoard));
+                bool isEmptyScoreBoard = this.ScoreBoardService.IsEmpty();
+                IList<IPersonalScore> topRecords = this.ScoreBoardService.GetTopScores(Constants.NumberOfScoresInScoreBoard);
+                this.Renderer.ShowScoreBoardResults(isEmptyScoreBoard, topRecords);
             }
             else
             {

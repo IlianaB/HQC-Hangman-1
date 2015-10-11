@@ -14,3 +14,6 @@ Tes1 - 2
 opop - 3
 jop - 3
 kopkop - 2
+iliana - 6
+Iliana - 6
+kas - 5

@@ -861,11 +861,6 @@
             Initializes a new WordToGuess, prints welcome message and invokes the Play method.
             </summary>
         </member>
-        <member name="M:Hangman.Logic.Engines.IEngine.ResetGame">
-            <summary>
-            Invokes the Player's Reset method to ensure he starts the new game with 0 mistakes and invokes StartGame method.
-            </summary>
-        </member>
         <member name="M:Hangman.Logic.Engines.IEngine.EndWonGame">
             <summary>
             Ends a won game. 

@@ -30,11 +30,6 @@ namespace Hangman.Logic.Engines
         void StartGame();
 
         /// <summary>
-        /// Invokes the Player's Reset method to ensure he starts the new game with 0 mistakes and invokes StartGame method.
-        /// </summary>
-        void ResetGame();
-
-        /// <summary>
         /// Ends a won game. 
         /// The method checks if the Player has used help and if he does not - it checks if the Player can enter High Scores and processes his score.
         /// </summary>
