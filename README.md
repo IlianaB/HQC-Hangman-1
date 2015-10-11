@@ -296,6 +296,37 @@ behind the scenes look like this:
         }
 
 
+#### 4.7. Avoid deep nesting of conditional statements and loops, through extracting the logic in a new method. For example:
+
+        public void ReactToPlayerAction(string command)
+        {
+            if (command.Length == 1)
+            {
+                this.ExecuteLetterGuess(command[0]);
+            }
+            else
+            {
+                ICommand currentCommand = this.CommandFactory.GetGommand(this, command);
+                this.ExecuteCommand(currentCommand);
+            }
+        }
+
+        private void ExecuteLetterGuess(char letter)
+        {
+            bool isLetterUsed = this.Player.CheckIfLetterIsUsed(letter);
+
+            if (isLetterUsed)
+            {
+                this.Renderer.ShowMessage(string.Format(Constants.AlreadyUsedLetterMessage, letter));
+            }
+            else
+            {
+                this.ProcessGuessedLetter(letter);
+            }
+
+            this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
+        }
+
 
 ### 5. Constants - remove "magic" strings and numbers and introduce constants:
 **For example:**
@@ -797,3 +828,15 @@ Another example, the abstract class GameEngine implements two interfaces instead
         {
             this.ScoreBoardService.AddNewScore(newRecord);
         }
+
+### 11. New functionalities
+
+- WPF UI,
+
+- Improvements in Console UI,
+
+- Results saved in a file (database),
+
+- You cannot use the same letter twice,
+
+- Player has name;
