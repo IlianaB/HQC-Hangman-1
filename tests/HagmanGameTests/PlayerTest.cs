@@ -40,5 +40,25 @@ namespace HagmanGameTests
 
             Assert.AreEqual(0, this.player.Mistakes, "Player mistakes should be 0 when reseted");
         }
+
+        [Test]
+        public void TestIfCheckIfLetterIsUsedReturnsCorrectResultWhenLetterIsUsed()
+        {
+            char letter = 'a';
+            this.player.AddNewUsedLetter(letter);
+            bool isLetterUsed = this.player.CheckIfLetterIsUsed(letter);
+
+            Assert.IsTrue(isLetterUsed);
+        }
+
+        [Test]
+        public void TestIfCheckIfLetterIsUsedReturnsCorrectResultWhenLetterIsNotUsed()
+        {
+            char letter = 'a';
+
+            bool isLetterUsed = this.player.CheckIfLetterIsUsed(letter);
+
+            Assert.IsFalse(isLetterUsed);
+        }
     }
 }

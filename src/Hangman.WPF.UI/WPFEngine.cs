@@ -21,7 +21,7 @@ namespace Hangman.WPF.UI
         {
         }
 
-        protected override void SaveResult(IPersonalScore newRecord)
+        public override void SaveResult(IPersonalScore newRecord)
         {
             base.SaveResult(newRecord);
             DataFileManager.SingletonInstance.SaveResult(newRecord, Constants.DatabaseFile);

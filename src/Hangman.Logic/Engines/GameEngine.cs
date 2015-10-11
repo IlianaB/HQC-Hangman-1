@@ -195,7 +195,7 @@ namespace Hangman.Logic.Engines
         /// <param name="newRecord">
         /// Player's personal score.
         /// </param>
-        protected virtual void SaveResult(IPersonalScore newRecord)
+        public virtual void SaveResult(IPersonalScore newRecord)
         {
             this.ScoreBoardService.AddNewScore(newRecord);
         }
@@ -203,7 +203,7 @@ namespace Hangman.Logic.Engines
         /// <summary>
         /// Shows the current progress of the guessed word, invokes the method, waiting for a player's action.
         /// </summary>
-        protected virtual void Play()
+        public virtual void Play()
         {
             this.Renderer.ShowMessage(Constants.GuessTheWordMessage);
             this.Renderer.ShowCurrentProgress(this.WordToGuess.Mask);
@@ -218,7 +218,7 @@ namespace Hangman.Logic.Engines
         /// <param name="letter">
         /// A letter, write by the Player.
         /// </param>
-        private void ExecuteLetterGuess(char letter)
+        public void ExecuteLetterGuess(char letter)
         {
             bool isLetterUsed = this.Player.CheckIfLetterIsUsed(letter);
 
@@ -241,7 +241,7 @@ namespace Hangman.Logic.Engines
         /// <param name="letter">
         /// The guessed letter of the player.
         /// </param>
-        private void ProcessGuessedLetter(char letter)
+        public void ProcessGuessedLetter(char letter)
         {
             string message;
             int occuranses = this.WordToGuess.GetNumberOfOccurences(letter);
@@ -267,7 +267,7 @@ namespace Hangman.Logic.Engines
         /// <param name="command">
         /// Concrete implementation of ICommand interface.
         /// </param>
-        private void ExecuteCommand(ICommand command)
+        public void ExecuteCommand(ICommand command)
         {
             command.Execute();
         }
@@ -279,12 +279,14 @@ namespace Hangman.Logic.Engines
         /// <param name="playerCanEnterHighScores">
         /// Boolean variable indicating if the player can enter high scores.
         /// </param>
-        private void ProcessCurrentPlayerResult(bool playerCanEnterHighScores)
+        public void ProcessCurrentPlayerResult(bool playerCanEnterHighScores)
         {
             if (playerCanEnterHighScores)
             {
+                string name = this.Player.Name;
                 int mistakes = this.Player.Mistakes;
-                IPersonalScore newRecord = new PersonalScore(this.Player.Name, mistakes);
+
+                IPersonalScore newRecord = new PersonalScore(name, mistakes);
 
                 this.SaveResult(newRecord);
 

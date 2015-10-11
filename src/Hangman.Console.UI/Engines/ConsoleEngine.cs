@@ -56,13 +56,13 @@ namespace Hangman.Console.UI.Engines
             this.Player.Name = name;
         }
 
-        protected override void SaveResult(IPersonalScore newRecord)
+        public override void SaveResult(IPersonalScore newRecord)
         {
             base.SaveResult(newRecord);
             DataFileManager.SingletonInstance.SaveResult(newRecord, Constants.DatabaseFile);
         }
 
-        protected override void Play()
+        public override void Play()
         {
             if (this.Player.Name == string.Empty)
             {

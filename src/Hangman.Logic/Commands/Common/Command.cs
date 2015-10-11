@@ -26,7 +26,7 @@ namespace Hangman.Logic.Commands.Common
         /// <summary>
         /// Gets or sets an implementation of ICommandExecutable
         /// </summary>
-        protected ICommandExecutable Engine { get; set; }
+        public ICommandExecutable Engine { get; set; }
         
         /// <summary>
         /// Executes the command - the implementation vary.

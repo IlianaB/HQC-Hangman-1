@@ -32,13 +32,5 @@ namespace HagmanGameTests.Database
         {
             Assert.IsInstanceOf(typeof(DataFileManager), this.dataFileManager, "DataFileManager is in correct type");
         }
-
-        [Test]
-        [ExpectedException(typeof(DirectoryNotFoundException))]
-        public void TestSaveResultInvalidFileThrowsError()
-        {
-            string fakePath = @"C:\tempFake\myReallyFakeFile.txt";
-            this.dataFileManager.SaveResult(this.personalScore, fakePath);
-        }
     }
 }

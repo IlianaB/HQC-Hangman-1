@@ -13,6 +13,8 @@ namespace Hangman.Logic.Players
     /// </summary>
     public class Player : IPlayer
     {
+        private IList<char> usedLetters;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Player"/> class.
         /// Initialize the current player with an empty string name and 0 mistakes as a start value.
@@ -33,7 +35,18 @@ namespace Hangman.Logic.Players
         /// <summary>
         /// Gets the used letters from the player
         /// </summary>
-        public List<char> UsedLetters { get; private set; }
+        public List<char> UsedLetters
+        {
+            get
+            {
+                return new List<char>(this.usedLetters);
+            }
+            private set
+            {
+                this.usedLetters = value;
+            }
+            
+        }
 
         /// <summary>
         /// Gets players mistakes
@@ -85,7 +98,7 @@ namespace Hangman.Logic.Players
         /// </param>
         public void AddNewUsedLetter(char letter)
         {
-            this.UsedLetters.Add(letter);
+            this.usedLetters.Add(letter);
         }
     }
 }
