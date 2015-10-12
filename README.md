@@ -13,7 +13,7 @@ changed to:
 
             if (count == 0)
             {
-                mistackes++;
+                mistakes++;
             }
 
 #### 2.2. Empty line for separation of methods, properties, etc. and methods, if statements, loop identation (single tab in the body of the method, statement, loop and so on)
@@ -43,11 +43,11 @@ changed to:
 
 changed to:
 
-            public int Mistackes
+            public int mistakes
             {
                 get
                 {
-                    return this.Mistackes;
+                    return this.mistakes;
                 }
             }
 
@@ -110,7 +110,7 @@ changed to:
 
 #### 2.4. Split the lines containing several statements into several simple lines:
 
-    if (scoreNames[scoreNames.Length - 1] != null) { worstTopScore = mistackes[scoreNames.Length - 1]; }
+    if (scoreNames[scoreNames.Length - 1] != null) { worstTopScore = mistakes[scoreNames.Length - 1]; }
 
 changed to:
 
